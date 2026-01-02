@@ -1,0 +1,611 @@
+_id,anio_aprobacion,sector_institucional,pais,tipo_socio,monto_bruto_usd,cantidad_aprobaciones
+1,2012,Sector Privado,Costa Rica,Fundadores,3000000.0,1
+2,2022,Sector Público,Argentina,Extraregionales,115000000.0,4
+3,2015,Sector Público,Argentina,Extraregionales,50000000.0,1
+4,2017,Sector Público,Argentina,Extraregionales,30000000.0,1
+5,2003,Sector Privado,Costa Rica,Fundadores,54336000.0,12
+6,2014,Sector Público,Belice,Regional No Fundadores,30000000.0,1
+7,2009,Sector Público,Belice,Regional No Fundadores,1905800.0,1
+8,2008,Sector Privado,Colombia,Extraregionales,5000000.0,1
+9,1965,Sector Privado,Costa Rica,Fundadores,1284100.0,4
+10,1981,Sector Privado,Costa Rica,Fundadores,2771000.0,4
+11,1986,Sector Público,Costa Rica,Fundadores,3000000.0,1
+12,1985,Sector Público,Costa Rica,Fundadores,6600000.0,2
+13,2021,Sector Público,Argentina,Extraregionales,150000000.0,3
+14,1963,Sector Privado,Costa Rica,Fundadores,62000.0,2
+15,1969,Sector Privado,Costa Rica,Fundadores,604600.0,6
+16,1978,Sector Privado,Costa Rica,Fundadores,7735000.0,5
+17,2023,Sector Público,Argentina,Extraregionales,625000000.0,3
+18,2016,Sector Público,Argentina,Extraregionales,90000000.0,2
+19,1967,Sector Privado,Costa Rica,Fundadores,1164600.0,5
+20,1994,Sector Privado,Costa Rica,Fundadores,78026000.0,31
+21,1976,Sector Privado,Costa Rica,Fundadores,4439000.0,5
+22,1971,Sector Privado,Costa Rica,Fundadores,2816075.0,9
+23,2005,Sector Público,Colombia,Extraregionales,71120000.0,2
+24,1968,Sector Privado,Costa Rica,Fundadores,761000.0,3
+25,1999,Sector Privado,Costa Rica,Fundadores,18809037.0,5
+26,2018,Sector Público,Argentina,Extraregionales,32000000.0,1
+27,1974,Sector Privado,Costa Rica,Fundadores,9478100.0,11
+28,2013,Sector Privado,Costa Rica,Fundadores,34775000.0,4
+29,1992,Sector Privado,Costa Rica,Fundadores,9200145.0,7
+30,1989,Sector Público,Costa Rica,Fundadores,38000000.0,4
+31,1995,Sector Privado,Costa Rica,Fundadores,40150000.0,16
+32,2000,Sector Privado,Costa Rica,Fundadores,38630000.0,7
+33,2011,Sector Público,Colombia,Extraregionales,50000000.0,1
+34,1991,Sector Privado,Costa Rica,Fundadores,4200000.0,1
+35,1988,Sector Público,Costa Rica,Fundadores,23000000.0,5
+36,1973,Sector Privado,Costa Rica,Fundadores,8680000.0,11
+37,2024,Sector Público,Argentina,Extraregionales,230000000.0,1
+38,1990,Sector Público,Costa Rica,Fundadores,28375000.0,4
+39,1977,Sector Privado,Costa Rica,Fundadores,2000000.0,1
+40,2019,Sector Público,Argentina,Extraregionales,67000000.0,1
+41,1982,Sector Privado,Costa Rica,Fundadores,8500000.0,1
+42,2007,Sector Privado,Colombia,Extraregionales,136948000.0,1
+43,2025,Sector Público,Argentina,Extraregionales,127500000.0,2
+44,2012,Sector Público,Costa Rica,Fundadores,350000000.0,4
+45,2022,Sector Público,Belice,Regional No Fundadores,24000000.0,1
+46,2015,Sector Público,Colombia,Extraregionales,136000000.0,1
+47,2017,Sector Público,Colombia,Extraregionales,50000000.0,1
+48,2003,Sector Público,Costa Rica,Fundadores,118330255.46000001,3
+49,2014,Sector Público,Colombia,Extraregionales,50000000.0,1
+50,1975,Sector Privado,Costa Rica,Fundadores,5828000.0,4
+51,2008,Sector Privado,Costa Rica,Fundadores,27000000.0,11
+52,1965,Sector Público,Costa Rica,Fundadores,2000000.0,2
+53,1981,Sector Público,Costa Rica,Fundadores,19000000.0,4
+54,1986,Sector Privado,El Salvador,Fundadores,400000.0,1
+55,1985,Sector Público,El Salvador,Fundadores,1980000.0,1
+56,2021,Sector Público,Costa Rica,Fundadores,580000000.0,2
+57,1963,Sector Privado,El Salvador,Fundadores,2426600.0,5
+58,1969,Sector Público,Costa Rica,Fundadores,13134000.0,10
+59,1978,Sector Público,Costa Rica,Fundadores,37020000.0,7
+60,2010,Sector Público,Belice,Regional No Fundadores,10667410.0,2
+61,1993,Sector Privado,Costa Rica,Fundadores,25000000.0,20
+62,1967,Sector Público,Costa Rica,Fundadores,5990000.0,2
+63,1994,Sector Público,Costa Rica,Fundadores,65784244.0,11
+64,1976,Sector Público,Costa Rica,Fundadores,37043000.0,9
+65,1971,Sector Público,Costa Rica,Fundadores,6200000.0,3
+66,1979,Sector Privado,Costa Rica,Fundadores,12000000.0,4
+67,1968,Sector Público,Costa Rica,Fundadores,3022000.0,5
+68,1999,Sector Público,Costa Rica,Fundadores,73333101.0,4
+69,2020,Sector Público,Argentina,Extraregionales,50000000.0,1
+70,1974,Sector Público,Costa Rica,Fundadores,40330000.0,18
+71,2013,Sector Público,Costa Rica,Fundadores,515000000.0,4
+72,1992,Sector Público,Costa Rica,Fundadores,45965600.0,6
+73,1989,Sector Público,El Salvador,Fundadores,12000000.0,3
+74,1995,Sector Público,Costa Rica,Fundadores,60035316.0,5
+75,2000,Sector Público,Costa Rica,Fundadores,74091406.0,4
+76,2011,Sector Privado,Costa Rica,Fundadores,31000000.0,5
+77,1991,Sector Público,Costa Rica,Fundadores,32700000.0,3
+78,1988,Sector Público,El Salvador,Fundadores,16740000.0,4
+79,1973,Sector Público,Costa Rica,Fundadores,25900000.0,8
+80,2024,Sector Público,Costa Rica,Fundadores,770000000.0,1
+81,1990,Sector Público,El Salvador,Fundadores,37670000.0,5
+82,1977,Sector Público,Costa Rica,Fundadores,18760000.0,5
+83,1966,Sector Privado,Costa Rica,Fundadores,3118500.0,6
+84,1982,Sector Público,Costa Rica,Fundadores,8000000.0,2
+85,2007,Sector Público,Colombia,Extraregionales,50000000.0,1
+86,2025,Sector Público,Colombia,Extraregionales,75000000.0,1
+87,2012,Sector Privado,El Salvador,Fundadores,18000000.0,3
+88,2022,Sector Público,Colombia,Extraregionales,250000000.0,1
+89,2015,Sector Privado,Costa Rica,Fundadores,73000000.0,4
+90,1964,Sector Privado,Costa Rica,Fundadores,1123435.0,6
+91,2003,Sector Privado,El Salvador,Fundadores,29976300.0,13
+92,2002,Sector Privado,Costa Rica,Fundadores,70164000.0,13
+93,1975,Sector Público,Costa Rica,Fundadores,26066000.0,9
+94,2008,Sector Público,Costa Rica,Fundadores,172390000.0,5
+95,1965,Sector Privado,El Salvador,Fundadores,5096700.0,7
+96,1981,Sector Privado,El Salvador,Fundadores,481100.0,2
+97,1986,Sector Público,El Salvador,Fundadores,13000000.0,1
+98,1985,Sector Público,Guatemala,Fundadores,8000000.0,1
+99,2021,Sector Privado,El Salvador,Fundadores,20000000.0,1
+100,1963,Sector Público,El Salvador,Fundadores,20000.0,1
+101,1969,Sector Privado,El Salvador,Fundadores,3610130.0,9
+102,1980,Sector Privado,Costa Rica,Fundadores,5761288.0,6
+103,2023,Sector Público,Belice,Regional No Fundadores,2500000.0,1
+104,1993,Sector Público,Costa Rica,Fundadores,21750000.0,4
+105,1967,Sector Privado,El Salvador,Fundadores,986000.0,4
+106,1994,Sector Privado,El Salvador,Fundadores,24313000.0,17
+107,1998,Sector Privado,Costa Rica,Fundadores,84786168.0,24
+108,1983,Sector Privado,Costa Rica,Fundadores,1800000.0,1
+109,1979,Sector Público,Costa Rica,Fundadores,33110000.0,9
+110,1968,Sector Privado,El Salvador,Fundadores,1525700.0,5
+111,1999,Sector Privado,El Salvador,Fundadores,61619477.0,6
+112,2018,Sector Público,Costa Rica,Fundadores,530284067.0,3
+113,1984,Sector Público,Costa Rica,Fundadores,1650000.0,1
+114,2013,Sector Público,El Salvador,Fundadores,199208600.0,4
+115,1992,Sector Privado,El Salvador,Fundadores,14000000.0,3
+116,1989,Sector Privado,Guatemala,Fundadores,99000.0,1
+117,1995,Sector Privado,El Salvador,Fundadores,71513548.0,13
+118,2000,Sector Privado,El Salvador,Fundadores,7830000.0,1
+119,2011,Sector Público,Costa Rica,Fundadores,499000000.0,3
+120,1991,Sector Público,El Salvador,Fundadores,1000000.0,1
+121,1988,Sector Público,Honduras,Fundadores,37600000.0,10
+122,1973,Sector Privado,El Salvador,Fundadores,9430000.0,8
+123,2024,Sector Público,El Salvador,Fundadores,263900000.0,2
+124,1990,Sector Privado,Guatemala,Fundadores,15220600.0,2
+125,1977,Sector Público,El Salvador,Fundadores,14100000.0,2
+126,1966,Sector Público,Costa Rica,Fundadores,4700000.0,1
+127,1982,Sector Privado,El Salvador,Fundadores,2000000.0,3
+128,2001,Sector Privado,Costa Rica,Fundadores,31000000.0,4
+129,1996,Sector Privado,Costa Rica,Fundadores,35521099.0,21
+130,2012,Sector Público,El Salvador,Fundadores,193161825.0,3
+131,1987,Sector Privado,Costa Rica,Fundadores,1000000.0,1
+132,2015,Sector Público,Costa Rica,Fundadores,202587964.87,2
+133,1964,Sector Público,Costa Rica,Fundadores,1163000.0,2
+134,2003,Sector Público,El Salvador,Fundadores,143500000.0,3
+135,2002,Sector Público,Costa Rica,Fundadores,280000000.0,6
+136,2009,Sector Privado,Costa Rica,Fundadores,32900000.0,5
+137,2008,Sector Privado,El Salvador,Fundadores,15261000.0,3
+138,1965,Sector Público,El Salvador,Fundadores,1066000.0,2
+139,1981,Sector Público,El Salvador,Fundadores,9200000.0,4
+140,1986,Sector Público,Honduras,Fundadores,16675000.0,6
+141,1985,Sector Público,Honduras,Fundadores,9150000.0,2
+142,2021,Sector Público,El Salvador,Fundadores,864700000.0,3
+143,1963,Sector Privado,Guatemala,Fundadores,3327500.0,11
+144,1969,Sector Público,El Salvador,Fundadores,7250000.0,3
+145,1980,Sector Público,Costa Rica,Fundadores,20970000.0,7
+146,2010,Sector Privado,Colombia,Extraregionales,35321000.0,1
+147,2016,Sector Privado,Costa Rica,Fundadores,50000000.0,1
+148,1967,Sector Privado,Guatemala,Fundadores,292000.0,2
+149,1994,Sector Público,El Salvador,Fundadores,144238000.0,9
+150,1998,Sector Público,Costa Rica,Fundadores,56698182.0,3
+151,1983,Sector Público,Costa Rica,Fundadores,15402200.0,3
+152,1997,Sector Privado,Costa Rica,Fundadores,26300000.0,13
+153,1968,Sector Público,El Salvador,Fundadores,7900000.0,2
+154,1999,Sector Privado,Guatemala,Fundadores,56093000.0,10
+155,2020,Sector Privado,Costa Rica,Fundadores,6000000.0,1
+156,1974,Sector Privado,El Salvador,Fundadores,8070000.0,6
+157,2013,Sector Privado,Guatemala,Fundadores,18750000.0,1
+158,1992,Sector Público,El Salvador,Fundadores,36800000.0,4
+159,1989,Sector Público,Guatemala,Fundadores,7000000.0,3
+160,1995,Sector Público,El Salvador,Fundadores,21150000.0,2
+161,2000,Sector Público,El Salvador,Fundadores,80000000.0,2
+162,2011,Sector Privado,El Salvador,Fundadores,53625000.0,5
+163,1991,Sector Privado,Guatemala,Fundadores,6500000.0,1
+164,1973,Sector Público,El Salvador,Fundadores,6560000.0,3
+165,1961,Sector Privado,Guatemala,Fundadores,275000.0,1
+166,1990,Sector Público,Guatemala,Fundadores,28600000.0,4
+167,1977,Sector Privado,Guatemala,Fundadores,3000000.0,1
+168,2004,Sector Privado,Costa Rica,Fundadores,34790000.0,9
+169,1982,Sector Público,El Salvador,Fundadores,17800000.0,2
+170,2001,Sector Público,Costa Rica,Fundadores,130853800.0,3
+171,1996,Sector Público,Costa Rica,Fundadores,67254960.0,8
+172,2012,Sector Privado,Guatemala,Fundadores,86288817.45,5
+173,1987,Sector Público,Costa Rica,Fundadores,17200000.0,6
+174,2015,Sector Privado,El Salvador,Fundadores,90000000.0,5
+175,2017,Sector Privado,Costa Rica,Fundadores,1350000.0,1
+176,2003,Sector Privado,Guatemala,Fundadores,47050000.0,10
+177,2014,Sector Privado,Costa Rica,Fundadores,21000000.0,4
+178,2009,Sector Público,Costa Rica,Fundadores,343538203.07,6
+179,2008,Sector Público,El Salvador,Fundadores,284605000.0,5
+180,1965,Sector Privado,Guatemala,Fundadores,1751090.0,7
+181,1981,Sector Privado,Guatemala,Fundadores,6300000.0,4
+182,2021,Sector Privado,Guatemala,Fundadores,7000000.0,1
+183,1963,Sector Público,Guatemala,Fundadores,107000.0,1
+184,1969,Sector Privado,Guatemala,Fundadores,1915000.0,4
+185,1978,Sector Privado,El Salvador,Fundadores,11020000.0,12
+186,2023,Sector Público,Colombia,Extraregionales,250000000.0,1
+187,2016,Sector Público,Costa Rica,Fundadores,291842413.0,3
+188,1967,Sector Público,Guatemala,Fundadores,6433000.0,2
+189,1994,Sector Privado,Guatemala,Fundadores,37259235.0,23
+190,2006,Sector Privado,Costa Rica,Fundadores,135600000.0,19
+191,1971,Sector Privado,El Salvador,Fundadores,2257157.14,7
+192,1997,Sector Público,Costa Rica,Fundadores,92407500.0,3
+193,1968,Sector Privado,Guatemala,Fundadores,1657000.0,5
+194,1999,Sector Público,Guatemala,Fundadores,87274200.0,5
+195,2020,Sector Público,Costa Rica,Fundadores,699160000.0,2
+196,1974,Sector Público,El Salvador,Fundadores,4750000.0,5
+197,2013,Sector Privado,Honduras,Fundadores,56802700.0,2
+198,1992,Sector Privado,Guatemala,Fundadores,11660000.0,7
+199,1989,Sector Público,Honduras,Fundadores,48000000.0,4
+200,1995,Sector Privado,Guatemala,Fundadores,98925000.0,36
+201,2000,Sector Privado,Guatemala,Fundadores,23500000.0,4
+202,2011,Sector Público,El Salvador,Fundadores,232212173.8,4
+203,1991,Sector Público,Guatemala,Fundadores,5200000.0,2
+204,1973,Sector Privado,Guatemala,Fundadores,7391620.0,7
+205,2024,Sector Privado,Guatemala,Fundadores,19000000.0,2
+206,1990,Sector Público,Honduras,Fundadores,58900000.0,9
+207,1977,Sector Público,Guatemala,Fundadores,11800000.0,5
+208,2004,Sector Público,Costa Rica,Fundadores,147000000.0,3
+209,1982,Sector Privado,Guatemala,Fundadores,500000.0,1
+210,2007,Sector Privado,Costa Rica,Fundadores,505200000.0,23
+211,2025,Sector Público,Costa Rica,Fundadores,815000000.0,2
+212,2012,Sector Público,Guatemala,Fundadores,280000000.0,1
+213,2022,Sector Público,Costa Rica,Fundadores,1190000000.0,3
+214,2015,Sector Público,El Salvador,Fundadores,250521814.0,5
+215,2017,Sector Público,Costa Rica,Fundadores,214410000.0,3
+216,2003,Sector Público,Guatemala,Fundadores,52600000.0,2
+217,2014,Sector Público,Costa Rica,Fundadores,308000000.0,4
+218,1975,Sector Privado,El Salvador,Fundadores,3120000.0,4
+219,2008,Sector Privado,Guatemala,Fundadores,97894000.0,15
+220,1965,Sector Público,Guatemala,Fundadores,437000.0,1
+221,1981,Sector Público,Guatemala,Fundadores,19189000.0,4
+222,2021,Sector Privado,Honduras,Fundadores,2500000.0,1
+223,1963,Sector Privado,Honduras,Fundadores,3767400.0,7
+224,1969,Sector Público,Guatemala,Fundadores,5450000.0,3
+225,1978,Sector Público,El Salvador,Fundadores,24500000.0,1
+226,1970,Sector Privado,Costa Rica,Fundadores,2410000.0,5
+227,1993,Sector Privado,El Salvador,Fundadores,18290000.0,13
+228,1967,Sector Privado,Honduras,Fundadores,721300.0,4
+229,1994,Sector Público,Guatemala,Fundadores,46883400.0,3
+230,2006,Sector Público,Costa Rica,Fundadores,613265400.0,9
+231,1971,Sector Público,El Salvador,Fundadores,2600000.0,2
+232,2005,Sector Privado,Costa Rica,Fundadores,49089300.0,6
+233,1968,Sector Público,Guatemala,Fundadores,5767000.0,2
+234,1999,Sector Privado,Honduras,Fundadores,18848000.0,3
+235,2018,Sector Público,El Salvador,Fundadores,283500000.0,3
+236,1984,Sector Público,El Salvador,Fundadores,7600000.0,1
+237,2013,Sector Público,Honduras,Fundadores,103000000.0,4
+238,1992,Sector Privado,Honduras,Fundadores,14705167.0,14
+239,1989,Sector Público,Nicaragua,Fundadores,4650000.0,5
+240,1995,Sector Público,Guatemala,Fundadores,12000000.0,3
+241,2000,Sector Público,Guatemala,Fundadores,52500000.0,2
+242,2011,Sector Privado,Guatemala,Fundadores,64650000.0,4
+243,1991,Sector Público,Honduras,Fundadores,54100000.0,8
+244,1973,Sector Público,Guatemala,Fundadores,11361000.0,5
+245,2024,Sector Público,Honduras,Fundadores,476300000.0,3
+246,1990,Sector Público,Nicaragua,Fundadores,30000000.0,3
+247,1977,Sector Privado,Honduras,Fundadores,3328000.0,6
+248,2019,Sector Público,Costa Rica,Fundadores,640055000.0,2
+249,1982,Sector Público,Guatemala,Fundadores,36100000.0,3
+250,2007,Sector Público,Costa Rica,Fundadores,145000000.0,2
+251,1996,Sector Privado,El Salvador,Fundadores,54254000.0,18
+252,2012,Sector Privado,Honduras,Fundadores,24400000.0,1
+253,2022,Sector Público,Cuba,Extraregionales,50000000.0,1
+254,2015,Sector Privado,Guatemala,Fundadores,10000000.0,1
+255,1964,Sector Privado,El Salvador,Fundadores,451500.0,3
+256,2003,Sector Privado,Honduras,Fundadores,129896660.0,17
+257,2002,Sector Privado,El Salvador,Fundadores,79080000.0,10
+258,1975,Sector Público,El Salvador,Fundadores,18320000.0,3
+259,2008,Sector Público,Guatemala,Fundadores,278000000.0,3
+260,1965,Sector Privado,Honduras,Fundadores,1630467.0,7
+261,1981,Sector Privado,Honduras,Fundadores,5952200.0,4
+262,2021,Sector Público,Honduras,Fundadores,717766365.18,6
+263,1963,Sector Público,Honduras,Fundadores,349500.0,2
+264,1969,Sector Privado,Honduras,Fundadores,2575300.0,11
+265,1980,Sector Privado,El Salvador,Fundadores,7480000.0,3
+266,1970,Sector Público,Costa Rica,Fundadores,3021100.0,1
+267,1993,Sector Público,El Salvador,Fundadores,61819000.0,4
+268,1967,Sector Público,Honduras,Fundadores,1175680.0,3
+269,1994,Sector Privado,Honduras,Fundadores,40951800.0,21
+270,1962,Sector Privado,El Salvador,Fundadores,1546000.0,4
+271,1971,Sector Privado,Guatemala,Fundadores,4033000.0,10
+272,2005,Sector Público,Costa Rica,Fundadores,416970508.18,7
+273,1968,Sector Privado,Honduras,Fundadores,804800.0,6
+274,1999,Sector Privado,Nicaragua,Fundadores,20500000.0,7
+275,2020,Sector Público,El Salvador,Fundadores,615200000.0,4
+276,1974,Sector Privado,Guatemala,Fundadores,4815000.0,6
+277,2013,Sector Privado,Nicaragua,Fundadores,3000000.0,1
+278,1992,Sector Público,Honduras,Fundadores,75072000.0,9
+279,1995,Sector Privado,Honduras,Fundadores,57755000.0,18
+280,2000,Sector Privado,Honduras,Fundadores,34431050.0,5
+281,2011,Sector Público,Guatemala,Fundadores,119400000.0,1
+282,1991,Sector Público,Nicaragua,Fundadores,67200000.0,5
+283,1973,Sector Privado,Honduras,Fundadores,6340800.0,10
+284,2024,Sector Público,Nicaragua,Fundadores,130000000.0,1
+285,1977,Sector Público,Honduras,Fundadores,16790000.0,8
+286,1966,Sector Privado,El Salvador,Fundadores,618400.0,4
+287,1982,Sector Privado,Honduras,Fundadores,500000.0,1
+288,2001,Sector Privado,El Salvador,Fundadores,12800000.0,14
+289,1996,Sector Público,El Salvador,Fundadores,132163530.0,7
+290,2012,Sector Público,Honduras,Fundadores,356337976.09000003,8
+291,1987,Sector Público,El Salvador,Fundadores,49800000.0,7
+292,2015,Sector Público,Guatemala,Fundadores,370000000.0,2
+293,1964,Sector Público,El Salvador,Fundadores,1271000.0,2
+294,2003,Sector Público,Honduras,Fundadores,62927243.47,5
+295,2002,Sector Público,El Salvador,Fundadores,32500000.0,2
+296,2009,Sector Privado,El Salvador,Fundadores,1000000.0,1
+297,2008,Sector Privado,Honduras,Fundadores,71900000.0,14
+298,1965,Sector Público,Honduras,Fundadores,1431090.0,8
+299,1981,Sector Público,Honduras,Fundadores,29969350.0,9
+300,2021,Sector Privado,Nicaragua,Fundadores,8000000.0,1
+301,1963,Sector Privado,Nicaragua,Fundadores,1044848.5700000001,6
+302,1969,Sector Público,Honduras,Fundadores,11377600.0,7
+303,1980,Sector Público,El Salvador,Fundadores,56237000.0,9
+304,1972,Sector Privado,Costa Rica,Fundadores,3365950.0,7
+305,2016,Sector Privado,El Salvador,Fundadores,2125000.0,1
+306,1967,Sector Privado,Nicaragua,Fundadores,5547300.0,8
+307,1994,Sector Público,Honduras,Fundadores,34765000.0,7
+308,1976,Sector Privado,El Salvador,Fundadores,2525000.0,7
+309,1971,Sector Público,Guatemala,Fundadores,8658000.0,4
+310,1979,Sector Privado,El Salvador,Fundadores,2416000.0,3
+311,1968,Sector Público,Honduras,Fundadores,10752000.0,7
+312,2018,Sector Público,Guatemala,Fundadores,193200000.0,1
+313,1974,Sector Público,Guatemala,Fundadores,10800000.0,5
+314,2013,Sector Público,Nicaragua,Fundadores,363545473.0,5
+315,1992,Sector Privado,Nicaragua,Fundadores,900000.0,3
+316,1995,Sector Público,Honduras,Fundadores,8000000.0,3
+317,2000,Sector Público,Honduras,Fundadores,1500000.0,1
+318,2011,Sector Público,Honduras,Fundadores,392236000.0,5
+319,1973,Sector Público,Honduras,Fundadores,12940000.0,4
+320,2024,Sector Público,Panamá,Regional No Fundadores,240000000.0,1
+321,1977,Sector Privado,Nicaragua,Fundadores,7800000.0,4
+322,1966,Sector Público,El Salvador,Fundadores,6040000.0,5
+323,1982,Sector Público,Honduras,Fundadores,40294000.0,6
+324,2001,Sector Público,El Salvador,Fundadores,217400000.0,3
+325,2025,Sector Público,El Salvador,Fundadores,350000000.0,3
+326,2012,Sector Público,Nicaragua,Fundadores,253044054.79,5
+327,2022,Sector Privado,El Salvador,Fundadores,60000000.0,1
+328,2015,Sector Privado,Honduras,Fundadores,46000000.0,2
+329,2017,Sector Privado,El Salvador,Fundadores,61306842.25,1
+330,2003,Sector Privado,Nicaragua,Fundadores,42905100.0,14
+331,2014,Sector Privado,El Salvador,Fundadores,14250000.0,3
+332,2009,Sector Público,El Salvador,Fundadores,293433870.0,2
+333,2008,Sector Público,Honduras,Fundadores,202006000.0,5
+334,1965,Sector Privado,Nicaragua,Fundadores,3942000.0,6
+335,1981,Sector Privado,Nicaragua,Fundadores,4400000.0,1
+336,2021,Sector Público,Nicaragua,Fundadores,804903013.99,7
+337,1969,Sector Privado,Nicaragua,Fundadores,1015356.0,8
+338,1978,Sector Privado,Guatemala,Fundadores,1700000.0,4
+339,1972,Sector Público,Costa Rica,Fundadores,13976200.0,8
+340,2016,Sector Público,El Salvador,Fundadores,383647251.84000003,4
+341,1967,Sector Público,Nicaragua,Fundadores,4291000.0,3
+342,1994,Sector Privado,Nicaragua,Fundadores,19003900.0,12
+343,1976,Sector Público,El Salvador,Fundadores,15300000.0,2
+344,1983,Sector Público,Guatemala,Fundadores,6900000.0,1
+345,1979,Sector Público,El Salvador,Fundadores,41850000.0,6
+346,1968,Sector Privado,Nicaragua,Fundadores,534714.0,3
+347,2020,Sector Privado,Guatemala,Fundadores,1500000.0,1
+348,1984,Sector Público,Guatemala,Fundadores,1200000.0,1
+349,2013,Sector Privado,Panamá,Regional No Fundadores,10000000.0,1
+350,1992,Sector Público,Nicaragua,Fundadores,63977012.0,9
+351,1995,Sector Privado,Nicaragua,Fundadores,7875000.0,4
+352,2000,Sector Privado,Nicaragua,Fundadores,15100000.0,6
+353,2011,Sector Privado,Nicaragua,Fundadores,72200000.0,2
+354,1973,Sector Privado,Nicaragua,Fundadores,1570671.0,7
+355,2024,Sector Público,República Dominicana,Regional No Fundadores,100000000.0,1
+356,1977,Sector Público,Nicaragua,Fundadores,20210000.0,8
+357,2004,Sector Privado,El Salvador,Fundadores,67500000.0,12
+358,1982,Sector Público,Nicaragua,Fundadores,19700000.0,4
+359,2007,Sector Privado,El Salvador,Fundadores,120215000.0,8
+360,1996,Sector Privado,Guatemala,Fundadores,75665700.0,23
+361,2022,Sector Público,El Salvador,Fundadores,836000000.0,5
+362,2015,Sector Público,Honduras,Fundadores,212300000.0,2
+363,2017,Sector Público,El Salvador,Fundadores,246000000.0,2
+364,2003,Sector Público,Nicaragua,Fundadores,21790000.0,4
+365,2014,Sector Público,El Salvador,Fundadores,296887500.0,5
+366,1975,Sector Privado,Guatemala,Fundadores,11110000.0,6
+367,2008,Sector Privado,Nicaragua,Fundadores,107150000.0,12
+368,1965,Sector Público,Nicaragua,Fundadores,2000000.0,1
+369,1981,Sector Público,Nicaragua,Fundadores,43250000.0,6
+370,2021,Sector Privado,Panamá,Regional No Fundadores,125000000.0,1
+371,1969,Sector Público,Nicaragua,Fundadores,5720537.0,7
+372,1978,Sector Público,Guatemala,Fundadores,48790000.0,8
+373,2010,Sector Privado,Costa Rica,Fundadores,35760000.0,9
+374,1993,Sector Privado,Guatemala,Fundadores,38556600.0,31
+375,1994,Sector Público,Nicaragua,Fundadores,75129872.0,9
+376,1998,Sector Privado,El Salvador,Fundadores,28900000.0,8
+377,1971,Sector Privado,Honduras,Fundadores,6223272.0,20
+378,1997,Sector Privado,El Salvador,Fundadores,55147400.0,15
+379,1968,Sector Público,Nicaragua,Fundadores,4000000.0,1
+380,2018,Sector Privado,Honduras,Fundadores,40000000.0,3
+381,1974,Sector Privado,Honduras,Fundadores,6857000.0,13
+382,2013,Sector Público,República Dominicana,Regional No Fundadores,80200000.0,1
+383,1995,Sector Público,Nicaragua,Fundadores,15600000.0,4
+384,2011,Sector Público,Nicaragua,Fundadores,90234985.0,5
+385,1973,Sector Público,Nicaragua,Fundadores,14255857.0,9
+386,2004,Sector Público,El Salvador,Fundadores,155625000.0,3
+387,2007,Sector Público,El Salvador,Fundadores,351500000.0,7
+388,1996,Sector Público,Guatemala,Fundadores,130971000.0,3
+389,1987,Sector Privado,Guatemala,Fundadores,1200000.0,1
+390,2015,Sector Privado,Nicaragua,Fundadores,40000000.0,1
+391,1964,Sector Privado,Guatemala,Fundadores,390000.0,2
+392,2002,Sector Privado,Guatemala,Fundadores,104054179.0,9
+393,1975,Sector Público,Guatemala,Fundadores,16140000.0,5
+394,2008,Sector Público,Nicaragua,Fundadores,161893879.0,4
+395,2021,Sector Público,República Dominicana,Regional No Fundadores,410000000.0,2
+396,1980,Sector Privado,Guatemala,Fundadores,8200000.0,3
+397,2010,Sector Público,Costa Rica,Fundadores,182693958.0,3
+398,1993,Sector Público,Guatemala,Fundadores,70800000.0,3
+399,1998,Sector Público,El Salvador,Fundadores,177771000.0,3
+400,1971,Sector Público,Honduras,Fundadores,3475000.0,5
+401,1997,Sector Público,El Salvador,Fundadores,106908000.0,3
+402,2018,Sector Público,Honduras,Fundadores,44262590.7,1
+403,1974,Sector Público,Honduras,Fundadores,16355000.0,11
+404,2011,Sector Privado,Panamá,Regional No Fundadores,25000000.0,1
+405,2019,Sector Privado,El Salvador,Fundadores,45000000.0,1
+406,2001,Sector Privado,Guatemala,Fundadores,29300000.0,3
+407,2025,Sector Privado,Guatemala,Fundadores,115000000.0,2
+408,1987,Sector Público,Guatemala,Fundadores,26620000.0,5
+409,2015,Sector Público,Nicaragua,Fundadores,156016547.10000002,4
+410,1964,Sector Público,Guatemala,Fundadores,20000.0,1
+411,2002,Sector Público,Guatemala,Fundadores,40467835.0,2
+412,2009,Sector Privado,Guatemala,Fundadores,2594200.0,4
+413,2008,Sector Privado,Panamá,Regional No Fundadores,30100000.0,1
+414,1980,Sector Público,Guatemala,Fundadores,33640000.0,8
+415,2023,Sector Público,Costa Rica,Fundadores,1000000000.0,3
+416,2016,Sector Público,Guatemala,Fundadores,300000000.0,1
+417,2006,Sector Privado,El Salvador,Fundadores,158210440.0,21
+418,1983,Sector Público,Honduras,Fundadores,7560000.0,3
+419,2005,Sector Privado,El Salvador,Fundadores,43850000.0,13
+420,2020,Sector Privado,Honduras,Fundadores,111718430.0,4
+421,1984,Sector Público,Honduras,Fundadores,14100000.0,2
+422,2019,Sector Público,El Salvador,Fundadores,531162715.48,5
+423,2001,Sector Público,Guatemala,Fundadores,97651252.0,4
+424,2025,Sector Público,Guatemala,Fundadores,60000000.0,1
+425,2022,Sector Privado,Guatemala,Fundadores,100000000.0,1
+426,2015,Sector Privado,Panamá,Regional No Fundadores,20000000.0,1
+427,2017,Sector Privado,Guatemala,Fundadores,37000000.0,2
+428,2014,Sector Privado,Guatemala,Fundadores,56607000.0,3
+429,2009,Sector Público,Guatemala,Fundadores,143121400.0,3
+430,1978,Sector Privado,Honduras,Fundadores,3250000.0,3
+431,1970,Sector Privado,El Salvador,Fundadores,5478600.0,6
+432,1993,Sector Privado,Honduras,Fundadores,11487100.0,13
+433,2006,Sector Público,El Salvador,Fundadores,275000000.0,3
+434,1971,Sector Privado,Nicaragua,Fundadores,2825000.0,8
+435,2005,Sector Público,El Salvador,Fundadores,232528347.75,5
+436,2020,Sector Público,Honduras,Fundadores,846779622.95,6
+437,1974,Sector Privado,Nicaragua,Fundadores,2800000.0,3
+438,1966,Sector Privado,Guatemala,Fundadores,4211080.0,14
+439,2007,Sector Privado,Guatemala,Fundadores,567905000.0,19
+440,1996,Sector Privado,Honduras,Fundadores,58400000.0,14
+441,2022,Sector Público,Guatemala,Fundadores,170000000.0,1
+442,2015,Sector Público,Panamá,Regional No Fundadores,200000000.0,1
+443,2017,Sector Público,Guatemala,Fundadores,100000000.0,1
+444,2014,Sector Público,Guatemala,Fundadores,250000000.0,1
+445,1975,Sector Privado,Honduras,Fundadores,19215089.0,18
+446,1978,Sector Público,Honduras,Fundadores,28080000.0,8
+447,1970,Sector Público,El Salvador,Fundadores,2397000.0,4
+448,1993,Sector Público,Honduras,Fundadores,86941000.0,9
+449,1962,Sector Privado,Guatemala,Fundadores,190000.0,2
+450,1971,Sector Público,Nicaragua,Fundadores,11077486.0,10
+451,1979,Sector Privado,Guatemala,Fundadores,2250000.0,5
+452,2018,Sector Público,Nicaragua,Fundadores,365114696.0,3
+453,1974,Sector Público,Nicaragua,Fundadores,22287000.0,12
+454,1966,Sector Público,Guatemala,Fundadores,4352000.0,2
+455,2001,Sector Privado,Honduras,Fundadores,8795064.0,5
+456,1996,Sector Público,Honduras,Fundadores,15910000.0,1
+457,1987,Sector Público,Honduras,Fundadores,30478300.0,8
+458,1964,Sector Privado,Honduras,Fundadores,653000.0,3
+459,2002,Sector Privado,Honduras,Fundadores,15800000.0,3
+460,1975,Sector Público,Honduras,Fundadores,26194000.0,10
+461,1980,Sector Privado,Honduras,Fundadores,5642500.0,6
+462,1972,Sector Privado,El Salvador,Fundadores,301360.0,2
+463,2016,Sector Privado,Honduras,Fundadores,40000000.0,1
+464,1976,Sector Privado,Guatemala,Fundadores,6050000.0,4
+465,1983,Sector Público,Nicaragua,Fundadores,13280000.0,3
+466,1979,Sector Público,Guatemala,Fundadores,8100000.0,1
+467,2020,Sector Público,Nicaragua,Fundadores,698696935.0,4
+468,2004,Sector Privado,Guatemala,Fundadores,31125000.0,7
+469,2001,Sector Público,Honduras,Fundadores,37425000.0,5
+470,2025,Sector Público,Honduras,Fundadores,465000000.0,2
+471,2022,Sector Privado,Honduras,Fundadores,15000000.0,1
+472,1964,Sector Público,Honduras,Fundadores,654000.0,2
+473,2002,Sector Público,Honduras,Fundadores,25912285.0,3
+474,2009,Sector Privado,Honduras,Fundadores,5500000.0,2
+475,1980,Sector Público,Honduras,Fundadores,39000000.0,7
+476,1972,Sector Público,El Salvador,Fundadores,6730000.0,4
+477,2016,Sector Público,Honduras,Fundadores,62182437.78,2
+478,1976,Sector Público,Guatemala,Fundadores,27120000.0,5
+479,1997,Sector Privado,Guatemala,Fundadores,41337000.0,13
+480,2018,Sector Privado,Panamá,Regional No Fundadores,141000000.0,3
+481,2004,Sector Público,Guatemala,Fundadores,57635000.0,2
+482,2007,Sector Privado,Honduras,Fundadores,86852100.0,22
+483,1996,Sector Privado,Nicaragua,Fundadores,11737565.0,11
+484,2022,Sector Público,Honduras,Fundadores,470000000.0,2
+485,2017,Sector Privado,Honduras,Fundadores,30472000.0,1
+486,2014,Sector Privado,Honduras,Fundadores,88700000.0,4
+487,2009,Sector Público,Honduras,Fundadores,90000000.0,1
+488,1978,Sector Privado,Nicaragua,Fundadores,1400000.0,3
+489,2010,Sector Privado,El Salvador,Fundadores,6325000.0,9
+490,2016,Sector Público,México,Extraregionales,150000000.0,1
+491,1998,Sector Privado,Guatemala,Fundadores,63237300.0,13
+492,1997,Sector Público,Guatemala,Fundadores,177159773.0,6
+493,2018,Sector Público,Panamá,Regional No Fundadores,660000000.0,4
+494,2019,Sector Privado,Guatemala,Fundadores,60000000.0,1
+495,2007,Sector Público,Honduras,Fundadores,75500000.0,2
+496,2025,Sector Público,Nicaragua,Fundadores,235000000.0,1
+497,2022,Sector Público,Nicaragua,Fundadores,200000000.0,1
+498,2017,Sector Público,Honduras,Fundadores,236834740.0,2
+499,2014,Sector Público,Honduras,Fundadores,122044117.73,2
+500,1975,Sector Privado,Nicaragua,Fundadores,21890000.0,10
+501,1978,Sector Público,Nicaragua,Fundadores,28471000.0,7
+502,2010,Sector Público,El Salvador,Fundadores,126540000.0,4
+503,1993,Sector Privado,Nicaragua,Fundadores,1500000.0,2
+504,1998,Sector Público,Guatemala,Fundadores,314750000.0,9
+505,2005,Sector Privado,Guatemala,Fundadores,105095000.0,11
+506,2020,Sector Público,Panamá,Regional No Fundadores,400000000.0,2
+507,2019,Sector Público,Guatemala,Fundadores,285700000.0,1
+508,2001,Sector Privado,Nicaragua,Fundadores,19350000.0,8
+509,2025,Sector Privado,Panamá,Regional No Fundadores,33200000.0,2
+510,2022,Sector Privado,Panamá,Regional No Fundadores,85000000.0,2
+511,1964,Sector Privado,Nicaragua,Fundadores,1317700.0,6
+512,2002,Sector Privado,Nicaragua,Fundadores,50043635.74,18
+513,1975,Sector Público,Nicaragua,Fundadores,17184000.0,8
+514,1980,Sector Público,Nicaragua,Fundadores,65285000.0,16
+515,1970,Sector Privado,Guatemala,Fundadores,2507184.0,7
+516,1993,Sector Público,Nicaragua,Fundadores,66265800.0,8
+517,2006,Sector Privado,Guatemala,Fundadores,377049000.0,28
+518,2005,Sector Público,Guatemala,Fundadores,558270000.0,3
+519,2018,Sector Privado,República Dominicana,Regional No Fundadores,154000000.0,2
+520,1966,Sector Privado,Honduras,Fundadores,2200000.0,7
+521,2007,Sector Privado,Nicaragua,Fundadores,199125700.0,18
+522,2025,Sector Público,Panamá,Regional No Fundadores,75000000.0,1
+523,2022,Sector Público,Panamá,Regional No Fundadores,145000000.0,1
+524,1964,Sector Público,Nicaragua,Fundadores,10052458.0,3
+525,2002,Sector Público,Nicaragua,Fundadores,29138311.95,4
+526,2009,Sector Privado,Nicaragua,Fundadores,21300000.0,9
+527,1970,Sector Público,Guatemala,Fundadores,150000.0,1
+528,2016,Sector Público,Nicaragua,Fundadores,379786817.2,6
+529,1962,Sector Privado,Honduras,Fundadores,445000.0,3
+530,1979,Sector Privado,Honduras,Fundadores,10475600.0,6
+531,2020,Sector Público,República Dominicana,Regional No Fundadores,30000000.0,1
+532,1966,Sector Público,Honduras,Fundadores,11794500.0,6
+533,2007,Sector Público,Nicaragua,Fundadores,84769347.0,5
+534,2025,Sector Público,Regional,Regionales,37187480.0,1
+535,2022,Sector Público,República Dominicana,Regional No Fundadores,580000000.0,4
+536,2017,Sector Privado,Nicaragua,Fundadores,10000000.0,1
+537,2014,Sector Público,Nicaragua,Fundadores,333883194.0,4
+538,2009,Sector Público,Nicaragua,Fundadores,299987137.88,4
+539,1972,Sector Privado,Guatemala,Fundadores,5580370.0,8
+540,2016,Sector Privado,Panamá,Regional No Fundadores,156000000.0,2
+541,1962,Sector Público,Honduras,Fundadores,120000.0,1
+542,1979,Sector Público,Honduras,Fundadores,39655000.0,8
+543,2004,Sector Privado,Honduras,Fundadores,79846537.0,11
+544,2007,Sector Privado,Panamá,Regional No Fundadores,97033333.33,2
+545,2025,Sector Privado,República Dominicana,Regional No Fundadores,100000000.0,1
+546,2017,Sector Público,Nicaragua,Fundadores,468774000.0,4
+547,2014,Sector Privado,Panamá,Regional No Fundadores,30000000.0,1
+548,2009,Sector Privado,Panamá,Regional No Fundadores,20000000.0,1
+549,1972,Sector Público,Guatemala,Fundadores,9500000.0,2
+550,2016,Sector Público,Panamá,Regional No Fundadores,100000000.0,1
+551,1976,Sector Privado,Honduras,Fundadores,3215000.0,7
+552,1997,Sector Privado,Honduras,Fundadores,37947000.0,12
+553,2004,Sector Público,Honduras,Fundadores,117830000.0,4
+554,2007,Sector Público,Panamá,Regional No Fundadores,19000000.0,1
+555,2025,Sector Público,República Dominicana,Regional No Fundadores,80900000.0,1
+556,2017,Sector Privado,Panamá,Regional No Fundadores,20000000.0,1
+557,2010,Sector Privado,Guatemala,Fundadores,71415000.0,4
+558,2016,Sector Público,República Dominicana,Regional No Fundadores,100000000.0,1
+559,1976,Sector Público,Honduras,Fundadores,21441200.0,6
+560,1997,Sector Público,Honduras,Fundadores,4900000.0,1
+561,2019,Sector Privado,Honduras,Fundadores,25000000.0,1
+562,2007,Sector Público,República Dominicana,Regional No Fundadores,50000000.0,1
+563,2017,Sector Público,Panamá,Regional No Fundadores,170000000.0,2
+564,2010,Sector Público,Guatemala,Fundadores,265000000.0,1
+565,1998,Sector Privado,Honduras,Fundadores,147449550.0,23
+566,2005,Sector Privado,Honduras,Fundadores,79705800.0,12
+567,2019,Sector Público,Honduras,Fundadores,143586952.0,2
+568,2017,Sector Público,República Dominicana,Regional No Fundadores,249600000.0,1
+569,2023,Sector Privado,Guatemala,Fundadores,15000000.0,1
+570,1998,Sector Público,Honduras,Fundadores,45500000.0,2
+571,2005,Sector Público,Honduras,Fundadores,125272463.49000001,9
+572,1966,Sector Privado,Nicaragua,Fundadores,6725000.0,5
+573,1970,Sector Privado,Honduras,Fundadores,11407500.0,19
+574,2006,Sector Privado,Honduras,Fundadores,113327000.0,14
+575,1979,Sector Privado,Nicaragua,Fundadores,11050000.0,6
+576,1966,Sector Público,Nicaragua,Fundadores,2722240.0,3
+577,1970,Sector Público,Honduras,Fundadores,8114500.0,5
+578,2006,Sector Público,Honduras,Fundadores,125300000.05000001,2
+579,1979,Sector Público,Nicaragua,Fundadores,2750000.0,2
+580,2004,Sector Privado,Nicaragua,Fundadores,24482000.0,17
+581,1972,Sector Privado,Honduras,Fundadores,3962000.0,13
+582,1962,Sector Privado,Nicaragua,Fundadores,937200.0,1
+583,1997,Sector Privado,Nicaragua,Fundadores,7500000.0,3
+584,2004,Sector Público,Nicaragua,Fundadores,11025000.0,3
+585,1972,Sector Público,Honduras,Fundadores,2680300.0,8
+586,1976,Sector Privado,Nicaragua,Fundadores,980000.0,1
+587,2005,Sector Privado,Nicaragua,Fundadores,60775872.66,16
+588,2019,Sector Privado,Nicaragua,Fundadores,70800000.0,2
+589,2010,Sector Privado,Honduras,Fundadores,118182669.0,7
+590,1976,Sector Público,Nicaragua,Fundadores,21360000.0,5
+591,2005,Sector Público,Nicaragua,Fundadores,49632000.0,6
+592,2019,Sector Público,Nicaragua,Fundadores,585344540.0,2
+593,2010,Sector Público,Honduras,Fundadores,356188510.0,3
+594,1998,Sector Privado,Nicaragua,Fundadores,32711300.0,7
+595,2005,Sector Público,Panamá,Regional No Fundadores,20000000.0,1
+596,2019,Sector Privado,Panamá,Regional No Fundadores,50000000.0,1
+597,2023,Sector Privado,Honduras,Fundadores,20000000.0,1
+598,2006,Sector Privado,Nicaragua,Fundadores,103330434.0,22
+599,2019,Sector Público,Panamá,Regional No Fundadores,134000000.0,2
+600,2023,Sector Público,Honduras,Fundadores,766988111.14,3
+601,2006,Sector Público,Nicaragua,Fundadores,196218000.0,3
+602,1970,Sector Privado,Nicaragua,Fundadores,842236.0,6
+603,1970,Sector Público,Nicaragua,Fundadores,9534000.0,6
+604,1972,Sector Privado,Nicaragua,Fundadores,3174914.0,8
+605,1972,Sector Público,Nicaragua,Fundadores,7834300.0,5
+606,2010,Sector Privado,Nicaragua,Fundadores,30400000.0,3
+607,2010,Sector Público,Nicaragua,Fundadores,117826951.0,2
+608,2010,Sector Privado,Panamá,Regional No Fundadores,12790915.0,2
+609,2010,Sector Público,República Dominicana,Regional No Fundadores,150000000.0,2
+610,2023,Sector Público,República Dominicana,Regional No Fundadores,908226411.0,3
