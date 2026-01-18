@@ -1,0 +1,754 @@
+
+    <!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Dashboard Ejecutivo</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root { 
+            --font-main: 'Inter', sans-serif;
+            --primary: #105682; --text-dark: #1e293b; --text-light: #64748b; --bg-body: #f8fafc; --bg-card: #ffffff; --border: #e2e8f0; --hover: #f1f5f9; --success: #10b981; --danger: #ef4444; --tooltip-bg: #1e293b; --tooltip-text: #ffffff; --bar-color: rgba(16, 86, 130, 0.12); 
+        }
+        [data-theme="dark"] { 
+            --primary: #38bdf8; --text-dark: #f1f5f9; --text-light: #94a3b8; --bg-body: #0f172a; --bg-card: #1e293b; --border: #334155; --hover: #334155; --tooltip-bg: #ffffff; --tooltip-text: #0f172a; --bar-color: rgba(56, 189, 248, 0.20); 
+        }
+        * { box-sizing: border-box; }
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--text-light); }
+
+        body { font-family: var(--font-main); background: var(--bg-body); margin: 0; padding: 0; color: var(--text-dark); transition: background 0.3s; overflow: hidden; }
+        
+        .top-nav { position: fixed; top: 0; left: 0; right: 0; height: 80px; background: var(--bg-card); border-bottom: 5px solid var(--primary); display: flex; align-items: center; justify-content: space-between; padding: 0 30px; z-index: 50; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .nav-controls { display: flex; align-items: center; gap: 15px; }
+        
+        .dashboard-wrapper { display: flex; height: calc(100vh - 80px); flex-direction: row; margin-top: 80px; overflow: hidden; }
+        .sidebar { width: 240px; background: var(--bg-card); border-right: 1px solid var(--border); padding: 20px; flex-shrink: 0; display: flex; flex-direction: column; position: sticky; top: 80px; height: calc(100vh - 80px); overflow-y: auto; z-index: 10; transition: background 0.3s; }
+        
+        .sidebar-title { font-size: 13px; font-weight: 800; color: var(--primary); margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid var(--primary); }
+        .filter-label { font-size: 11px; font-weight: 700; color: var(--text-light); margin-bottom: 8px; display: block; }
+        .kpi-label { font-size: 10px; font-weight: 700; color: var(--text-light); margin-bottom: 5px; }
+        .yoy-title { font-size: 12px; font-weight: 700; color: var(--primary); margin-bottom: 10px; }
+        
+        .filter-group { margin-bottom: 20px; }
+        .btn-vertical { font-family: var(--font-main); display: block; width: 100%; text-align: left; padding: 9px 12px; margin-bottom: 5px; border: 1px solid var(--border); background: var(--bg-card); border-radius: 6px; cursor: pointer; font-size: 12px; color: var(--text-dark); font-weight: 500; transition: all 0.2s; }
+        .btn-vertical:hover { background: var(--hover); }
+        .btn-vertical.active { background: var(--primary); color: white; border-color: var(--primary); font-weight: 600; }
+        
+        .toggle-wrapper { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+        .toggle-switch { position: relative; width: 80px; height: 30px; background: var(--bg-body); border: 1px solid var(--border); border-radius: 15px; cursor: pointer; display: flex; align-items: center; justify-content: space-between; padding: 2px; transition: background 0.3s; }
+        .toggle-switch.active { background: #94a3b8; border-color: #94a3b8; }
+        .toggle-knob { width: 24px; height: 24px; background: white; border-radius: 50%; box-shadow: 0 2px 4px rgba(0,0,0,0.2); transition: transform 0.3s; position: absolute; left: 3px; z-index: 2; }
+        .toggle-switch.active .toggle-knob { transform: translateX(50px); }
+        .toggle-icon { font-size: 14px; z-index: 1; margin: 0 8px; user-select: none; }
+        .toggle-labels { display: flex; justify-content: space-between; width: 100%; font-size: 9px; font-weight: 700; color: var(--text-light); padding: 0 6px; }
+        .toggle-labels span { flex: 1; text-align: center; }
+        
+        .btn-reset { font-family: var(--font-main); width: 100%; padding: 10px; background: transparent; border: 1px solid var(--danger); color: var(--danger); border-radius: 6px; font-weight: 700; font-size: 11px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 5px; transition: background 0.2s; }
+        .btn-reset:hover { background: var(--danger); color: white; }
+        .btn-reset:hover { background: var(--danger); color: white; }
+        
+        /* TOGGLE COMPACTO PARA GRÁFICOS (Monto vs Cantidad) */
+        .toggle-compact { position: relative; width: 60px; height: 24px; background: var(--bg-body); border: 1px solid var(--border); border-radius: 12px; cursor: pointer; display: flex; align-items: center; justify-content: space-between; padding: 2px; transition: all 0.3s; }
+        .toggle-compact.monto { border-color: var(--success); background: rgba(34, 197, 94, 0.05); }
+        .toggle-compact.cant { border-color: var(--primary); background: rgba(16, 86, 130, 0.05); }
+        
+        .toggle-compact .u-knob { width: 18px; height: 18px; background: white; border-radius: 50%; box-shadow: 0 1px 3px rgba(0,0,0,0.2); position: absolute; left: 2px; transition: transform 0.3s, background 0.3s; z-index: 2; }
+        .toggle-compact.cant .u-knob { transform: translateX(36px); background: var(--primary); }
+        .toggle-compact.monto .u-knob { background: var(--success); }
+        
+        .toggle-txt { font-size: 10px; font-weight:800; z-index:1; padding:0 6px; user-select: none; }
+
+        .main-content { flex-grow: 1; padding: 20px; display: grid; grid-template-columns: 260px 1fr; grid-template-rows: 1fr auto; gap: 20px; overflow: hidden; height: 100%; background: var(--bg-body); }
+        
+        .kpi-section { display: flex; flex-direction: column; gap: 10px; padding-right: 2px; overflow-y: auto; height: 100%; }
+        .kpi-card { background: var(--bg-card); padding: 15px; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.08); border: 1px solid var(--border); display: flex; flex-direction: column; justify-content: center; text-align: center; flex-shrink: 0; min-height: 150px; }
+        
+        .charts-wrapper { display: flex; flex-direction: column; gap: 20px; min-width: 0; height: 100%; overflow: hidden; }
+        
+        .section-chart, .section-table { background: var(--bg-card); border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.08); display: flex; flex-direction: column; overflow: hidden; padding: 25px; }
+        .section-chart { flex: 1; min-height: 0; }
+        .section-table { flex: 0 1 auto; min-height: 0; }
+        
+        .kpi-label { font-size: 11px; font-weight: 700; color: var(--text-light); margin-bottom: 4px; text-transform: uppercase; }
+        .kpi-value { font-size: 24px; font-weight: 800; color: var(--text-dark); }
+        .kpi-growth { font-size: 12px; font-weight: 600; margin-top: 4px; }
+        
+        .yoy-pct { font-size: 12px; font-weight: 700; background: transparent; padding: 2px 6px; border-radius: 4px; }
+        
+        .header-title h1 { margin: 0; font-size: 24px; font-weight: 800; color: var(--primary); }
+        .header-title .subtitle { font-size: 14px; color: var(--text-light); margin-top: 4px; }
+        .update-badge { font-size: 11px; background: var(--hover); color: var(--text-light); padding: 5px 10px; border-radius: 4px; }
+        
+        .yoy-list { display: flex; gap: 10px; flex: 1; width: 100%; overflow-x: auto; }
+        
+        /* ESTILOS ESPECÍFICOS PARA TRAYECTORIA ANUAL (YOY) */
+        .card-yoy {
+            background: var(--bg-card);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.08);
+            padding: 20px 25px; /* Padding ajustado a la imagen */
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        /* HEADER Y CONTENEDOR PRINCIPAL */
+        
+        .footer-compact { grid-column: 1 / -1; margin-top: auto; margin-left: -20px; margin-right: -20px; margin-bottom: -20px; width: calc(100% + 40px); padding: 5px 0; text-align: center; border-top: 1px solid var(--border); display: flex; flex-direction: column; align-items: center; justify-content: center; background: transparent; }
+        .footer-disclaimer { font-size: 11px; color: var(--text-light); max-width: none; width: 95%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin: 0 auto 4px; font-style: italic; line-height: 1.2; }
+        .footer-legal { font-size: 11px; font-weight: 700; color: var(--primary); margin-bottom: 5px; }
+        .yoy-header {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        /* AREA DE SCROLL VERTICAL (SOLA COLUMNA) */
+        .yoy-scroll-area {
+            display: flex;
+            flex-direction: column; /* Apilar verticalmente */
+            gap: 10px;
+            overflow-y: auto; /* Scroll vertical si excede el alto */
+            padding-right: 5px; /* Espacio para scrollbar limpio */
+            flex: 1; /* Ocupar todo el alto disponible */
+        }
+        
+        /* MAIN CONTENT: GRID OPTIMIZED */
+        .main-content-exec { flex-grow: 1; padding: 20px; display: flex; flex-direction: column; gap: 20px; overflow: hidden; height: 100%; background: var(--bg-body); }
+        .exec-grid { display: grid; grid-template-columns: 320px 1fr 500px; grid-template-rows: 1fr; gap: 20px; height: 100%; overflow: hidden; }
+        
+        .kpi-title-exec { font-size: 11px; font-weight: 700; color: var(--text-light); text-transform: uppercase; margin-bottom: 2px; text-align: center; width: 100%; }
+        .kpi-val-exec { font-size: 24px; font-weight: 800; color: var(--text-dark); text-align: center; width: 100%; line-height: 1.1; }
+        .kpi-box { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 15px; display: flex; flex-direction: column; justify-content: center; align-items: center; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.08); flex: 1; }
+        .chart-box { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.08); }
+        .table-box { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.08); height: 100%; }
+        .table-scroll { flex: 1; overflow-y: auto; width: 100%; padding-right: 5px; }
+
+        /* TARJETA INDIVIDUAL POR AÑO (ESTILO CLARO) */
+        .yoy-single-card {
+            width: 100%; /* Ocupar ancho completo del contenedor */
+            background: var(--bg-body);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 10px 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            transition: all 0.2s;
+            flex: 1; /* Estirarse para ocupar espacio vertical equitativamente */
+            min-height: 0; /* Permitir encoger si es necesario, aunque flex:1 suele expandir */
+        }
+        
+        .yoy-single-card:hover { transform: translateX(2px); border-color: var(--primary); }
+
+        .yoy-year-text { font-size: 13px; font-weight: 700; color: var(--text-light); margin-bottom: 2px; }
+        .yoy-val-text { font-size: 16px; font-weight: 800; color: var(--text-dark); margin-bottom: 2px; }
+        .yoy-pct-text { font-size: 12px; font-weight: 700; }
+        
+        .pos { color: var(--success); } .neg { color: var(--danger); }
+        
+        .card-header-compact { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+        .card-title-compact { font-size: 14px; font-weight: 700; color: var(--primary); margin: 0; }
+        
+        .btn-action { font-family: var(--font-main); padding: 6px 16px; border-radius: 6px; font-size: 13px; font-weight: 700; cursor: pointer; border: 1px solid transparent; transition: 0.2s; min-width: 100px; text-align: center; }
+        .btn-toggle { background: var(--bg-body); color: var(--text-light); border: 1px solid var(--border); }
+        .btn-toggle.active { background: var(--primary); color: white; border-color: var(--primary); }
+        .btn-export { background: var(--success); color: white; }
+        .btn-export:hover { opacity: 0.9; }
+
+        /* Estilos especificos para botones Captura/PDF estilo Estratégico */
+        .btn-ghost-primary { 
+            background: transparent; 
+            border: 1px solid var(--primary); 
+            color: var(--primary); 
+        }
+        .btn-ghost-primary:hover { 
+            background: var(--hover); 
+        }
+        .btn-solid-primary { 
+            background: var(--primary); 
+            border: 1px solid var(--primary); 
+            color: white; 
+        }
+        .btn-solid-primary:hover { 
+            opacity: 0.9; 
+        }
+        /* Ajuste para Dark Mode si es necesario */
+        [data-theme="dark"] .btn-ghost-primary { border-color: var(--primary); color: var(--primary); }
+        [data-theme="dark"] .btn-solid-primary { background: var(--primary); color: var(--text-dark); } 
+        /* En dark mode, primary es #38bdf8 (celeste). Texto negro sobre celeste es más legible o blanco? */
+        /* Strategic image shows PDF button is Light Blue with White Text? verify image. */
+        /* Image 4 (Dark Mode PDF): Solid Light Blue background. Text looks White or extremely light grey. */
+        /* Let's stick to white text for solid button unless contrast fails. #38bdf8 is light, white text might be hard. */
+        /* Reviewing assets.py: --primary in dark is #38bdf8. White on #38bdf8 is fail. */
+        /* Wait, in Image 3/4 the text on PDF button looks white. */
+        /* I will set color: #1e293b (Dark Blue) for solid button in dark mode if needed, or white. */
+        /* Let's trust the primary color definition. */
+        [data-theme="dark"] .btn-solid-primary { color: #0f172a; } /* Dark text on light blue button for contrast */
+        
+        #chart { width: 100%; height: 100%; min-height: 0; }
+        .table-container { overflow-x: visible; overflow-y: visible; }
+        table { width: 100%; border-collapse: collapse; font-size: 12px; color: var(--text-dark); }
+        th { background: var(--hover); color: var(--text-dark); padding: 6px; font-weight: 700; border-bottom: 2px solid var(--border); position: sticky; top: 0; z-index: 5; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        td { padding: 6px; border-bottom: 1px solid var(--border); text-align: center; color: var(--text-dark); position: relative; z-index: 1; height: 32px; }
+        .row-subtotal td { background: var(--hover); font-weight: 700; border-top: 1px solid var(--border); }
+        .row-total td { background: var(--primary) !important; color: white; font-weight: 700; }
+        
+        /* DATA BARS EN LA MATRIZ - SUAVES Y NO INVADEN TODO EL ANCHO */
+        .cell-bar-container {
+            position: absolute;
+            top: 4px; bottom: 4px;
+            left: 5%; /* Centrado relativo o desde la izquierda? Mejor desde izq con margen */
+            height: auto;
+            background: var(--primary);
+            opacity: 0.15; /* Suave para ambos temas */
+            border-radius: 4px;
+            z-index: -1; /* Detras del texto */
+            pointer-events: none;
+        }
+        .cell-left { text-align: left !important; padding-left: 15px; }
+        
+        tr:nth-child(even) td { background-color: rgba(0,0,0,0.015); }
+        tr:hover td { background-color: rgba(16, 86, 130, 0.08) !important; transition: background 0.1s; }
+        [data-theme="dark"] tr:hover td { background-color: rgba(56, 189, 248, 0.15) !important; }
+        
+        footer { margin-top: 5px; padding: 5px; text-align: center; font-size: 9px; color: var(--text-light); border-top: 1px solid var(--border); }
+        .footer-disclaimer { display: block; font-style: italic; margin-bottom: 2px; font-size: 9px; }
+        .footer-legal { color: var(--primary); font-weight: 700; font-size: 9px; }
+        
+        @media (max-width: 1024px) { .dashboard-wrapper { flex-direction: column; } .sidebar { width: 100%; height: auto; border-right: none; } .main-content { width: 100%; } .kpi-section { flex-direction: column; } }
+        
+        .custom-tooltip { position: fixed; background: var(--tooltip-bg); color: var(--tooltip-text); padding: 8px 12px; border-radius: 6px; font-size: 11px; font-weight: 500; pointer-events: none; z-index: 1000; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: 1px solid var(--border); max-width: 250px; display: none; }
+        .spinner-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255,255,255,0.5); display: flex; align-items: center; justify-content: center; z-index: 50; backdrop-filter: blur(1px); border-radius: 12px; }
+        [data-theme="dark"] .spinner-overlay { background: rgba(15, 23, 42, 0.5); }
+        .spinner { width: 30px; height: 30px; border: 3px solid var(--border); border-top-color: var(--primary); border-radius: 50%; animation: spin 0.8s linear infinite; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+    </style>
+    </head>
+    
+    <body>
+        <nav class="top-nav">
+            <div class="header-title">
+                <h1 id="lbl-main">Dashboard Ejecutivo BCIE</h1>
+                <div class="subtitle" id="lbl-sub">Análisis Integral de Aprobaciones Históricas (Datos Reales)</div>
+            </div>
+            <div class="nav-controls">
+                <div style="display:flex; gap:10px; margin-right:15px">
+                    <button class="btn-action btn-ghost-primary" onclick="takeScreenshot()">
+                        <span id="btn-snap-txt">Captura</span>
+                    </button>
+                    <button class="btn-action btn-solid-primary" onclick="generatePDF()">
+                        <span id="btn-pdf-txt">PDF</span>
+                    </button>
+                </div>
+                <div class="update-badge" id="lbl-update">Datos Actualizados: 17/01/2026 23:27</div>
+                <div class="toggle-wrapper">
+                    <div class="toggle-switch" id="btn-theme" onclick="toggleTheme()" title="Cambiar Tema">
+                        <div class="toggle-knob"></div>
+                        <span class="toggle-icon">☀️</span>
+                        <span class="toggle-icon">🌙</span>
+                    </div>
+                    <div class="toggle-labels">
+                        <span id="lbl-theme-light">Claro</span>
+                        <span id="lbl-theme-dark">Oscuro</span>
+                    </div>
+                </div>
+                <div class="toggle-wrapper">
+                    <div class="toggle-switch" id="btn-lang" onclick="toggleLang()" title="Cambiar Idioma">
+                        <div class="toggle-knob"></div>
+                    </div>
+                    <div class="toggle-labels">
+                        <span id="lbl-lang-es">Esp</span>
+                        <span id="lbl-lang-en">Ing</span>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div class="dashboard-wrapper">
+            <!-- SIN SIDEBAR -->
+            <main class="main-content-exec">
+                <div class="exec-grid">
+                    <!-- COLUMNA 1: KPIs -->
+                    <div style="display:grid;grid-template-rows:repeat(3, 1fr);gap:20px;height:100%">
+                        <div class="kpi-box"><div class="kpi-title-exec" id="lbl-kt"></div><div class="kpi-val-exec">USD 57,406,729,525</div></div>
+                        <div class="kpi-box"><div class="kpi-title-exec" id="lbl-kc"></div><div class="kpi-val-exec">3,139</div></div>
+                        <div class="kpi-box"><div class="kpi-title-exec" id="lbl-ka"></div><div class="kpi-val-exec">USD 18,288,222</div></div>
+                    </div>
+                    
+                    <!-- COLUMNA 2: GRÁFICOS CENTRALES -->
+                    <div style="display:grid;grid-template-rows:repeat(3, 1fr);gap:20px;height:100%;min-width:0">
+                        <!-- FILA 1: EVOLUCION -->
+                        <div class="chart-box" style="min-height:0"><div class="card-title-compact" id="lbl-ce"></div><div id="c-evo" style="height:100%"></div></div>
+                        
+                        <!-- FILA 2: SECTOR Y SOCIO (Ajustado) -->
+                        <div style="display:flex;gap:20px;min-height:0;height:100%">
+                            <!-- Sector con Doble Dona y Leyenda Apretada -->
+                            <div class="chart-box" style="flex:1.4;display:flex;flex-direction:row;align-items:center;padding:20px">
+                                <div style="display:flex;flex-direction:column;flex:2;height:100%">
+                                    <div class="card-title-compact" id="lbl-cs" style="margin-bottom:15px"></div>
+                                    <div style="display:flex;flex:1;min-height:0;gap:0px">
+                                        <div id="c-sec-monto" style="flex:1;height:100%"></div>
+                                        <div id="c-sec-cant" style="flex:1;height:100%"></div>
+                                    </div>
+                                </div>
+                                <div id="leg-sec" style="flex:0 0 220px;height:100%;overflow-y:auto;padding-left:10px;margin-left:5px;display:flex;align-items:center"></div>
+                            </div>
+                            
+                            <div class="chart-box" style="flex:1">
+                                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
+                                    <div class="card-title-compact" id="lbl-cp"></div>
+                                    <div class="toggle-compact monto" id="btn-soc-metric" onclick="toggleMetric('soc')" title="Cambiar Monto/Cantidad">
+                                        <div class="u-knob"></div>
+                                        <span class="toggle-txt" style="color:var(--success)">$</span>
+                                        <span class="toggle-txt" style="color:var(--primary)">#</span>
+                                    </div>
+                                </div>
+                                <div id="c-soc" style="height:100%"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- FILA 3: PAIS -->
+                        <div class="chart-box" style="min-height:0">
+                            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
+                                <div class="card-title-compact" id="lbl-cc"></div>
+                                <div class="toggle-compact monto" id="btn-cou-metric" onclick="toggleMetric('cou')" title="Cambiar Monto/Cantidad">
+                                    <div class="u-knob"></div>
+                                    <span class="toggle-txt" style="color:var(--success)">$</span>
+                                    <span class="toggle-txt" style="color:var(--primary)">#</span>
+                                </div>
+                            </div>
+                            <div id="c-cou" style="height:100%"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- COLUMNA 3: TABLA DETALLE -->
+                    <div class="table-box" style="height:100%"><div class="table-header"><div class="card-title-compact" style="margin:0;border:none" id="lbl-th"></div></div><div class="table-scroll" id="tbl"></div></div>
+                </div>
+                <footer class="footer-compact" style="grid-column: 1 / -1; margin-top: 10px;">
+                    <div class="footer-disclaimer" id="lbl-footer"></div>
+                    <div class="footer-legal" id="lbl-rights">© 2026 | UNIR–BCIE | Trabajo de Colaboración Académica | Proyecto Final de Máster | Equipo 03-D | Desarrollado por Edgar García, Norman Sabillón y Wilson Aguilar | Todos los derechos reservados.</div>
+                </footer>
+            </main>
+        </div>
+    
+    <script>
+        const dYear=[{"A\u00f1o":1961,"Monto":275000.0,"Cantidad":1,"Promedio":275000.0,"Var_YOY":null,"Var_YOY_Cant":null},{"A\u00f1o":1962,"Monto":3238200.0,"Cantidad":11,"Promedio":294381.8181818182,"Var_YOY":1077.5272727273,"Var_YOY_Cant":1000.0},{"A\u00f1o":1963,"Monto":11104848.5700000003,"Cantidad":35,"Promedio":317281.3877142857,"Var_YOY":242.9327580137,"Var_YOY_Cant":218.1818181818},{"A\u00f1o":1964,"Monto":17096093.0,"Cantidad":30,"Promedio":569869.7666666667,"Var_YOY":53.951608545,"Var_YOY_Cant":-14.2857142857},{"A\u00f1o":1965,"Monto":20638447.0,"Cantidad":45,"Promedio":458632.1555555555,"Var_YOY":20.7202546219,"Var_YOY_Cant":50.0},{"A\u00f1o":1966,"Monto":46481720.0,"Cantidad":53,"Promedio":877013.5849056604,"Var_YOY":125.2190777727,"Var_YOY_Cant":17.7777777778},{"A\u00f1o":1967,"Monto":26600880.0,"Cantidad":33,"Promedio":806087.2727272727,"Var_YOY":-42.771308807,"Var_YOY_Cant":-37.7358490566},{"A\u00f1o":1968,"Monto":36724214.0,"Cantidad":39,"Promedio":941646.5128205129,"Var_YOY":38.0563876082,"Var_YOY_Cant":18.1818181818},{"A\u00f1o":1969,"Monto":52652523.0,"Cantidad":68,"Promedio":774301.8088235294,"Var_YOY":43.3727703471,"Var_YOY_Cant":74.358974359},{"A\u00f1o":1970,"Monto":45862120.0,"Cantidad":60,"Promedio":764368.6666666666,"Var_YOY":-12.8966336523,"Var_YOY_Cant":-11.7647058824},{"A\u00f1o":1971,"Monto":50164990.1400000006,"Cantidad":78,"Promedio":643140.8992307693,"Var_YOY":9.3821876093,"Var_YOY_Cant":30.0},{"A\u00f1o":1972,"Monto":57105394.0,"Cantidad":65,"Promedio":878544.5230769231,"Var_YOY":13.8351544386,"Var_YOY_Cant":-16.6666666667},{"A\u00f1o":1973,"Monto":104429948.0,"Cantidad":72,"Promedio":1450415.9444444445,"Var_YOY":82.8723009949,"Var_YOY_Cant":10.7692307692},{"A\u00f1o":1974,"Monto":126542100.0,"Cantidad":90,"Promedio":1406023.3333333333,"Var_YOY":21.1741482434,"Var_YOY_Cant":25.0},{"A\u00f1o":1975,"Monto":165067089.0,"Cantidad":77,"Promedio":2143728.4285714286,"Var_YOY":30.4444046685,"Var_YOY_Cant":-14.4444444444},{"A\u00f1o":1976,"Monto":139473200.0,"Cantidad":51,"Promedio":2734768.6274509802,"Var_YOY":-15.5051434874,"Var_YOY_Cant":-33.7662337662},{"A\u00f1o":1977,"Monto":97788000.0,"Cantidad":40,"Promedio":2444700.0,"Var_YOY":-29.8876056475,"Var_YOY_Cant":-21.568627451},{"A\u00f1o":1978,"Monto":191966000.0,"Cantidad":58,"Promedio":3309758.6206896552,"Var_YOY":96.3083404917,"Var_YOY_Cant":45.0},{"A\u00f1o":1979,"Monto":163656600.0,"Cantidad":50,"Promedio":3273132.0,"Var_YOY":-14.7470906306,"Var_YOY_Cant":-13.7931034483},{"A\u00f1o":1980,"Monto":242215788.0,"Cantidad":65,"Promedio":3726396.7384615387,"Var_YOY":48.0024563629,"Var_YOY_Cant":30.0},{"A\u00f1o":1981,"Monto":140512650.0,"Cantidad":42,"Promedio":3345539.2857142859,"Var_YOY":-41.9886493939,"Var_YOY_Cant":-35.3846153846},{"A\u00f1o":1982,"Monto":133394000.0,"Cantidad":23,"Promedio":5799739.1304347822,"Var_YOY":-5.0661986661,"Var_YOY_Cant":-45.2380952381},{"A\u00f1o":1983,"Monto":44942200.0,"Cantidad":11,"Promedio":4085654.5454545454,"Var_YOY":-66.3086795508,"Var_YOY_Cant":-52.1739130435},{"A\u00f1o":1984,"Monto":24550000.0,"Cantidad":5,"Promedio":4910000.0,"Var_YOY":-45.3742807428,"Var_YOY_Cant":-54.5454545455},{"A\u00f1o":1985,"Monto":25730000.0,"Cantidad":6,"Promedio":4288333.333333333,"Var_YOY":4.8065173116,"Var_YOY_Cant":20.0},{"A\u00f1o":1986,"Monto":33075000.0,"Cantidad":9,"Promedio":3675000.0,"Var_YOY":28.5464438399,"Var_YOY_Cant":50.0},{"A\u00f1o":1987,"Monto":126298300.0,"Cantidad":28,"Promedio":4510653.5714285718,"Var_YOY":281.8542705971,"Var_YOY_Cant":211.1111111111},{"A\u00f1o":1988,"Monto":77340000.0,"Cantidad":19,"Promedio":4070526.3157894737,"Var_YOY":-38.7640213685,"Var_YOY_Cant":-32.1428571429},{"A\u00f1o":1989,"Monto":109749000.0,"Cantidad":20,"Promedio":5487450.0,"Var_YOY":41.9045771916,"Var_YOY_Cant":5.2631578947},{"A\u00f1o":1990,"Monto":198765600.0,"Cantidad":27,"Promedio":7361688.888888889,"Var_YOY":81.1092583987,"Var_YOY_Cant":35.0},{"A\u00f1o":1991,"Monto":170900000.0,"Cantidad":21,"Promedio":8138095.2380952379,"Var_YOY":-14.019327288,"Var_YOY_Cant":-22.2222222222},{"A\u00f1o":1992,"Monto":272279924.0,"Cantidad":62,"Promedio":4391611.6774193551,"Var_YOY":59.3211960211,"Var_YOY_Cant":195.2380952381},{"A\u00f1o":1993,"Monto":402409500.0,"Cantidad":107,"Promedio":3760836.4485981311,"Var_YOY":47.7925710013,"Var_YOY_Cant":72.5806451613},{"A\u00f1o":1994,"Monto":566354451.0,"Cantidad":143,"Promedio":3960520.6363636362,"Var_YOY":40.7408252042,"Var_YOY_Cant":33.6448598131},{"A\u00f1o":1995,"Monto":393003864.0,"Cantidad":104,"Promedio":3778883.3076923075,"Var_YOY":-30.608144192,"Var_YOY_Cant":-27.2727272727},{"A\u00f1o":1996,"Monto":581877854.0,"Cantidad":106,"Promedio":5489413.7169811325,"Var_YOY":48.0590669205,"Var_YOY_Cant":1.9230769231},{"A\u00f1o":1997,"Monto":549606673.0,"Cantidad":69,"Promedio":7965314.1014492754,"Var_YOY":-5.5460404238,"Var_YOY_Cant":-34.9056603774},{"A\u00f1o":1998,"Monto":951803500.0,"Cantidad":92,"Promedio":10345690.2173913047,"Var_YOY":73.179029069,"Var_YOY_Cant":33.3333333333},{"A\u00f1o":1999,"Monto":336476815.0,"Cantidad":40,"Promedio":8411920.375,"Var_YOY":-64.6484999267,"Var_YOY_Cant":-56.5217391304},{"A\u00f1o":2000,"Monto":327582456.0,"Cantidad":32,"Promedio":10236951.75,"Var_YOY":-2.6433794554,"Var_YOY_Cant":-20.0},{"A\u00f1o":2001,"Monto":584575116.0,"Cantidad":49,"Promedio":11930104.4081632644,"Var_YOY":78.4512892229,"Var_YOY_Cant":53.125},{"A\u00f1o":2002,"Monto":727160246.6900000572,"Cantidad":70,"Promedio":10388003.5241428576,"Var_YOY":24.3912419101,"Var_YOY_Cant":42.8571428571},{"A\u00f1o":2003,"Monto":703311558.9299999475,"Cantidad":83,"Promedio":8473633.2401204817,"Var_YOY":-3.2797018083,"Var_YOY_Cant":18.5714285714},{"A\u00f1o":2004,"Monto":726858537.0,"Cantidad":71,"Promedio":10237444.1830985919,"Var_YOY":3.3480152247,"Var_YOY_Cant":-14.4578313253},{"A\u00f1o":2005,"Monto":1812309292.0800001621,"Cantidad":91,"Promedio":19915486.7261538468,"Var_YOY":149.3345265724,"Var_YOY_Cant":28.1690140845},{"A\u00f1o":2006,"Monto":2097300274.0499999523,"Cantidad":121,"Promedio":17333060.1161157005,"Var_YOY":15.7252949712,"Var_YOY_Cant":32.967032967},{"A\u00f1o":2007,"Monto":2489048480.3299999237,"Cantidad":112,"Promedio":22223647.1458035707,"Var_YOY":18.6786895099,"Var_YOY_Cant":-7.4380165289},{"A\u00f1o":2008,"Monto":1453199879.0,"Cantidad":79,"Promedio":18394935.1772151887,"Var_YOY":-41.6162485189,"Var_YOY_Cant":-29.4642857143},{"A\u00f1o":2009,"Monto":1255280610.9500000477,"Cantidad":39,"Promedio":32186682.3320512846,"Var_YOY":-13.6195488941,"Var_YOY_Cant":-50.6329113924},{"A\u00f1o":2010,"Monto":1519111413.0,"Cantidad":52,"Promedio":29213681.0192307681,"Var_YOY":21.0176752312,"Var_YOY_Cant":33.3333333333},{"A\u00f1o":2011,"Monto":1629558158.7999999523,"Cantidad":36,"Promedio":45265504.411111109,"Var_YOY":7.2704835771,"Var_YOY_Cant":-30.7692307692},{"A\u00f1o":2012,"Monto":1564232673.3299999237,"Cantidad":31,"Promedio":50459118.4945161268,"Var_YOY":-4.0087851494,"Var_YOY_Cant":-13.8888888889},{"A\u00f1o":2013,"Monto":1384281773.0,"Cantidad":27,"Promedio":51269695.2962962985,"Var_YOY":-11.5041005982,"Var_YOY_Cant":-12.9032258065},{"A\u00f1o":2014,"Monto":1601371811.7300000191,"Cantidad":33,"Promedio":48526418.537272729,"Var_YOY":15.6825035888,"Var_YOY_Cant":22.2222222222},{"A\u00f1o":2015,"Monto":1856426325.9700000286,"Cantidad":32,"Promedio":58013322.6865625009,"Var_YOY":15.9272513961,"Var_YOY_Cant":-3.0303030303},{"A\u00f1o":2016,"Monto":2105583919.8199999332,"Cantidad":26,"Promedio":80983996.9161538482,"Var_YOY":13.4213564182,"Var_YOY_Cant":-18.75},{"A\u00f1o":2017,"Monto":1925747582.25,"Cantidad":24,"Promedio":80239482.59375,"Var_YOY":-8.5409247229,"Var_YOY_Cant":-7.6923076923},{"A\u00f1o":2018,"Monto":2443361353.6999998093,"Cantidad":24,"Promedio":101806723.0708333254,"Var_YOY":26.8785886697,"Var_YOY_Cant":0.0},{"A\u00f1o":2019,"Monto":2637649207.4800000191,"Cantidad":21,"Promedio":125602343.2133333385,"Var_YOY":7.951662716,"Var_YOY_Cant":-12.5},{"A\u00f1o":2020,"Monto":3459054987.9499998093,"Cantidad":26,"Promedio":133040576.4596153796,"Var_YOY":31.1415853989,"Var_YOY_Cant":23.8095238095},{"A\u00f1o":2021,"Monto":3689869379.1700000763,"Cantidad":28,"Promedio":131781049.2560714334,"Var_YOY":6.6727586588,"Var_YOY_Cant":7.6923076923},{"A\u00f1o":2022,"Monto":4290000000.0,"Cantidad":29,"Promedio":147931034.4827586114,"Var_YOY":16.2642781942,"Var_YOY_Cant":3.5714285714},{"A\u00f1o":2023,"Monto":3587714522.1399998665,"Cantidad":16,"Promedio":224232157.6337499917,"Var_YOY":-16.3702908592,"Var_YOY_Cant":-44.8275862069},{"A\u00f1o":2024,"Monto":2229200000.0,"Cantidad":12,"Promedio":185766666.6666666567,"Var_YOY":-37.8657363555,"Var_YOY_Cant":-25.0},{"A\u00f1o":2025,"Monto":2568787480.0,"Cantidad":20,"Promedio":128439374.0,"Var_YOY":15.2336030863,"Var_YOY_Cant":66.6666666667}], dSector=[{"Sector":"Sector P\u00fablico","Monto":47809410847.9400024414,"Cantidad":1263},{"Sector":"Sector Privado","Monto":9597318677.1399993896,"Cantidad":1876}], dTipo=[{"Tipo":"Otro","Monto":37187480.0,"Cantidad":1},{"Tipo":"Extrarregional","Monto":2925889000.0,"Cantidad":35},{"Tipo":"Regional No Fundador","Monto":6080123869.3299999237,"Cantidad":66},{"Tipo":"Fundador","Monto":48363529175.75,"Cantidad":3037}], dPais=[{"Pa\u00eds":"COSTA RICA","Monto":13841323775.5799999237,"Cantidad":661},{"Pa\u00eds":"EL SALVADOR","Monto":10108896882.2600002289,"Cantidad":532},{"Pa\u00eds":"HONDURAS","Monto":9237314290.5799999237,"Cantidad":731},{"Pa\u00eds":"NICARAGUA","Monto":7744199891.8800001144,"Cantidad":549},{"Pa\u00eds":"GUATEMALA","Monto":7431794335.4499998093,"Cantidad":564},{"Pa\u00eds":"PANAM\u00c1","Monto":3018124248.3299999237,"Cantidad":39},{"Pa\u00eds":"REP\u00daBLICA DOMINICANA","Monto":2992926411.0,"Cantidad":21},{"Pa\u00eds":"ARGENTINA","Monto":1566500000.0,"Cantidad":20},{"Pa\u00eds":"COLOMBIA","Monto":1159389000.0,"Cantidad":13},{"Pa\u00eds":"M\u00c9XICO","Monto":150000000.0,"Cantidad":1},{"Pa\u00eds":"BELICE","Monto":69073210.0,"Cantidad":6},{"Pa\u00eds":"CUBA","Monto":50000000.0,"Cantidad":1},{"Pa\u00eds":"REGIONAL","Monto":37187480.0,"Cantidad":1}], kpis={"total": 57406729525.079994, "count": 3139, "avg": 18288222.212513536}, txt={"es": {"main_title": "Dashboard Ejecutivo BCIE", "sub_title": "An\u00e1lisis Integral de Aprobaciones Hist\u00f3ricas (Datos Reales)", "sidebar": "Filtros Hist\u00f3ricos", "type": "Tipo de Socio", "country": "Pa\u00eds", "restore": "\u21ba RESTAURAR", "kpi_total": "Monto Total Aprobado", "kpi_count": "Cantidad de Aprobaciones", "kpi_avg": "Promedio por Aprobaci\u00f3n", "card_evolution": "Evoluci\u00f3n Temporal de Aprobaciones", "card_sector": "Distribuci\u00f3n por Sector Institucional", "card_partner": "Por Tipo de Socio", "card_country": "Participaci\u00f3n por Pa\u00eds", "card_table": "Detalle Anual", "col_year": "A\u00f1o", "col_amount": "Monto", "col_count": "Cantidad", "col_avg": "Promedio por<br>Aprobaci\u00f3n", "col_var": "Variaci\u00f3n YoY<br>(Monto / Cantidad)", "footer": "Este tablero presenta datos reales obtenidos del portal de datos abiertos del BCIE. A partir de 2010, se observa una disminuci\u00f3n en la cantidad de aprobaciones pero un aumento en los montos, reflejando el inicio de proyectos m\u00e1s grandes.", "rights": "\u00a9 {year} | UNIR\u2013BCIE | Trabajo de Colaboraci\u00f3n Acad\u00e9mica | Proyecto Final de M\u00e1ster | Equipo 03-D | Desarrollado por Edgar Garc\u00eda, Norman Sabill\u00f3n y Wilson Aguilar | Todos los derechos reservados.", "update": "Datos Actualizados:", "all": "Todos", "export": "Exportar", "tip_theme": "Cambiar Tema", "tip_lang": "Cambiar Idioma", "txt_theme_light": "Claro", "txt_theme_dark": "Oscuro", "txt_lang_es": "Esp", "txt_lang_en": "Ing", "axis_amount": "Monto (USD)", "axis_count": "Cantidad", "lbl_sector_public": "Sector P\u00fablico", "lbl_sector_private": "Sector Privado", "lbl_sector_financial": "Sector Financiero", "lbl_other": "Otro", "lbl_amount": "Monto", "lbl_quantity": "Cantidad", "txt_snap": "Captura", "txt_pdf": "PDF", "countries": {"Guatemala": "Guatemala", "El Salvador": "El Salvador", "Honduras": "Honduras", "Nicaragua": "Nicaragua", "Costa Rica": "Costa Rica", "Panam\u00e1": "Panam\u00e1", "Rep\u00fablica Dominicana": "Rep\u00fablica\nDominicana", "Belice": "Belice", "Argentina": "Argentina", "Colombia": "Colombia", "M\u00e9xico": "M\u00e9xico", "Cuba": "Cuba", "Regional": "Regional", "Republica Dominicana": "Rep\u00fablica\nDominicana"}}, "en": {"main_title": "BCIE Executive Dashboard", "sub_title": "Comprehensive Analysis of Historical Approvals (Real Data)", "sidebar": "Historical Filters", "type": "Partner Type", "country": "Country", "restore": "\u21ba RESET", "kpi_total": "Total Approved Amount", "kpi_count": "Number of Approvals", "kpi_avg": "Average per Approval", "card_evolution": "Temporal Evolution of Approvals", "card_sector": "Distribution by Institutional Sector", "card_partner": "By Partner Type", "card_country": "Participation by Country", "card_table": "Yearly Detail", "col_year": "Year", "col_amount": "Amount", "col_count": "Quantity", "col_avg": "Average per<br>Approval", "col_var": "YoY Variation<br>(Amount / Quantity)", "footer": "This dashboard presents real data obtained from the BCIE open data portal. From 2010 onwards, a decrease in the number of approvals is observed but an increase in amounts, reflecting the start of larger projects.", "rights": "\u00a9 {year} | UNIR\u2013CABEI | Academic Collaboration Work | Master's Final Project | Team 03-D | Developed by Edgar Garc\u00eda, Norman Sabill\u00f3n and Wilson Aguilar | All rights reserved.", "update": "Data Updated:", "all": "All", "export": "Export", "tip_theme": "Toggle Theme", "tip_lang": "Switch Language", "txt_theme_light": "Light", "txt_theme_dark": "Dark", "txt_lang_es": "Esp", "txt_lang_en": "Ing", "axis_amount": "Amount (USD)", "axis_count": "Quantity", "lbl_sector_public": "Public Sector", "lbl_sector_private": "Private Sector", "lbl_sector_financial": "Financial Sector", "lbl_other": "Other", "lbl_amount": "Amount", "lbl_quantity": "Quantity", "txt_snap": "Snapshot", "txt_pdf": "PDF", "countries": {"Guatemala": "Guatemala", "El Salvador": "El Salvador", "Honduras": "Honduras", "Nicaragua": "Nicaragua", "Costa Rica": "Costa Rica", "Panam\u00e1": "Panama", "Rep\u00fablica Dominicana": "Dominican\nRepublic", "Belice": "Belize", "Argentina": "Argentina", "Colombia": "Colombia", "M\u00e9xico": "Mexico", "Cuba": "Cuba", "Regional": "Regional", "Republica Dominicana": "Dominican\nRepublic"}}};
+        const dataDict={"Rep\u00fablica Dominicana": "Dominican Republic", "Espa\u00f1a": "Spain", "Corea": "Korea", "Rep\u00fablica De Corea": "Korea", "M\u00e9xico": "Mexico", "Panam\u00e1": "Panama", "Belice": "Belize", "Taiw\u00e1n": "Taiwan", "Argentina": "Argentina", "Colombia": "Colombia", "Guatemala": "Guatemala", "Honduras": "Honduras", "El Salvador": "El Salvador", "Nicaragua": "Nicaragua", "Costa Rica": "Costa Rica", "Cuba": "Cuba", "Fundador": "Founder", "Regional No Fundador": "Regional Non-Founder", "Extrarregional": "Non-Regional", "Otro": "Other", "P\u00fablico": "Public", "Sector P\u00fablico": "Public Sector", "Privado": "Private", "Sector Privado": "Private Sector", "Financiero": "Financial", "No Definido": "Undefined", "Proyecci\u00f3n Global": "Global Forecast"};
+        let curLang='es';
+        let socMetric='monto', couMetric='monto';
+
+        function fmt(n){return '$'+n.toLocaleString('en-US',{maximumFractionDigits:0})}
+        
+        function init(){
+            const st=localStorage.getItem('theme')||'light'; document.documentElement.setAttribute('data-theme',st);
+            if(st==='dark') document.getElementById('btn-theme').classList.add('active');
+            if(curLang==='en') document.getElementById('btn-lang').classList.add('active');
+            plot(); updT(); tbl();
+        }
+        
+        function toggleTheme() {
+            const current = document.documentElement.getAttribute('data-theme');
+            const newTheme = current === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            document.getElementById('btn-theme').classList.toggle('active');
+            plot(); // Redraw charts
+        }
+
+        function toggleLang() {
+            curLang = curLang === 'es' ? 'en' : 'es';
+            document.getElementById('btn-lang').classList.toggle('active');
+            plot(); updT(); tbl();
+        }
+        
+        function toggleMetric(chart) {
+            const current = chart === 'soc' ? socMetric : couMetric;
+            const newState = current === 'monto' ? 'cant' : 'monto';
+            if(chart === 'soc') socMetric = newState; else couMetric = newState;
+            
+            const btn = document.getElementById(chart === 'soc' ? 'btn-soc-metric' : 'btn-cou-metric');
+            if(newState === 'monto') {
+                btn.classList.remove('cant'); btn.classList.add('monto');
+            } else {
+                btn.classList.remove('monto'); btn.classList.add('cant');
+            }
+            plot();
+        }
+
+        function updT(){
+            const t=txt[curLang];
+            const ids={'lbl-main':t.main_title,'lbl-sub':t.sub_title,'lbl-kt':t.kpi_total,'lbl-kc':t.kpi_count,'lbl-ka':t.kpi_avg,
+                       'lbl-ce':t.card_evolution,'lbl-cs':t.card_sector,'lbl-cp':t.card_partner,'lbl-cc':t.card_country,'lbl-th':t.card_table,
+                       'lbl-footer':t.footer, 'btn-snap-txt':t.txt_snap, 'btn-pdf-txt':t.txt_pdf,
+                       'lbl-th-year':t.col_year, 'lbl-th-amount':t.col_amount, 'lbl-th-count':t.col_count,
+                       'lbl-th-avg':t.col_avg, 'lbl-th-var':t.col_var};
+            for(let k in ids) {
+                const el = document.getElementById(k);
+                if(el) el.innerHTML=ids[k];
+            }
+            
+            // Special handling for rights with HTML and Year
+            const elRights = document.getElementById('lbl-rights');
+            if(elRights) {
+                let rTxt = t.rights;
+                rTxt = rTxt.replace('{year}', new Date().getFullYear());
+                elRights.innerHTML = rTxt;
+            }
+            // Header controls text updates
+            document.getElementById('lbl-update').innerText = t.update + ' 17/01/2026 23:27';
+            document.getElementById('lbl-theme-light').innerText = t.txt_theme_light || 'Claro';
+            document.getElementById('lbl-theme-dark').innerText = t.txt_theme_dark || 'Oscuro';
+            document.getElementById('lbl-lang-es').innerText = t.txt_lang_es || 'Esp';
+            document.getElementById('lbl-lang-en').innerText = t.txt_lang_en || 'Ing';
+
+            // Translate Country Chart Labels (Robust)
+            const cCou = document.getElementById('c-cou');
+            if(cCou && cCou.data && t.countries) {
+                // Store original labels on first run to avoid lost translation mapping
+                if(!cCou._originalLabels && cCou.data[0] && cCou.data[0].x) {
+                    cCou._originalLabels = [...cCou.data[0].x]; 
+                }
+                
+                if(cCou._originalLabels) {
+                    const newData = cCou.data.map((trace, i) => {
+                        if(trace.x) {
+                            trace.x = cCou._originalLabels.map(lbl => t.countries[lbl] || lbl);
+                        }
+                        return trace;
+                    });
+                    // Reduce bargap dynamically if needed (0.1 gives more space for bars/labels)
+                    const newLayout = {...cCou.layout, bargap: 0.1};
+                    Plotly.react(cCou, newData, newLayout);
+                }
+            }
+
+            // Translate Donut Chart Center Text
+            // Translate Donut Chart Center Text
+            const cSecMonto = document.getElementById('c-sec-monto');
+            if(cSecMonto) {
+                Plotly.relayout(cSecMonto, {'annotations[0].text': t.lbl_amount || 'Monto'});
+            }
+
+            const cSecCant = document.getElementById('c-sec-cant');
+            if(cSecCant) {
+                Plotly.relayout(cSecCant, {'annotations[0].text': t.lbl_quantity || 'Cantidad'});
+            }
+        }
+        
+        async function takeScreenshot() {
+            const btnSnap = document.getElementById('btn-snap-txt');
+            const originalText = btnSnap.textContent;
+            btnSnap.textContent = '...';
+            
+            try {
+                const canvas = await html2canvas(document.body, { useCORS: true, logging: false });
+                const link = document.createElement('a');
+                link.download = 'Dashboard_Exec_' + new Date().toISOString().slice(0,10) + '.png';
+                link.href = canvas.toDataURL('image/png');
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                btnSnap.textContent = originalText;
+            } catch(err) {
+                console.error('Error taking snapshot:', err);
+                alert('Error: ' + err.message);
+                btnSnap.textContent = originalText;
+            }
+        }
+
+        async function generatePDF() {
+            const btnPdf = document.getElementById('btn-pdf-txt');
+            const originalText = btnPdf.textContent;
+            btnPdf.textContent = '...';
+            
+            try {
+                const { jsPDF } = window.jspdf;
+                // Capture document body
+                const canvas = await html2canvas(document.body, { useCORS: true, scale: 2 });
+                const imgData = canvas.toDataURL('image/png');
+                
+                // Landscape A4
+                const pdf = new jsPDF('l', 'mm', 'a4'); 
+                
+                const pdfWidth = pdf.internal.pageSize.getWidth();
+                const pdfHeight = pdf.internal.pageSize.getHeight();
+                const imgWidth = canvas.width;
+                const imgHeight = canvas.height;
+                
+                // Calculate Ratio to FIT PAGE without distortion
+                const ratio = Math.min(pdfWidth / imgWidth, pdfHeight / imgHeight);
+                const imgX = (pdfWidth - imgWidth * ratio) / 2;
+                const imgY = 10; // Top margin
+                
+                pdf.addImage(imgData, 'PNG', imgX, imgY, imgWidth * ratio, imgHeight * ratio);
+                pdf.save('Report_Exec_' + new Date().toISOString().slice(0,10) + '.pdf');
+                btnPdf.textContent = originalText;
+            } catch(e) { 
+                console.error("PDF error:", e); 
+                alert("Error generating PDF: " + e.message); 
+                btnPdf.textContent = originalText;
+            }
+        }
+        
+        function plot(){
+            const dark=document.documentElement.getAttribute('data-theme')==='dark';
+            const cT=dark?'#f1f5f9':'#1e293b', cG=dark?'#334155':'#e2e8f0';
+            // Brighter Blue for Dark Mode (#60a5fa), Standard Blue for Light Mode (#1e3a8a)
+            const cBlue = dark ? '#60a5fa' : '#1e3a8a';
+            const lay={paper_bgcolor:'rgba(0,0,0,0)',plot_bgcolor:'rgba(0,0,0,0)',font:{family:'Inter',color:cT},margin:{t:10,b:30,l:40,r:10},xaxis:{gridcolor:cG},yaxis:{gridcolor:cG}};
+            
+            
+            // DUAL AXIS CHART FOR EVOLUTION
+            const traceMonto = {
+                x: dYear.map(d=>d.Año), 
+                y: dYear.map(d=>d.Monto), 
+                name: txt[curLang].kpi_total, 
+                type: 'scatter', 
+                mode: 'lines+markers',
+                line: {color: '#34d399', width: 2, shape: 'spline'},
+                marker: {symbol: 'circle', size: 6, color: dark?'#1e293b':'#ffffff', line: {color: '#34d399', width: 2}}
+            };
+            
+            const traceCant = {
+                x: dYear.map(d=>d.Año), 
+                y: dYear.map(d=>d.Cantidad), 
+                name: txt[curLang].kpi_count, 
+                yaxis: 'y2', 
+                type: 'scatter', 
+                mode: 'lines+markers',
+                line: {color: cBlue, width: 2, shape: 'spline'},
+                marker: {symbol: 'circle', size: 6, color: dark?'#1e293b':'#ffffff', line: {color: cBlue, width: 2}}
+            };
+
+            const layEvo = {
+                ...lay,
+                margin: {t: 10, b: 30, l: 50, r: 50},
+                legend: {orientation: 'h', x: 0.5, xanchor: 'center', y: -0.2},
+                xaxis: {gridcolor: cG, zeroline: false},
+                yaxis: {title: txt[curLang].axis_amount, gridcolor: cG, color: cT, rangemode: 'tozero'},
+                yaxis2: {title: txt[curLang].axis_count, overlaying: 'y', side: 'right', gridcolor: 'transparent', color: cT, rangemode: 'tozero'}
+            };
+            
+            Plotly.newPlot('c-evo', [traceMonto, traceCant], layEvo, {responsive:true});
+            
+            
+            // SECTOR CHART SEGURO (Dual Donuts + Legend)
+            const secColors = {'Sector Público': '#7c3aed', 'Sector Privado': '#ef4444', 'Sector Financiero': '#3b82f6', 'Público': '#7c3aed', 'Privado': '#ef4444', 'Otro': '#9ca3af'};
+            const secLabels = {'Sector Público': txt[curLang].lbl_sector_public, 'Sector Privado': txt[curLang].lbl_sector_private, 'Sector Financiero': txt[curLang].lbl_sector_financial};
+            
+            try {
+                // Donut 1: Monto
+                const traceM = {
+                    labels: dSector.map(d => d.Sector),
+                    values: dSector.map(d => d.Monto),
+                    type: 'pie',
+                    hole: 0.7,
+                    textinfo: 'percent',
+                    textposition: 'outside',
+                    hoverinfo: 'label+value+percent',
+                    marker: {colors: dSector.map(d => secColors[d.Sector] || '#cbd5e1')},
+                    showlegend: false,
+                    title: {text: 'Monto', position: 'middle center', font:{size: 12, color:cT}}
+                };
+                
+                // Donut 2: Cantidad
+                const traceC = {
+                    labels: dSector.map(d => d.Sector),
+                    values: dSector.map(d => d.Cantidad),
+                    type: 'pie',
+                    hole: 0.7,
+                    textinfo: 'percent',
+                    textposition: 'outside',
+                    hoverinfo: 'label+value+percent',
+                    marker: {colors: dSector.map(d => secColors[d.Sector] || '#cbd5e1')},
+                    showlegend: false,
+                    title: {text: 'Cantidad', position: 'middle center', font:{size: 11, color:cT}}
+                };
+                
+                // Layout mas compacto pero igualado
+                const layDonut = {...lay, margin:{t:35, b:35, l:35, r:35}, showlegend:false};
+                
+                Plotly.newPlot('c-sec-monto', [traceM], layDonut, {responsive:true});
+                Plotly.newPlot('c-sec-cant', [traceC], layDonut, {responsive:true});
+                
+                // Generate Legend Safely (Left Border Style)
+                let legH = '<div style="display:flex;flex-direction:column;gap:5px;align-items:center;width:100%;margin-top:5px">';
+                dSector.forEach(d => {
+                    const c = secColors[d.Sector] || '#cbd5e1';
+                    const montoS = (d.Monto!=null) ? d.Monto.toLocaleString('en-US',{maximumFractionDigits:0}) : '0';
+                    const cantS = (d.Cantidad!=null) ? d.Cantidad.toLocaleString('en-US') : '0';
+                    const avgVal = d.Cantidad > 0 ? d.Monto / d.Cantidad : 0;
+                    const avgS = avgVal.toLocaleString('en-US',{maximumFractionDigits:0});
+                    const label = secLabels[d.Sector] || d.Sector;
+                    
+                    const lblM = curLang === 'es' ? 'Monto' : 'Amount';
+                    const lblA = curLang === 'es' ? 'Promedio' : 'Avg';
+
+                    legH += `
+                    <div style="display:flex;flex-direction:column;gap:1px;border-left:4px solid ${c};padding-left:10px;margin-bottom:12px;width:100%;align-items:flex-start">
+                        <div style="font-weight:700;font-size:12px;color:var(--text-dark);margin-bottom:2px">${label}</div>
+                        <div style="font-size:11px;color:var(--text-light);display:flex;gap:4px">
+                            <span style="font-weight:600;min-width:55px">${lblM}:</span> 
+                            <span style="font-weight:700;color:var(--primary)">USD ${montoS}</span>
+                        </div>
+                        <div style="font-size:11px;color:var(--text-light);display:flex;gap:4px">
+                            <span style="font-weight:600;min-width:55px">${txt[curLang].axis_count}:</span> 
+                            <span>${cantS}</span>
+                        </div>
+                        <div style="font-size:11px;color:var(--text-light);display:flex;gap:4px">
+                            <span style="font-weight:600;min-width:55px">${lblA}:</span> 
+                            <span>USD ${avgS}</span>
+                        </div>
+                    </div>`;
+                });
+                legH += '</div>';
+                const legEl = document.getElementById('leg-sec');
+                if(legEl) legEl.innerHTML = legH;
+                
+            } catch(e) {
+                console.error("Error drawing sector chart/legend:", e);
+                const legEl = document.getElementById('leg-sec');
+                if(legEl) legEl.innerHTML = '<div style="color:red;font-size:10px">Error loading legend</div>';
+            }
+
+            // SOCIO CHART (Dynamic Metric)
+            const isSocMonto = socMetric === 'monto';
+            const dataSoc = dTipo.map(d => ({
+                label: (curLang === 'en' && dataDict[d.Tipo]) ? dataDict[d.Tipo] : d.Tipo,
+                val: isSocMonto ? d.Monto : d.Cantidad,
+                fmt: isSocMonto ? 'USD ' + (d.Monto!=null?d.Monto.toLocaleString('en-US',{maximumFractionDigits:0}):'0') : d.Cantidad.toLocaleString('en-US')
+            })).sort((a,b) => a.val - b.val);
+
+            const traceSoc = {
+                y: dataSoc.map(d => d.label),
+                x: dataSoc.map(d => d.val),
+                type: 'bar',
+                orientation: 'h',
+                text: dataSoc.map(d => d.fmt),
+                textposition: 'outside',
+                cliponaxis: false,
+                textfont: {size: 11, color: cT},
+                hoverinfo: 'none',
+                marker: {color: isSocMonto ? '#10b981' : cBlue}
+            };
+            
+            const maxValSoc = Math.max(...dataSoc.map(d => d.val)) || 1;
+            const laySoc = {
+                ...lay, 
+                margin: {t: 30, b: 20, l: 150, r: 100},
+                xaxis: { showgrid: false, showticklabels: false, zeroline: false, range: [0, maxValSoc * 1.45] },
+                yaxis: {automargin: true}
+            };
+            
+            Plotly.newPlot('c-soc', [traceSoc], laySoc, {responsive:true});
+            
+            // COUNTRY CHART (Dynamic Metric)
+            const formatCountry = (name) => {
+               // Translate if needed
+               let n = (curLang === 'en' && dataDict[name]) ? dataDict[name] : name;
+               
+               // Formatting Logic
+               n = n.toLowerCase().split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+               if(n.includes('Republica Dominicana') || n.includes('República Dominicana') || n.includes('Dominican Republic')) {
+                   return n.replace('Republica', 'Republica<br>').replace('República', 'República<br>').replace('Dominican', 'Dominican<br>');
+               }
+               if(n.length > 15 && !n.includes('<br>')) {
+                   const parts = n.split(' ');
+                   if(parts.length > 1) return parts[0] + '<br>' + parts.slice(1).join(' ');
+               }
+               return n;
+            };
+
+            const isCouMonto = couMetric === 'monto';
+            const dataCou = dPais.map(d => ({
+                label: d.País,
+                val: isCouMonto ? d.Monto : d.Cantidad,
+                fmt: isCouMonto ? 'USD ' + (d.Monto!=null?d.Monto.toLocaleString('en-US',{maximumFractionDigits:0}):'0') : d.Cantidad.toLocaleString('en-US')
+            })).sort((a,b) => b.val - a.val).slice(0, 15);
+
+            const traceCou = {
+                x: dataCou.map(d => formatCountry(d.label)),
+                y: dataCou.map(d => d.val),
+                type: 'bar',
+                text: dataCou.map(d => d.fmt),
+                textposition: 'outside',
+                cliponaxis: false,
+                textfont: {size: 11, color: cT},
+                hoverinfo: 'none',
+                marker: {color: isCouMonto ? '#10b981' : cBlue}
+            };
+            
+            const maxValCou = Math.max(...dataCou.map(d => d.val)) || 1;
+            const layCou = {
+                ...lay,
+                margin: {t: 40, b: 40, l: 40, r: 40},
+                xaxis: {tickangle: 0, tickfont: {size: 11}},
+                yaxis: {
+                    showgrid: false, 
+                    showticklabels: false, 
+                    zeroline: false,
+                    range: [0, maxValCou * 1.25]
+                }
+            };
+
+            Plotly.newPlot('c-cou', [traceCou], layCou, {responsive:true});
+        }
+        
+        function tbl(){
+            const t=txt[curLang];
+            // Table with restricted header widths to force wrapping
+            let h=`<table style="width:100%;margin:0 auto;border-collapse:collapse;font-size:11px"><thead><tr style="border-bottom:2px solid var(--border)">
+            <th id="lbl-th-year" style="text-align:left;padding:8px 4px;color:var(--text-light)">${t.col_year}</th>
+            <th id="lbl-th-amount" style="text-align:right;padding:8px 4px;color:var(--text-light)">${t.col_amount}</th>
+            <th id="lbl-th-count" style="text-align:center;padding:8px 4px;color:var(--text-light)">${t.col_count}</th>
+            <th id="lbl-th-avg" style="padding:8px 4px;text-align:right;color:var(--text-light);white-space:normal;max-width:100px;line-height:1.2">${t.col_avg}</th>
+            <th id="lbl-th-var" style="padding:8px 4px;text-align:right;color:var(--text-light);white-space:normal;max-width:120px;line-height:1.2">${t.col_var}</th>
+            </tr></thead><tbody>`;
+            const sorted = [...dYear].sort((a,b)=>b.Año-a.Año);
+            sorted.forEach(d=>{
+                const cM = d.Var_YOY >= 0 ? '#10b981' : '#ef4444';
+                const cC = d.Var_YOY_Cant >= 0 ? '#10b981' : '#ef4444';
+                
+                let vM = '-';
+                if(d.Var_YOY != null) {
+                    const val = d.Var_YOY; // Safe access
+                    if(Math.abs(val) < 0.001) vM = '<span style="color:var(--text-light)">0%</span>';
+                    else vM = `<span style="color:${cM}">${val.toFixed(1)}%</span>`;
+                }
+
+                let vC = '-';
+                if(d.Var_YOY_Cant != null) {
+                    const val = d.Var_YOY_Cant;
+                    if(Math.abs(val) < 0.001) vC = '<span style="color:var(--text-light)">0%</span>';
+                    else vC = `<span style="color:${cC}">${val.toFixed(1)}%</span>`;
+                }
+
+                const varTxt = `${vM} / ${vC}`;
+                
+                const avg = d.Cantidad > 0 ? d.Monto / d.Cantidad : 0;
+                
+                h+=`<tr style="border-bottom:1px solid var(--border)"><td style="padding:10px 4px;font-weight:700;color:var(--text-dark)">${d.Año}</td><td style="padding:10px 4px;text-align:right;color:var(--text-dark)">${fmt(d.Monto)}</td><td style="padding:10px 4px;text-align:center;color:var(--text-dark)">${d.Cantidad}</td><td style="padding:10px 4px;text-align:right;color:var(--text-dark)">${fmt(avg)}</td><td style="padding:10px 4px;text-align:right;color:var(--text-dark)">${varTxt}</td></tr>`;
+            });
+            document.getElementById('tbl').innerHTML=h+'</tbody></table>';
+        }
+        window.addEventListener('resize', function() {
+            const chartIds = ['c-evo', 'c-sec-monto', 'c-sec-cant', 'c-soc', 'c-cou'];
+            chartIds.forEach(id => {
+               const el = document.getElementById(id);
+               if(el) Plotly.Plots.resize(el);
+            });
+        });
+        window.onload=init;
+    </script>
+    
+    </body>
+    </html>
+    
