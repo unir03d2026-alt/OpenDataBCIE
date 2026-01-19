@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tablero de Clustering (Jerárquico) - BCIE</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+<style>
+    :root { 
+        --font-main: 'Inter', sans-serif;
+        --primary: #105682; --text-dark: #1e293b; --text-light: #64748b; --bg-body: #f8fafc; --bg-card: #ffffff; --border: #e2e8f0; --hover: #f1f5f9; --success: #10b981; --danger: #ef4444; --tooltip-bg: #1e293b; --tooltip-text: #ffffff;
+    }
+    [data-theme="dark"] { 
+        --primary: #38bdf8; --text-dark: #f1f5f9; --text-light: #94a3b8; --bg-body: #0f172a; --bg-card: #1e293b; --border: #334155; --hover: #334155; --tooltip-bg: #ffffff; --tooltip-text: #0f172a; 
+    }
+    * { box-sizing: border-box; }
+    body { font-family: var(--font-main); background: var(--bg-body); margin: 0; padding: 0; color: var(--text-dark); transition: background 0.3s; }
+    
+    /* NAV */
+    .top-nav { position: fixed; top: 0; left: 0; right: 0; height: 80px; background: var(--bg-card); border-bottom: 5px solid var(--primary); display: flex; align-items: center; justify-content: space-between; padding: 0 30px; z-index: 50; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+    .header-title h1 { margin: 0; font-size: 24px; font-weight: 800; color: var(--primary); }
+    .header-title .subtitle { font-size: 14px; color: var(--text-light); margin-top: 4px; }
+    
+    .nav-controls { display: flex; align-items: center; gap: 15px; }
+    .update-badge { font-size: 11px; background: var(--hover); color: var(--text-light); padding: 5px 10px; border-radius: 4px; }
+
+    /* TOGGLES */
+    .toggle-wrapper { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+    .toggle-switch { position: relative; width: 80px; height: 30px; background: var(--bg-body); border: 1px solid var(--border); border-radius: 15px; cursor: pointer; display: flex; align-items: center; justify-content: space-between; padding: 2px; transition: background 0.3s; }
+    .toggle-switch.active { background: #94a3b8; border-color: #94a3b8; }
+    .toggle-knob { width: 24px; height: 24px; background: white; border-radius: 50%; box-shadow: 0 2px 4px rgba(0,0,0,0.2); transition: transform 0.3s; position: absolute; left: 3px; z-index: 2; }
+    .toggle-switch.active .toggle-knob { transform: translateX(50px); }
+    .toggle-icon { font-size: 14px; z-index: 1; margin: 0 8px; user-select: none; }
+    .toggle-labels { display: flex; justify-content: space-between; width: 100%; font-size: 9px; font-weight: 700; color: var(--text-light); padding: 0 6px; }
+    .toggle-labels span { flex: 1; text-align: center; }
+
+    /* BUTTONS */
+    .btn-action { font-family: var(--font-main); padding: 6px 16px; border-radius: 6px; font-size: 13px; font-weight: 700; cursor: pointer; border: 1px solid transparent; transition: 0.2s; min-width: 100px; text-align: center; }
+    .btn-ghost-primary { background: transparent; border: 1px solid var(--primary); color: var(--primary); }
+    .btn-ghost-primary:hover { background: var(--hover); }
+    .btn-solid-primary { background: var(--primary); border: 1px solid var(--primary); color: white; }
+    .btn-solid-primary:hover { opacity: 0.9; }
+    
+    [data-theme="dark"] .btn-ghost-primary { border-color: var(--primary); color: var(--primary); }
+    [data-theme="dark"] .btn-solid-primary { color: #0f172a; }
+
+    /* LAYOUT */
+    .dashboard-container { margin-top: 100px; padding: 20px; max-width: 1600px; margin-left: auto; margin-right: auto; display: grid; gap: 20px; grid-template-columns: 1fr 600px; height: calc(100vh - 120px); }
+    
+    .left-col { display: flex; flex-direction: column; gap: 20px; height: 100%; overflow: hidden; padding-right: 5px; }
+    .right-col { height: 100%; overflow: hidden; display: flex; flex-direction: column; gap: 20px; }
+    
+    .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); display: flex; flex-direction: column; transition: transform 0.2s; }
+    .card:hover { border-color: var(--primary); }
+    .card-title { font-size: 14px; font-weight: 700; color: var(--primary); margin: 0 0 15px 0; border-bottom: 2px solid var(--hover); padding-bottom: 10px; display: flex; justify-content: space-between; align-items: center; flex-shrink: 0; }
+    
+    .kpi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: auto; }
+    .kpi-box { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 15px; display: flex; flex-direction: column; justify-content: center; align-items: center; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.08); }
+    .kpi-val { font-size: 28px; font-weight: 800; color: var(--primary); line-height: 1.2; }
+    .kpi-lbl { font-size: 11px; font-weight: 700; color: var(--text-light); text-transform: uppercase; margin-top: 5px; }
+
+    .chart-container { width: 100%; position: relative; }
+    #dendrogram-chart { height: 100%; }
+
+    /* TABLE */
+    .table-container { flex: 1; overflow: auto; border: 1px solid var(--border); border-radius: 8px; }
+    table { width: 100%; border-collapse: collapse; font-size: 11px; color: var(--text-dark); }
+    th { text-align: left; padding: 10px; background: var(--hover); color: var(--text-dark); font-weight: 800; position: sticky; top: 0; border-bottom: 2px solid var(--primary); z-index: 10; }
+    td { padding: 8px 10px; border-bottom: 1px solid var(--border); }
+    tr:nth-child(even) { background: rgba(0,0,0,0.01); }
+    tr:hover { background: rgba(16, 86, 130, 0.05); }
+    
+    .cluster-tag { display: inline-block; padding: 2px 8px; border-radius: 99px; font-weight: 700; font-size: 10px; color: white; min-width: 60px; text-align: center; }
+
+    /* FOOTER */
+    footer { grid-column: 1 / -1; margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--border); text-align: center; }
+    .footer-legal { font-size: 10px; color: var(--primary); font-weight: 700; }
+    .footer-disclaimer { font-size: 10px; color: var(--text-light); margin-top: 5px; font-style: italic; }
+
+    @media (max-width: 1200px) {
+        .dashboard-container { grid-template-columns: 1fr; height: auto; }
+        .right-col { height: 600px; }
+        .chart-container { height: 300px; }
+    }
+</style>
+</head>
+<body id="dashboard-body">
+    <nav class="top-nav">
+        <div class="header-title">
+            <h1 data-key="title" id="lbl-main">Dashboard de Clustering (Jerárquico)</h1>
+            <div class="subtitle" data-key="subtitle" id="lbl-sub">Segmentación Aglomerativa de Países BCIE</div>
+        </div>
+        <div class="nav-controls">
+            <div style="display:flex; gap:10px; margin-right:15px">
+                <button class="btn-action btn-ghost-primary" onclick="takeScreenshot()">
+                    <span id="btn-snap-txt">Captura</span>
+                </button>
+                <button class="btn-action btn-solid-primary" onclick="generatePDF()">
+                    <span id="btn-pdf-txt">PDF</span>
+                </button>
+            </div>
+            
+            <div class="update-badge" id="lbl-update">Datos Actualizados: {{UPDATE_TIME}}</div>
+            
+            <!-- THEME TOGGLE -->
+            <div class="toggle-wrapper">
+                <div class="toggle-switch" id="btn-theme" onclick="toggleTheme()" title="Tema">
+                    <div class="toggle-knob"></div>
+                    <span class="toggle-icon">☀️</span>
+                    <span class="toggle-icon">🌙</span>
+                </div>
+                <div class="toggle-labels">
+                    <span id="lbl-theme-light">Claro</span>
+                    <span id="lbl-theme-dark">Oscuro</span>
+                </div>
+            </div>
+
+            <!-- LANG TOGGLE -->
+            <div class="toggle-wrapper">
+                <div class="toggle-switch" id="btn-lang" onclick="toggleLang()" title="Idioma">
+                    <div class="toggle-knob"></div>
+                </div>
+                <div class="toggle-labels">
+                    <span id="lbl-lang-es">Esp</span>
+                    <span id="lbl-lang-en">Ing</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        <!-- LEFT COLUMN -->
+        <div class="left-col">
+            <!-- DENDROGRAM (Fixed Height) -->
+            <div class="card" style="flex: 0 0 500px;">
+                <h3 class="card-title">
+                    <span data-key="dendro_title">Dendrograma (Estructura Jerárquica)</span>
+                    <span style="font-size:11px; font-weight:400; color:var(--text-light);">Distancia Ward</span>
+                </h3>
+                <div id="dendrogram-chart" class="chart-container" style="height: 100%;"></div>
+            </div>
+
+            <!-- SCATTER CHART (Flex Fill) -->
+            <div class="card" style="flex: 1; display:flex; flex-direction:column; overflow:hidden;">
+                <h3 class="card-title">
+                    <span data-key="scatter_title">Segmentación de Países</span>
+                </h3>
+                <div id="scatter-chart" class="chart-container" style="flex:1; min-height:0;"></div>
+            </div>
+        </div>
+
+        <!-- RIGHT COLUMN -->
+        <div class="right-col">
+            <!-- KPIS (MOVED HERE) -->
+            <div class="card" style="flex: 0 0 auto;">
+                <h3 class="card-title" data-key="kpi_title">Resumen General</h3>
+                <div class="kpi-grid">
+                    <div class="kpi-box">
+                        <div class="kpi-lbl" data-key="kpi_countries">Registros</div>
+                        <div class="kpi-val" id="kpi-countries">0</div>
+                    </div>
+                    <div class="kpi-box">
+                        <div class="kpi-lbl" data-key="kpi_clusters">Cortes (Clusters)</div>
+                        <div class="kpi-val" id="kpi-k">0</div>
+                    </div>
+                    <div class="kpi-box">
+                        <div class="kpi-lbl" data-key="kpi_vars">Linkage</div>
+                        <div class="kpi-val">Ward</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TABLE -->
+            <div class="card" style="flex: 1; overflow: hidden;">
+                <h3 class="card-title" data-key="table_title">Detalle por País y Año</h3>
+                <div class="table-container">
+                    <table id="data-table">
+                        <thead>
+                            <tr>
+                                <th data-key="col_country">País</th>
+                                <th data-key="col_year">Año</th>
+                                <th data-key="col_amount">Monto (USD)</th>
+                                <th data-key="col_count"># Ops</th>
+                                <th data-key="col_cluster">Cluster</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <div class="footer-legal">© 2026 | UNIR–BCIE | Trabajo de Colaboración Académica | Proyecto Final de Máster | Equipo 03-D | Desarrollado por Edgar García, Norman Sabillón y Wilson Aguilar | Todos los derechos reservados.</div>
+            <div class="footer-disclaimer">Este tablero presenta modelos de machine learning para fines académicos y de análisis.</div>
+        </footer>
+    </div>
+
+<script>
+    // INJECTED DATA
+    const dataClusters = JSON.parse('{{DATA_CLUSTERS}}');
+    const dendroData = JSON.parse('{{DATA_DENDRO}}');
+    
+    // DICTIONARY
+    const langData = {
+        es: {
+            title: "Dashboard de Clustering (Jerárquico)",
+            subtitle: "Segmentación Aglomerativa de Países BCIE",
+            dendro_title: "Dendrograma (Estructura Jerárquica)",
+            scatter_title: "Segmentación de Países",
+            kpi_title: "Resumen General",
+            kpi_countries: "Registros",
+            kpi_clusters: "Cortes (Clusters)",
+            kpi_vars: "Linkage",
+            table_title: "Detalle Detallado",
+            col_country: "País",
+            col_year: "Año",
+            col_amount: "Monto (USD)",
+            col_count: "Aprobaciones",
+            col_cluster: "Cluster",
+            txt_theme_light: "Claro", txt_theme_dark: "Oscuro",
+            txt_lang_es: "Esp", txt_lang_en: "Ing",
+            txt_snap: "Captura", txt_pdf: "PDF"
+        },
+        en: {
+            title: "Clustering Dashboard (Hierarchical)",
+            subtitle: "BCIE Agglomerative Country Segmentation",
+            dendro_title: "Dendrogram (Hierarchical Structure)",
+            scatter_title: "Country Segmentation",
+            kpi_title: "General Overview",
+            kpi_countries: "Records",
+            kpi_clusters: "Cuts (Clusters)",
+            kpi_vars: "Linkage",
+            table_title: "Detailed View",
+            col_country: "Country",
+            col_year: "Year",
+            col_amount: "Amount (USD)",
+            col_count: "Approvals",
+            col_cluster: "Cluster",
+            txt_theme_light: "Light", txt_theme_dark: "Dark",
+            txt_lang_es: "Esp", txt_lang_en: "Eng",
+            txt_snap: "Snapshot", txt_pdf: "PDF"
+        }
+    };
+
+    let currentLang = 'es';
+    let currentTheme = 'light';
+
+    function init() {
+        renderTable();
+        renderCharts();
+        updateKPIs();
+        updateText();
+    }
+
+    function updateKPIs() {
+        document.getElementById('kpi-countries').innerText = dataClusters.length;
+        const uniqueClusters = [...new Set(dataClusters.map(d => d.Cluster))];
+        document.getElementById('kpi-k').innerText = uniqueClusters.length;
+    }
+
+    function renderTable() {
+        const tbody = document.querySelector('#data-table tbody');
+        tbody.innerHTML = '';
+        const colors = ['#105682', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899'];
+        
+        dataClusters.forEach(row => {
+            const tr = document.createElement('tr');
+            const color = colors[row.Cluster % colors.length];
+            const anio = row.Anio || row.Anio_Origen || '-';
+            
+            tr.innerHTML = `
+                <td style="font-weight:600">${row.Pais}</td>
+                <td>${anio}</td>
+                <td>$${parseFloat(row.Monto_Aprobado).toLocaleString(undefined, {minimumFractionDigits:0, maximumFractionDigits:0})}</td>
+                <td>${row.CANTIDAD_APROBACIONES}</td>
+                <td><span class="cluster-tag" style="background:${color}">C${row.Cluster}</span></td>
+            `;
+            tbody.appendChild(tr);
+        });
+    }
+
+    function renderCharts() {
+        const colors = ['#105682', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899'];
+        const isDark = currentTheme === 'dark';
+        const txtColor = isDark ? '#f1f5f9' : '#1e293b';
+        const gridColor = isDark ? '#334155' : '#e2e8f0';
+
+        // DENDROGRAM (From Injected JSON)
+        if(dendroData && dendroData.data) {
+            const dendroLayout = dendroData.layout || {};
+            dendroLayout.paper_bgcolor = 'transparent';
+            dendroLayout.plot_bgcolor = 'transparent';
+            dendroLayout.font = { family: 'Inter', color: txtColor };
+            dendroLayout.margin = {t:0, l:40, r:20, b:100}; 
+            dendroLayout.xaxis = { title: '', tickangle: -90, showgrid: false };
+            dendroLayout.yaxis = { title: 'Distancia', gridcolor: gridColor };
+            
+            Plotly.newPlot('dendrogram-chart', dendroData.data, dendroLayout, {responsive: true, displayModeBar: false});
+        }
+
+        // SCATTER
+        const traces = [];
+        [...new Set(dataClusters.map(d => d.Cluster))].sort().forEach(clusterId => {
+            const clusterData = dataClusters.filter(d => d.Cluster === clusterId);
+            traces.push({
+                x: clusterData.map(d => d.Monto_Aprobado),
+                y: clusterData.map(d => d.CANTIDAD_APROBACIONES),
+                mode: 'markers',
+                type: 'scatter',
+                name: `C${clusterId}`,
+                text: clusterData.map(d => `${d.Pais} (${d.Anio}) <br>$${d.Monto_Aprobado.toLocaleString()}`),
+                marker: { size: 12, color: colors[clusterId % colors.length], opacity: 0.7, line: {width: 1, color: 'white'} }
+            });
+        });
+        const layoutScatter = {
+            margin: {t:30, l:60, r:20, b:40},
+            paper_bgcolor: 'transparent',
+            plot_bgcolor: 'transparent',
+            font: { family: 'Inter', color: txtColor },
+            xaxis: {title: 'Monto (USD)', gridcolor: gridColor, type: 'log'},
+            yaxis: {title: 'Aprobaciones', gridcolor: gridColor},
+            hovermode: 'closest'
+        };
+        Plotly.newPlot('scatter-chart', traces, layoutScatter, {responsive: true, displayModeBar: false});
+    }
+
+    function toggleTheme() {
+        currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', currentTheme);
+        document.getElementById('btn-theme').classList.toggle('active');
+        renderCharts();
+    }
+
+    function toggleLang() {
+        currentLang = currentLang === 'es' ? 'en' : 'es';
+        document.getElementById('btn-lang').classList.toggle('active');
+        updateText();
+    }
+
+    function updateText() {
+        const t = langData[currentLang];
+        document.querySelectorAll('[data-key]').forEach(el => {
+            const key = el.getAttribute('data-key');
+            if(t[key]) el.innerText = t[key];
+        });
+        document.getElementById('lbl-theme-light').innerText = t.txt_theme_light;
+        document.getElementById('lbl-theme-dark').innerText = t.txt_theme_dark;
+        document.getElementById('lbl-lang-es').innerText = t.txt_lang_es;
+        document.getElementById('lbl-lang-en').innerText = t.txt_lang_en;
+        document.getElementById('btn-snap-txt').innerText = t.txt_snap;
+        document.getElementById('btn-pdf-txt').innerText = t.txt_pdf;
+    }
+
+    async function takeScreenshot() {
+        const btn = document.getElementById('btn-snap-txt');
+        const orig = btn.innerText;
+        btn.innerText = '...';
+        try {
+            const canvas = await html2canvas(document.body, {useCORS: true});
+            const link = document.createElement('a');
+            link.download = `Snapshot_Hierarchical_${new Date().toISOString().slice(0,19)}.png`;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        } catch(e) { console.error(e); alert('Error'); }
+        btn.innerText = orig;
+    }
+
+    async function generatePDF() {
+        const { jsPDF } = window.jspdf;
+        const btn = document.getElementById('btn-pdf-txt');
+        const orig = btn.innerText;
+        btn.innerText = '...';
+        
+        try {
+            const canvas = await html2canvas(document.body, { scale: 1, useCORS: true });
+            const imgData = canvas.toDataURL('image/png');
+            const pdf = new jsPDF('p', 'mm', 'a4');
+            const pdfWidth = pdf.internal.pageSize.getWidth();
+            const pdfHeight = pdf.internal.pageSize.getHeight();
+            const imgWidth = canvas.width;
+            const imgHeight = canvas.height;
+            const ratio = Math.min(pdfWidth / imgWidth, pdfHeight / imgHeight);
+            
+            pdf.addImage(imgData, 'PNG', 0, 0, imgWidth * ratio, imgHeight * ratio);
+            pdf.save('Report_Hierarchical.pdf');
+        } catch(e) { console.error(e); alert('Error PDF'); }
+        btn.innerText = orig;
+    }
+
+    init();
+</script>
+</body>
+</html>
