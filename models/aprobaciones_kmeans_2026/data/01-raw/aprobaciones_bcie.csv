@@ -1,0 +1,611 @@
+_id,PAIS,ANIO_APROBACION,SECTOR_INSTITUCIONAL,MONTO_BRUTO_USD,CANTIDAD_APROBACIONES
+1,Costa Rica,2012,Sector Privado,3000000.0,1
+2,Argentina,2022,Sector Público,115000000.0,4
+3,Argentina,2015,Sector Público,50000000.0,1
+4,Argentina,2017,Sector Público,30000000.0,1
+5,Costa Rica,2003,Sector Privado,54336000.0,12
+6,Belice,2014,Sector Público,30000000.0,1
+7,Belice,2009,Sector Público,1905800.0,1
+8,Colombia,2008,Sector Privado,5000000.0,1
+9,Costa Rica,1965,Sector Privado,1284100.0,4
+10,Costa Rica,1981,Sector Privado,2771000.0,4
+11,Costa Rica,1986,Sector Público,3000000.0,1
+12,Costa Rica,1985,Sector Público,6600000.0,2
+13,Argentina,2021,Sector Público,150000000.0,3
+14,Costa Rica,1963,Sector Privado,62000.0,2
+15,Costa Rica,1969,Sector Privado,604600.0,6
+16,Costa Rica,1978,Sector Privado,7735000.0,5
+17,Argentina,2023,Sector Público,625000000.0,3
+18,Argentina,2016,Sector Público,90000000.0,2
+19,Costa Rica,1967,Sector Privado,1164600.0,5
+20,Costa Rica,1994,Sector Privado,78026000.0,31
+21,Costa Rica,1976,Sector Privado,4439000.0,5
+22,Costa Rica,1971,Sector Privado,2816075.0,9
+23,Colombia,2005,Sector Público,71120000.0,2
+24,Costa Rica,1968,Sector Privado,761000.0,3
+25,Costa Rica,1999,Sector Privado,18809037.0,5
+26,Argentina,2018,Sector Público,32000000.0,1
+27,Costa Rica,1974,Sector Privado,9478100.0,11
+28,Costa Rica,2013,Sector Privado,34775000.0,4
+29,Costa Rica,1992,Sector Privado,9200145.0,7
+30,Costa Rica,1989,Sector Público,38000000.0,4
+31,Costa Rica,1995,Sector Privado,40150000.0,16
+32,Costa Rica,2000,Sector Privado,38630000.0,7
+33,Colombia,2011,Sector Público,50000000.0,1
+34,Costa Rica,1991,Sector Privado,4200000.0,1
+35,Costa Rica,1988,Sector Público,23000000.0,5
+36,Costa Rica,1973,Sector Privado,8680000.0,11
+37,Argentina,2024,Sector Público,230000000.0,1
+38,Costa Rica,1990,Sector Público,28375000.0,4
+39,Costa Rica,1977,Sector Privado,2000000.0,1
+40,Argentina,2019,Sector Público,67000000.0,1
+41,Costa Rica,1982,Sector Privado,8500000.0,1
+42,Colombia,2007,Sector Privado,136948000.0,1
+43,Argentina,2025,Sector Público,127500000.0,2
+44,Costa Rica,2012,Sector Público,350000000.0,4
+45,Belice,2022,Sector Público,24000000.0,1
+46,Colombia,2015,Sector Público,136000000.0,1
+47,Colombia,2017,Sector Público,50000000.0,1
+48,Costa Rica,2003,Sector Público,118330255.46000001,3
+49,Colombia,2014,Sector Público,50000000.0,1
+50,Costa Rica,1975,Sector Privado,5828000.0,4
+51,Costa Rica,2008,Sector Privado,27000000.0,11
+52,Costa Rica,1965,Sector Público,2000000.0,2
+53,Costa Rica,1981,Sector Público,19000000.0,4
+54,El Salvador,1986,Sector Privado,400000.0,1
+55,El Salvador,1985,Sector Público,1980000.0,1
+56,Costa Rica,2021,Sector Público,580000000.0,2
+57,El Salvador,1963,Sector Privado,2426600.0,5
+58,Costa Rica,1969,Sector Público,13134000.0,10
+59,Costa Rica,1978,Sector Público,37020000.0,7
+60,Belice,2010,Sector Público,10667410.0,2
+61,Costa Rica,1993,Sector Privado,25000000.0,20
+62,Costa Rica,1967,Sector Público,5990000.0,2
+63,Costa Rica,1994,Sector Público,65784244.0,11
+64,Costa Rica,1976,Sector Público,37043000.0,9
+65,Costa Rica,1971,Sector Público,6200000.0,3
+66,Costa Rica,1979,Sector Privado,12000000.0,4
+67,Costa Rica,1968,Sector Público,3022000.0,5
+68,Costa Rica,1999,Sector Público,73333101.0,4
+69,Argentina,2020,Sector Público,50000000.0,1
+70,Costa Rica,1974,Sector Público,40330000.0,18
+71,Costa Rica,2013,Sector Público,515000000.0,4
+72,Costa Rica,1992,Sector Público,45965600.0,6
+73,El Salvador,1989,Sector Público,12000000.0,3
+74,Costa Rica,1995,Sector Público,60035316.0,5
+75,Costa Rica,2000,Sector Público,74091406.0,4
+76,Costa Rica,2011,Sector Privado,31000000.0,5
+77,Costa Rica,1991,Sector Público,32700000.0,3
+78,El Salvador,1988,Sector Público,16740000.0,4
+79,Costa Rica,1973,Sector Público,25900000.0,8
+80,Costa Rica,2024,Sector Público,770000000.0,1
+81,El Salvador,1990,Sector Público,37670000.0,5
+82,Costa Rica,1977,Sector Público,18760000.0,5
+83,Costa Rica,1966,Sector Privado,3118500.0,6
+84,Costa Rica,1982,Sector Público,8000000.0,2
+85,Colombia,2007,Sector Público,50000000.0,1
+86,Colombia,2025,Sector Público,75000000.0,1
+87,El Salvador,2012,Sector Privado,18000000.0,3
+88,Colombia,2022,Sector Público,250000000.0,1
+89,Costa Rica,2015,Sector Privado,73000000.0,4
+90,Costa Rica,1964,Sector Privado,1123435.0,6
+91,El Salvador,2003,Sector Privado,29976300.0,13
+92,Costa Rica,2002,Sector Privado,70164000.0,13
+93,Costa Rica,1975,Sector Público,26066000.0,9
+94,Costa Rica,2008,Sector Público,172390000.0,5
+95,El Salvador,1965,Sector Privado,5096700.0,7
+96,El Salvador,1981,Sector Privado,481100.0,2
+97,El Salvador,1986,Sector Público,13000000.0,1
+98,Guatemala,1985,Sector Público,8000000.0,1
+99,El Salvador,2021,Sector Privado,20000000.0,1
+100,El Salvador,1963,Sector Público,20000.0,1
+101,El Salvador,1969,Sector Privado,3610130.0,9
+102,Costa Rica,1980,Sector Privado,5761288.0,6
+103,Belice,2023,Sector Público,2500000.0,1
+104,Costa Rica,1993,Sector Público,21750000.0,4
+105,El Salvador,1967,Sector Privado,986000.0,4
+106,El Salvador,1994,Sector Privado,24313000.0,17
+107,Costa Rica,1998,Sector Privado,84786168.0,24
+108,Costa Rica,1983,Sector Privado,1800000.0,1
+109,Costa Rica,1979,Sector Público,33110000.0,9
+110,El Salvador,1968,Sector Privado,1525700.0,5
+111,El Salvador,1999,Sector Privado,61619477.0,6
+112,Costa Rica,2018,Sector Público,530284067.0,3
+113,Costa Rica,1984,Sector Público,1650000.0,1
+114,El Salvador,2013,Sector Público,199208600.0,4
+115,El Salvador,1992,Sector Privado,14000000.0,3
+116,Guatemala,1989,Sector Privado,99000.0,1
+117,El Salvador,1995,Sector Privado,71513548.0,13
+118,El Salvador,2000,Sector Privado,7830000.0,1
+119,Costa Rica,2011,Sector Público,499000000.0,3
+120,El Salvador,1991,Sector Público,1000000.0,1
+121,Honduras,1988,Sector Público,37600000.0,10
+122,El Salvador,1973,Sector Privado,9430000.0,8
+123,El Salvador,2024,Sector Público,263900000.0,2
+124,Guatemala,1990,Sector Privado,15220600.0,2
+125,El Salvador,1977,Sector Público,14100000.0,2
+126,Costa Rica,1966,Sector Público,4700000.0,1
+127,El Salvador,1982,Sector Privado,2000000.0,3
+128,Costa Rica,2001,Sector Privado,31000000.0,4
+129,Costa Rica,1996,Sector Privado,35521099.0,21
+130,El Salvador,2012,Sector Público,193161825.0,3
+131,Costa Rica,1987,Sector Privado,1000000.0,1
+132,Costa Rica,2015,Sector Público,202587964.87,2
+133,Costa Rica,1964,Sector Público,1163000.0,2
+134,El Salvador,2003,Sector Público,143500000.0,3
+135,Costa Rica,2002,Sector Público,280000000.0,6
+136,Costa Rica,2009,Sector Privado,32900000.0,5
+137,El Salvador,2008,Sector Privado,15261000.0,3
+138,El Salvador,1965,Sector Público,1066000.0,2
+139,El Salvador,1981,Sector Público,9200000.0,4
+140,Honduras,1986,Sector Público,16675000.0,6
+141,Honduras,1985,Sector Público,9150000.0,2
+142,El Salvador,2021,Sector Público,864700000.0,3
+143,Guatemala,1963,Sector Privado,3327500.0,11
+144,El Salvador,1969,Sector Público,7250000.0,3
+145,Costa Rica,1980,Sector Público,20970000.0,7
+146,Colombia,2010,Sector Privado,35321000.0,1
+147,Costa Rica,2016,Sector Privado,50000000.0,1
+148,Guatemala,1967,Sector Privado,292000.0,2
+149,El Salvador,1994,Sector Público,144238000.0,9
+150,Costa Rica,1998,Sector Público,56698182.0,3
+151,Costa Rica,1983,Sector Público,15402200.0,3
+152,Costa Rica,1997,Sector Privado,26300000.0,13
+153,El Salvador,1968,Sector Público,7900000.0,2
+154,Guatemala,1999,Sector Privado,56093000.0,10
+155,Costa Rica,2020,Sector Privado,6000000.0,1
+156,El Salvador,1974,Sector Privado,8070000.0,6
+157,Guatemala,2013,Sector Privado,18750000.0,1
+158,El Salvador,1992,Sector Público,36800000.0,4
+159,Guatemala,1989,Sector Público,7000000.0,3
+160,El Salvador,1995,Sector Público,21150000.0,2
+161,El Salvador,2000,Sector Público,80000000.0,2
+162,El Salvador,2011,Sector Privado,53625000.0,5
+163,Guatemala,1991,Sector Privado,6500000.0,1
+164,El Salvador,1973,Sector Público,6560000.0,3
+165,Guatemala,1961,Sector Privado,275000.0,1
+166,Guatemala,1990,Sector Público,28600000.0,4
+167,Guatemala,1977,Sector Privado,3000000.0,1
+168,Costa Rica,2004,Sector Privado,34790000.0,9
+169,El Salvador,1982,Sector Público,17800000.0,2
+170,Costa Rica,2001,Sector Público,130853800.0,3
+171,Costa Rica,1996,Sector Público,67254960.0,8
+172,Guatemala,2012,Sector Privado,86288817.45,5
+173,Costa Rica,1987,Sector Público,17200000.0,6
+174,El Salvador,2015,Sector Privado,90000000.0,5
+175,Costa Rica,2017,Sector Privado,1350000.0,1
+176,Guatemala,2003,Sector Privado,47050000.0,10
+177,Costa Rica,2014,Sector Privado,21000000.0,4
+178,Costa Rica,2009,Sector Público,343538203.07,6
+179,El Salvador,2008,Sector Público,284605000.0,5
+180,Guatemala,1965,Sector Privado,1751090.0,7
+181,Guatemala,1981,Sector Privado,6300000.0,4
+182,Guatemala,2021,Sector Privado,7000000.0,1
+183,Guatemala,1963,Sector Público,107000.0,1
+184,Guatemala,1969,Sector Privado,1915000.0,4
+185,El Salvador,1978,Sector Privado,11020000.0,12
+186,Colombia,2023,Sector Público,250000000.0,1
+187,Costa Rica,2016,Sector Público,291842413.0,3
+188,Guatemala,1967,Sector Público,6433000.0,2
+189,Guatemala,1994,Sector Privado,37259235.0,23
+190,Costa Rica,2006,Sector Privado,135600000.0,19
+191,El Salvador,1971,Sector Privado,2257157.14,7
+192,Costa Rica,1997,Sector Público,92407500.0,3
+193,Guatemala,1968,Sector Privado,1657000.0,5
+194,Guatemala,1999,Sector Público,87274200.0,5
+195,Costa Rica,2020,Sector Público,699160000.0,2
+196,El Salvador,1974,Sector Público,4750000.0,5
+197,Honduras,2013,Sector Privado,56802700.0,2
+198,Guatemala,1992,Sector Privado,11660000.0,7
+199,Honduras,1989,Sector Público,48000000.0,4
+200,Guatemala,1995,Sector Privado,98925000.0,36
+201,Guatemala,2000,Sector Privado,23500000.0,4
+202,El Salvador,2011,Sector Público,232212173.8,4
+203,Guatemala,1991,Sector Público,5200000.0,2
+204,Guatemala,1973,Sector Privado,7391620.0,7
+205,Guatemala,2024,Sector Privado,19000000.0,2
+206,Honduras,1990,Sector Público,58900000.0,9
+207,Guatemala,1977,Sector Público,11800000.0,5
+208,Costa Rica,2004,Sector Público,147000000.0,3
+209,Guatemala,1982,Sector Privado,500000.0,1
+210,Costa Rica,2007,Sector Privado,505200000.0,23
+211,Costa Rica,2025,Sector Público,815000000.0,2
+212,Guatemala,2012,Sector Público,280000000.0,1
+213,Costa Rica,2022,Sector Público,1190000000.0,3
+214,El Salvador,2015,Sector Público,250521814.0,5
+215,Costa Rica,2017,Sector Público,214410000.0,3
+216,Guatemala,2003,Sector Público,52600000.0,2
+217,Costa Rica,2014,Sector Público,308000000.0,4
+218,El Salvador,1975,Sector Privado,3120000.0,4
+219,Guatemala,2008,Sector Privado,97894000.0,15
+220,Guatemala,1965,Sector Público,437000.0,1
+221,Guatemala,1981,Sector Público,19189000.0,4
+222,Honduras,2021,Sector Privado,2500000.0,1
+223,Honduras,1963,Sector Privado,3767400.0,7
+224,Guatemala,1969,Sector Público,5450000.0,3
+225,El Salvador,1978,Sector Público,24500000.0,1
+226,Costa Rica,1970,Sector Privado,2410000.0,5
+227,El Salvador,1993,Sector Privado,18290000.0,13
+228,Honduras,1967,Sector Privado,721300.0,4
+229,Guatemala,1994,Sector Público,46883400.0,3
+230,Costa Rica,2006,Sector Público,613265400.0,9
+231,El Salvador,1971,Sector Público,2600000.0,2
+232,Costa Rica,2005,Sector Privado,49089300.0,6
+233,Guatemala,1968,Sector Público,5767000.0,2
+234,Honduras,1999,Sector Privado,18848000.0,3
+235,El Salvador,2018,Sector Público,283500000.0,3
+236,El Salvador,1984,Sector Público,7600000.0,1
+237,Honduras,2013,Sector Público,103000000.0,4
+238,Honduras,1992,Sector Privado,14705167.0,14
+239,Nicaragua,1989,Sector Público,4650000.0,5
+240,Guatemala,1995,Sector Público,12000000.0,3
+241,Guatemala,2000,Sector Público,52500000.0,2
+242,Guatemala,2011,Sector Privado,64650000.0,4
+243,Honduras,1991,Sector Público,54100000.0,8
+244,Guatemala,1973,Sector Público,11361000.0,5
+245,Honduras,2024,Sector Público,476300000.0,3
+246,Nicaragua,1990,Sector Público,30000000.0,3
+247,Honduras,1977,Sector Privado,3328000.0,6
+248,Costa Rica,2019,Sector Público,640055000.0,2
+249,Guatemala,1982,Sector Público,36100000.0,3
+250,Costa Rica,2007,Sector Público,145000000.0,2
+251,El Salvador,1996,Sector Privado,54254000.0,18
+252,Honduras,2012,Sector Privado,24400000.0,1
+253,Cuba,2022,Sector Público,50000000.0,1
+254,Guatemala,2015,Sector Privado,10000000.0,1
+255,El Salvador,1964,Sector Privado,451500.0,3
+256,Honduras,2003,Sector Privado,129896660.0,17
+257,El Salvador,2002,Sector Privado,79080000.0,10
+258,El Salvador,1975,Sector Público,18320000.0,3
+259,Guatemala,2008,Sector Público,278000000.0,3
+260,Honduras,1965,Sector Privado,1630467.0,7
+261,Honduras,1981,Sector Privado,5952200.0,4
+262,Honduras,2021,Sector Público,717766365.18,6
+263,Honduras,1963,Sector Público,349500.0,2
+264,Honduras,1969,Sector Privado,2575300.0,11
+265,El Salvador,1980,Sector Privado,7480000.0,3
+266,Costa Rica,1970,Sector Público,3021100.0,1
+267,El Salvador,1993,Sector Público,61819000.0,4
+268,Honduras,1967,Sector Público,1175680.0,3
+269,Honduras,1994,Sector Privado,40951800.0,21
+270,El Salvador,1962,Sector Privado,1546000.0,4
+271,Guatemala,1971,Sector Privado,4033000.0,10
+272,Costa Rica,2005,Sector Público,416970508.18,7
+273,Honduras,1968,Sector Privado,804800.0,6
+274,Nicaragua,1999,Sector Privado,20500000.0,7
+275,El Salvador,2020,Sector Público,615200000.0,4
+276,Guatemala,1974,Sector Privado,4815000.0,6
+277,Nicaragua,2013,Sector Privado,3000000.0,1
+278,Honduras,1992,Sector Público,75072000.0,9
+279,Honduras,1995,Sector Privado,57755000.0,18
+280,Honduras,2000,Sector Privado,34431050.0,5
+281,Guatemala,2011,Sector Público,119400000.0,1
+282,Nicaragua,1991,Sector Público,67200000.0,5
+283,Honduras,1973,Sector Privado,6340800.0,10
+284,Nicaragua,2024,Sector Público,130000000.0,1
+285,Honduras,1977,Sector Público,16790000.0,8
+286,El Salvador,1966,Sector Privado,618400.0,4
+287,Honduras,1982,Sector Privado,500000.0,1
+288,El Salvador,2001,Sector Privado,12800000.0,14
+289,El Salvador,1996,Sector Público,132163530.0,7
+290,Honduras,2012,Sector Público,356337976.09000003,8
+291,El Salvador,1987,Sector Público,49800000.0,7
+292,Guatemala,2015,Sector Público,370000000.0,2
+293,El Salvador,1964,Sector Público,1271000.0,2
+294,Honduras,2003,Sector Público,62927243.47,5
+295,El Salvador,2002,Sector Público,32500000.0,2
+296,El Salvador,2009,Sector Privado,1000000.0,1
+297,Honduras,2008,Sector Privado,71900000.0,14
+298,Honduras,1965,Sector Público,1431090.0,8
+299,Honduras,1981,Sector Público,29969350.0,9
+300,Nicaragua,2021,Sector Privado,8000000.0,1
+301,Nicaragua,1963,Sector Privado,1044848.5700000001,6
+302,Honduras,1969,Sector Público,11377600.0,7
+303,El Salvador,1980,Sector Público,56237000.0,9
+304,Costa Rica,1972,Sector Privado,3365950.0,7
+305,El Salvador,2016,Sector Privado,2125000.0,1
+306,Nicaragua,1967,Sector Privado,5547300.0,8
+307,Honduras,1994,Sector Público,34765000.0,7
+308,El Salvador,1976,Sector Privado,2525000.0,7
+309,Guatemala,1971,Sector Público,8658000.0,4
+310,El Salvador,1979,Sector Privado,2416000.0,3
+311,Honduras,1968,Sector Público,10752000.0,7
+312,Guatemala,2018,Sector Público,193200000.0,1
+313,Guatemala,1974,Sector Público,10800000.0,5
+314,Nicaragua,2013,Sector Público,363545473.0,5
+315,Nicaragua,1992,Sector Privado,900000.0,3
+316,Honduras,1995,Sector Público,8000000.0,3
+317,Honduras,2000,Sector Público,1500000.0,1
+318,Honduras,2011,Sector Público,392236000.0,5
+319,Honduras,1973,Sector Público,12940000.0,4
+320,Panamá,2024,Sector Público,240000000.0,1
+321,Nicaragua,1977,Sector Privado,7800000.0,4
+322,El Salvador,1966,Sector Público,6040000.0,5
+323,Honduras,1982,Sector Público,40294000.0,6
+324,El Salvador,2001,Sector Público,217400000.0,3
+325,El Salvador,2025,Sector Público,350000000.0,3
+326,Nicaragua,2012,Sector Público,253044054.79,5
+327,El Salvador,2022,Sector Privado,60000000.0,1
+328,Honduras,2015,Sector Privado,46000000.0,2
+329,El Salvador,2017,Sector Privado,61306842.25,1
+330,Nicaragua,2003,Sector Privado,42905100.0,14
+331,El Salvador,2014,Sector Privado,14250000.0,3
+332,El Salvador,2009,Sector Público,293433870.0,2
+333,Honduras,2008,Sector Público,202006000.0,5
+334,Nicaragua,1965,Sector Privado,3942000.0,6
+335,Nicaragua,1981,Sector Privado,4400000.0,1
+336,Nicaragua,2021,Sector Público,804903013.99,7
+337,Nicaragua,1969,Sector Privado,1015356.0,8
+338,Guatemala,1978,Sector Privado,1700000.0,4
+339,Costa Rica,1972,Sector Público,13976200.0,8
+340,El Salvador,2016,Sector Público,383647251.84000003,4
+341,Nicaragua,1967,Sector Público,4291000.0,3
+342,Nicaragua,1994,Sector Privado,19003900.0,12
+343,El Salvador,1976,Sector Público,15300000.0,2
+344,Guatemala,1983,Sector Público,6900000.0,1
+345,El Salvador,1979,Sector Público,41850000.0,6
+346,Nicaragua,1968,Sector Privado,534714.0,3
+347,Guatemala,2020,Sector Privado,1500000.0,1
+348,Guatemala,1984,Sector Público,1200000.0,1
+349,Panamá,2013,Sector Privado,10000000.0,1
+350,Nicaragua,1992,Sector Público,63977012.0,9
+351,Nicaragua,1995,Sector Privado,7875000.0,4
+352,Nicaragua,2000,Sector Privado,15100000.0,6
+353,Nicaragua,2011,Sector Privado,72200000.0,2
+354,Nicaragua,1973,Sector Privado,1570671.0,7
+355,República Dominicana,2024,Sector Público,100000000.0,1
+356,Nicaragua,1977,Sector Público,20210000.0,8
+357,El Salvador,2004,Sector Privado,67500000.0,12
+358,Nicaragua,1982,Sector Público,19700000.0,4
+359,El Salvador,2007,Sector Privado,120215000.0,8
+360,Guatemala,1996,Sector Privado,75665700.0,23
+361,El Salvador,2022,Sector Público,836000000.0,5
+362,Honduras,2015,Sector Público,212300000.0,2
+363,El Salvador,2017,Sector Público,246000000.0,2
+364,Nicaragua,2003,Sector Público,21790000.0,4
+365,El Salvador,2014,Sector Público,296887500.0,5
+366,Guatemala,1975,Sector Privado,11110000.0,6
+367,Nicaragua,2008,Sector Privado,107150000.0,12
+368,Nicaragua,1965,Sector Público,2000000.0,1
+369,Nicaragua,1981,Sector Público,43250000.0,6
+370,Panamá,2021,Sector Privado,125000000.0,1
+371,Nicaragua,1969,Sector Público,5720537.0,7
+372,Guatemala,1978,Sector Público,48790000.0,8
+373,Costa Rica,2010,Sector Privado,35760000.0,9
+374,Guatemala,1993,Sector Privado,38556600.0,31
+375,Nicaragua,1994,Sector Público,75129872.0,9
+376,El Salvador,1998,Sector Privado,28900000.0,8
+377,Honduras,1971,Sector Privado,6223272.0,20
+378,El Salvador,1997,Sector Privado,55147400.0,15
+379,Nicaragua,1968,Sector Público,4000000.0,1
+380,Honduras,2018,Sector Privado,40000000.0,3
+381,Honduras,1974,Sector Privado,6857000.0,13
+382,República Dominicana,2013,Sector Público,80200000.0,1
+383,Nicaragua,1995,Sector Público,15600000.0,4
+384,Nicaragua,2011,Sector Público,90234985.0,5
+385,Nicaragua,1973,Sector Público,14255857.0,9
+386,El Salvador,2004,Sector Público,155625000.0,3
+387,El Salvador,2007,Sector Público,351500000.0,7
+388,Guatemala,1996,Sector Público,130971000.0,3
+389,Guatemala,1987,Sector Privado,1200000.0,1
+390,Nicaragua,2015,Sector Privado,40000000.0,1
+391,Guatemala,1964,Sector Privado,390000.0,2
+392,Guatemala,2002,Sector Privado,104054179.0,9
+393,Guatemala,1975,Sector Público,16140000.0,5
+394,Nicaragua,2008,Sector Público,161893879.0,4
+395,República Dominicana,2021,Sector Público,410000000.0,2
+396,Guatemala,1980,Sector Privado,8200000.0,3
+397,Costa Rica,2010,Sector Público,182693958.0,3
+398,Guatemala,1993,Sector Público,70800000.0,3
+399,El Salvador,1998,Sector Público,177771000.0,3
+400,Honduras,1971,Sector Público,3475000.0,5
+401,El Salvador,1997,Sector Público,106908000.0,3
+402,Honduras,2018,Sector Público,44262590.7,1
+403,Honduras,1974,Sector Público,16355000.0,11
+404,Panamá,2011,Sector Privado,25000000.0,1
+405,El Salvador,2019,Sector Privado,45000000.0,1
+406,Guatemala,2001,Sector Privado,29300000.0,3
+407,Guatemala,2025,Sector Privado,115000000.0,2
+408,Guatemala,1987,Sector Público,26620000.0,5
+409,Nicaragua,2015,Sector Público,156016547.10000002,4
+410,Guatemala,1964,Sector Público,20000.0,1
+411,Guatemala,2002,Sector Público,40467835.0,2
+412,Guatemala,2009,Sector Privado,2594200.0,4
+413,Panamá,2008,Sector Privado,30100000.0,1
+414,Guatemala,1980,Sector Público,33640000.0,8
+415,Costa Rica,2023,Sector Público,1000000000.0,3
+416,Guatemala,2016,Sector Público,300000000.0,1
+417,El Salvador,2006,Sector Privado,158210440.0,21
+418,Honduras,1983,Sector Público,7560000.0,3
+419,El Salvador,2005,Sector Privado,43850000.0,13
+420,Honduras,2020,Sector Privado,111718430.0,4
+421,Honduras,1984,Sector Público,14100000.0,2
+422,El Salvador,2019,Sector Público,531162715.48,5
+423,Guatemala,2001,Sector Público,97651252.0,4
+424,Guatemala,2025,Sector Público,60000000.0,1
+425,Guatemala,2022,Sector Privado,100000000.0,1
+426,Panamá,2015,Sector Privado,20000000.0,1
+427,Guatemala,2017,Sector Privado,37000000.0,2
+428,Guatemala,2014,Sector Privado,56607000.0,3
+429,Guatemala,2009,Sector Público,143121400.0,3
+430,Honduras,1978,Sector Privado,3250000.0,3
+431,El Salvador,1970,Sector Privado,5478600.0,6
+432,Honduras,1993,Sector Privado,11487100.0,13
+433,El Salvador,2006,Sector Público,275000000.0,3
+434,Nicaragua,1971,Sector Privado,2825000.0,8
+435,El Salvador,2005,Sector Público,232528347.75,5
+436,Honduras,2020,Sector Público,846779622.95,6
+437,Nicaragua,1974,Sector Privado,2800000.0,3
+438,Guatemala,1966,Sector Privado,4211080.0,14
+439,Guatemala,2007,Sector Privado,567905000.0,19
+440,Honduras,1996,Sector Privado,58400000.0,14
+441,Guatemala,2022,Sector Público,170000000.0,1
+442,Panamá,2015,Sector Público,200000000.0,1
+443,Guatemala,2017,Sector Público,100000000.0,1
+444,Guatemala,2014,Sector Público,250000000.0,1
+445,Honduras,1975,Sector Privado,19215089.0,18
+446,Honduras,1978,Sector Público,28080000.0,8
+447,El Salvador,1970,Sector Público,2397000.0,4
+448,Honduras,1993,Sector Público,86941000.0,9
+449,Guatemala,1962,Sector Privado,190000.0,2
+450,Nicaragua,1971,Sector Público,11077486.0,10
+451,Guatemala,1979,Sector Privado,2250000.0,5
+452,Nicaragua,2018,Sector Público,365114696.0,3
+453,Nicaragua,1974,Sector Público,22287000.0,12
+454,Guatemala,1966,Sector Público,4352000.0,2
+455,Honduras,2001,Sector Privado,8795064.0,5
+456,Honduras,1996,Sector Público,15910000.0,1
+457,Honduras,1987,Sector Público,30478300.0,8
+458,Honduras,1964,Sector Privado,653000.0,3
+459,Honduras,2002,Sector Privado,15800000.0,3
+460,Honduras,1975,Sector Público,26194000.0,10
+461,Honduras,1980,Sector Privado,5642500.0,6
+462,El Salvador,1972,Sector Privado,301360.0,2
+463,Honduras,2016,Sector Privado,40000000.0,1
+464,Guatemala,1976,Sector Privado,6050000.0,4
+465,Nicaragua,1983,Sector Público,13280000.0,3
+466,Guatemala,1979,Sector Público,8100000.0,1
+467,Nicaragua,2020,Sector Público,698696935.0,4
+468,Guatemala,2004,Sector Privado,31125000.0,7
+469,Honduras,2001,Sector Público,37425000.0,5
+470,Honduras,2025,Sector Público,465000000.0,2
+471,Honduras,2022,Sector Privado,15000000.0,1
+472,Honduras,1964,Sector Público,654000.0,2
+473,Honduras,2002,Sector Público,25912285.0,3
+474,Honduras,2009,Sector Privado,5500000.0,2
+475,Honduras,1980,Sector Público,39000000.0,7
+476,El Salvador,1972,Sector Público,6730000.0,4
+477,Honduras,2016,Sector Público,62182437.78,2
+478,Guatemala,1976,Sector Público,27120000.0,5
+479,Guatemala,1997,Sector Privado,41337000.0,13
+480,Panamá,2018,Sector Privado,141000000.0,3
+481,Guatemala,2004,Sector Público,57635000.0,2
+482,Honduras,2007,Sector Privado,86852100.0,22
+483,Nicaragua,1996,Sector Privado,11737565.0,11
+484,Honduras,2022,Sector Público,470000000.0,2
+485,Honduras,2017,Sector Privado,30472000.0,1
+486,Honduras,2014,Sector Privado,88700000.0,4
+487,Honduras,2009,Sector Público,90000000.0,1
+488,Nicaragua,1978,Sector Privado,1400000.0,3
+489,El Salvador,2010,Sector Privado,6325000.0,9
+490,México,2016,Sector Público,150000000.0,1
+491,Guatemala,1998,Sector Privado,63237300.0,13
+492,Guatemala,1997,Sector Público,177159773.0,6
+493,Panamá,2018,Sector Público,660000000.0,4
+494,Guatemala,2019,Sector Privado,60000000.0,1
+495,Honduras,2007,Sector Público,75500000.0,2
+496,Nicaragua,2025,Sector Público,235000000.0,1
+497,Nicaragua,2022,Sector Público,200000000.0,1
+498,Honduras,2017,Sector Público,236834740.0,2
+499,Honduras,2014,Sector Público,122044117.73,2
+500,Nicaragua,1975,Sector Privado,21890000.0,10
+501,Nicaragua,1978,Sector Público,28471000.0,7
+502,El Salvador,2010,Sector Público,126540000.0,4
+503,Nicaragua,1993,Sector Privado,1500000.0,2
+504,Guatemala,1998,Sector Público,314750000.0,9
+505,Guatemala,2005,Sector Privado,105095000.0,11
+506,Panamá,2020,Sector Público,400000000.0,2
+507,Guatemala,2019,Sector Público,285700000.0,1
+508,Nicaragua,2001,Sector Privado,19350000.0,8
+509,Panamá,2025,Sector Privado,33200000.0,2
+510,Panamá,2022,Sector Privado,85000000.0,2
+511,Nicaragua,1964,Sector Privado,1317700.0,6
+512,Nicaragua,2002,Sector Privado,50043635.74,18
+513,Nicaragua,1975,Sector Público,17184000.0,8
+514,Nicaragua,1980,Sector Público,65285000.0,16
+515,Guatemala,1970,Sector Privado,2507184.0,7
+516,Nicaragua,1993,Sector Público,66265800.0,8
+517,Guatemala,2006,Sector Privado,377049000.0,28
+518,Guatemala,2005,Sector Público,558270000.0,3
+519,República Dominicana,2018,Sector Privado,154000000.0,2
+520,Honduras,1966,Sector Privado,2200000.0,7
+521,Nicaragua,2007,Sector Privado,199125700.0,18
+522,Panamá,2025,Sector Público,75000000.0,1
+523,Panamá,2022,Sector Público,145000000.0,1
+524,Nicaragua,1964,Sector Público,10052458.0,3
+525,Nicaragua,2002,Sector Público,29138311.95,4
+526,Nicaragua,2009,Sector Privado,21300000.0,9
+527,Guatemala,1970,Sector Público,150000.0,1
+528,Nicaragua,2016,Sector Público,379786817.2,6
+529,Honduras,1962,Sector Privado,445000.0,3
+530,Honduras,1979,Sector Privado,10475600.0,6
+531,República Dominicana,2020,Sector Público,30000000.0,1
+532,Honduras,1966,Sector Público,11794500.0,6
+533,Nicaragua,2007,Sector Público,84769347.0,5
+534,Regional,2025,Sector Público,37187480.0,1
+535,República Dominicana,2022,Sector Público,580000000.0,4
+536,Nicaragua,2017,Sector Privado,10000000.0,1
+537,Nicaragua,2014,Sector Público,333883194.0,4
+538,Nicaragua,2009,Sector Público,299987137.88,4
+539,Guatemala,1972,Sector Privado,5580370.0,8
+540,Panamá,2016,Sector Privado,156000000.0,2
+541,Honduras,1962,Sector Público,120000.0,1
+542,Honduras,1979,Sector Público,39655000.0,8
+543,Honduras,2004,Sector Privado,79846537.0,11
+544,Panamá,2007,Sector Privado,97033333.33,2
+545,República Dominicana,2025,Sector Privado,100000000.0,1
+546,Nicaragua,2017,Sector Público,468774000.0,4
+547,Panamá,2014,Sector Privado,30000000.0,1
+548,Panamá,2009,Sector Privado,20000000.0,1
+549,Guatemala,1972,Sector Público,9500000.0,2
+550,Panamá,2016,Sector Público,100000000.0,1
+551,Honduras,1976,Sector Privado,3215000.0,7
+552,Honduras,1997,Sector Privado,37947000.0,12
+553,Honduras,2004,Sector Público,117830000.0,4
+554,Panamá,2007,Sector Público,19000000.0,1
+555,República Dominicana,2025,Sector Público,80900000.0,1
+556,Panamá,2017,Sector Privado,20000000.0,1
+557,Guatemala,2010,Sector Privado,71415000.0,4
+558,República Dominicana,2016,Sector Público,100000000.0,1
+559,Honduras,1976,Sector Público,21441200.0,6
+560,Honduras,1997,Sector Público,4900000.0,1
+561,Honduras,2019,Sector Privado,25000000.0,1
+562,República Dominicana,2007,Sector Público,50000000.0,1
+563,Panamá,2017,Sector Público,170000000.0,2
+564,Guatemala,2010,Sector Público,265000000.0,1
+565,Honduras,1998,Sector Privado,147449550.0,23
+566,Honduras,2005,Sector Privado,79705800.0,12
+567,Honduras,2019,Sector Público,143586952.0,2
+568,República Dominicana,2017,Sector Público,249600000.0,1
+569,Guatemala,2023,Sector Privado,15000000.0,1
+570,Honduras,1998,Sector Público,45500000.0,2
+571,Honduras,2005,Sector Público,125272463.49000001,9
+572,Nicaragua,1966,Sector Privado,6725000.0,5
+573,Honduras,1970,Sector Privado,11407500.0,19
+574,Honduras,2006,Sector Privado,113327000.0,14
+575,Nicaragua,1979,Sector Privado,11050000.0,6
+576,Nicaragua,1966,Sector Público,2722240.0,3
+577,Honduras,1970,Sector Público,8114500.0,5
+578,Honduras,2006,Sector Público,125300000.05000001,2
+579,Nicaragua,1979,Sector Público,2750000.0,2
+580,Nicaragua,2004,Sector Privado,24482000.0,17
+581,Honduras,1972,Sector Privado,3962000.0,13
+582,Nicaragua,1962,Sector Privado,937200.0,1
+583,Nicaragua,1997,Sector Privado,7500000.0,3
+584,Nicaragua,2004,Sector Público,11025000.0,3
+585,Honduras,1972,Sector Público,2680300.0,8
+586,Nicaragua,1976,Sector Privado,980000.0,1
+587,Nicaragua,2005,Sector Privado,60775872.66,16
+588,Nicaragua,2019,Sector Privado,70800000.0,2
+589,Honduras,2010,Sector Privado,118182669.0,7
+590,Nicaragua,1976,Sector Público,21360000.0,5
+591,Nicaragua,2005,Sector Público,49632000.0,6
+592,Nicaragua,2019,Sector Público,585344540.0,2
+593,Honduras,2010,Sector Público,356188510.0,3
+594,Nicaragua,1998,Sector Privado,32711300.0,7
+595,Panamá,2005,Sector Público,20000000.0,1
+596,Panamá,2019,Sector Privado,50000000.0,1
+597,Honduras,2023,Sector Privado,20000000.0,1
+598,Nicaragua,2006,Sector Privado,103330434.0,22
+599,Panamá,2019,Sector Público,134000000.0,2
+600,Honduras,2023,Sector Público,766988111.14,3
+601,Nicaragua,2006,Sector Público,196218000.0,3
+602,Nicaragua,1970,Sector Privado,842236.0,6
+603,Nicaragua,1970,Sector Público,9534000.0,6
+604,Nicaragua,1972,Sector Privado,3174914.0,8
+605,Nicaragua,1972,Sector Público,7834300.0,5
+606,Nicaragua,2010,Sector Privado,30400000.0,3
+607,Nicaragua,2010,Sector Público,117826951.0,2
+608,Panamá,2010,Sector Privado,12790915.0,2
+609,República Dominicana,2010,Sector Público,150000000.0,2
+610,República Dominicana,2023,Sector Público,908226411.0,3

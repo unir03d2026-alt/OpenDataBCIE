@@ -1,0 +1,28 @@
+api:
+  base_url: "https://datosabiertos.bcie.org/api/3/action/datastore_search"
+  resource_id: "ce88a753-57f5-4266-a57e-394600c8435d"
+  limit: 32000
+
+data:
+  raw_path: "data/01-raw/aprobaciones_bcie.csv"
+  processed_path: "data/02-preprocessed/aprobaciones_limpias.csv"
+
+  column_renames:
+    "ANIO_APROBACION": "Anio_Origen"
+    "MONTO_BRUTO_USD": "Monto_Aprobado"
+    "PAIS": "Pais"
+    "SECTOR_INSTITUCIONAL": "Sector_Economico"
+
+  date_col: "Fecha_Aprobacion"
+  value_col: "Monto_Aprobado"
+  group_col: "Pais"
+
+model:
+  algorithm: "agglomerative"
+  features:
+    - "Monto_Aprobado"
+    - "CANTIDAD_APROBACIONES"
+  linkage: "ward"
+  n_clusters: 3
+  output_path: "data/04-predictions/aprobaciones_clusters.csv"
+  plots_path: "data/05-plots"

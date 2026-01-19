@@ -1,0 +1,190 @@
+DOCUMENTACIÓN DEL MODELO - Exportado: 2026-01-16  
+Conexión: PBIDesktop--58072
+Modelo: Model
+
+1) LISTADO DE TABLAS
+--------------------
+- Dim_Clientes
+- Fact_Ventas
+- Dim_Nivel_Venta
+- Dim_Calendario
+- Medidas
+- Porcentaje de Costo
+
+2) RELACIONES
+-------------
+1) Fact_Ventas[ID Cliente] --> Dim_Clientes[ID Cliente]
+   - Cardinalidad: 1:1
+   - Filtrado cruzado: BothDirections
+   - Estado: Activa
+   - Nombre: AutoDetected_ce3bd67f-b6bf-49d9-bc0a-e20816500d72
+
+2) Fact_Ventas[Nivel Venta ID] --> Dim_Nivel_Venta[Nivel Venta ID]
+   - Cardinalidad: Many:1
+   - Filtrado cruzado: OneDirection
+   - Estado: Activa
+   - Nombre: AutoDetected_8900bbf1-d943-4925-ac3f-4a09d969f468
+
+3) Fact_Ventas[Fecha] --> Dim_Calendario[Fecha]
+   - Cardinalidad: Many:1
+   - Filtrado cruzado: OneDirection
+   - Estado: Activa
+   - Nombre: 9f9b4bac-4061-c344-6252-440b28d82bcc
+
+3) COLUMNAS POR TABLA
+---------------------
+--- Dim_Clientes ---
+- RowNumber-2662979B-1795-4F74-8F37-6A1BA8059B61
+- ID Cliente
+- Genero
+- Edad
+- Rango Edad ID
+- Rango Edad
+- Rango Edad Desc
+- Etapa de Vida
+
+--- Fact_Ventas ---
+- RowNumber-2662979B-1795-4F74-8F37-6A1BA8059B61
+- ID Transaccion
+- Fecha
+- ID Cliente
+- Categoria
+- Cantidad
+- Precio Unitario
+- Ventas Totales
+- Error en Calculo
+- Nivel Venta ID
+
+--- Dim_Nivel_Venta ---
+- RowNumber-2662979B-1795-4F74-8F37-6A1BA8059B61
+- Nivel Venta ID
+- Nivel Venta Rango
+- Nivel Venta Categoria
+
+--- Dim_Calendario ---
+- RowNumber-2662979B-1795-4F74-8F37-6A1BA8059B61
+- Fecha
+- Año
+- Inicio Año
+- Fin Año
+- Semestre ID
+- Semestre
+- Semestre Nombre
+- Inicio Semestre
+- Fin Semestre
+- Trimestre ID
+- Trimestre
+- Trimestre Nombre
+- Inicio Trimestre
+- Fin Trimestre
+- Mes ID
+- Mes Nombre
+- Mes Corto
+- Inicio Mes
+- Fin Mes
+- Periodo ID
+- Periodo
+- Semana del Año
+- Semana del Mes
+- Inicio Semana
+- Fin Semana
+- Dia del Mes
+- Dia del Año
+- Dia Semana ID
+- Dia Nombre
+- Temporada
+
+--- Medidas (tabla) ---
+- (esta tabla no contiene columnas de datos; almacena medidas)
+
+--- Porcentaje de Costo ---
+- RowNumber-2662979B-1795-4F74-8F37-6A1BA8059B61
+- Porcentaje de Costo
+
+4) MEDIDAS CALCULADAS (nombre, tabla y fórmula DAX)
+--------------------------------------------------
+Tabla: Medidas
+1. Ventas Totales
+   DAX: SUM ( 'Fact_Ventas'[Ventas Totales] )
+
+2. Unidades Vendidas
+   DAX: SUM ( 'Fact_Ventas'[Cantidad] )
+
+3. Total Transacciones
+   DAX: COUNTROWS ( 'Fact_Ventas' )
+
+4. Total Clientes
+   DAX: DISTINCTCOUNT ( 'Fact_Ventas'[ID Cliente] )
+
+5. Ticket Promedio
+   DAX: DIVIDE ( [Ventas Totales], [Total Transacciones], 0 )
+
+6. Promedio Gasto por Cliente
+   DAX: DIVIDE ( [Ventas Totales], [Total Clientes], 0 )
+
+7. Costo Estimado
+   DAX: [Ventas Totales] * 'Porcentaje de Costo'[Valor de Porcentaje de Costo]
+
+8. Margen Bruto
+   DAX: [Ventas Totales] - [Costo Estimado]
+
+9. % Margen
+   DAX: DIVIDE ( [Margen Bruto], [Ventas Totales], 0 )
+
+10. Edad Promedio
+    DAX: AVERAGE(Dim_Clientes[Edad])
+
+11. Derechos Reservados
+    DAX: VAR _Texto =
+        "© 2026 | UNIR | Herramientas de Visualización | Entrega 2 | Equipo 03-D | Desarrollado por Edgar Garcia, Norman Sabillon y Wilson Aguilar | Todos los derechos reservados."
+    RETURN
+    "<div style='width:100%; height:100%; display:flex; justify-content:center; align-items:center; background:transparent; font-family:"Segoe UI", sans-serif;'>\n  <div style='width:100%; text-align:center; font-size:13px; font-weight:700; color:#64748B; letter-spacing:0.4px; line-height:1.4;'>\n    " & _Texto & "\n  </div>\n</div>"
+
+Tabla: Porcentaje de Costo
+12. Valor de Porcentaje de Costo
+    DAX: SELECTEDVALUE('Porcentaje de Costo'[Porcentaje de Costo], 0.6)
+
+5) COLUMNAS CALCULADAS (DAX)
+----------------------------
+- Ninguna columna marcada explícitamente como columna calculada en las tablas `Dim_Clientes`, `Fact_Ventas`, `Dim_Nivel_Venta`, `Porcentaje de Costo` o `Medidas`.
+
+- Nota: La tabla `Dim_Calendario` se creó como una tabla calculada (sourceType: Calculated). Fórmula/expresión utilizada en el modelo (resumen):
+
+  VAR FechaMin = MIN ( 'Fact_Ventas'[Fecha] )
+  VAR FechaMax = MAX ( 'Fact_Ventas'[Fecha] )
+  RETURN
+    ADDCOLUMNS (
+      FILTER ( CALENDARAUTO(), [Date] >= FechaMin && [Date] <= FechaMax ),
+      "Año", YEAR ( [Date] ),
+      "Inicio Año", DATE ( YEAR ( [Date] ), 1, 1 ),
+      "Fin Año", DATE ( YEAR ( [Date] ), 12, 31 ),
+      "Semestre ID", IF ( MONTH ( [Date] ) <= 6, 1, 2 ),
+      "Semestre", "S" & IF ( MONTH ( [Date] ) <= 6, 1, 2 ),
+      "Semestre Nombre", "Semestre " & IF ( MONTH ( [Date] ) <= 6, 1, 2 ),
+      "Inicio Semestre", IF ( MONTH ( [Date] ) <= 6, DATE ( YEAR ( [Date] ), 1, 1 ), DATE ( YEAR ( [Date] ), 7, 1 ) ),
+      "Fin Semestre", IF ( MONTH ( [Date] ) <= 6, DATE ( YEAR ( [Date] ), 6, 30 ), DATE ( YEAR ( [Date] ), 12, 31 ) ),
+      "Trimestre ID", QUARTER ( [Date] ),
+      "Trimestre", "T" & QUARTER ( [Date] ),
+      "Trimestre Nombre", "Trimestre " & QUARTER ( [Date] ),
+      "Inicio Trimestre", DATE ( YEAR ( [Date] ), ROUNDDOWN ( ( MONTH ( [Date] ) - 1 ) / 3, 0 ) * 3 + 1, 1 ),
+      "Fin Trimestre", EOMONTH ( DATE ( YEAR ( [Date] ), ROUNDDOWN ( ( MONTH ( [Date] ) - 1 ) / 3, 0 ) * 3 + 1, 1 ), 2 ),
+      "Mes ID", MONTH ( [Date] ),
+      "Mes Nombre", FORMAT ( [Date], "mmmm", "es-MX" ),
+      "Mes Corto", FORMAT ( [Date], "MMM", "es-MX" ),
+      "Inicio Mes", DATE ( YEAR ( [Date] ), MONTH ( [Date] ), 1 ),
+      "Fin Mes", EOMONTH ( [Date], 0 ),
+      "Periodo ID", FORMAT ( [Date], "yyyyMM" ),
+      "Periodo", FORMAT ( [Date], "MMM-yyyy", "es-MX" ),
+      "Semana del Año", WEEKNUM ( [Date], 2 ),
+      "Semana del Mes", 1 + WEEKNUM ( [Date], 2 ) - WEEKNUM ( DATE ( YEAR ( [Date] ), MONTH ( [Date] ), 1 ), 2 ),
+      "Inicio Semana", [Date] - WEEKDAY ( [Date], 2 ) + 1,
+      "Fin Semana", [Date] - WEEKDAY ( [Date], 2 ) + 7,
+      "Dia del Mes", DAY ( [Date] ),
+      "Dia del Año", DATEDIFF ( DATE ( YEAR ( [Date] ), 1, 1 ), [Date], DAY ) + 1,
+      "Dia Semana ID", WEEKDAY ( [Date], 2 ),
+      "Dia Nombre", FORMAT ( [Date], "dddd", "es-MX" ),
+      "Temporada", SWITCH ( TRUE (), MONTH ( [Date] ) = 12 || MONTH ( [Date] ) <= 2, "Invierno", MONTH ( [Date] ) >= 3 && MONTH ( [Date] ) <= 5, "Primavera", MONTH ( [Date] ) >= 6 && MONTH ( [Date] ) <= 8, "Verano", "Otoño" )
+    )
+
+
+--- FIN DEL DOCUMENTO ---

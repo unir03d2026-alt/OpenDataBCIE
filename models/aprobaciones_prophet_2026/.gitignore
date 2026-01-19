@@ -1,7 +1,5 @@
-data/
 __pycache__/
 .env
 .ipynb_checkpoints/
-logs/
 node_modules/
 .gemini/
