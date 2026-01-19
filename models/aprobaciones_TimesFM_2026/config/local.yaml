@@ -1,0 +1,30 @@
+api:
+  base_url: "https://datosabiertos.bcie.org/api/3/action/datastore_search"
+  resource_id: "ce88a753-57f5-4266-a57e-394600c8435d"
+  limit: 32000
+
+data:
+  raw_path: "data/01-raw/aprobaciones_bcie.csv"
+  processed_path: "data/02-preprocessed/aprobaciones_limpias.csv"
+  
+  column_renames:
+    "ANIO_APROBACION": "Anio_Origen"
+    "MONTO_BRUTO_USD": "Monto_Aprobado"
+    "PAIS": "Pais"
+    "SECTOR_INSTITUCIONAL": "Sector_Economico"
+
+  date_col: "Fecha_Aprobacion"
+  value_col: "Monto_Aprobado"
+  group_col: "Pais"
+
+model:
+  horizon_years: 5
+  freq: "YS" # Frecuencia: Inicio de Año
+  # Configuración específica de TimesFM
+  repo_id: "google/timesfm-2.0-500m"
+  context_len: 12 # Años de contexto histórico a considerar
+  batch_size: 32
+
+paths:
+  evaluation_path: "data/05-evaluation"
+  predictions_path: "data/04-predictions"

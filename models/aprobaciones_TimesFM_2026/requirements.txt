@@ -1,8 +1,11 @@
+torch
+transformers
+accelerate
 pandas
 numpy
-prophet
 scikit-learn
 pyyaml
 matplotlib
 pytest
 requests
+utilsforecast
