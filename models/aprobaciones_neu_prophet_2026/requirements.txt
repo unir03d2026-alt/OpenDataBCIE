@@ -1,0 +1,8 @@
+pandas
+numpy
+neuralprophet
+scikit-learn
+pyyaml
+matplotlib
+pytest
+requests
