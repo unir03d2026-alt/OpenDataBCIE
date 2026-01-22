@@ -1,6 +1,6 @@
 pandas
 numpy
-prophet
+neuralprophet
 scikit-learn
 pyyaml
 matplotlib
