@@ -1,0 +1,34 @@
+{
+  "run_id": "run_20260121_145617_a08ece",
+  "n_clusters": 186,
+  "noise_pct": 9.180327868852459,
+  "largest_cluster_pct": 1.639344262295082,
+  "dbcv_relative_validity": 0.4277432600012617,
+  "relative_validity": 0.4277432600012617,
+  "persistence_mean": 1.0,
+  "persistence_min": 1.0,
+  "persistence_max": 1.0,
+  "silhouette_valid": 0.6437347698418887,
+  "davies_bouldin_valid": 0.3771158686093689,
+  "calinski_harabasz_valid": 857.5979222345882,
+  "runtime_seconds": 0.14264297485351562,
+  "features": [
+    "Monto_Aprobado",
+    "CANTIDAD_APROBACIONES"
+  ],
+  "log_transform_feature": "Monto_Aprobado",
+  "scaler": "standard",
+  "params": {
+    "min_cluster_size": 2,
+    "min_samples": 1,
+    "metric": "euclidean",
+    "cluster_selection_epsilon": 0.0
+  },
+  "versions": {
+    "python": "3.13.9",
+    "sklearn": "1.7.1",
+    "hdbscan": "unknown",
+    "pandas": "2.3.1",
+    "numpy": "2.3.2"
+  }
+}

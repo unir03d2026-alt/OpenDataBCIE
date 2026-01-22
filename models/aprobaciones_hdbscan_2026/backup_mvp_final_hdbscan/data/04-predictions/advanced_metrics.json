@@ -1,0 +1,1 @@
+{"n_clusters": 10, "noise_pct": 39.34426229508197, "silhouette_valid": 0.07068228478872533, "davies_bouldin_valid": 1.5313370868045715, "calinski_harabasz_valid": 108.13833849483757, "relative_validity": 0.02737708790382745, "size_cv": 0.4670282782766021, "min_size_pct": 2.9508196721311477, "max_size_pct": 12.786885245901638, "min_cluster_size": 15, "min_samples": 5}

@@ -1,0 +1,5762 @@
+[
+  {
+    "iteration": 0,
+    "min_cluster_size": 15,
+    "min_samples": 1,
+    "n_clusters": 17,
+    "noise_pct": 26.72,
+    "dbcv_score": 0.12868860463565868
+  },
+  {
+    "iteration": 1,
+    "min_cluster_size": 15,
+    "min_samples": 2,
+    "n_clusters": 17,
+    "noise_pct": 27.05,
+    "dbcv_score": 0.1194653309209718
+  },
+  {
+    "iteration": 2,
+    "min_cluster_size": 15,
+    "min_samples": 3,
+    "n_clusters": 16,
+    "noise_pct": 31.31,
+    "dbcv_score": 0.08164638766456707
+  },
+  {
+    "iteration": 3,
+    "min_cluster_size": 15,
+    "min_samples": 4,
+    "n_clusters": 10,
+    "noise_pct": 37.38,
+    "dbcv_score": 0.032990136303133064
+  },
+  {
+    "iteration": 4,
+    "min_cluster_size": 15,
+    "min_samples": 5,
+    "n_clusters": 10,
+    "noise_pct": 39.34,
+    "dbcv_score": 0.01660577463019042
+  },
+  {
+    "iteration": 5,
+    "min_cluster_size": 15,
+    "min_samples": 6,
+    "n_clusters": 9,
+    "noise_pct": 47.87,
+    "dbcv_score": 0.06079029411737655
+  },
+  {
+    "iteration": 6,
+    "min_cluster_size": 15,
+    "min_samples": 7,
+    "n_clusters": 9,
+    "noise_pct": 52.13,
+    "dbcv_score": 0.029837105921538855
+  },
+  {
+    "iteration": 7,
+    "min_cluster_size": 15,
+    "min_samples": 8,
+    "n_clusters": 7,
+    "noise_pct": 63.11,
+    "dbcv_score": 0.00488658591803946
+  },
+  {
+    "iteration": 8,
+    "min_cluster_size": 15,
+    "min_samples": 9,
+    "n_clusters": 6,
+    "noise_pct": 66.23,
+    "dbcv_score": 0.009127637921427761
+  },
+  {
+    "iteration": 9,
+    "min_cluster_size": 15,
+    "min_samples": 10,
+    "n_clusters": 5,
+    "noise_pct": 70.66,
+    "dbcv_score": 0.006617943510475521
+  },
+  {
+    "iteration": 10,
+    "min_cluster_size": 15,
+    "min_samples": 11,
+    "n_clusters": 4,
+    "noise_pct": 71.31,
+    "dbcv_score": 0.0013574554354700218
+  },
+  {
+    "iteration": 11,
+    "min_cluster_size": 15,
+    "min_samples": 12,
+    "n_clusters": 4,
+    "noise_pct": 75.57,
+    "dbcv_score": 0.007294895454030503
+  },
+  {
+    "iteration": 12,
+    "min_cluster_size": 15,
+    "min_samples": 13,
+    "n_clusters": 3,
+    "noise_pct": 81.31,
+    "dbcv_score": 0.006762682866212345
+  },
+  {
+    "iteration": 13,
+    "min_cluster_size": 15,
+    "min_samples": 14,
+    "n_clusters": 3,
+    "noise_pct": 74.75,
+    "dbcv_score": 0.007611156821897662
+  },
+  {
+    "iteration": 14,
+    "min_cluster_size": 15,
+    "min_samples": 15,
+    "n_clusters": 2,
+    "noise_pct": 48.69,
+    "dbcv_score": 0.00028402971694317067
+  },
+  {
+    "iteration": 15,
+    "min_cluster_size": 15,
+    "min_samples": 16,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 16,
+    "min_cluster_size": 15,
+    "min_samples": 17,
+    "n_clusters": 3,
+    "noise_pct": 87.54,
+    "dbcv_score": 0.003769168417327103
+  },
+  {
+    "iteration": 17,
+    "min_cluster_size": 15,
+    "min_samples": 18,
+    "n_clusters": 3,
+    "noise_pct": 89.02,
+    "dbcv_score": 0.003843786029444632
+  },
+  {
+    "iteration": 18,
+    "min_cluster_size": 15,
+    "min_samples": 19,
+    "n_clusters": 3,
+    "noise_pct": 89.18,
+    "dbcv_score": 0.00294313002957667
+  },
+  {
+    "iteration": 19,
+    "min_cluster_size": 15,
+    "min_samples": 20,
+    "n_clusters": 3,
+    "noise_pct": 87.38,
+    "dbcv_score": 0.003019953842535482
+  },
+  {
+    "iteration": 20,
+    "min_cluster_size": 16,
+    "min_samples": 1,
+    "n_clusters": 15,
+    "noise_pct": 25.25,
+    "dbcv_score": 0.12469444979488173
+  },
+  {
+    "iteration": 21,
+    "min_cluster_size": 16,
+    "min_samples": 2,
+    "n_clusters": 15,
+    "noise_pct": 25.9,
+    "dbcv_score": 0.11482066473779588
+  },
+  {
+    "iteration": 22,
+    "min_cluster_size": 16,
+    "min_samples": 3,
+    "n_clusters": 12,
+    "noise_pct": 30.82,
+    "dbcv_score": 0.08416086469545003
+  },
+  {
+    "iteration": 23,
+    "min_cluster_size": 16,
+    "min_samples": 4,
+    "n_clusters": 10,
+    "noise_pct": 37.38,
+    "dbcv_score": 0.032990136303133064
+  },
+  {
+    "iteration": 24,
+    "min_cluster_size": 16,
+    "min_samples": 5,
+    "n_clusters": 10,
+    "noise_pct": 39.34,
+    "dbcv_score": 0.01660577463019042
+  },
+  {
+    "iteration": 25,
+    "min_cluster_size": 16,
+    "min_samples": 6,
+    "n_clusters": 9,
+    "noise_pct": 47.87,
+    "dbcv_score": 0.06079029411737655
+  },
+  {
+    "iteration": 26,
+    "min_cluster_size": 16,
+    "min_samples": 7,
+    "n_clusters": 7,
+    "noise_pct": 57.05,
+    "dbcv_score": 0.02610693955722116
+  },
+  {
+    "iteration": 27,
+    "min_cluster_size": 16,
+    "min_samples": 8,
+    "n_clusters": 6,
+    "noise_pct": 65.57,
+    "dbcv_score": 0.004559862960312967
+  },
+  {
+    "iteration": 28,
+    "min_cluster_size": 16,
+    "min_samples": 9,
+    "n_clusters": 5,
+    "noise_pct": 68.69,
+    "dbcv_score": 0.00846134142034011
+  },
+  {
+    "iteration": 29,
+    "min_cluster_size": 16,
+    "min_samples": 10,
+    "n_clusters": 5,
+    "noise_pct": 70.66,
+    "dbcv_score": 0.006617943510475521
+  },
+  {
+    "iteration": 30,
+    "min_cluster_size": 16,
+    "min_samples": 11,
+    "n_clusters": 4,
+    "noise_pct": 71.31,
+    "dbcv_score": 0.0013574554354700218
+  },
+  {
+    "iteration": 31,
+    "min_cluster_size": 16,
+    "min_samples": 12,
+    "n_clusters": 4,
+    "noise_pct": 75.57,
+    "dbcv_score": 0.007294895454030503
+  },
+  {
+    "iteration": 32,
+    "min_cluster_size": 16,
+    "min_samples": 13,
+    "n_clusters": 3,
+    "noise_pct": 81.31,
+    "dbcv_score": 0.006762682866212345
+  },
+  {
+    "iteration": 33,
+    "min_cluster_size": 16,
+    "min_samples": 14,
+    "n_clusters": 3,
+    "noise_pct": 74.75,
+    "dbcv_score": 0.007611156821897662
+  },
+  {
+    "iteration": 34,
+    "min_cluster_size": 16,
+    "min_samples": 15,
+    "n_clusters": 2,
+    "noise_pct": 48.69,
+    "dbcv_score": 0.00028402971694317067
+  },
+  {
+    "iteration": 35,
+    "min_cluster_size": 16,
+    "min_samples": 16,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 36,
+    "min_cluster_size": 16,
+    "min_samples": 17,
+    "n_clusters": 3,
+    "noise_pct": 87.54,
+    "dbcv_score": 0.003769168417327103
+  },
+  {
+    "iteration": 37,
+    "min_cluster_size": 16,
+    "min_samples": 18,
+    "n_clusters": 3,
+    "noise_pct": 89.02,
+    "dbcv_score": 0.003843786029444632
+  },
+  {
+    "iteration": 38,
+    "min_cluster_size": 16,
+    "min_samples": 19,
+    "n_clusters": 3,
+    "noise_pct": 89.18,
+    "dbcv_score": 0.00294313002957667
+  },
+  {
+    "iteration": 39,
+    "min_cluster_size": 16,
+    "min_samples": 20,
+    "n_clusters": 2,
+    "noise_pct": 89.84,
+    "dbcv_score": 7.349469046798263e-06
+  },
+  {
+    "iteration": 40,
+    "min_cluster_size": 17,
+    "min_samples": 1,
+    "n_clusters": 14,
+    "noise_pct": 25.25,
+    "dbcv_score": 0.11313137197005042
+  },
+  {
+    "iteration": 41,
+    "min_cluster_size": 17,
+    "min_samples": 2,
+    "n_clusters": 14,
+    "noise_pct": 25.9,
+    "dbcv_score": 0.10335901742019997
+  },
+  {
+    "iteration": 42,
+    "min_cluster_size": 17,
+    "min_samples": 3,
+    "n_clusters": 11,
+    "noise_pct": 33.44,
+    "dbcv_score": 0.09768339367318978
+  },
+  {
+    "iteration": 43,
+    "min_cluster_size": 17,
+    "min_samples": 4,
+    "n_clusters": 10,
+    "noise_pct": 37.38,
+    "dbcv_score": 0.032990136303133064
+  },
+  {
+    "iteration": 44,
+    "min_cluster_size": 17,
+    "min_samples": 5,
+    "n_clusters": 10,
+    "noise_pct": 39.34,
+    "dbcv_score": 0.01660577463019042
+  },
+  {
+    "iteration": 45,
+    "min_cluster_size": 17,
+    "min_samples": 6,
+    "n_clusters": 8,
+    "noise_pct": 51.31,
+    "dbcv_score": 0.05609032501267727
+  },
+  {
+    "iteration": 46,
+    "min_cluster_size": 17,
+    "min_samples": 7,
+    "n_clusters": 7,
+    "noise_pct": 57.05,
+    "dbcv_score": 0.02610693955722116
+  },
+  {
+    "iteration": 47,
+    "min_cluster_size": 17,
+    "min_samples": 8,
+    "n_clusters": 6,
+    "noise_pct": 65.57,
+    "dbcv_score": 0.004559862960312967
+  },
+  {
+    "iteration": 48,
+    "min_cluster_size": 17,
+    "min_samples": 9,
+    "n_clusters": 5,
+    "noise_pct": 68.69,
+    "dbcv_score": 0.00846134142034011
+  },
+  {
+    "iteration": 49,
+    "min_cluster_size": 17,
+    "min_samples": 10,
+    "n_clusters": 5,
+    "noise_pct": 70.66,
+    "dbcv_score": 0.006617943510475521
+  },
+  {
+    "iteration": 50,
+    "min_cluster_size": 17,
+    "min_samples": 11,
+    "n_clusters": 4,
+    "noise_pct": 71.31,
+    "dbcv_score": 0.0013574554354700218
+  },
+  {
+    "iteration": 51,
+    "min_cluster_size": 17,
+    "min_samples": 12,
+    "n_clusters": 3,
+    "noise_pct": 78.2,
+    "dbcv_score": 0.0009903994857189278
+  },
+  {
+    "iteration": 52,
+    "min_cluster_size": 17,
+    "min_samples": 13,
+    "n_clusters": 3,
+    "noise_pct": 81.31,
+    "dbcv_score": 0.006762682866212345
+  },
+  {
+    "iteration": 53,
+    "min_cluster_size": 17,
+    "min_samples": 14,
+    "n_clusters": 3,
+    "noise_pct": 74.75,
+    "dbcv_score": 0.007611156821897662
+  },
+  {
+    "iteration": 54,
+    "min_cluster_size": 17,
+    "min_samples": 15,
+    "n_clusters": 2,
+    "noise_pct": 48.69,
+    "dbcv_score": 0.00028402971694317067
+  },
+  {
+    "iteration": 55,
+    "min_cluster_size": 17,
+    "min_samples": 16,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 56,
+    "min_cluster_size": 17,
+    "min_samples": 17,
+    "n_clusters": 3,
+    "noise_pct": 87.54,
+    "dbcv_score": 0.003769168417327103
+  },
+  {
+    "iteration": 57,
+    "min_cluster_size": 17,
+    "min_samples": 18,
+    "n_clusters": 2,
+    "noise_pct": 73.44,
+    "dbcv_score": 6.18127131664586e-05
+  },
+  {
+    "iteration": 58,
+    "min_cluster_size": 17,
+    "min_samples": 19,
+    "n_clusters": 3,
+    "noise_pct": 89.18,
+    "dbcv_score": 0.00294313002957667
+  },
+  {
+    "iteration": 59,
+    "min_cluster_size": 17,
+    "min_samples": 20,
+    "n_clusters": 2,
+    "noise_pct": 89.84,
+    "dbcv_score": 7.349469046798263e-06
+  },
+  {
+    "iteration": 60,
+    "min_cluster_size": 18,
+    "min_samples": 1,
+    "n_clusters": 11,
+    "noise_pct": 30.82,
+    "dbcv_score": 0.08701393879483986
+  },
+  {
+    "iteration": 61,
+    "min_cluster_size": 18,
+    "min_samples": 2,
+    "n_clusters": 11,
+    "noise_pct": 31.48,
+    "dbcv_score": 0.07806962855901853
+  },
+  {
+    "iteration": 62,
+    "min_cluster_size": 18,
+    "min_samples": 3,
+    "n_clusters": 10,
+    "noise_pct": 36.23,
+    "dbcv_score": 0.07684064679264853
+  },
+  {
+    "iteration": 63,
+    "min_cluster_size": 18,
+    "min_samples": 4,
+    "n_clusters": 10,
+    "noise_pct": 37.38,
+    "dbcv_score": 0.032990136303133064
+  },
+  {
+    "iteration": 64,
+    "min_cluster_size": 18,
+    "min_samples": 5,
+    "n_clusters": 10,
+    "noise_pct": 39.34,
+    "dbcv_score": 0.01660577463019042
+  },
+  {
+    "iteration": 65,
+    "min_cluster_size": 18,
+    "min_samples": 6,
+    "n_clusters": 8,
+    "noise_pct": 51.31,
+    "dbcv_score": 0.05609032501267727
+  },
+  {
+    "iteration": 66,
+    "min_cluster_size": 18,
+    "min_samples": 7,
+    "n_clusters": 7,
+    "noise_pct": 57.05,
+    "dbcv_score": 0.02610693955722116
+  },
+  {
+    "iteration": 67,
+    "min_cluster_size": 18,
+    "min_samples": 8,
+    "n_clusters": 6,
+    "noise_pct": 65.57,
+    "dbcv_score": 0.004559862960312967
+  },
+  {
+    "iteration": 68,
+    "min_cluster_size": 18,
+    "min_samples": 9,
+    "n_clusters": 5,
+    "noise_pct": 68.69,
+    "dbcv_score": 0.00846134142034011
+  },
+  {
+    "iteration": 69,
+    "min_cluster_size": 18,
+    "min_samples": 10,
+    "n_clusters": 5,
+    "noise_pct": 70.66,
+    "dbcv_score": 0.006617943510475521
+  },
+  {
+    "iteration": 70,
+    "min_cluster_size": 18,
+    "min_samples": 11,
+    "n_clusters": 4,
+    "noise_pct": 71.31,
+    "dbcv_score": 0.0013574554354700218
+  },
+  {
+    "iteration": 71,
+    "min_cluster_size": 18,
+    "min_samples": 12,
+    "n_clusters": 3,
+    "noise_pct": 78.2,
+    "dbcv_score": 0.0009903994857189278
+  },
+  {
+    "iteration": 72,
+    "min_cluster_size": 18,
+    "min_samples": 13,
+    "n_clusters": 3,
+    "noise_pct": 81.31,
+    "dbcv_score": 0.006762682866212345
+  },
+  {
+    "iteration": 73,
+    "min_cluster_size": 18,
+    "min_samples": 14,
+    "n_clusters": 3,
+    "noise_pct": 74.75,
+    "dbcv_score": 0.007611156821897662
+  },
+  {
+    "iteration": 74,
+    "min_cluster_size": 18,
+    "min_samples": 15,
+    "n_clusters": 2,
+    "noise_pct": 48.69,
+    "dbcv_score": 0.00028402971694317067
+  },
+  {
+    "iteration": 75,
+    "min_cluster_size": 18,
+    "min_samples": 16,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 76,
+    "min_cluster_size": 18,
+    "min_samples": 17,
+    "n_clusters": 3,
+    "noise_pct": 87.54,
+    "dbcv_score": 0.003769168417327103
+  },
+  {
+    "iteration": 77,
+    "min_cluster_size": 18,
+    "min_samples": 18,
+    "n_clusters": 2,
+    "noise_pct": 73.44,
+    "dbcv_score": 6.18127131664586e-05
+  },
+  {
+    "iteration": 78,
+    "min_cluster_size": 18,
+    "min_samples": 19,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 79,
+    "min_cluster_size": 18,
+    "min_samples": 20,
+    "n_clusters": 2,
+    "noise_pct": 89.84,
+    "dbcv_score": 7.349469046798263e-06
+  },
+  {
+    "iteration": 80,
+    "min_cluster_size": 19,
+    "min_samples": 1,
+    "n_clusters": 11,
+    "noise_pct": 30.82,
+    "dbcv_score": 0.08701393879483986
+  },
+  {
+    "iteration": 81,
+    "min_cluster_size": 19,
+    "min_samples": 2,
+    "n_clusters": 11,
+    "noise_pct": 31.48,
+    "dbcv_score": 0.07806962855901853
+  },
+  {
+    "iteration": 82,
+    "min_cluster_size": 19,
+    "min_samples": 3,
+    "n_clusters": 10,
+    "noise_pct": 36.23,
+    "dbcv_score": 0.07684064679264853
+  },
+  {
+    "iteration": 83,
+    "min_cluster_size": 19,
+    "min_samples": 4,
+    "n_clusters": 10,
+    "noise_pct": 37.38,
+    "dbcv_score": 0.032990136303133064
+  },
+  {
+    "iteration": 84,
+    "min_cluster_size": 19,
+    "min_samples": 5,
+    "n_clusters": 9,
+    "noise_pct": 42.3,
+    "dbcv_score": 0.013165083733686415
+  },
+  {
+    "iteration": 85,
+    "min_cluster_size": 19,
+    "min_samples": 6,
+    "n_clusters": 7,
+    "noise_pct": 54.26,
+    "dbcv_score": 0.07047574372292062
+  },
+  {
+    "iteration": 86,
+    "min_cluster_size": 19,
+    "min_samples": 7,
+    "n_clusters": 6,
+    "noise_pct": 60.0,
+    "dbcv_score": 0.012956343776880304
+  },
+  {
+    "iteration": 87,
+    "min_cluster_size": 19,
+    "min_samples": 8,
+    "n_clusters": 5,
+    "noise_pct": 68.52,
+    "dbcv_score": 0.015413673760948848
+  },
+  {
+    "iteration": 88,
+    "min_cluster_size": 19,
+    "min_samples": 9,
+    "n_clusters": 5,
+    "noise_pct": 68.69,
+    "dbcv_score": 0.00846134142034011
+  },
+  {
+    "iteration": 89,
+    "min_cluster_size": 19,
+    "min_samples": 10,
+    "n_clusters": 5,
+    "noise_pct": 70.66,
+    "dbcv_score": 0.006617943510475521
+  },
+  {
+    "iteration": 90,
+    "min_cluster_size": 19,
+    "min_samples": 11,
+    "n_clusters": 3,
+    "noise_pct": 74.26,
+    "dbcv_score": 0.0012178314478216768
+  },
+  {
+    "iteration": 91,
+    "min_cluster_size": 19,
+    "min_samples": 12,
+    "n_clusters": 3,
+    "noise_pct": 78.2,
+    "dbcv_score": 0.0009903994857189278
+  },
+  {
+    "iteration": 92,
+    "min_cluster_size": 19,
+    "min_samples": 13,
+    "n_clusters": 3,
+    "noise_pct": 81.31,
+    "dbcv_score": 0.006762682866212345
+  },
+  {
+    "iteration": 93,
+    "min_cluster_size": 19,
+    "min_samples": 14,
+    "n_clusters": 3,
+    "noise_pct": 74.75,
+    "dbcv_score": 0.007611156821897662
+  },
+  {
+    "iteration": 94,
+    "min_cluster_size": 19,
+    "min_samples": 15,
+    "n_clusters": 2,
+    "noise_pct": 48.69,
+    "dbcv_score": 0.00028402971694317067
+  },
+  {
+    "iteration": 95,
+    "min_cluster_size": 19,
+    "min_samples": 16,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 96,
+    "min_cluster_size": 19,
+    "min_samples": 17,
+    "n_clusters": 3,
+    "noise_pct": 87.54,
+    "dbcv_score": 0.003769168417327103
+  },
+  {
+    "iteration": 97,
+    "min_cluster_size": 19,
+    "min_samples": 18,
+    "n_clusters": 2,
+    "noise_pct": 73.44,
+    "dbcv_score": 6.18127131664586e-05
+  },
+  {
+    "iteration": 98,
+    "min_cluster_size": 19,
+    "min_samples": 19,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 99,
+    "min_cluster_size": 19,
+    "min_samples": 20,
+    "n_clusters": 2,
+    "noise_pct": 89.84,
+    "dbcv_score": 7.349469046798263e-06
+  },
+  {
+    "iteration": 100,
+    "min_cluster_size": 20,
+    "min_samples": 1,
+    "n_clusters": 9,
+    "noise_pct": 30.82,
+    "dbcv_score": 0.08643130740278088
+  },
+  {
+    "iteration": 101,
+    "min_cluster_size": 20,
+    "min_samples": 2,
+    "n_clusters": 9,
+    "noise_pct": 31.48,
+    "dbcv_score": 0.07749251973939612
+  },
+  {
+    "iteration": 102,
+    "min_cluster_size": 20,
+    "min_samples": 3,
+    "n_clusters": 9,
+    "noise_pct": 36.23,
+    "dbcv_score": 0.05863412212595109
+  },
+  {
+    "iteration": 103,
+    "min_cluster_size": 20,
+    "min_samples": 4,
+    "n_clusters": 9,
+    "noise_pct": 37.38,
+    "dbcv_score": 0.03564661964985809
+  },
+  {
+    "iteration": 104,
+    "min_cluster_size": 20,
+    "min_samples": 5,
+    "n_clusters": 8,
+    "noise_pct": 42.3,
+    "dbcv_score": 0.016463966330118294
+  },
+  {
+    "iteration": 105,
+    "min_cluster_size": 20,
+    "min_samples": 6,
+    "n_clusters": 7,
+    "noise_pct": 54.26,
+    "dbcv_score": 0.07047574372292062
+  },
+  {
+    "iteration": 106,
+    "min_cluster_size": 20,
+    "min_samples": 7,
+    "n_clusters": 6,
+    "noise_pct": 60.0,
+    "dbcv_score": 0.012956343776880304
+  },
+  {
+    "iteration": 107,
+    "min_cluster_size": 20,
+    "min_samples": 8,
+    "n_clusters": 5,
+    "noise_pct": 68.52,
+    "dbcv_score": 0.015413673760948848
+  },
+  {
+    "iteration": 108,
+    "min_cluster_size": 20,
+    "min_samples": 9,
+    "n_clusters": 5,
+    "noise_pct": 68.69,
+    "dbcv_score": 0.00846134142034011
+  },
+  {
+    "iteration": 109,
+    "min_cluster_size": 20,
+    "min_samples": 10,
+    "n_clusters": 3,
+    "noise_pct": 70.49,
+    "dbcv_score": 0.006444704381283777
+  },
+  {
+    "iteration": 110,
+    "min_cluster_size": 20,
+    "min_samples": 11,
+    "n_clusters": 3,
+    "noise_pct": 74.26,
+    "dbcv_score": 0.0012178314478216768
+  },
+  {
+    "iteration": 111,
+    "min_cluster_size": 20,
+    "min_samples": 12,
+    "n_clusters": 3,
+    "noise_pct": 78.2,
+    "dbcv_score": 0.0009903994857189278
+  },
+  {
+    "iteration": 112,
+    "min_cluster_size": 20,
+    "min_samples": 13,
+    "n_clusters": 3,
+    "noise_pct": 81.31,
+    "dbcv_score": 0.006762682866212345
+  },
+  {
+    "iteration": 113,
+    "min_cluster_size": 20,
+    "min_samples": 14,
+    "n_clusters": 2,
+    "noise_pct": 77.87,
+    "dbcv_score": 7.892155834666687e-06
+  },
+  {
+    "iteration": 114,
+    "min_cluster_size": 20,
+    "min_samples": 15,
+    "n_clusters": 2,
+    "noise_pct": 78.2,
+    "dbcv_score": 1.7389615354287862e-05
+  },
+  {
+    "iteration": 115,
+    "min_cluster_size": 20,
+    "min_samples": 16,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 116,
+    "min_cluster_size": 20,
+    "min_samples": 17,
+    "n_clusters": 2,
+    "noise_pct": 90.66,
+    "dbcv_score": 2.609119125934962e-06
+  },
+  {
+    "iteration": 117,
+    "min_cluster_size": 20,
+    "min_samples": 18,
+    "n_clusters": 2,
+    "noise_pct": 73.44,
+    "dbcv_score": 6.18127131664586e-05
+  },
+  {
+    "iteration": 118,
+    "min_cluster_size": 20,
+    "min_samples": 19,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 119,
+    "min_cluster_size": 20,
+    "min_samples": 20,
+    "n_clusters": 2,
+    "noise_pct": 89.84,
+    "dbcv_score": 7.349469046798263e-06
+  },
+  {
+    "iteration": 120,
+    "min_cluster_size": 21,
+    "min_samples": 1,
+    "n_clusters": 8,
+    "noise_pct": 34.1,
+    "dbcv_score": 0.07087864891634155
+  },
+  {
+    "iteration": 121,
+    "min_cluster_size": 21,
+    "min_samples": 2,
+    "n_clusters": 8,
+    "noise_pct": 34.75,
+    "dbcv_score": 0.06535253262739894
+  },
+  {
+    "iteration": 122,
+    "min_cluster_size": 21,
+    "min_samples": 3,
+    "n_clusters": 8,
+    "noise_pct": 39.51,
+    "dbcv_score": 0.052404159245504234
+  },
+  {
+    "iteration": 123,
+    "min_cluster_size": 21,
+    "min_samples": 4,
+    "n_clusters": 8,
+    "noise_pct": 40.66,
+    "dbcv_score": 0.030887920688061878
+  },
+  {
+    "iteration": 124,
+    "min_cluster_size": 21,
+    "min_samples": 5,
+    "n_clusters": 8,
+    "noise_pct": 42.3,
+    "dbcv_score": 0.016463966330118294
+  },
+  {
+    "iteration": 125,
+    "min_cluster_size": 21,
+    "min_samples": 6,
+    "n_clusters": 7,
+    "noise_pct": 54.26,
+    "dbcv_score": 0.07047574372292062
+  },
+  {
+    "iteration": 126,
+    "min_cluster_size": 21,
+    "min_samples": 7,
+    "n_clusters": 6,
+    "noise_pct": 60.0,
+    "dbcv_score": 0.012956343776880304
+  },
+  {
+    "iteration": 127,
+    "min_cluster_size": 21,
+    "min_samples": 8,
+    "n_clusters": 5,
+    "noise_pct": 68.52,
+    "dbcv_score": 0.015413673760948848
+  },
+  {
+    "iteration": 128,
+    "min_cluster_size": 21,
+    "min_samples": 9,
+    "n_clusters": 4,
+    "noise_pct": 71.97,
+    "dbcv_score": 0.007260575517451064
+  },
+  {
+    "iteration": 129,
+    "min_cluster_size": 21,
+    "min_samples": 10,
+    "n_clusters": 3,
+    "noise_pct": 70.49,
+    "dbcv_score": 0.006444704381283777
+  },
+  {
+    "iteration": 130,
+    "min_cluster_size": 21,
+    "min_samples": 11,
+    "n_clusters": 3,
+    "noise_pct": 74.26,
+    "dbcv_score": 0.0012178314478216768
+  },
+  {
+    "iteration": 131,
+    "min_cluster_size": 21,
+    "min_samples": 12,
+    "n_clusters": 3,
+    "noise_pct": 78.2,
+    "dbcv_score": 0.0009903994857189278
+  },
+  {
+    "iteration": 132,
+    "min_cluster_size": 21,
+    "min_samples": 13,
+    "n_clusters": 2,
+    "noise_pct": 84.59,
+    "dbcv_score": 0.0006902596248630038
+  },
+  {
+    "iteration": 133,
+    "min_cluster_size": 21,
+    "min_samples": 14,
+    "n_clusters": 2,
+    "noise_pct": 77.87,
+    "dbcv_score": 7.892155834666687e-06
+  },
+  {
+    "iteration": 134,
+    "min_cluster_size": 21,
+    "min_samples": 15,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 135,
+    "min_cluster_size": 21,
+    "min_samples": 16,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 136,
+    "min_cluster_size": 21,
+    "min_samples": 17,
+    "n_clusters": 2,
+    "noise_pct": 90.66,
+    "dbcv_score": 2.609119125934962e-06
+  },
+  {
+    "iteration": 137,
+    "min_cluster_size": 21,
+    "min_samples": 18,
+    "n_clusters": 2,
+    "noise_pct": 73.44,
+    "dbcv_score": 6.18127131664586e-05
+  },
+  {
+    "iteration": 138,
+    "min_cluster_size": 21,
+    "min_samples": 19,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 139,
+    "min_cluster_size": 21,
+    "min_samples": 20,
+    "n_clusters": 2,
+    "noise_pct": 89.84,
+    "dbcv_score": 7.349469046798263e-06
+  },
+  {
+    "iteration": 140,
+    "min_cluster_size": 22,
+    "min_samples": 1,
+    "n_clusters": 8,
+    "noise_pct": 34.1,
+    "dbcv_score": 0.07087864891634155
+  },
+  {
+    "iteration": 141,
+    "min_cluster_size": 22,
+    "min_samples": 2,
+    "n_clusters": 8,
+    "noise_pct": 34.75,
+    "dbcv_score": 0.06535253262739894
+  },
+  {
+    "iteration": 142,
+    "min_cluster_size": 22,
+    "min_samples": 3,
+    "n_clusters": 8,
+    "noise_pct": 39.51,
+    "dbcv_score": 0.052404159245504234
+  },
+  {
+    "iteration": 143,
+    "min_cluster_size": 22,
+    "min_samples": 4,
+    "n_clusters": 8,
+    "noise_pct": 40.66,
+    "dbcv_score": 0.030887920688061878
+  },
+  {
+    "iteration": 144,
+    "min_cluster_size": 22,
+    "min_samples": 5,
+    "n_clusters": 8,
+    "noise_pct": 42.3,
+    "dbcv_score": 0.016463966330118294
+  },
+  {
+    "iteration": 145,
+    "min_cluster_size": 22,
+    "min_samples": 6,
+    "n_clusters": 7,
+    "noise_pct": 54.26,
+    "dbcv_score": 0.07047574372292062
+  },
+  {
+    "iteration": 146,
+    "min_cluster_size": 22,
+    "min_samples": 7,
+    "n_clusters": 6,
+    "noise_pct": 60.0,
+    "dbcv_score": 0.012956343776880304
+  },
+  {
+    "iteration": 147,
+    "min_cluster_size": 22,
+    "min_samples": 8,
+    "n_clusters": 5,
+    "noise_pct": 68.52,
+    "dbcv_score": 0.015413673760948848
+  },
+  {
+    "iteration": 148,
+    "min_cluster_size": 22,
+    "min_samples": 9,
+    "n_clusters": 4,
+    "noise_pct": 71.97,
+    "dbcv_score": 0.007260575517451064
+  },
+  {
+    "iteration": 149,
+    "min_cluster_size": 22,
+    "min_samples": 10,
+    "n_clusters": 3,
+    "noise_pct": 70.49,
+    "dbcv_score": 0.006444704381283777
+  },
+  {
+    "iteration": 150,
+    "min_cluster_size": 22,
+    "min_samples": 11,
+    "n_clusters": 3,
+    "noise_pct": 74.26,
+    "dbcv_score": 0.0012178314478216768
+  },
+  {
+    "iteration": 151,
+    "min_cluster_size": 22,
+    "min_samples": 12,
+    "n_clusters": 3,
+    "noise_pct": 78.2,
+    "dbcv_score": 0.0009903994857189278
+  },
+  {
+    "iteration": 152,
+    "min_cluster_size": 22,
+    "min_samples": 13,
+    "n_clusters": 2,
+    "noise_pct": 84.59,
+    "dbcv_score": 0.0006902596248630038
+  },
+  {
+    "iteration": 153,
+    "min_cluster_size": 22,
+    "min_samples": 14,
+    "n_clusters": 2,
+    "noise_pct": 77.87,
+    "dbcv_score": 7.892155834666687e-06
+  },
+  {
+    "iteration": 154,
+    "min_cluster_size": 22,
+    "min_samples": 15,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 155,
+    "min_cluster_size": 22,
+    "min_samples": 16,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 156,
+    "min_cluster_size": 22,
+    "min_samples": 17,
+    "n_clusters": 2,
+    "noise_pct": 90.66,
+    "dbcv_score": 2.609119125934962e-06
+  },
+  {
+    "iteration": 157,
+    "min_cluster_size": 22,
+    "min_samples": 18,
+    "n_clusters": 2,
+    "noise_pct": 73.44,
+    "dbcv_score": 6.18127131664586e-05
+  },
+  {
+    "iteration": 158,
+    "min_cluster_size": 22,
+    "min_samples": 19,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 159,
+    "min_cluster_size": 22,
+    "min_samples": 20,
+    "n_clusters": 2,
+    "noise_pct": 89.84,
+    "dbcv_score": 7.349469046798263e-06
+  },
+  {
+    "iteration": 160,
+    "min_cluster_size": 23,
+    "min_samples": 1,
+    "n_clusters": 8,
+    "noise_pct": 34.1,
+    "dbcv_score": 0.07087864891634155
+  },
+  {
+    "iteration": 161,
+    "min_cluster_size": 23,
+    "min_samples": 2,
+    "n_clusters": 8,
+    "noise_pct": 34.75,
+    "dbcv_score": 0.06535253262739894
+  },
+  {
+    "iteration": 162,
+    "min_cluster_size": 23,
+    "min_samples": 3,
+    "n_clusters": 8,
+    "noise_pct": 39.51,
+    "dbcv_score": 0.052404159245504234
+  },
+  {
+    "iteration": 163,
+    "min_cluster_size": 23,
+    "min_samples": 4,
+    "n_clusters": 8,
+    "noise_pct": 40.66,
+    "dbcv_score": 0.030887920688061878
+  },
+  {
+    "iteration": 164,
+    "min_cluster_size": 23,
+    "min_samples": 5,
+    "n_clusters": 8,
+    "noise_pct": 42.3,
+    "dbcv_score": 0.016463966330118294
+  },
+  {
+    "iteration": 165,
+    "min_cluster_size": 23,
+    "min_samples": 6,
+    "n_clusters": 7,
+    "noise_pct": 54.26,
+    "dbcv_score": 0.07047574372292062
+  },
+  {
+    "iteration": 166,
+    "min_cluster_size": 23,
+    "min_samples": 7,
+    "n_clusters": 6,
+    "noise_pct": 60.0,
+    "dbcv_score": 0.012956343776880304
+  },
+  {
+    "iteration": 167,
+    "min_cluster_size": 23,
+    "min_samples": 8,
+    "n_clusters": 5,
+    "noise_pct": 68.52,
+    "dbcv_score": 0.015413673760948848
+  },
+  {
+    "iteration": 168,
+    "min_cluster_size": 23,
+    "min_samples": 9,
+    "n_clusters": 4,
+    "noise_pct": 71.97,
+    "dbcv_score": 0.007260575517451064
+  },
+  {
+    "iteration": 169,
+    "min_cluster_size": 23,
+    "min_samples": 10,
+    "n_clusters": 3,
+    "noise_pct": 70.49,
+    "dbcv_score": 0.006444704381283777
+  },
+  {
+    "iteration": 170,
+    "min_cluster_size": 23,
+    "min_samples": 11,
+    "n_clusters": 3,
+    "noise_pct": 74.26,
+    "dbcv_score": 0.0012178314478216768
+  },
+  {
+    "iteration": 171,
+    "min_cluster_size": 23,
+    "min_samples": 12,
+    "n_clusters": 3,
+    "noise_pct": 78.2,
+    "dbcv_score": 0.0009903994857189278
+  },
+  {
+    "iteration": 172,
+    "min_cluster_size": 23,
+    "min_samples": 13,
+    "n_clusters": 2,
+    "noise_pct": 84.59,
+    "dbcv_score": 0.0006902596248630038
+  },
+  {
+    "iteration": 173,
+    "min_cluster_size": 23,
+    "min_samples": 14,
+    "n_clusters": 2,
+    "noise_pct": 77.87,
+    "dbcv_score": 7.892155834666687e-06
+  },
+  {
+    "iteration": 174,
+    "min_cluster_size": 23,
+    "min_samples": 15,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 175,
+    "min_cluster_size": 23,
+    "min_samples": 16,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 176,
+    "min_cluster_size": 23,
+    "min_samples": 17,
+    "n_clusters": 2,
+    "noise_pct": 90.66,
+    "dbcv_score": 2.609119125934962e-06
+  },
+  {
+    "iteration": 177,
+    "min_cluster_size": 23,
+    "min_samples": 18,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 178,
+    "min_cluster_size": 23,
+    "min_samples": 19,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 179,
+    "min_cluster_size": 23,
+    "min_samples": 20,
+    "n_clusters": 2,
+    "noise_pct": 89.84,
+    "dbcv_score": 7.349469046798263e-06
+  },
+  {
+    "iteration": 180,
+    "min_cluster_size": 24,
+    "min_samples": 1,
+    "n_clusters": 8,
+    "noise_pct": 34.1,
+    "dbcv_score": 0.07087864891634155
+  },
+  {
+    "iteration": 181,
+    "min_cluster_size": 24,
+    "min_samples": 2,
+    "n_clusters": 8,
+    "noise_pct": 34.75,
+    "dbcv_score": 0.06535253262739894
+  },
+  {
+    "iteration": 182,
+    "min_cluster_size": 24,
+    "min_samples": 3,
+    "n_clusters": 7,
+    "noise_pct": 38.36,
+    "dbcv_score": 0.043918200521896524
+  },
+  {
+    "iteration": 183,
+    "min_cluster_size": 24,
+    "min_samples": 4,
+    "n_clusters": 8,
+    "noise_pct": 40.66,
+    "dbcv_score": 0.030887920688061878
+  },
+  {
+    "iteration": 184,
+    "min_cluster_size": 24,
+    "min_samples": 5,
+    "n_clusters": 8,
+    "noise_pct": 42.3,
+    "dbcv_score": 0.016463966330118294
+  },
+  {
+    "iteration": 185,
+    "min_cluster_size": 24,
+    "min_samples": 6,
+    "n_clusters": 6,
+    "noise_pct": 53.44,
+    "dbcv_score": 0.08325926252952269
+  },
+  {
+    "iteration": 186,
+    "min_cluster_size": 24,
+    "min_samples": 7,
+    "n_clusters": 6,
+    "noise_pct": 60.0,
+    "dbcv_score": 0.012956343776880304
+  },
+  {
+    "iteration": 187,
+    "min_cluster_size": 24,
+    "min_samples": 8,
+    "n_clusters": 4,
+    "noise_pct": 72.3,
+    "dbcv_score": 0.012708643520385258
+  },
+  {
+    "iteration": 188,
+    "min_cluster_size": 24,
+    "min_samples": 9,
+    "n_clusters": 4,
+    "noise_pct": 71.97,
+    "dbcv_score": 0.007260575517451064
+  },
+  {
+    "iteration": 189,
+    "min_cluster_size": 24,
+    "min_samples": 10,
+    "n_clusters": 3,
+    "noise_pct": 70.49,
+    "dbcv_score": 0.006444704381283777
+  },
+  {
+    "iteration": 190,
+    "min_cluster_size": 24,
+    "min_samples": 11,
+    "n_clusters": 3,
+    "noise_pct": 74.26,
+    "dbcv_score": 0.0012178314478216768
+  },
+  {
+    "iteration": 191,
+    "min_cluster_size": 24,
+    "min_samples": 12,
+    "n_clusters": 3,
+    "noise_pct": 78.2,
+    "dbcv_score": 0.0009903994857189278
+  },
+  {
+    "iteration": 192,
+    "min_cluster_size": 24,
+    "min_samples": 13,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 193,
+    "min_cluster_size": 24,
+    "min_samples": 14,
+    "n_clusters": 2,
+    "noise_pct": 77.87,
+    "dbcv_score": 7.892155834666687e-06
+  },
+  {
+    "iteration": 194,
+    "min_cluster_size": 24,
+    "min_samples": 15,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 195,
+    "min_cluster_size": 24,
+    "min_samples": 16,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 196,
+    "min_cluster_size": 24,
+    "min_samples": 17,
+    "n_clusters": 2,
+    "noise_pct": 90.66,
+    "dbcv_score": 2.609119125934962e-06
+  },
+  {
+    "iteration": 197,
+    "min_cluster_size": 24,
+    "min_samples": 18,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 198,
+    "min_cluster_size": 24,
+    "min_samples": 19,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 199,
+    "min_cluster_size": 24,
+    "min_samples": 20,
+    "n_clusters": 2,
+    "noise_pct": 89.84,
+    "dbcv_score": 7.349469046798263e-06
+  },
+  {
+    "iteration": 200,
+    "min_cluster_size": 25,
+    "min_samples": 1,
+    "n_clusters": 6,
+    "noise_pct": 32.79,
+    "dbcv_score": 0.0873437554404389
+  },
+  {
+    "iteration": 201,
+    "min_cluster_size": 25,
+    "min_samples": 2,
+    "n_clusters": 6,
+    "noise_pct": 33.44,
+    "dbcv_score": 0.08519638499086768
+  },
+  {
+    "iteration": 202,
+    "min_cluster_size": 25,
+    "min_samples": 3,
+    "n_clusters": 6,
+    "noise_pct": 38.36,
+    "dbcv_score": 0.06248937906572699
+  },
+  {
+    "iteration": 203,
+    "min_cluster_size": 25,
+    "min_samples": 4,
+    "n_clusters": 7,
+    "noise_pct": 40.66,
+    "dbcv_score": 0.048767619179728446
+  },
+  {
+    "iteration": 204,
+    "min_cluster_size": 25,
+    "min_samples": 5,
+    "n_clusters": 7,
+    "noise_pct": 42.3,
+    "dbcv_score": 0.039096126793682975
+  },
+  {
+    "iteration": 205,
+    "min_cluster_size": 25,
+    "min_samples": 6,
+    "n_clusters": 6,
+    "noise_pct": 53.44,
+    "dbcv_score": 0.08325926252952269
+  },
+  {
+    "iteration": 206,
+    "min_cluster_size": 25,
+    "min_samples": 7,
+    "n_clusters": 6,
+    "noise_pct": 60.0,
+    "dbcv_score": 0.012956343776880304
+  },
+  {
+    "iteration": 207,
+    "min_cluster_size": 25,
+    "min_samples": 8,
+    "n_clusters": 3,
+    "noise_pct": 76.23,
+    "dbcv_score": 0.0018741170854286405
+  },
+  {
+    "iteration": 208,
+    "min_cluster_size": 25,
+    "min_samples": 9,
+    "n_clusters": 4,
+    "noise_pct": 71.97,
+    "dbcv_score": 0.007260575517451064
+  },
+  {
+    "iteration": 209,
+    "min_cluster_size": 25,
+    "min_samples": 10,
+    "n_clusters": 3,
+    "noise_pct": 70.49,
+    "dbcv_score": 0.006444704381283777
+  },
+  {
+    "iteration": 210,
+    "min_cluster_size": 25,
+    "min_samples": 11,
+    "n_clusters": 3,
+    "noise_pct": 74.26,
+    "dbcv_score": 0.0012178314478216768
+  },
+  {
+    "iteration": 211,
+    "min_cluster_size": 25,
+    "min_samples": 12,
+    "n_clusters": 3,
+    "noise_pct": 78.2,
+    "dbcv_score": 0.0009903994857189278
+  },
+  {
+    "iteration": 212,
+    "min_cluster_size": 25,
+    "min_samples": 13,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 213,
+    "min_cluster_size": 25,
+    "min_samples": 14,
+    "n_clusters": 2,
+    "noise_pct": 77.87,
+    "dbcv_score": 7.892155834666687e-06
+  },
+  {
+    "iteration": 214,
+    "min_cluster_size": 25,
+    "min_samples": 15,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 215,
+    "min_cluster_size": 25,
+    "min_samples": 16,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 216,
+    "min_cluster_size": 25,
+    "min_samples": 17,
+    "n_clusters": 2,
+    "noise_pct": 90.66,
+    "dbcv_score": 2.609119125934962e-06
+  },
+  {
+    "iteration": 217,
+    "min_cluster_size": 25,
+    "min_samples": 18,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 218,
+    "min_cluster_size": 25,
+    "min_samples": 19,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 219,
+    "min_cluster_size": 25,
+    "min_samples": 20,
+    "n_clusters": 2,
+    "noise_pct": 89.84,
+    "dbcv_score": 7.349469046798263e-06
+  },
+  {
+    "iteration": 220,
+    "min_cluster_size": 26,
+    "min_samples": 1,
+    "n_clusters": 6,
+    "noise_pct": 32.79,
+    "dbcv_score": 0.0873437554404389
+  },
+  {
+    "iteration": 221,
+    "min_cluster_size": 26,
+    "min_samples": 2,
+    "n_clusters": 6,
+    "noise_pct": 33.44,
+    "dbcv_score": 0.08519638499086768
+  },
+  {
+    "iteration": 222,
+    "min_cluster_size": 26,
+    "min_samples": 3,
+    "n_clusters": 6,
+    "noise_pct": 38.36,
+    "dbcv_score": 0.06248937906572699
+  },
+  {
+    "iteration": 223,
+    "min_cluster_size": 26,
+    "min_samples": 4,
+    "n_clusters": 7,
+    "noise_pct": 40.66,
+    "dbcv_score": 0.048767619179728446
+  },
+  {
+    "iteration": 224,
+    "min_cluster_size": 26,
+    "min_samples": 5,
+    "n_clusters": 7,
+    "noise_pct": 42.3,
+    "dbcv_score": 0.039096126793682975
+  },
+  {
+    "iteration": 225,
+    "min_cluster_size": 26,
+    "min_samples": 6,
+    "n_clusters": 6,
+    "noise_pct": 53.44,
+    "dbcv_score": 0.08325926252952269
+  },
+  {
+    "iteration": 226,
+    "min_cluster_size": 26,
+    "min_samples": 7,
+    "n_clusters": 6,
+    "noise_pct": 60.0,
+    "dbcv_score": 0.012956343776880304
+  },
+  {
+    "iteration": 227,
+    "min_cluster_size": 26,
+    "min_samples": 8,
+    "n_clusters": 3,
+    "noise_pct": 76.23,
+    "dbcv_score": 0.0018741170854286405
+  },
+  {
+    "iteration": 228,
+    "min_cluster_size": 26,
+    "min_samples": 9,
+    "n_clusters": 4,
+    "noise_pct": 71.97,
+    "dbcv_score": 0.007260575517451064
+  },
+  {
+    "iteration": 229,
+    "min_cluster_size": 26,
+    "min_samples": 10,
+    "n_clusters": 3,
+    "noise_pct": 70.49,
+    "dbcv_score": 0.006444704381283777
+  },
+  {
+    "iteration": 230,
+    "min_cluster_size": 26,
+    "min_samples": 11,
+    "n_clusters": 3,
+    "noise_pct": 74.26,
+    "dbcv_score": 0.0012178314478216768
+  },
+  {
+    "iteration": 231,
+    "min_cluster_size": 26,
+    "min_samples": 12,
+    "n_clusters": 2,
+    "noise_pct": 82.3,
+    "dbcv_score": 0.0008042341688544681
+  },
+  {
+    "iteration": 232,
+    "min_cluster_size": 26,
+    "min_samples": 13,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 233,
+    "min_cluster_size": 26,
+    "min_samples": 14,
+    "n_clusters": 2,
+    "noise_pct": 77.87,
+    "dbcv_score": 7.892155834666687e-06
+  },
+  {
+    "iteration": 234,
+    "min_cluster_size": 26,
+    "min_samples": 15,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 235,
+    "min_cluster_size": 26,
+    "min_samples": 16,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 236,
+    "min_cluster_size": 26,
+    "min_samples": 17,
+    "n_clusters": 2,
+    "noise_pct": 90.66,
+    "dbcv_score": 2.609119125934962e-06
+  },
+  {
+    "iteration": 237,
+    "min_cluster_size": 26,
+    "min_samples": 18,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 238,
+    "min_cluster_size": 26,
+    "min_samples": 19,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 239,
+    "min_cluster_size": 26,
+    "min_samples": 20,
+    "n_clusters": 2,
+    "noise_pct": 89.84,
+    "dbcv_score": 7.349469046798263e-06
+  },
+  {
+    "iteration": 240,
+    "min_cluster_size": 27,
+    "min_samples": 1,
+    "n_clusters": 6,
+    "noise_pct": 32.79,
+    "dbcv_score": 0.0873437554404389
+  },
+  {
+    "iteration": 241,
+    "min_cluster_size": 27,
+    "min_samples": 2,
+    "n_clusters": 6,
+    "noise_pct": 33.44,
+    "dbcv_score": 0.08519638499086768
+  },
+  {
+    "iteration": 242,
+    "min_cluster_size": 27,
+    "min_samples": 3,
+    "n_clusters": 6,
+    "noise_pct": 38.36,
+    "dbcv_score": 0.06248937906572699
+  },
+  {
+    "iteration": 243,
+    "min_cluster_size": 27,
+    "min_samples": 4,
+    "n_clusters": 7,
+    "noise_pct": 40.66,
+    "dbcv_score": 0.048767619179728446
+  },
+  {
+    "iteration": 244,
+    "min_cluster_size": 27,
+    "min_samples": 5,
+    "n_clusters": 7,
+    "noise_pct": 42.3,
+    "dbcv_score": 0.039096126793682975
+  },
+  {
+    "iteration": 245,
+    "min_cluster_size": 27,
+    "min_samples": 6,
+    "n_clusters": 5,
+    "noise_pct": 57.7,
+    "dbcv_score": 0.058301678599036295
+  },
+  {
+    "iteration": 246,
+    "min_cluster_size": 27,
+    "min_samples": 7,
+    "n_clusters": 5,
+    "noise_pct": 60.0,
+    "dbcv_score": 0.012028830425220856
+  },
+  {
+    "iteration": 247,
+    "min_cluster_size": 27,
+    "min_samples": 8,
+    "n_clusters": 3,
+    "noise_pct": 76.23,
+    "dbcv_score": 0.0018741170854286405
+  },
+  {
+    "iteration": 248,
+    "min_cluster_size": 27,
+    "min_samples": 9,
+    "n_clusters": 4,
+    "noise_pct": 71.97,
+    "dbcv_score": 0.007260575517451064
+  },
+  {
+    "iteration": 249,
+    "min_cluster_size": 27,
+    "min_samples": 10,
+    "n_clusters": 3,
+    "noise_pct": 70.49,
+    "dbcv_score": 0.006444704381283777
+  },
+  {
+    "iteration": 250,
+    "min_cluster_size": 27,
+    "min_samples": 11,
+    "n_clusters": 3,
+    "noise_pct": 74.26,
+    "dbcv_score": 0.0012178314478216768
+  },
+  {
+    "iteration": 251,
+    "min_cluster_size": 27,
+    "min_samples": 12,
+    "n_clusters": 2,
+    "noise_pct": 82.3,
+    "dbcv_score": 0.0008042341688544681
+  },
+  {
+    "iteration": 252,
+    "min_cluster_size": 27,
+    "min_samples": 13,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 253,
+    "min_cluster_size": 27,
+    "min_samples": 14,
+    "n_clusters": 2,
+    "noise_pct": 77.87,
+    "dbcv_score": 7.892155834666687e-06
+  },
+  {
+    "iteration": 254,
+    "min_cluster_size": 27,
+    "min_samples": 15,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 255,
+    "min_cluster_size": 27,
+    "min_samples": 16,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 256,
+    "min_cluster_size": 27,
+    "min_samples": 17,
+    "n_clusters": 2,
+    "noise_pct": 90.66,
+    "dbcv_score": 2.609119125934962e-06
+  },
+  {
+    "iteration": 257,
+    "min_cluster_size": 27,
+    "min_samples": 18,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 258,
+    "min_cluster_size": 27,
+    "min_samples": 19,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 259,
+    "min_cluster_size": 27,
+    "min_samples": 20,
+    "n_clusters": 2,
+    "noise_pct": 89.84,
+    "dbcv_score": 7.349469046798263e-06
+  },
+  {
+    "iteration": 260,
+    "min_cluster_size": 28,
+    "min_samples": 1,
+    "n_clusters": 6,
+    "noise_pct": 32.79,
+    "dbcv_score": 0.0873437554404389
+  },
+  {
+    "iteration": 261,
+    "min_cluster_size": 28,
+    "min_samples": 2,
+    "n_clusters": 6,
+    "noise_pct": 33.44,
+    "dbcv_score": 0.08519638499086768
+  },
+  {
+    "iteration": 262,
+    "min_cluster_size": 28,
+    "min_samples": 3,
+    "n_clusters": 6,
+    "noise_pct": 38.36,
+    "dbcv_score": 0.06248937906572699
+  },
+  {
+    "iteration": 263,
+    "min_cluster_size": 28,
+    "min_samples": 4,
+    "n_clusters": 7,
+    "noise_pct": 40.66,
+    "dbcv_score": 0.048767619179728446
+  },
+  {
+    "iteration": 264,
+    "min_cluster_size": 28,
+    "min_samples": 5,
+    "n_clusters": 7,
+    "noise_pct": 42.3,
+    "dbcv_score": 0.039096126793682975
+  },
+  {
+    "iteration": 265,
+    "min_cluster_size": 28,
+    "min_samples": 6,
+    "n_clusters": 5,
+    "noise_pct": 57.7,
+    "dbcv_score": 0.058301678599036295
+  },
+  {
+    "iteration": 266,
+    "min_cluster_size": 28,
+    "min_samples": 7,
+    "n_clusters": 4,
+    "noise_pct": 64.43,
+    "dbcv_score": 0.02815063032854986
+  },
+  {
+    "iteration": 267,
+    "min_cluster_size": 28,
+    "min_samples": 8,
+    "n_clusters": 3,
+    "noise_pct": 76.23,
+    "dbcv_score": 0.0018741170854286405
+  },
+  {
+    "iteration": 268,
+    "min_cluster_size": 28,
+    "min_samples": 9,
+    "n_clusters": 3,
+    "noise_pct": 68.36,
+    "dbcv_score": 0.051036351448096214
+  },
+  {
+    "iteration": 269,
+    "min_cluster_size": 28,
+    "min_samples": 10,
+    "n_clusters": 3,
+    "noise_pct": 70.49,
+    "dbcv_score": 0.006444704381283777
+  },
+  {
+    "iteration": 270,
+    "min_cluster_size": 28,
+    "min_samples": 11,
+    "n_clusters": 3,
+    "noise_pct": 74.26,
+    "dbcv_score": 0.0012178314478216768
+  },
+  {
+    "iteration": 271,
+    "min_cluster_size": 28,
+    "min_samples": 12,
+    "n_clusters": 2,
+    "noise_pct": 82.3,
+    "dbcv_score": 0.0008042341688544681
+  },
+  {
+    "iteration": 272,
+    "min_cluster_size": 28,
+    "min_samples": 13,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 273,
+    "min_cluster_size": 28,
+    "min_samples": 14,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 274,
+    "min_cluster_size": 28,
+    "min_samples": 15,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 275,
+    "min_cluster_size": 28,
+    "min_samples": 16,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 276,
+    "min_cluster_size": 28,
+    "min_samples": 17,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 277,
+    "min_cluster_size": 28,
+    "min_samples": 18,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 278,
+    "min_cluster_size": 28,
+    "min_samples": 19,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 279,
+    "min_cluster_size": 28,
+    "min_samples": 20,
+    "n_clusters": 2,
+    "noise_pct": 89.84,
+    "dbcv_score": 7.349469046798263e-06
+  },
+  {
+    "iteration": 280,
+    "min_cluster_size": 29,
+    "min_samples": 1,
+    "n_clusters": 6,
+    "noise_pct": 32.79,
+    "dbcv_score": 0.0873437554404389
+  },
+  {
+    "iteration": 281,
+    "min_cluster_size": 29,
+    "min_samples": 2,
+    "n_clusters": 6,
+    "noise_pct": 33.44,
+    "dbcv_score": 0.08519638499086768
+  },
+  {
+    "iteration": 282,
+    "min_cluster_size": 29,
+    "min_samples": 3,
+    "n_clusters": 6,
+    "noise_pct": 38.36,
+    "dbcv_score": 0.06248937906572699
+  },
+  {
+    "iteration": 283,
+    "min_cluster_size": 29,
+    "min_samples": 4,
+    "n_clusters": 7,
+    "noise_pct": 40.66,
+    "dbcv_score": 0.048767619179728446
+  },
+  {
+    "iteration": 284,
+    "min_cluster_size": 29,
+    "min_samples": 5,
+    "n_clusters": 7,
+    "noise_pct": 42.3,
+    "dbcv_score": 0.039096126793682975
+  },
+  {
+    "iteration": 285,
+    "min_cluster_size": 29,
+    "min_samples": 6,
+    "n_clusters": 4,
+    "noise_pct": 62.3,
+    "dbcv_score": 0.05138165572939868
+  },
+  {
+    "iteration": 286,
+    "min_cluster_size": 29,
+    "min_samples": 7,
+    "n_clusters": 4,
+    "noise_pct": 64.43,
+    "dbcv_score": 0.02815063032854986
+  },
+  {
+    "iteration": 287,
+    "min_cluster_size": 29,
+    "min_samples": 8,
+    "n_clusters": 3,
+    "noise_pct": 76.23,
+    "dbcv_score": 0.0018741170854286405
+  },
+  {
+    "iteration": 288,
+    "min_cluster_size": 29,
+    "min_samples": 9,
+    "n_clusters": 3,
+    "noise_pct": 68.36,
+    "dbcv_score": 0.051036351448096214
+  },
+  {
+    "iteration": 289,
+    "min_cluster_size": 29,
+    "min_samples": 10,
+    "n_clusters": 3,
+    "noise_pct": 70.49,
+    "dbcv_score": 0.006444704381283777
+  },
+  {
+    "iteration": 290,
+    "min_cluster_size": 29,
+    "min_samples": 11,
+    "n_clusters": 3,
+    "noise_pct": 74.26,
+    "dbcv_score": 0.0012178314478216768
+  },
+  {
+    "iteration": 291,
+    "min_cluster_size": 29,
+    "min_samples": 12,
+    "n_clusters": 2,
+    "noise_pct": 82.3,
+    "dbcv_score": 0.0008042341688544681
+  },
+  {
+    "iteration": 292,
+    "min_cluster_size": 29,
+    "min_samples": 13,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 293,
+    "min_cluster_size": 29,
+    "min_samples": 14,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 294,
+    "min_cluster_size": 29,
+    "min_samples": 15,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 295,
+    "min_cluster_size": 29,
+    "min_samples": 16,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 296,
+    "min_cluster_size": 29,
+    "min_samples": 17,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 297,
+    "min_cluster_size": 29,
+    "min_samples": 18,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 298,
+    "min_cluster_size": 29,
+    "min_samples": 19,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 299,
+    "min_cluster_size": 29,
+    "min_samples": 20,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 300,
+    "min_cluster_size": 30,
+    "min_samples": 1,
+    "n_clusters": 6,
+    "noise_pct": 32.79,
+    "dbcv_score": 0.0873437554404389
+  },
+  {
+    "iteration": 301,
+    "min_cluster_size": 30,
+    "min_samples": 2,
+    "n_clusters": 6,
+    "noise_pct": 33.44,
+    "dbcv_score": 0.08519638499086768
+  },
+  {
+    "iteration": 302,
+    "min_cluster_size": 30,
+    "min_samples": 3,
+    "n_clusters": 6,
+    "noise_pct": 38.36,
+    "dbcv_score": 0.06248937906572699
+  },
+  {
+    "iteration": 303,
+    "min_cluster_size": 30,
+    "min_samples": 4,
+    "n_clusters": 7,
+    "noise_pct": 40.66,
+    "dbcv_score": 0.048767619179728446
+  },
+  {
+    "iteration": 304,
+    "min_cluster_size": 30,
+    "min_samples": 5,
+    "n_clusters": 7,
+    "noise_pct": 42.3,
+    "dbcv_score": 0.039096126793682975
+  },
+  {
+    "iteration": 305,
+    "min_cluster_size": 30,
+    "min_samples": 6,
+    "n_clusters": 4,
+    "noise_pct": 62.3,
+    "dbcv_score": 0.05138165572939868
+  },
+  {
+    "iteration": 306,
+    "min_cluster_size": 30,
+    "min_samples": 7,
+    "n_clusters": 4,
+    "noise_pct": 64.43,
+    "dbcv_score": 0.02815063032854986
+  },
+  {
+    "iteration": 307,
+    "min_cluster_size": 30,
+    "min_samples": 8,
+    "n_clusters": 3,
+    "noise_pct": 76.23,
+    "dbcv_score": 0.0018741170854286405
+  },
+  {
+    "iteration": 308,
+    "min_cluster_size": 30,
+    "min_samples": 9,
+    "n_clusters": 3,
+    "noise_pct": 68.36,
+    "dbcv_score": 0.051036351448096214
+  },
+  {
+    "iteration": 309,
+    "min_cluster_size": 30,
+    "min_samples": 10,
+    "n_clusters": 2,
+    "noise_pct": 67.05,
+    "dbcv_score": 1.5167537927218537e-05
+  },
+  {
+    "iteration": 310,
+    "min_cluster_size": 30,
+    "min_samples": 11,
+    "n_clusters": 3,
+    "noise_pct": 74.26,
+    "dbcv_score": 0.0012178314478216768
+  },
+  {
+    "iteration": 311,
+    "min_cluster_size": 30,
+    "min_samples": 12,
+    "n_clusters": 2,
+    "noise_pct": 82.3,
+    "dbcv_score": 0.0008042341688544681
+  },
+  {
+    "iteration": 312,
+    "min_cluster_size": 30,
+    "min_samples": 13,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 313,
+    "min_cluster_size": 30,
+    "min_samples": 14,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 314,
+    "min_cluster_size": 30,
+    "min_samples": 15,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 315,
+    "min_cluster_size": 30,
+    "min_samples": 16,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 316,
+    "min_cluster_size": 30,
+    "min_samples": 17,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 317,
+    "min_cluster_size": 30,
+    "min_samples": 18,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 318,
+    "min_cluster_size": 30,
+    "min_samples": 19,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 319,
+    "min_cluster_size": 30,
+    "min_samples": 20,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 320,
+    "min_cluster_size": 31,
+    "min_samples": 1,
+    "n_clusters": 6,
+    "noise_pct": 32.79,
+    "dbcv_score": 0.0873437554404389
+  },
+  {
+    "iteration": 321,
+    "min_cluster_size": 31,
+    "min_samples": 2,
+    "n_clusters": 6,
+    "noise_pct": 33.44,
+    "dbcv_score": 0.08519638499086768
+  },
+  {
+    "iteration": 322,
+    "min_cluster_size": 31,
+    "min_samples": 3,
+    "n_clusters": 6,
+    "noise_pct": 38.36,
+    "dbcv_score": 0.06248937906572699
+  },
+  {
+    "iteration": 323,
+    "min_cluster_size": 31,
+    "min_samples": 4,
+    "n_clusters": 7,
+    "noise_pct": 40.66,
+    "dbcv_score": 0.048767619179728446
+  },
+  {
+    "iteration": 324,
+    "min_cluster_size": 31,
+    "min_samples": 5,
+    "n_clusters": 7,
+    "noise_pct": 42.3,
+    "dbcv_score": 0.039096126793682975
+  },
+  {
+    "iteration": 325,
+    "min_cluster_size": 31,
+    "min_samples": 6,
+    "n_clusters": 3,
+    "noise_pct": 67.21,
+    "dbcv_score": 0.02908546917518252
+  },
+  {
+    "iteration": 326,
+    "min_cluster_size": 31,
+    "min_samples": 7,
+    "n_clusters": 4,
+    "noise_pct": 64.43,
+    "dbcv_score": 0.02815063032854986
+  },
+  {
+    "iteration": 327,
+    "min_cluster_size": 31,
+    "min_samples": 8,
+    "n_clusters": 3,
+    "noise_pct": 76.23,
+    "dbcv_score": 0.0018741170854286405
+  },
+  {
+    "iteration": 328,
+    "min_cluster_size": 31,
+    "min_samples": 9,
+    "n_clusters": 2,
+    "noise_pct": 63.44,
+    "dbcv_score": 1.0938605762040417e-05
+  },
+  {
+    "iteration": 329,
+    "min_cluster_size": 31,
+    "min_samples": 10,
+    "n_clusters": 2,
+    "noise_pct": 67.05,
+    "dbcv_score": 1.5167537927218537e-05
+  },
+  {
+    "iteration": 330,
+    "min_cluster_size": 31,
+    "min_samples": 11,
+    "n_clusters": 3,
+    "noise_pct": 74.26,
+    "dbcv_score": 0.0012178314478216768
+  },
+  {
+    "iteration": 331,
+    "min_cluster_size": 31,
+    "min_samples": 12,
+    "n_clusters": 2,
+    "noise_pct": 82.3,
+    "dbcv_score": 0.0008042341688544681
+  },
+  {
+    "iteration": 332,
+    "min_cluster_size": 31,
+    "min_samples": 13,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 333,
+    "min_cluster_size": 31,
+    "min_samples": 14,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 334,
+    "min_cluster_size": 31,
+    "min_samples": 15,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 335,
+    "min_cluster_size": 31,
+    "min_samples": 16,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 336,
+    "min_cluster_size": 31,
+    "min_samples": 17,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 337,
+    "min_cluster_size": 31,
+    "min_samples": 18,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 338,
+    "min_cluster_size": 31,
+    "min_samples": 19,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 339,
+    "min_cluster_size": 31,
+    "min_samples": 20,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 340,
+    "min_cluster_size": 32,
+    "min_samples": 1,
+    "n_clusters": 6,
+    "noise_pct": 32.79,
+    "dbcv_score": 0.0873437554404389
+  },
+  {
+    "iteration": 341,
+    "min_cluster_size": 32,
+    "min_samples": 2,
+    "n_clusters": 6,
+    "noise_pct": 33.44,
+    "dbcv_score": 0.08519638499086768
+  },
+  {
+    "iteration": 342,
+    "min_cluster_size": 32,
+    "min_samples": 3,
+    "n_clusters": 6,
+    "noise_pct": 38.36,
+    "dbcv_score": 0.06248937906572699
+  },
+  {
+    "iteration": 343,
+    "min_cluster_size": 32,
+    "min_samples": 4,
+    "n_clusters": 7,
+    "noise_pct": 40.66,
+    "dbcv_score": 0.048767619179728446
+  },
+  {
+    "iteration": 344,
+    "min_cluster_size": 32,
+    "min_samples": 5,
+    "n_clusters": 5,
+    "noise_pct": 52.46,
+    "dbcv_score": 0.03057125167210857
+  },
+  {
+    "iteration": 345,
+    "min_cluster_size": 32,
+    "min_samples": 6,
+    "n_clusters": 3,
+    "noise_pct": 67.21,
+    "dbcv_score": 0.02908546917518252
+  },
+  {
+    "iteration": 346,
+    "min_cluster_size": 32,
+    "min_samples": 7,
+    "n_clusters": 4,
+    "noise_pct": 64.43,
+    "dbcv_score": 0.02815063032854986
+  },
+  {
+    "iteration": 347,
+    "min_cluster_size": 32,
+    "min_samples": 8,
+    "n_clusters": 2,
+    "noise_pct": 81.31,
+    "dbcv_score": 0.0010812622053889363
+  },
+  {
+    "iteration": 348,
+    "min_cluster_size": 32,
+    "min_samples": 9,
+    "n_clusters": 2,
+    "noise_pct": 63.44,
+    "dbcv_score": 1.0938605762040417e-05
+  },
+  {
+    "iteration": 349,
+    "min_cluster_size": 32,
+    "min_samples": 10,
+    "n_clusters": 2,
+    "noise_pct": 67.05,
+    "dbcv_score": 1.5167537927218537e-05
+  },
+  {
+    "iteration": 350,
+    "min_cluster_size": 32,
+    "min_samples": 11,
+    "n_clusters": 3,
+    "noise_pct": 74.26,
+    "dbcv_score": 0.0012178314478216768
+  },
+  {
+    "iteration": 351,
+    "min_cluster_size": 32,
+    "min_samples": 12,
+    "n_clusters": 2,
+    "noise_pct": 82.3,
+    "dbcv_score": 0.0008042341688544681
+  },
+  {
+    "iteration": 352,
+    "min_cluster_size": 32,
+    "min_samples": 13,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 353,
+    "min_cluster_size": 32,
+    "min_samples": 14,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 354,
+    "min_cluster_size": 32,
+    "min_samples": 15,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 355,
+    "min_cluster_size": 32,
+    "min_samples": 16,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 356,
+    "min_cluster_size": 32,
+    "min_samples": 17,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 357,
+    "min_cluster_size": 32,
+    "min_samples": 18,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 358,
+    "min_cluster_size": 32,
+    "min_samples": 19,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 359,
+    "min_cluster_size": 32,
+    "min_samples": 20,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 360,
+    "min_cluster_size": 33,
+    "min_samples": 1,
+    "n_clusters": 6,
+    "noise_pct": 32.79,
+    "dbcv_score": 0.0873437554404389
+  },
+  {
+    "iteration": 361,
+    "min_cluster_size": 33,
+    "min_samples": 2,
+    "n_clusters": 6,
+    "noise_pct": 33.44,
+    "dbcv_score": 0.08519638499086768
+  },
+  {
+    "iteration": 362,
+    "min_cluster_size": 33,
+    "min_samples": 3,
+    "n_clusters": 6,
+    "noise_pct": 38.36,
+    "dbcv_score": 0.06248937906572699
+  },
+  {
+    "iteration": 363,
+    "min_cluster_size": 33,
+    "min_samples": 4,
+    "n_clusters": 7,
+    "noise_pct": 40.66,
+    "dbcv_score": 0.048767619179728446
+  },
+  {
+    "iteration": 364,
+    "min_cluster_size": 33,
+    "min_samples": 5,
+    "n_clusters": 4,
+    "noise_pct": 52.46,
+    "dbcv_score": 0.026209498981679465
+  },
+  {
+    "iteration": 365,
+    "min_cluster_size": 33,
+    "min_samples": 6,
+    "n_clusters": 3,
+    "noise_pct": 67.21,
+    "dbcv_score": 0.02908546917518252
+  },
+  {
+    "iteration": 366,
+    "min_cluster_size": 33,
+    "min_samples": 7,
+    "n_clusters": 4,
+    "noise_pct": 64.43,
+    "dbcv_score": 0.02815063032854986
+  },
+  {
+    "iteration": 367,
+    "min_cluster_size": 33,
+    "min_samples": 8,
+    "n_clusters": 2,
+    "noise_pct": 81.31,
+    "dbcv_score": 0.0010812622053889363
+  },
+  {
+    "iteration": 368,
+    "min_cluster_size": 33,
+    "min_samples": 9,
+    "n_clusters": 2,
+    "noise_pct": 63.44,
+    "dbcv_score": 1.0938605762040417e-05
+  },
+  {
+    "iteration": 369,
+    "min_cluster_size": 33,
+    "min_samples": 10,
+    "n_clusters": 2,
+    "noise_pct": 67.05,
+    "dbcv_score": 1.5167537927218537e-05
+  },
+  {
+    "iteration": 370,
+    "min_cluster_size": 33,
+    "min_samples": 11,
+    "n_clusters": 3,
+    "noise_pct": 74.26,
+    "dbcv_score": 0.0012178314478216768
+  },
+  {
+    "iteration": 371,
+    "min_cluster_size": 33,
+    "min_samples": 12,
+    "n_clusters": 2,
+    "noise_pct": 82.3,
+    "dbcv_score": 0.0008042341688544681
+  },
+  {
+    "iteration": 372,
+    "min_cluster_size": 33,
+    "min_samples": 13,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 373,
+    "min_cluster_size": 33,
+    "min_samples": 14,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 374,
+    "min_cluster_size": 33,
+    "min_samples": 15,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 375,
+    "min_cluster_size": 33,
+    "min_samples": 16,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 376,
+    "min_cluster_size": 33,
+    "min_samples": 17,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 377,
+    "min_cluster_size": 33,
+    "min_samples": 18,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 378,
+    "min_cluster_size": 33,
+    "min_samples": 19,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 379,
+    "min_cluster_size": 33,
+    "min_samples": 20,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 380,
+    "min_cluster_size": 34,
+    "min_samples": 1,
+    "n_clusters": 6,
+    "noise_pct": 32.79,
+    "dbcv_score": 0.0873437554404389
+  },
+  {
+    "iteration": 381,
+    "min_cluster_size": 34,
+    "min_samples": 2,
+    "n_clusters": 6,
+    "noise_pct": 33.44,
+    "dbcv_score": 0.08519638499086768
+  },
+  {
+    "iteration": 382,
+    "min_cluster_size": 34,
+    "min_samples": 3,
+    "n_clusters": 6,
+    "noise_pct": 38.36,
+    "dbcv_score": 0.06248937906572699
+  },
+  {
+    "iteration": 383,
+    "min_cluster_size": 34,
+    "min_samples": 4,
+    "n_clusters": 5,
+    "noise_pct": 51.48,
+    "dbcv_score": 0.034704314586710666
+  },
+  {
+    "iteration": 384,
+    "min_cluster_size": 34,
+    "min_samples": 5,
+    "n_clusters": 4,
+    "noise_pct": 52.46,
+    "dbcv_score": 0.026209498981679465
+  },
+  {
+    "iteration": 385,
+    "min_cluster_size": 34,
+    "min_samples": 6,
+    "n_clusters": 3,
+    "noise_pct": 67.21,
+    "dbcv_score": 0.02908546917518252
+  },
+  {
+    "iteration": 386,
+    "min_cluster_size": 34,
+    "min_samples": 7,
+    "n_clusters": 3,
+    "noise_pct": 69.84,
+    "dbcv_score": 0.008167557390020634
+  },
+  {
+    "iteration": 387,
+    "min_cluster_size": 34,
+    "min_samples": 8,
+    "n_clusters": 2,
+    "noise_pct": 81.31,
+    "dbcv_score": 0.0010812622053889363
+  },
+  {
+    "iteration": 388,
+    "min_cluster_size": 34,
+    "min_samples": 9,
+    "n_clusters": 2,
+    "noise_pct": 63.44,
+    "dbcv_score": 1.0938605762040417e-05
+  },
+  {
+    "iteration": 389,
+    "min_cluster_size": 34,
+    "min_samples": 10,
+    "n_clusters": 2,
+    "noise_pct": 67.05,
+    "dbcv_score": 1.5167537927218537e-05
+  },
+  {
+    "iteration": 390,
+    "min_cluster_size": 34,
+    "min_samples": 11,
+    "n_clusters": 3,
+    "noise_pct": 74.26,
+    "dbcv_score": 0.0012178314478216768
+  },
+  {
+    "iteration": 391,
+    "min_cluster_size": 34,
+    "min_samples": 12,
+    "n_clusters": 2,
+    "noise_pct": 82.3,
+    "dbcv_score": 0.0008042341688544681
+  },
+  {
+    "iteration": 392,
+    "min_cluster_size": 34,
+    "min_samples": 13,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 393,
+    "min_cluster_size": 34,
+    "min_samples": 14,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 394,
+    "min_cluster_size": 34,
+    "min_samples": 15,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 395,
+    "min_cluster_size": 34,
+    "min_samples": 16,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 396,
+    "min_cluster_size": 34,
+    "min_samples": 17,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 397,
+    "min_cluster_size": 34,
+    "min_samples": 18,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 398,
+    "min_cluster_size": 34,
+    "min_samples": 19,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 399,
+    "min_cluster_size": 34,
+    "min_samples": 20,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 400,
+    "min_cluster_size": 35,
+    "min_samples": 1,
+    "n_clusters": 6,
+    "noise_pct": 32.79,
+    "dbcv_score": 0.0873437554404389
+  },
+  {
+    "iteration": 401,
+    "min_cluster_size": 35,
+    "min_samples": 2,
+    "n_clusters": 6,
+    "noise_pct": 33.44,
+    "dbcv_score": 0.08519638499086768
+  },
+  {
+    "iteration": 402,
+    "min_cluster_size": 35,
+    "min_samples": 3,
+    "n_clusters": 6,
+    "noise_pct": 38.36,
+    "dbcv_score": 0.06248937906572699
+  },
+  {
+    "iteration": 403,
+    "min_cluster_size": 35,
+    "min_samples": 4,
+    "n_clusters": 4,
+    "noise_pct": 57.05,
+    "dbcv_score": 0.03069803388815492
+  },
+  {
+    "iteration": 404,
+    "min_cluster_size": 35,
+    "min_samples": 5,
+    "n_clusters": 4,
+    "noise_pct": 52.46,
+    "dbcv_score": 0.026209498981679465
+  },
+  {
+    "iteration": 405,
+    "min_cluster_size": 35,
+    "min_samples": 6,
+    "n_clusters": 3,
+    "noise_pct": 67.21,
+    "dbcv_score": 0.02908546917518252
+  },
+  {
+    "iteration": 406,
+    "min_cluster_size": 35,
+    "min_samples": 7,
+    "n_clusters": 3,
+    "noise_pct": 69.84,
+    "dbcv_score": 0.008167557390020634
+  },
+  {
+    "iteration": 407,
+    "min_cluster_size": 35,
+    "min_samples": 8,
+    "n_clusters": 2,
+    "noise_pct": 81.31,
+    "dbcv_score": 0.0010812622053889363
+  },
+  {
+    "iteration": 408,
+    "min_cluster_size": 35,
+    "min_samples": 9,
+    "n_clusters": 2,
+    "noise_pct": 63.44,
+    "dbcv_score": 1.0938605762040417e-05
+  },
+  {
+    "iteration": 409,
+    "min_cluster_size": 35,
+    "min_samples": 10,
+    "n_clusters": 2,
+    "noise_pct": 67.05,
+    "dbcv_score": 1.5167537927218537e-05
+  },
+  {
+    "iteration": 410,
+    "min_cluster_size": 35,
+    "min_samples": 11,
+    "n_clusters": 3,
+    "noise_pct": 74.26,
+    "dbcv_score": 0.0012178314478216768
+  },
+  {
+    "iteration": 411,
+    "min_cluster_size": 35,
+    "min_samples": 12,
+    "n_clusters": 2,
+    "noise_pct": 82.3,
+    "dbcv_score": 0.0008042341688544681
+  },
+  {
+    "iteration": 412,
+    "min_cluster_size": 35,
+    "min_samples": 13,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 413,
+    "min_cluster_size": 35,
+    "min_samples": 14,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 414,
+    "min_cluster_size": 35,
+    "min_samples": 15,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 415,
+    "min_cluster_size": 35,
+    "min_samples": 16,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 416,
+    "min_cluster_size": 35,
+    "min_samples": 17,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 417,
+    "min_cluster_size": 35,
+    "min_samples": 18,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 418,
+    "min_cluster_size": 35,
+    "min_samples": 19,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 419,
+    "min_cluster_size": 35,
+    "min_samples": 20,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 420,
+    "min_cluster_size": 36,
+    "min_samples": 1,
+    "n_clusters": 6,
+    "noise_pct": 32.79,
+    "dbcv_score": 0.0873437554404389
+  },
+  {
+    "iteration": 421,
+    "min_cluster_size": 36,
+    "min_samples": 2,
+    "n_clusters": 6,
+    "noise_pct": 33.44,
+    "dbcv_score": 0.08519638499086768
+  },
+  {
+    "iteration": 422,
+    "min_cluster_size": 36,
+    "min_samples": 3,
+    "n_clusters": 6,
+    "noise_pct": 38.36,
+    "dbcv_score": 0.06248937906572699
+  },
+  {
+    "iteration": 423,
+    "min_cluster_size": 36,
+    "min_samples": 4,
+    "n_clusters": 4,
+    "noise_pct": 57.05,
+    "dbcv_score": 0.03069803388815492
+  },
+  {
+    "iteration": 424,
+    "min_cluster_size": 36,
+    "min_samples": 5,
+    "n_clusters": 4,
+    "noise_pct": 52.46,
+    "dbcv_score": 0.026209498981679465
+  },
+  {
+    "iteration": 425,
+    "min_cluster_size": 36,
+    "min_samples": 6,
+    "n_clusters": 3,
+    "noise_pct": 67.21,
+    "dbcv_score": 0.02908546917518252
+  },
+  {
+    "iteration": 426,
+    "min_cluster_size": 36,
+    "min_samples": 7,
+    "n_clusters": 3,
+    "noise_pct": 69.84,
+    "dbcv_score": 0.008167557390020634
+  },
+  {
+    "iteration": 427,
+    "min_cluster_size": 36,
+    "min_samples": 8,
+    "n_clusters": 2,
+    "noise_pct": 81.31,
+    "dbcv_score": 0.0010812622053889363
+  },
+  {
+    "iteration": 428,
+    "min_cluster_size": 36,
+    "min_samples": 9,
+    "n_clusters": 2,
+    "noise_pct": 63.44,
+    "dbcv_score": 1.0938605762040417e-05
+  },
+  {
+    "iteration": 429,
+    "min_cluster_size": 36,
+    "min_samples": 10,
+    "n_clusters": 2,
+    "noise_pct": 67.05,
+    "dbcv_score": 1.5167537927218537e-05
+  },
+  {
+    "iteration": 430,
+    "min_cluster_size": 36,
+    "min_samples": 11,
+    "n_clusters": 3,
+    "noise_pct": 74.26,
+    "dbcv_score": 0.0012178314478216768
+  },
+  {
+    "iteration": 431,
+    "min_cluster_size": 36,
+    "min_samples": 12,
+    "n_clusters": 2,
+    "noise_pct": 82.3,
+    "dbcv_score": 0.0008042341688544681
+  },
+  {
+    "iteration": 432,
+    "min_cluster_size": 36,
+    "min_samples": 13,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 433,
+    "min_cluster_size": 36,
+    "min_samples": 14,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 434,
+    "min_cluster_size": 36,
+    "min_samples": 15,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 435,
+    "min_cluster_size": 36,
+    "min_samples": 16,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 436,
+    "min_cluster_size": 36,
+    "min_samples": 17,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 437,
+    "min_cluster_size": 36,
+    "min_samples": 18,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 438,
+    "min_cluster_size": 36,
+    "min_samples": 19,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 439,
+    "min_cluster_size": 36,
+    "min_samples": 20,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 440,
+    "min_cluster_size": 37,
+    "min_samples": 1,
+    "n_clusters": 6,
+    "noise_pct": 32.79,
+    "dbcv_score": 0.0873437554404389
+  },
+  {
+    "iteration": 441,
+    "min_cluster_size": 37,
+    "min_samples": 2,
+    "n_clusters": 6,
+    "noise_pct": 33.44,
+    "dbcv_score": 0.08519638499086768
+  },
+  {
+    "iteration": 442,
+    "min_cluster_size": 37,
+    "min_samples": 3,
+    "n_clusters": 6,
+    "noise_pct": 38.36,
+    "dbcv_score": 0.06248937906572699
+  },
+  {
+    "iteration": 443,
+    "min_cluster_size": 37,
+    "min_samples": 4,
+    "n_clusters": 4,
+    "noise_pct": 57.05,
+    "dbcv_score": 0.03069803388815492
+  },
+  {
+    "iteration": 444,
+    "min_cluster_size": 37,
+    "min_samples": 5,
+    "n_clusters": 4,
+    "noise_pct": 52.46,
+    "dbcv_score": 0.026209498981679465
+  },
+  {
+    "iteration": 445,
+    "min_cluster_size": 37,
+    "min_samples": 6,
+    "n_clusters": 2,
+    "noise_pct": 73.11,
+    "dbcv_score": 0.008591723071475264
+  },
+  {
+    "iteration": 446,
+    "min_cluster_size": 37,
+    "min_samples": 7,
+    "n_clusters": 3,
+    "noise_pct": 69.84,
+    "dbcv_score": 0.008167557390020634
+  },
+  {
+    "iteration": 447,
+    "min_cluster_size": 37,
+    "min_samples": 8,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 448,
+    "min_cluster_size": 37,
+    "min_samples": 9,
+    "n_clusters": 2,
+    "noise_pct": 63.44,
+    "dbcv_score": 1.0938605762040417e-05
+  },
+  {
+    "iteration": 449,
+    "min_cluster_size": 37,
+    "min_samples": 10,
+    "n_clusters": 2,
+    "noise_pct": 67.05,
+    "dbcv_score": 1.5167537927218537e-05
+  },
+  {
+    "iteration": 450,
+    "min_cluster_size": 37,
+    "min_samples": 11,
+    "n_clusters": 3,
+    "noise_pct": 74.26,
+    "dbcv_score": 0.0012178314478216768
+  },
+  {
+    "iteration": 451,
+    "min_cluster_size": 37,
+    "min_samples": 12,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 452,
+    "min_cluster_size": 37,
+    "min_samples": 13,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 453,
+    "min_cluster_size": 37,
+    "min_samples": 14,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 454,
+    "min_cluster_size": 37,
+    "min_samples": 15,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 455,
+    "min_cluster_size": 37,
+    "min_samples": 16,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 456,
+    "min_cluster_size": 37,
+    "min_samples": 17,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 457,
+    "min_cluster_size": 37,
+    "min_samples": 18,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 458,
+    "min_cluster_size": 37,
+    "min_samples": 19,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 459,
+    "min_cluster_size": 37,
+    "min_samples": 20,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 460,
+    "min_cluster_size": 38,
+    "min_samples": 1,
+    "n_clusters": 6,
+    "noise_pct": 32.79,
+    "dbcv_score": 0.0873437554404389
+  },
+  {
+    "iteration": 461,
+    "min_cluster_size": 38,
+    "min_samples": 2,
+    "n_clusters": 6,
+    "noise_pct": 33.44,
+    "dbcv_score": 0.08519638499086768
+  },
+  {
+    "iteration": 462,
+    "min_cluster_size": 38,
+    "min_samples": 3,
+    "n_clusters": 6,
+    "noise_pct": 38.36,
+    "dbcv_score": 0.06248937906572699
+  },
+  {
+    "iteration": 463,
+    "min_cluster_size": 38,
+    "min_samples": 4,
+    "n_clusters": 4,
+    "noise_pct": 57.05,
+    "dbcv_score": 0.03069803388815492
+  },
+  {
+    "iteration": 464,
+    "min_cluster_size": 38,
+    "min_samples": 5,
+    "n_clusters": 4,
+    "noise_pct": 52.46,
+    "dbcv_score": 0.026209498981679465
+  },
+  {
+    "iteration": 465,
+    "min_cluster_size": 38,
+    "min_samples": 6,
+    "n_clusters": 2,
+    "noise_pct": 73.11,
+    "dbcv_score": 0.008591723071475264
+  },
+  {
+    "iteration": 466,
+    "min_cluster_size": 38,
+    "min_samples": 7,
+    "n_clusters": 3,
+    "noise_pct": 69.84,
+    "dbcv_score": 0.008167557390020634
+  },
+  {
+    "iteration": 467,
+    "min_cluster_size": 38,
+    "min_samples": 8,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 468,
+    "min_cluster_size": 38,
+    "min_samples": 9,
+    "n_clusters": 2,
+    "noise_pct": 63.44,
+    "dbcv_score": 1.0938605762040417e-05
+  },
+  {
+    "iteration": 469,
+    "min_cluster_size": 38,
+    "min_samples": 10,
+    "n_clusters": 2,
+    "noise_pct": 67.05,
+    "dbcv_score": 1.5167537927218537e-05
+  },
+  {
+    "iteration": 470,
+    "min_cluster_size": 38,
+    "min_samples": 11,
+    "n_clusters": 3,
+    "noise_pct": 74.26,
+    "dbcv_score": 0.0012178314478216768
+  },
+  {
+    "iteration": 471,
+    "min_cluster_size": 38,
+    "min_samples": 12,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 472,
+    "min_cluster_size": 38,
+    "min_samples": 13,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 473,
+    "min_cluster_size": 38,
+    "min_samples": 14,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 474,
+    "min_cluster_size": 38,
+    "min_samples": 15,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 475,
+    "min_cluster_size": 38,
+    "min_samples": 16,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 476,
+    "min_cluster_size": 38,
+    "min_samples": 17,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 477,
+    "min_cluster_size": 38,
+    "min_samples": 18,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 478,
+    "min_cluster_size": 38,
+    "min_samples": 19,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 479,
+    "min_cluster_size": 38,
+    "min_samples": 20,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 480,
+    "min_cluster_size": 39,
+    "min_samples": 1,
+    "n_clusters": 6,
+    "noise_pct": 32.79,
+    "dbcv_score": 0.0873437554404389
+  },
+  {
+    "iteration": 481,
+    "min_cluster_size": 39,
+    "min_samples": 2,
+    "n_clusters": 6,
+    "noise_pct": 33.44,
+    "dbcv_score": 0.08519638499086768
+  },
+  {
+    "iteration": 482,
+    "min_cluster_size": 39,
+    "min_samples": 3,
+    "n_clusters": 6,
+    "noise_pct": 38.36,
+    "dbcv_score": 0.06248937906572699
+  },
+  {
+    "iteration": 483,
+    "min_cluster_size": 39,
+    "min_samples": 4,
+    "n_clusters": 4,
+    "noise_pct": 57.05,
+    "dbcv_score": 0.03069803388815492
+  },
+  {
+    "iteration": 484,
+    "min_cluster_size": 39,
+    "min_samples": 5,
+    "n_clusters": 3,
+    "noise_pct": 52.46,
+    "dbcv_score": 0.09475666618900046
+  },
+  {
+    "iteration": 485,
+    "min_cluster_size": 39,
+    "min_samples": 6,
+    "n_clusters": 2,
+    "noise_pct": 73.11,
+    "dbcv_score": 0.008591723071475264
+  },
+  {
+    "iteration": 486,
+    "min_cluster_size": 39,
+    "min_samples": 7,
+    "n_clusters": 3,
+    "noise_pct": 69.84,
+    "dbcv_score": 0.008167557390020634
+  },
+  {
+    "iteration": 487,
+    "min_cluster_size": 39,
+    "min_samples": 8,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 488,
+    "min_cluster_size": 39,
+    "min_samples": 9,
+    "n_clusters": 2,
+    "noise_pct": 63.44,
+    "dbcv_score": 1.0938605762040417e-05
+  },
+  {
+    "iteration": 489,
+    "min_cluster_size": 39,
+    "min_samples": 10,
+    "n_clusters": 2,
+    "noise_pct": 67.05,
+    "dbcv_score": 1.5167537927218537e-05
+  },
+  {
+    "iteration": 490,
+    "min_cluster_size": 39,
+    "min_samples": 11,
+    "n_clusters": 3,
+    "noise_pct": 74.26,
+    "dbcv_score": 0.0012178314478216768
+  },
+  {
+    "iteration": 491,
+    "min_cluster_size": 39,
+    "min_samples": 12,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 492,
+    "min_cluster_size": 39,
+    "min_samples": 13,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 493,
+    "min_cluster_size": 39,
+    "min_samples": 14,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 494,
+    "min_cluster_size": 39,
+    "min_samples": 15,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 495,
+    "min_cluster_size": 39,
+    "min_samples": 16,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 496,
+    "min_cluster_size": 39,
+    "min_samples": 17,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 497,
+    "min_cluster_size": 39,
+    "min_samples": 18,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 498,
+    "min_cluster_size": 39,
+    "min_samples": 19,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 499,
+    "min_cluster_size": 39,
+    "min_samples": 20,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 500,
+    "min_cluster_size": 40,
+    "min_samples": 1,
+    "n_clusters": 6,
+    "noise_pct": 32.79,
+    "dbcv_score": 0.0873437554404389
+  },
+  {
+    "iteration": 501,
+    "min_cluster_size": 40,
+    "min_samples": 2,
+    "n_clusters": 6,
+    "noise_pct": 33.44,
+    "dbcv_score": 0.08519638499086768
+  },
+  {
+    "iteration": 502,
+    "min_cluster_size": 40,
+    "min_samples": 3,
+    "n_clusters": 4,
+    "noise_pct": 44.75,
+    "dbcv_score": 0.039292041229868256
+  },
+  {
+    "iteration": 503,
+    "min_cluster_size": 40,
+    "min_samples": 4,
+    "n_clusters": 3,
+    "noise_pct": 57.05,
+    "dbcv_score": 0.09071054729744958
+  },
+  {
+    "iteration": 504,
+    "min_cluster_size": 40,
+    "min_samples": 5,
+    "n_clusters": 3,
+    "noise_pct": 52.46,
+    "dbcv_score": 0.09475666618900046
+  },
+  {
+    "iteration": 505,
+    "min_cluster_size": 40,
+    "min_samples": 6,
+    "n_clusters": 2,
+    "noise_pct": 73.11,
+    "dbcv_score": 0.008591723071475264
+  },
+  {
+    "iteration": 506,
+    "min_cluster_size": 40,
+    "min_samples": 7,
+    "n_clusters": 3,
+    "noise_pct": 69.84,
+    "dbcv_score": 0.008167557390020634
+  },
+  {
+    "iteration": 507,
+    "min_cluster_size": 40,
+    "min_samples": 8,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 508,
+    "min_cluster_size": 40,
+    "min_samples": 9,
+    "n_clusters": 2,
+    "noise_pct": 63.44,
+    "dbcv_score": 1.0938605762040417e-05
+  },
+  {
+    "iteration": 509,
+    "min_cluster_size": 40,
+    "min_samples": 10,
+    "n_clusters": 2,
+    "noise_pct": 67.05,
+    "dbcv_score": 1.5167537927218537e-05
+  },
+  {
+    "iteration": 510,
+    "min_cluster_size": 40,
+    "min_samples": 11,
+    "n_clusters": 3,
+    "noise_pct": 74.26,
+    "dbcv_score": 0.0012178314478216768
+  },
+  {
+    "iteration": 511,
+    "min_cluster_size": 40,
+    "min_samples": 12,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 512,
+    "min_cluster_size": 40,
+    "min_samples": 13,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 513,
+    "min_cluster_size": 40,
+    "min_samples": 14,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 514,
+    "min_cluster_size": 40,
+    "min_samples": 15,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 515,
+    "min_cluster_size": 40,
+    "min_samples": 16,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 516,
+    "min_cluster_size": 40,
+    "min_samples": 17,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 517,
+    "min_cluster_size": 40,
+    "min_samples": 18,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 518,
+    "min_cluster_size": 40,
+    "min_samples": 19,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 519,
+    "min_cluster_size": 40,
+    "min_samples": 20,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 520,
+    "min_cluster_size": 41,
+    "min_samples": 1,
+    "n_clusters": 6,
+    "noise_pct": 32.79,
+    "dbcv_score": 0.0873437554404389
+  },
+  {
+    "iteration": 521,
+    "min_cluster_size": 41,
+    "min_samples": 2,
+    "n_clusters": 6,
+    "noise_pct": 33.44,
+    "dbcv_score": 0.08519638499086768
+  },
+  {
+    "iteration": 522,
+    "min_cluster_size": 41,
+    "min_samples": 3,
+    "n_clusters": 4,
+    "noise_pct": 44.75,
+    "dbcv_score": 0.039292041229868256
+  },
+  {
+    "iteration": 523,
+    "min_cluster_size": 41,
+    "min_samples": 4,
+    "n_clusters": 3,
+    "noise_pct": 57.05,
+    "dbcv_score": 0.09071054729744958
+  },
+  {
+    "iteration": 524,
+    "min_cluster_size": 41,
+    "min_samples": 5,
+    "n_clusters": 3,
+    "noise_pct": 52.46,
+    "dbcv_score": 0.09475666618900046
+  },
+  {
+    "iteration": 525,
+    "min_cluster_size": 41,
+    "min_samples": 6,
+    "n_clusters": 2,
+    "noise_pct": 73.11,
+    "dbcv_score": 0.008591723071475264
+  },
+  {
+    "iteration": 526,
+    "min_cluster_size": 41,
+    "min_samples": 7,
+    "n_clusters": 3,
+    "noise_pct": 69.84,
+    "dbcv_score": 0.008167557390020634
+  },
+  {
+    "iteration": 527,
+    "min_cluster_size": 41,
+    "min_samples": 8,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 528,
+    "min_cluster_size": 41,
+    "min_samples": 9,
+    "n_clusters": 2,
+    "noise_pct": 63.44,
+    "dbcv_score": 1.0938605762040417e-05
+  },
+  {
+    "iteration": 529,
+    "min_cluster_size": 41,
+    "min_samples": 10,
+    "n_clusters": 2,
+    "noise_pct": 67.05,
+    "dbcv_score": 1.5167537927218537e-05
+  },
+  {
+    "iteration": 530,
+    "min_cluster_size": 41,
+    "min_samples": 11,
+    "n_clusters": 2,
+    "noise_pct": 73.44,
+    "dbcv_score": 1.3615496802082358e-05
+  },
+  {
+    "iteration": 531,
+    "min_cluster_size": 41,
+    "min_samples": 12,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 532,
+    "min_cluster_size": 41,
+    "min_samples": 13,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 533,
+    "min_cluster_size": 41,
+    "min_samples": 14,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 534,
+    "min_cluster_size": 41,
+    "min_samples": 15,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 535,
+    "min_cluster_size": 41,
+    "min_samples": 16,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 536,
+    "min_cluster_size": 41,
+    "min_samples": 17,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 537,
+    "min_cluster_size": 41,
+    "min_samples": 18,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 538,
+    "min_cluster_size": 41,
+    "min_samples": 19,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 539,
+    "min_cluster_size": 41,
+    "min_samples": 20,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 540,
+    "min_cluster_size": 42,
+    "min_samples": 1,
+    "n_clusters": 5,
+    "noise_pct": 32.79,
+    "dbcv_score": 0.06417486473444044
+  },
+  {
+    "iteration": 541,
+    "min_cluster_size": 42,
+    "min_samples": 2,
+    "n_clusters": 5,
+    "noise_pct": 33.44,
+    "dbcv_score": 0.062253532242976514
+  },
+  {
+    "iteration": 542,
+    "min_cluster_size": 42,
+    "min_samples": 3,
+    "n_clusters": 4,
+    "noise_pct": 44.75,
+    "dbcv_score": 0.039292041229868256
+  },
+  {
+    "iteration": 543,
+    "min_cluster_size": 42,
+    "min_samples": 4,
+    "n_clusters": 3,
+    "noise_pct": 57.05,
+    "dbcv_score": 0.09071054729744958
+  },
+  {
+    "iteration": 544,
+    "min_cluster_size": 42,
+    "min_samples": 5,
+    "n_clusters": 3,
+    "noise_pct": 52.46,
+    "dbcv_score": 0.09475666618900046
+  },
+  {
+    "iteration": 545,
+    "min_cluster_size": 42,
+    "min_samples": 6,
+    "n_clusters": 2,
+    "noise_pct": 73.11,
+    "dbcv_score": 0.008591723071475264
+  },
+  {
+    "iteration": 546,
+    "min_cluster_size": 42,
+    "min_samples": 7,
+    "n_clusters": 3,
+    "noise_pct": 69.84,
+    "dbcv_score": 0.008167557390020634
+  },
+  {
+    "iteration": 547,
+    "min_cluster_size": 42,
+    "min_samples": 8,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 548,
+    "min_cluster_size": 42,
+    "min_samples": 9,
+    "n_clusters": 2,
+    "noise_pct": 63.44,
+    "dbcv_score": 1.0938605762040417e-05
+  },
+  {
+    "iteration": 549,
+    "min_cluster_size": 42,
+    "min_samples": 10,
+    "n_clusters": 2,
+    "noise_pct": 67.05,
+    "dbcv_score": 1.5167537927218537e-05
+  },
+  {
+    "iteration": 550,
+    "min_cluster_size": 42,
+    "min_samples": 11,
+    "n_clusters": 2,
+    "noise_pct": 73.44,
+    "dbcv_score": 1.3615496802082358e-05
+  },
+  {
+    "iteration": 551,
+    "min_cluster_size": 42,
+    "min_samples": 12,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 552,
+    "min_cluster_size": 42,
+    "min_samples": 13,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 553,
+    "min_cluster_size": 42,
+    "min_samples": 14,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 554,
+    "min_cluster_size": 42,
+    "min_samples": 15,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 555,
+    "min_cluster_size": 42,
+    "min_samples": 16,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 556,
+    "min_cluster_size": 42,
+    "min_samples": 17,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 557,
+    "min_cluster_size": 42,
+    "min_samples": 18,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 558,
+    "min_cluster_size": 42,
+    "min_samples": 19,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 559,
+    "min_cluster_size": 42,
+    "min_samples": 20,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 560,
+    "min_cluster_size": 43,
+    "min_samples": 1,
+    "n_clusters": 5,
+    "noise_pct": 32.79,
+    "dbcv_score": 0.06417486473444044
+  },
+  {
+    "iteration": 561,
+    "min_cluster_size": 43,
+    "min_samples": 2,
+    "n_clusters": 5,
+    "noise_pct": 33.44,
+    "dbcv_score": 0.062253532242976514
+  },
+  {
+    "iteration": 562,
+    "min_cluster_size": 43,
+    "min_samples": 3,
+    "n_clusters": 4,
+    "noise_pct": 44.75,
+    "dbcv_score": 0.039292041229868256
+  },
+  {
+    "iteration": 563,
+    "min_cluster_size": 43,
+    "min_samples": 4,
+    "n_clusters": 3,
+    "noise_pct": 57.05,
+    "dbcv_score": 0.09071054729744958
+  },
+  {
+    "iteration": 564,
+    "min_cluster_size": 43,
+    "min_samples": 5,
+    "n_clusters": 3,
+    "noise_pct": 52.46,
+    "dbcv_score": 0.09475666618900046
+  },
+  {
+    "iteration": 565,
+    "min_cluster_size": 43,
+    "min_samples": 6,
+    "n_clusters": 2,
+    "noise_pct": 73.11,
+    "dbcv_score": 0.008591723071475264
+  },
+  {
+    "iteration": 566,
+    "min_cluster_size": 43,
+    "min_samples": 7,
+    "n_clusters": 3,
+    "noise_pct": 69.84,
+    "dbcv_score": 0.008167557390020634
+  },
+  {
+    "iteration": 567,
+    "min_cluster_size": 43,
+    "min_samples": 8,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 568,
+    "min_cluster_size": 43,
+    "min_samples": 9,
+    "n_clusters": 2,
+    "noise_pct": 63.44,
+    "dbcv_score": 1.0938605762040417e-05
+  },
+  {
+    "iteration": 569,
+    "min_cluster_size": 43,
+    "min_samples": 10,
+    "n_clusters": 2,
+    "noise_pct": 67.05,
+    "dbcv_score": 1.5167537927218537e-05
+  },
+  {
+    "iteration": 570,
+    "min_cluster_size": 43,
+    "min_samples": 11,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 571,
+    "min_cluster_size": 43,
+    "min_samples": 12,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 572,
+    "min_cluster_size": 43,
+    "min_samples": 13,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 573,
+    "min_cluster_size": 43,
+    "min_samples": 14,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 574,
+    "min_cluster_size": 43,
+    "min_samples": 15,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 575,
+    "min_cluster_size": 43,
+    "min_samples": 16,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 576,
+    "min_cluster_size": 43,
+    "min_samples": 17,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 577,
+    "min_cluster_size": 43,
+    "min_samples": 18,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 578,
+    "min_cluster_size": 43,
+    "min_samples": 19,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 579,
+    "min_cluster_size": 43,
+    "min_samples": 20,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 580,
+    "min_cluster_size": 44,
+    "min_samples": 1,
+    "n_clusters": 5,
+    "noise_pct": 32.79,
+    "dbcv_score": 0.06417486473444044
+  },
+  {
+    "iteration": 581,
+    "min_cluster_size": 44,
+    "min_samples": 2,
+    "n_clusters": 5,
+    "noise_pct": 33.44,
+    "dbcv_score": 0.062253532242976514
+  },
+  {
+    "iteration": 582,
+    "min_cluster_size": 44,
+    "min_samples": 3,
+    "n_clusters": 4,
+    "noise_pct": 44.75,
+    "dbcv_score": 0.039292041229868256
+  },
+  {
+    "iteration": 583,
+    "min_cluster_size": 44,
+    "min_samples": 4,
+    "n_clusters": 3,
+    "noise_pct": 57.05,
+    "dbcv_score": 0.09071054729744958
+  },
+  {
+    "iteration": 584,
+    "min_cluster_size": 44,
+    "min_samples": 5,
+    "n_clusters": 3,
+    "noise_pct": 52.46,
+    "dbcv_score": 0.09475666618900046
+  },
+  {
+    "iteration": 585,
+    "min_cluster_size": 44,
+    "min_samples": 6,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 586,
+    "min_cluster_size": 44,
+    "min_samples": 7,
+    "n_clusters": 2,
+    "noise_pct": 69.51,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 587,
+    "min_cluster_size": 44,
+    "min_samples": 8,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 588,
+    "min_cluster_size": 44,
+    "min_samples": 9,
+    "n_clusters": 2,
+    "noise_pct": 63.44,
+    "dbcv_score": 1.0938605762040417e-05
+  },
+  {
+    "iteration": 589,
+    "min_cluster_size": 44,
+    "min_samples": 10,
+    "n_clusters": 2,
+    "noise_pct": 67.05,
+    "dbcv_score": 1.5167537927218537e-05
+  },
+  {
+    "iteration": 590,
+    "min_cluster_size": 44,
+    "min_samples": 11,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 591,
+    "min_cluster_size": 44,
+    "min_samples": 12,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 592,
+    "min_cluster_size": 44,
+    "min_samples": 13,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 593,
+    "min_cluster_size": 44,
+    "min_samples": 14,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 594,
+    "min_cluster_size": 44,
+    "min_samples": 15,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 595,
+    "min_cluster_size": 44,
+    "min_samples": 16,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 596,
+    "min_cluster_size": 44,
+    "min_samples": 17,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 597,
+    "min_cluster_size": 44,
+    "min_samples": 18,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 598,
+    "min_cluster_size": 44,
+    "min_samples": 19,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 599,
+    "min_cluster_size": 44,
+    "min_samples": 20,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 600,
+    "min_cluster_size": 45,
+    "min_samples": 1,
+    "n_clusters": 5,
+    "noise_pct": 32.79,
+    "dbcv_score": 0.06417486473444044
+  },
+  {
+    "iteration": 601,
+    "min_cluster_size": 45,
+    "min_samples": 2,
+    "n_clusters": 5,
+    "noise_pct": 33.44,
+    "dbcv_score": 0.062253532242976514
+  },
+  {
+    "iteration": 602,
+    "min_cluster_size": 45,
+    "min_samples": 3,
+    "n_clusters": 4,
+    "noise_pct": 44.75,
+    "dbcv_score": 0.039292041229868256
+  },
+  {
+    "iteration": 603,
+    "min_cluster_size": 45,
+    "min_samples": 4,
+    "n_clusters": 3,
+    "noise_pct": 57.05,
+    "dbcv_score": 0.09071054729744958
+  },
+  {
+    "iteration": 604,
+    "min_cluster_size": 45,
+    "min_samples": 5,
+    "n_clusters": 3,
+    "noise_pct": 52.46,
+    "dbcv_score": 0.09475666618900046
+  },
+  {
+    "iteration": 605,
+    "min_cluster_size": 45,
+    "min_samples": 6,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 606,
+    "min_cluster_size": 45,
+    "min_samples": 7,
+    "n_clusters": 2,
+    "noise_pct": 69.51,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 607,
+    "min_cluster_size": 45,
+    "min_samples": 8,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 608,
+    "min_cluster_size": 45,
+    "min_samples": 9,
+    "n_clusters": 2,
+    "noise_pct": 63.44,
+    "dbcv_score": 1.0938605762040417e-05
+  },
+  {
+    "iteration": 609,
+    "min_cluster_size": 45,
+    "min_samples": 10,
+    "n_clusters": 2,
+    "noise_pct": 67.05,
+    "dbcv_score": 1.5167537927218537e-05
+  },
+  {
+    "iteration": 610,
+    "min_cluster_size": 45,
+    "min_samples": 11,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 611,
+    "min_cluster_size": 45,
+    "min_samples": 12,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 612,
+    "min_cluster_size": 45,
+    "min_samples": 13,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 613,
+    "min_cluster_size": 45,
+    "min_samples": 14,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 614,
+    "min_cluster_size": 45,
+    "min_samples": 15,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 615,
+    "min_cluster_size": 45,
+    "min_samples": 16,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 616,
+    "min_cluster_size": 45,
+    "min_samples": 17,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 617,
+    "min_cluster_size": 45,
+    "min_samples": 18,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 618,
+    "min_cluster_size": 45,
+    "min_samples": 19,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 619,
+    "min_cluster_size": 45,
+    "min_samples": 20,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 620,
+    "min_cluster_size": 46,
+    "min_samples": 1,
+    "n_clusters": 5,
+    "noise_pct": 32.79,
+    "dbcv_score": 0.06417486473444044
+  },
+  {
+    "iteration": 621,
+    "min_cluster_size": 46,
+    "min_samples": 2,
+    "n_clusters": 5,
+    "noise_pct": 33.44,
+    "dbcv_score": 0.062253532242976514
+  },
+  {
+    "iteration": 622,
+    "min_cluster_size": 46,
+    "min_samples": 3,
+    "n_clusters": 4,
+    "noise_pct": 44.75,
+    "dbcv_score": 0.039292041229868256
+  },
+  {
+    "iteration": 623,
+    "min_cluster_size": 46,
+    "min_samples": 4,
+    "n_clusters": 3,
+    "noise_pct": 57.05,
+    "dbcv_score": 0.09071054729744958
+  },
+  {
+    "iteration": 624,
+    "min_cluster_size": 46,
+    "min_samples": 5,
+    "n_clusters": 3,
+    "noise_pct": 52.46,
+    "dbcv_score": 0.09475666618900046
+  },
+  {
+    "iteration": 625,
+    "min_cluster_size": 46,
+    "min_samples": 6,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 626,
+    "min_cluster_size": 46,
+    "min_samples": 7,
+    "n_clusters": 2,
+    "noise_pct": 69.51,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 627,
+    "min_cluster_size": 46,
+    "min_samples": 8,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 628,
+    "min_cluster_size": 46,
+    "min_samples": 9,
+    "n_clusters": 2,
+    "noise_pct": 63.44,
+    "dbcv_score": 1.0938605762040417e-05
+  },
+  {
+    "iteration": 629,
+    "min_cluster_size": 46,
+    "min_samples": 10,
+    "n_clusters": 2,
+    "noise_pct": 67.05,
+    "dbcv_score": 1.5167537927218537e-05
+  },
+  {
+    "iteration": 630,
+    "min_cluster_size": 46,
+    "min_samples": 11,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 631,
+    "min_cluster_size": 46,
+    "min_samples": 12,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 632,
+    "min_cluster_size": 46,
+    "min_samples": 13,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 633,
+    "min_cluster_size": 46,
+    "min_samples": 14,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 634,
+    "min_cluster_size": 46,
+    "min_samples": 15,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 635,
+    "min_cluster_size": 46,
+    "min_samples": 16,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 636,
+    "min_cluster_size": 46,
+    "min_samples": 17,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 637,
+    "min_cluster_size": 46,
+    "min_samples": 18,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 638,
+    "min_cluster_size": 46,
+    "min_samples": 19,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 639,
+    "min_cluster_size": 46,
+    "min_samples": 20,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 640,
+    "min_cluster_size": 47,
+    "min_samples": 1,
+    "n_clusters": 5,
+    "noise_pct": 32.79,
+    "dbcv_score": 0.06417486473444044
+  },
+  {
+    "iteration": 641,
+    "min_cluster_size": 47,
+    "min_samples": 2,
+    "n_clusters": 5,
+    "noise_pct": 33.44,
+    "dbcv_score": 0.062253532242976514
+  },
+  {
+    "iteration": 642,
+    "min_cluster_size": 47,
+    "min_samples": 3,
+    "n_clusters": 4,
+    "noise_pct": 44.75,
+    "dbcv_score": 0.039292041229868256
+  },
+  {
+    "iteration": 643,
+    "min_cluster_size": 47,
+    "min_samples": 4,
+    "n_clusters": 3,
+    "noise_pct": 57.05,
+    "dbcv_score": 0.09071054729744958
+  },
+  {
+    "iteration": 644,
+    "min_cluster_size": 47,
+    "min_samples": 5,
+    "n_clusters": 3,
+    "noise_pct": 52.46,
+    "dbcv_score": 0.09475666618900046
+  },
+  {
+    "iteration": 645,
+    "min_cluster_size": 47,
+    "min_samples": 6,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 646,
+    "min_cluster_size": 47,
+    "min_samples": 7,
+    "n_clusters": 2,
+    "noise_pct": 69.51,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 647,
+    "min_cluster_size": 47,
+    "min_samples": 8,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 648,
+    "min_cluster_size": 47,
+    "min_samples": 9,
+    "n_clusters": 2,
+    "noise_pct": 63.44,
+    "dbcv_score": 1.0938605762040417e-05
+  },
+  {
+    "iteration": 649,
+    "min_cluster_size": 47,
+    "min_samples": 10,
+    "n_clusters": 2,
+    "noise_pct": 67.05,
+    "dbcv_score": 1.5167537927218537e-05
+  },
+  {
+    "iteration": 650,
+    "min_cluster_size": 47,
+    "min_samples": 11,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 651,
+    "min_cluster_size": 47,
+    "min_samples": 12,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 652,
+    "min_cluster_size": 47,
+    "min_samples": 13,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 653,
+    "min_cluster_size": 47,
+    "min_samples": 14,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 654,
+    "min_cluster_size": 47,
+    "min_samples": 15,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 655,
+    "min_cluster_size": 47,
+    "min_samples": 16,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 656,
+    "min_cluster_size": 47,
+    "min_samples": 17,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 657,
+    "min_cluster_size": 47,
+    "min_samples": 18,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 658,
+    "min_cluster_size": 47,
+    "min_samples": 19,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 659,
+    "min_cluster_size": 47,
+    "min_samples": 20,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 660,
+    "min_cluster_size": 48,
+    "min_samples": 1,
+    "n_clusters": 4,
+    "noise_pct": 32.79,
+    "dbcv_score": 0.036500302030221095
+  },
+  {
+    "iteration": 661,
+    "min_cluster_size": 48,
+    "min_samples": 2,
+    "n_clusters": 4,
+    "noise_pct": 29.02,
+    "dbcv_score": 0.0073637781729031385
+  },
+  {
+    "iteration": 662,
+    "min_cluster_size": 48,
+    "min_samples": 3,
+    "n_clusters": 3,
+    "noise_pct": 44.75,
+    "dbcv_score": 0.003192144051487647
+  },
+  {
+    "iteration": 663,
+    "min_cluster_size": 48,
+    "min_samples": 4,
+    "n_clusters": 2,
+    "noise_pct": 41.64,
+    "dbcv_score": 8.179522980270924e-17
+  },
+  {
+    "iteration": 664,
+    "min_cluster_size": 48,
+    "min_samples": 5,
+    "n_clusters": 3,
+    "noise_pct": 52.46,
+    "dbcv_score": 0.09475666618900046
+  },
+  {
+    "iteration": 665,
+    "min_cluster_size": 48,
+    "min_samples": 6,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 666,
+    "min_cluster_size": 48,
+    "min_samples": 7,
+    "n_clusters": 2,
+    "noise_pct": 69.51,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 667,
+    "min_cluster_size": 48,
+    "min_samples": 8,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 668,
+    "min_cluster_size": 48,
+    "min_samples": 9,
+    "n_clusters": 2,
+    "noise_pct": 63.44,
+    "dbcv_score": 1.0938605762040417e-05
+  },
+  {
+    "iteration": 669,
+    "min_cluster_size": 48,
+    "min_samples": 10,
+    "n_clusters": 2,
+    "noise_pct": 67.05,
+    "dbcv_score": 1.5167537927218537e-05
+  },
+  {
+    "iteration": 670,
+    "min_cluster_size": 48,
+    "min_samples": 11,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 671,
+    "min_cluster_size": 48,
+    "min_samples": 12,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 672,
+    "min_cluster_size": 48,
+    "min_samples": 13,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 673,
+    "min_cluster_size": 48,
+    "min_samples": 14,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 674,
+    "min_cluster_size": 48,
+    "min_samples": 15,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 675,
+    "min_cluster_size": 48,
+    "min_samples": 16,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 676,
+    "min_cluster_size": 48,
+    "min_samples": 17,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 677,
+    "min_cluster_size": 48,
+    "min_samples": 18,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 678,
+    "min_cluster_size": 48,
+    "min_samples": 19,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 679,
+    "min_cluster_size": 48,
+    "min_samples": 20,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 680,
+    "min_cluster_size": 49,
+    "min_samples": 1,
+    "n_clusters": 4,
+    "noise_pct": 32.79,
+    "dbcv_score": 0.036500302030221095
+  },
+  {
+    "iteration": 681,
+    "min_cluster_size": 49,
+    "min_samples": 2,
+    "n_clusters": 4,
+    "noise_pct": 29.02,
+    "dbcv_score": 0.0073637781729031385
+  },
+  {
+    "iteration": 682,
+    "min_cluster_size": 49,
+    "min_samples": 3,
+    "n_clusters": 3,
+    "noise_pct": 44.75,
+    "dbcv_score": 0.003192144051487647
+  },
+  {
+    "iteration": 683,
+    "min_cluster_size": 49,
+    "min_samples": 4,
+    "n_clusters": 2,
+    "noise_pct": 41.64,
+    "dbcv_score": 8.179522980270924e-17
+  },
+  {
+    "iteration": 684,
+    "min_cluster_size": 49,
+    "min_samples": 5,
+    "n_clusters": 3,
+    "noise_pct": 52.46,
+    "dbcv_score": 0.09475666618900046
+  },
+  {
+    "iteration": 685,
+    "min_cluster_size": 49,
+    "min_samples": 6,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 686,
+    "min_cluster_size": 49,
+    "min_samples": 7,
+    "n_clusters": 2,
+    "noise_pct": 69.51,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 687,
+    "min_cluster_size": 49,
+    "min_samples": 8,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 688,
+    "min_cluster_size": 49,
+    "min_samples": 9,
+    "n_clusters": 2,
+    "noise_pct": 63.44,
+    "dbcv_score": 1.0938605762040417e-05
+  },
+  {
+    "iteration": 689,
+    "min_cluster_size": 49,
+    "min_samples": 10,
+    "n_clusters": 2,
+    "noise_pct": 67.05,
+    "dbcv_score": 1.5167537927218537e-05
+  },
+  {
+    "iteration": 690,
+    "min_cluster_size": 49,
+    "min_samples": 11,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 691,
+    "min_cluster_size": 49,
+    "min_samples": 12,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 692,
+    "min_cluster_size": 49,
+    "min_samples": 13,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 693,
+    "min_cluster_size": 49,
+    "min_samples": 14,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 694,
+    "min_cluster_size": 49,
+    "min_samples": 15,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 695,
+    "min_cluster_size": 49,
+    "min_samples": 16,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 696,
+    "min_cluster_size": 49,
+    "min_samples": 17,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 697,
+    "min_cluster_size": 49,
+    "min_samples": 18,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 698,
+    "min_cluster_size": 49,
+    "min_samples": 19,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 699,
+    "min_cluster_size": 49,
+    "min_samples": 20,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 700,
+    "min_cluster_size": 50,
+    "min_samples": 1,
+    "n_clusters": 4,
+    "noise_pct": 32.79,
+    "dbcv_score": 0.036500302030221095
+  },
+  {
+    "iteration": 701,
+    "min_cluster_size": 50,
+    "min_samples": 2,
+    "n_clusters": 4,
+    "noise_pct": 29.02,
+    "dbcv_score": 0.0073637781729031385
+  },
+  {
+    "iteration": 702,
+    "min_cluster_size": 50,
+    "min_samples": 3,
+    "n_clusters": 3,
+    "noise_pct": 44.75,
+    "dbcv_score": 0.003192144051487647
+  },
+  {
+    "iteration": 703,
+    "min_cluster_size": 50,
+    "min_samples": 4,
+    "n_clusters": 2,
+    "noise_pct": 41.64,
+    "dbcv_score": 8.179522980270924e-17
+  },
+  {
+    "iteration": 704,
+    "min_cluster_size": 50,
+    "min_samples": 5,
+    "n_clusters": 3,
+    "noise_pct": 52.46,
+    "dbcv_score": 0.09475666618900046
+  },
+  {
+    "iteration": 705,
+    "min_cluster_size": 50,
+    "min_samples": 6,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 706,
+    "min_cluster_size": 50,
+    "min_samples": 7,
+    "n_clusters": 2,
+    "noise_pct": 69.51,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 707,
+    "min_cluster_size": 50,
+    "min_samples": 8,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 708,
+    "min_cluster_size": 50,
+    "min_samples": 9,
+    "n_clusters": 2,
+    "noise_pct": 63.44,
+    "dbcv_score": 1.0938605762040417e-05
+  },
+  {
+    "iteration": 709,
+    "min_cluster_size": 50,
+    "min_samples": 10,
+    "n_clusters": 2,
+    "noise_pct": 67.05,
+    "dbcv_score": 1.5167537927218537e-05
+  },
+  {
+    "iteration": 710,
+    "min_cluster_size": 50,
+    "min_samples": 11,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 711,
+    "min_cluster_size": 50,
+    "min_samples": 12,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 712,
+    "min_cluster_size": 50,
+    "min_samples": 13,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 713,
+    "min_cluster_size": 50,
+    "min_samples": 14,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 714,
+    "min_cluster_size": 50,
+    "min_samples": 15,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 715,
+    "min_cluster_size": 50,
+    "min_samples": 16,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 716,
+    "min_cluster_size": 50,
+    "min_samples": 17,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 717,
+    "min_cluster_size": 50,
+    "min_samples": 18,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 718,
+    "min_cluster_size": 50,
+    "min_samples": 19,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  },
+  {
+    "iteration": 719,
+    "min_cluster_size": 50,
+    "min_samples": 20,
+    "n_clusters": 0,
+    "noise_pct": 100.0,
+    "dbcv_score": 0.0
+  }
+]
