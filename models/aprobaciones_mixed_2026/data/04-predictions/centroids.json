@@ -1,0 +1,26 @@
+[
+    {
+        "cluster": 0,
+        "count": 97,
+        "monto": 67000000.0,
+        "monto_total": 18516609764.99,
+        "aprobaciones": 1.0,
+        "top_sector": "Sector P\u00fablico"
+    },
+    {
+        "cluster": 1,
+        "count": 33,
+        "monto": 15100000.0,
+        "monto_total": 1657483305.5700002,
+        "aprobaciones": 1.0,
+        "top_sector": "Sector Privado"
+    },
+    {
+        "cluster": 2,
+        "count": 240,
+        "monto": 79645473.845,
+        "monto_total": 37232636454.520004,
+        "aprobaciones": 2.0,
+        "top_sector": "Sector Privado"
+    }
+]
