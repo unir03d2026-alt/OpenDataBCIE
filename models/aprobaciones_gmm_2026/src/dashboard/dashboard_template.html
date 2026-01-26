@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tablero de Clustering (Gaussian Mixture Model) - BCIE</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --font-main: 'Inter', sans-serif;
+            --primary: #105682;
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+            --bg-body: #f8fafc;
+            --bg-card: #ffffff;
+            --border: #e2e8f0;
+            --hover: #f1f5f9;
+            --success: #10b981;
+            --danger: #ef4444;
+            --tooltip-bg: #1e293b;
+            --tooltip-text: #ffffff;
+        }
+
+        [data-theme="dark"] {
+            --primary: #38bdf8;
+            --text-dark: #f1f5f9;
+            --text-light: #94a3b8;
+            --bg-body: #0f172a;
+            --bg-card: #1e293b;
+            --border: #334155;
+            --hover: #334155;
+            --tooltip-bg: #ffffff;
+            --tooltip-text: #0f172a;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background: var(--bg-body);
+            margin: 0;
+            padding: 0;
+            color: var(--text-dark);
+            transition: background 0.3s;
+        }
+
+        /* NAV */
+        .top-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: var(--bg-card);
+            border-bottom: 5px solid var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 30px;
+            z-index: 50;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .header-title h1 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .header-title .subtitle {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-top: 4px;
+        }
+
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .update-badge {
+            font-size: 11px;
+            background: var(--hover);
+            color: var(--text-light);
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        /* TOGGLES */
+        .toggle-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .toggle-switch {
+            position: relative;
+            width: 80px;
+            height: 30px;
+            background: var(--bg-body);
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 2px;
+            transition: background 0.3s;
+        }
+
+        .toggle-switch.active {
+            background: #94a3b8;
+            border-color: #94a3b8;
+        }
+
+        .toggle-knob {
+            width: 24px;
+            height: 24px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+            position: absolute;
+            left: 3px;
+            z-index: 2;
+        }
+
+        .toggle-switch.active .toggle-knob {
+            transform: translateX(50px);
+        }
+
+        .toggle-icon {
+            font-size: 14px;
+            z-index: 1;
+            margin: 0 8px;
+            user-select: none;
+        }
+
+        .toggle-labels {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            font-size: 9px;
+            font-weight: 700;
+            color: var(--text-light);
+            padding: 0 6px;
+        }
+
+        .toggle-labels span {
+            flex: 1;
+            text-align: center;
+        }
+
+        /* BUTTONS */
+        .btn-action {
+            font-family: var(--font-main);
+            padding: 6px 16px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            border: 1px solid transparent;
+            transition: 0.2s;
+            min-width: 100px;
+            text-align: center;
+        }
+
+        .btn-ghost-primary {
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-ghost-primary:hover {
+            background: var(--hover);
+        }
+
+        .btn-solid-primary {
+            background: var(--primary);
+            border: 1px solid var(--primary);
+            color: white;
+        }
+
+        .btn-solid-primary:hover {
+            opacity: 0.9;
+        }
+
+        [data-theme="dark"] .btn-ghost-primary {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        [data-theme="dark"] .btn-solid-primary {
+            color: #0f172a;
+        }
+
+        /* LAYOUT */
+        .dashboard-container {
+            margin-top: 85px;
+            padding: 10px 25px;
+            max-width: 98%;
+            margin-left: auto;
+            margin-right: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .insight-cards-container {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .insight-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--primary);
+            border-radius: 8px;
+            padding: 10px 12px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            min-height: 90px;
+            transition: 0.2s;
+        }
+
+        .insight-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .insight-card-title {
+            font-size: 11px;
+            font-weight: 800;
+            color: var(--text-light);
+            text-transform: uppercase;
+            margin-bottom: 4px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .insight-card-val {
+            font-size: 20px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .insight-card-footer {
+            font-size: 11px;
+            margin-top: 5px;
+            color: var(--text-light);
+            border-top: 1px solid var(--hover);
+            padding-top: 6px;
+        }
+
+        .dashboard-grid-main {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 15px;
+            min-height: 600px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 15px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transition: 0.2s;
+        }
+
+        .card:hover {
+            border-color: var(--primary);
+        }
+
+        .card-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 0 0 10px 0;
+            border-bottom: 2px solid var(--hover);
+            padding-bottom: 6px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* TABLE */
+        .table-container {
+            flex: 1;
+            overflow: auto;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            max-height: 500px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 11px;
+        }
+
+        th {
+            text-align: left;
+            padding: 10px;
+            background: var(--hover);
+            position: sticky;
+            top: 0;
+            border-bottom: 2px solid var(--primary);
+            z-index: 10;
+            color: var(--text-dark);
+        }
+
+        td {
+            padding: 6px 10px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        tr:nth-child(even) {
+            background: rgba(0, 0, 0, 0.01);
+        }
+
+        tr:hover {
+            background: rgba(16, 86, 130, 0.05);
+        }
+
+        /* TAGS */
+        .cluster-tag {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 4px;
+            color: white;
+            font-weight: 700;
+            font-size: 10px;
+            white-space: nowrap;
+            min-width: 80px;
+            text-align: center;
+        }
+
+        /* FOOTER */
+        footer {
+            margin-top: 20px;
+            border-top: 1px solid var(--border);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-legal {
+            font-size: 11px;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .footer-disclaimer {
+            font-size: 11px;
+            color: var(--text-light);
+            opacity: 0.8;
+            margin-top: 5px;
+        }
+
+        /* MODAL */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            backdrop-filter: blur(4px);
+            display: none;
+        }
+
+        .modal-content {
+            background: var(--bg-card);
+            width: 800px;
+            padding: 30px;
+            border-radius: 12px;
+            border: 2px solid var(--primary);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+
+<body id="dashboard-body">
+    <nav class="top-nav">
+        <div class="header-title">
+            <h1 id="lbl-main">Dashboard de Clustering (Gaussian Mixture Model - GMM)</h1>
+            <div class="subtitle">Segmentación Probabilística de Países BCIE</div>
+        </div>
+        <div class="nav-controls">
+            <button class="btn-action btn-ghost-primary" onclick="toggleModal('metrics-modal', true)">Métricas
+                Modelo</button>
+            <div style="width:1px; height:20px; background:var(--border);"></div>
+            <button class="btn-action btn-ghost-primary" onclick="takeScreenshot()">Captura</button>
+            <button class="btn-action btn-solid-primary" onclick="generatePDF()">PDF</button>
+            <div class="update-badge">Actualizado: {{UPDATE_TIME}}</div>
+
+            <div class="toggle-wrapper">
+                <div class="toggle-switch" id="btn-theme" onclick="toggleTheme()">
+                    <div class="toggle-knob"></div>
+                    <span class="toggle-icon">☀️</span><span class="toggle-icon">🌙</span>
+                </div>
+                <div class="toggle-labels"><span>Claro</span><span>Oscuro</span></div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        <!-- INSIGHT CARDS -->
+        <div class="insight-cards-container" id="cards-container">
+            <!-- Dynamic Cards -->
+        </div>
+
+        <div class="dashboard-grid-main">
+            <!-- LEFT COLUMN -->
+            <div class="left-col" style="display:flex; flex-direction:column; gap:15px;">
+                <!-- SCATTER PLOT -->
+                <div class="card" style="flex: 2; min-height: 400px;">
+                    <h3 class="card-title">Mapa de Segmentación GMM (Soft Clustering)</h3>
+                    <div id="scatter-chart" style="height:100%;"></div>
+                </div>
+
+                <!-- AIC/BIC CHART -->
+                <div class="card" style="flex: 1; min-height: 300px;">
+                    <h3 class="card-title">Optimización de Componentes (AIC/BIC)</h3>
+                    <div
+                        style="display:flex; justify-content:center; align-items:center; height:100%; overflow:hidden;">
+                        <img src="../../data/05-plots/optimization_aic_bic.png"
+                            style="max-width:100%; max-height:100%; border-radius:8px;"
+                            alt="El gráfico AIC/BIC debe generarse ejecutando run.py">
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT COLUMN -->
+            <div class="right-col" style="display:flex; flex-direction:column; gap:15px;">
+                <!-- METRICS SUMMARY -->
+                <div class="card">
+                    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
+                        <div style="text-align:center;">
+                            <div style="font-size:10px; color:var(--text-light); font-weight:700;">PROB. PROMEDIO</div>
+                            <div style="font-size:24px; font-weight:800; color:var(--primary);">{{METRIC_PROB}}</div>
+                        </div>
+                        <div style="text-align:center;">
+                            <div style="font-size:10px; color:var(--text-light); font-weight:700;">BIC (OPTIM)</div>
+                            <div style="font-size:24px; font-weight:800; color:var(--success);">{{METRIC_BIC}}</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TABLE -->
+                <div class="card" style="flex:1;">
+                    <h3 class="card-title">Detalle Probabilístico</h3>
+                    <div class="table-container">
+                        <table id="data-table">
+                            <thead>
+                                <tr>
+                                    <th>País</th>
+                                    <th>Año</th>
+                                    <th style="text-align:right;">Monto</th>
+                                    <th style="text-align:center;">Prob%</th>
+                                    <th style="text-align:center;">Grupo</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <div class="footer-legal">© 2026 | UNIR–BCIE | Trabajo de Colaboración Académica</div>
+            <div class="footer-disclaimer">Modelo: Gaussian Mixture Model (GMM) - Optimizado con BIC</div>
+        </footer>
+    </div>
+
+    <!-- METRICS MODAL -->
+    <div id="metrics-modal" class="modal-overlay">
+        <div class="modal-content">
+            <h2 style="color:var(--primary);">Métricas del Modelo (GMM)</h2>
+            <div class="modal-body">
+                <p>Evaluación basada en densidad y probabilidad.</p>
+                <ul>
+                    <li><b>Probabilidad Promedio de Asignación:</b> {{METRIC_PROB}} (Confianza del modelo).</li>
+                    <li><b>BIC (Bayesian Info Criterion):</b> {{METRIC_BIC}} (Menor indica mejor balance
+                        ajuste/complejidad).</li>
+                    <li><b>AIC (Akaike Info Criterion):</b> {{METRIC_AIC}} (Similar a BIC pero penaliza menos).</li>
+                    <li><b>Silhouette Score (Ref):</b> {{METRIC_SIL}} (Referencial, GMM permite solapamiento).</li>
+                </ul>
+                <div style="margin-top:20px; text-align:right;">
+                    <button class="btn-action btn-solid-primary"
+                        onclick="toggleModal('metrics-modal', false)">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // DATA INJECTION
+        const dataClusters = {{ DATA_CLUSTERS }};
+
+        // COLORS
+        const clusterColors = ['#105682', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899', '#64748b'];
+
+        function init() {
+            renderCards();
+            renderTable();
+            renderCharts();
+        }
+
+        function renderCards() {
+            const container = document.getElementById('cards-container');
+            container.innerHTML = '';
+
+            const totalAmount = dataClusters.reduce((sum, d) => sum + d.Monto_Aprobado, 0);
+            const uniqueClusters = [...new Set(dataClusters.map(d => d.Cluster))].sort();
+
+            // General Card
+            container.innerHTML += `
+            <div class="insight-card" style="border-left-color:#334155">
+                <div class="insight-card-title">Resumen</div>
+                <div class="insight-card-val">${dataClusters.length} <span style="font-size:10px; color:var(--text-light)">Registros</span></div>
+                <div class="insight-card-footer">$${(totalAmount / 1e6).toFixed(1)}M Total</div>
+            </div>
+        `;
+
+            // Cluster Cards
+            uniqueClusters.forEach((c, i) => {
+                const cData = dataClusters.filter(d => d.Cluster === c);
+                const cAmount = cData.reduce((sum, d) => sum + d.Monto_Aprobado, 0);
+                const cPct = (cData.length / dataClusters.length * 100).toFixed(0);
+                const color = clusterColors[c % clusterColors.length];
+
+                container.innerHTML += `
+                <div class="insight-card" style="border-left-color:${color}">
+                    <div class="insight-card-title" style="color:${color}">Grupo ${c}</div>
+                    <div class="insight-card-val">$${(cAmount / 1e6).toFixed(1)}M</div>
+                    <div class="insight-card-footer">
+                        <span>${cData.length} Ops</span>
+                        <span style="float:right; font-weight:bold;">${cPct}% Vol</span>
+                    </div>
+                </div>
+            `;
+            });
+        }
+
+        function renderTable() {
+            const tbody = document.querySelector('#data-table tbody');
+            tbody.innerHTML = '';
+
+            dataClusters.slice(0, 100).forEach(row => {
+                const tr = document.createElement('tr');
+                const color = clusterColors[row.Cluster % clusterColors.length];
+                const prob = (row.Probabilidad_Asignacion * 100).toFixed(1);
+                const probColor = prob < 70 ? 'orange' : '#10b981';
+
+                tr.innerHTML = `
+                <td style="font-weight:600">${row.Pais}</td>
+                <td>${row.Anio || row.Anio_Origen}</td>
+                <td style="text-align:right;">$${row.Monto_Aprobado.toLocaleString()}</td>
+                <td style="text-align:center; color:${probColor}; font-weight:bold;">${prob}%</td>
+                <td style="text-align:center;"><span class="cluster-tag" style="background:${color}">G${row.Cluster}</span></td>
+            `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function renderCharts() {
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            const txtColor = isDark ? '#f1f5f9' : '#1e293b';
+            const gridColor = isDark ? '#334155' : '#e2e8f0';
+
+            // SCATTER
+            const traces = [];
+            [...new Set(dataClusters.map(d => d.Cluster))].sort().forEach(clusterId => {
+                const clusterData = dataClusters.filter(d => d.Cluster === clusterId);
+                traces.push({
+                    x: clusterData.map(d => d.Monto_Aprobado),
+                    y: clusterData.map(d => d.CANTIDAD_APROBACIONES),
+                    mode: 'markers',
+                    type: 'scatter',
+                    name: `Grupo ${clusterId}`,
+                    text: clusterData.map(d => `${d.Pais}<br>$${d.Monto_Aprobado.toLocaleString()}<br>Prob: ${(d.Probabilidad_Asignacion * 100).toFixed(1)}%`),
+                    marker: { size: 10, color: clusterColors[clusterId % clusterColors.length], opacity: 0.7, line: { width: 1, color: 'white' } }
+                });
+            });
+
+            const layout = {
+                margin: { t: 20, l: 50, r: 20, b: 40 },
+                paper_bgcolor: 'transparent',
+                plot_bgcolor: 'transparent',
+                font: { family: 'Inter', color: txtColor },
+                xaxis: { title: 'Monto (Log)', type: 'log', gridcolor: gridColor },
+                yaxis: { title: 'Aprobaciones', gridcolor: gridColor },
+                legend: { orientation: 'h', y: -0.2 }
+            };
+            Plotly.newPlot('scatter-chart', traces, layout, { responsive: true, displayModeBar: false });
+        }
+
+        function toggleModal(id, show) {
+            document.getElementById(id).style.display = show ? 'flex' : 'none';
+        }
+
+        function toggleTheme() {
+            const html = document.documentElement;
+            const isLight = html.getAttribute('data-theme') !== 'dark';
+            html.setAttribute('data-theme', isLight ? 'dark' : 'light');
+            document.getElementById('btn-theme').classList.toggle('active');
+            renderCharts();
+        }
+
+        window.takeScreenshot = async () => {
+            const canvas = await html2canvas(document.body);
+            const link = document.createElement('a');
+            link.download = 'Dashboard_GMM.png';
+            link.href = canvas.toDataURL();
+            link.click();
+        };
+
+        init();
+    </script>
+</body>
+
+</html>

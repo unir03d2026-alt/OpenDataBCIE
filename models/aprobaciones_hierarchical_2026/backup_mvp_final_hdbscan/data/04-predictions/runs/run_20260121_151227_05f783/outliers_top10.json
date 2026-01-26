@@ -1,0 +1,82 @@
+[
+  {
+    "Pais": "COSTA RICA",
+    "Anio": 1994,
+    "Monto_Aprobado": 78026000.0,
+    "CANTIDAD_APROBACIONES": 31,
+    "Cluster": -1,
+    "Outlier_Score": 0.8510090320670424
+  },
+  {
+    "Pais": "GUATEMALA",
+    "Anio": 1995,
+    "Monto_Aprobado": 98925000.0,
+    "CANTIDAD_APROBACIONES": 36,
+    "Cluster": -1,
+    "Outlier_Score": 0.8510090320670424
+  },
+  {
+    "Pais": "GUATEMALA",
+    "Anio": 1993,
+    "Monto_Aprobado": 38556600.0,
+    "CANTIDAD_APROBACIONES": 31,
+    "Cluster": -1,
+    "Outlier_Score": 0.8510090320670424
+  },
+  {
+    "Pais": "GUATEMALA",
+    "Anio": 2006,
+    "Monto_Aprobado": 377049000.0,
+    "CANTIDAD_APROBACIONES": 28,
+    "Cluster": -1,
+    "Outlier_Score": 0.8168623714869182
+  },
+  {
+    "Pais": "GUATEMALA",
+    "Anio": 1964,
+    "Monto_Aprobado": 20000.0,
+    "CANTIDAD_APROBACIONES": 1,
+    "Cluster": -1,
+    "Outlier_Score": 0.7315617628416167
+  },
+  {
+    "Pais": "EL SALVADOR",
+    "Anio": 1963,
+    "Monto_Aprobado": 20000.0,
+    "CANTIDAD_APROBACIONES": 1,
+    "Cluster": -1,
+    "Outlier_Score": 0.7315617628416167
+  },
+  {
+    "Pais": "GUATEMALA",
+    "Anio": 2007,
+    "Monto_Aprobado": 567905000.0,
+    "CANTIDAD_APROBACIONES": 19,
+    "Cluster": -1,
+    "Outlier_Score": 0.7155259193390143
+  },
+  {
+    "Pais": "COSTA RICA",
+    "Anio": 2007,
+    "Monto_Aprobado": 505200000.0,
+    "CANTIDAD_APROBACIONES": 23,
+    "Cluster": -1,
+    "Outlier_Score": 0.6691457559300444
+  },
+  {
+    "Pais": "NICARAGUA",
+    "Anio": 2007,
+    "Monto_Aprobado": 199125700.0,
+    "CANTIDAD_APROBACIONES": 18,
+    "Cluster": -1,
+    "Outlier_Score": 0.6067407227867713
+  },
+  {
+    "Pais": "COSTA RICA",
+    "Anio": 1998,
+    "Monto_Aprobado": 84786168.0,
+    "CANTIDAD_APROBACIONES": 24,
+    "Cluster": -1,
+    "Outlier_Score": 0.6067407227867713
+  }
+]

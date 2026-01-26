@@ -7,22 +7,42 @@ data:
   raw_path: "data/01-raw/aprobaciones_bcie.csv"
   processed_path: "data/02-preprocessed/aprobaciones_limpias.csv"
 
+  # Mapeo exacto de las columnas
   column_renames:
     "ANIO_APROBACION": "Anio_Origen"
     "MONTO_BRUTO_USD": "Monto_Aprobado"
     "PAIS": "Pais"
     "SECTOR_INSTITUCIONAL": "Sector_Economico"
 
+  # Columnas internas
   date_col: "Fecha_Aprobacion"
   value_col: "Monto_Aprobado"
   group_col: "Pais"
 
+runs:
+  output_root: "data/04-predictions/runs"
+
 model:
+  output_path: "data/04-predictions/aprobaciones_clusters.csv"
   algorithm: "agglomerative"
+
   features:
     - "Monto_Aprobado"
     - "CANTIDAD_APROBACIONES"
+
   linkage: "ward"
-  n_clusters: 3
-  output_path: "data/04-predictions/aprobaciones_clusters.csv"
-  plots_path: "data/05-plots"
+  max_k: 10
+  n_clusters: 4 # Pre-configured optimal or 0 for auto
+
+  log_transform_feature: "Monto_Aprobado"
+  scaler: "standard"
+
+  # Agglomerative Parameters
+  metric: "euclidean"
+  cluster_selection_epsilon: 0.0
+
+  # Validation
+  bootstrap_n: 20
+
+  # Plots (Deprecated/Legacy logic)
+  plots_path: "data/05-plots/"
