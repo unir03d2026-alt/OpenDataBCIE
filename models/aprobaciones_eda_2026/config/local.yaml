@@ -1,0 +1,24 @@
+api:
+  base_url: "https://datos.bcie.org/api/3/action/datastore_search"
+  resource_id: "2c70a8d6-4448-4389-9b98-5c4943f7a18b"
+  limit: 32000
+
+data:
+  raw_path: "data/01-raw/aprobaciones.csv"
+  processed_path: "data/02-preprocessed/aprobaciones_limpias.csv"
+  value_col: "Monto_Aprobado"
+  group_col: "Pais"
+  column_renames:
+    "Monto Aprobado": "Monto_Aprobado"
+    "Nombre": "Nombre_Operacion"
+    "Sector Economico": "Sector_Economico"
+    "CANTIDAD APROBACIONES": "CANTIDAD_APROBACIONES"
+    "Año Aprobación": "Anio_Origen"
+
+model:
+  monto_bins_usd: [-inf, 100000000.0, 500000000.0, 1000000000.0, inf]
+  monto_labels:
+    - "Monto < 100M"
+    - "Monto 100M–500M"
+    - "Monto 500M–1B"
+    - "Monto > 1B"

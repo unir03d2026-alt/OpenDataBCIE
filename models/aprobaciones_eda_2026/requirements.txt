@@ -1,0 +1,8 @@
+pandas
+requests
+pyyaml
+scikit-learn
+matplotlib
+seaborn
+openpyxl
+gower

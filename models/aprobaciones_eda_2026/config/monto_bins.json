@@ -1,0 +1,32 @@
+{
+  "stats": {
+    "min": 1500000.0,
+    "median": 207861190.61,
+    "p95": 781042272.241,
+    "max": 1190000000.0,
+    "n": 188,
+    "baseline": [
+      2000,
+      2025
+    ],
+    "quantiles_used": [
+      0.2,
+      0.5,
+      0.8,
+      0.95
+    ]
+  },
+  "monto_bins_usd": [
+    -Infinity,
+    100000000.0,
+    500000000.0,
+    1000000000.0,
+    Infinity
+  ],
+  "monto_labels": [
+    "Monto < 100M",
+    "Monto 100M–500M",
+    "Monto 500M–1B",
+    "Monto > 1B"
+  ]
+}

@@ -22,7 +22,7 @@ wheels/
 *.egg
 
 # Data Artifacts (Local only)
-data/
+# data/
 *.csv
 *.json
 *.xlsx

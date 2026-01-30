@@ -1,0 +1,371 @@
+Pais,Anio,Decada,Monto_Aprobado,CANTIDAD_APROBACIONES,Sector_Economico,Tipo_Pais
+Argentina,2015,2010s,50000000.0,1,Sector Público,Extrarregionales
+Argentina,2016,2010s,90000000.0,1,Sector Público,Extrarregionales
+Argentina,2017,2010s,30000000.0,1,Sector Público,Extrarregionales
+Argentina,2018,2010s,32000000.0,1,Sector Público,Extrarregionales
+Argentina,2019,2010s,67000000.0,1,Sector Público,Extrarregionales
+Argentina,2020,2020s,50000000.0,1,Sector Público,Extrarregionales
+Argentina,2021,2020s,150000000.0,1,Sector Público,Extrarregionales
+Argentina,2022,2020s,115000000.0,1,Sector Público,Extrarregionales
+Argentina,2023,2020s,625000000.0,1,Sector Público,Extrarregionales
+Argentina,2024,2020s,230000000.0,1,Sector Público,Extrarregionales
+Argentina,2025,2020s,127500000.0,1,Sector Público,Extrarregionales
+Belice,2009,2000s,1905800.0,1,Sector Público,Regionales No-Fundadores
+Belice,2010,2010s,10667410.0,1,Sector Público,Regionales No-Fundadores
+Belice,2014,2010s,30000000.0,1,Sector Público,Regionales No-Fundadores
+Belice,2022,2020s,24000000.0,1,Sector Público,Regionales No-Fundadores
+Belice,2023,2020s,2500000.0,1,Sector Público,Regionales No-Fundadores
+Colombia,2005,2000s,71120000.0,1,Sector Público,Extrarregionales
+Colombia,2007,2000s,186948000.0,2,Sector Privado,Extrarregionales
+Colombia,2008,2000s,5000000.0,1,Sector Privado,Extrarregionales
+Colombia,2010,2010s,35321000.0,1,Sector Privado,Extrarregionales
+Colombia,2011,2010s,50000000.0,1,Sector Público,Extrarregionales
+Colombia,2014,2010s,50000000.0,1,Sector Público,Extrarregionales
+Colombia,2015,2010s,136000000.0,1,Sector Público,Extrarregionales
+Colombia,2017,2010s,50000000.0,1,Sector Público,Extrarregionales
+Colombia,2022,2020s,250000000.0,1,Sector Público,Extrarregionales
+Colombia,2023,2020s,250000000.0,1,Sector Público,Extrarregionales
+Colombia,2025,2020s,75000000.0,1,Sector Público,Extrarregionales
+Costa Rica,1963,1960s,62000.0,1,Sector Privado,Países Fundadores
+Costa Rica,1964,1960s,2286435.0,2,Sector Privado,Países Fundadores
+Costa Rica,1965,1960s,3284100.0,2,Sector Privado,Países Fundadores
+Costa Rica,1966,1960s,7818500.0,2,Sector Privado,Países Fundadores
+Costa Rica,1967,1960s,7154600.0,2,Sector Privado,Países Fundadores
+Costa Rica,1968,1960s,3783000.0,2,Sector Privado,Países Fundadores
+Costa Rica,1969,1960s,13738600.0,2,Sector Privado,Países Fundadores
+Costa Rica,1970,1970s,5431100.0,2,Sector Privado,Países Fundadores
+Costa Rica,1971,1970s,9016075.0,2,Sector Privado,Países Fundadores
+Costa Rica,1972,1970s,17342150.0,2,Sector Privado,Países Fundadores
+Costa Rica,1973,1970s,34580000.0,2,Sector Privado,Países Fundadores
+Costa Rica,1974,1970s,49808100.0,2,Sector Privado,Países Fundadores
+Costa Rica,1975,1970s,31894000.0,2,Sector Privado,Países Fundadores
+Costa Rica,1976,1970s,41482000.0,2,Sector Privado,Países Fundadores
+Costa Rica,1977,1970s,20760000.0,2,Sector Privado,Países Fundadores
+Costa Rica,1978,1970s,44755000.0,2,Sector Privado,Países Fundadores
+Costa Rica,1979,1970s,45110000.0,2,Sector Privado,Países Fundadores
+Costa Rica,1980,1980s,26731288.0,2,Sector Privado,Países Fundadores
+Costa Rica,1981,1980s,21771000.0,2,Sector Privado,Países Fundadores
+Costa Rica,1982,1980s,16500000.0,2,Sector Privado,Países Fundadores
+Costa Rica,1983,1980s,17202200.0,2,Sector Privado,Países Fundadores
+Costa Rica,1984,1980s,1650000.0,1,Sector Público,Países Fundadores
+Costa Rica,1985,1980s,6600000.0,1,Sector Público,Países Fundadores
+Costa Rica,1986,1980s,3000000.0,1,Sector Público,Países Fundadores
+Costa Rica,1987,1980s,18200000.0,2,Sector Privado,Países Fundadores
+Costa Rica,1988,1980s,23000000.0,1,Sector Público,Países Fundadores
+Costa Rica,1989,1980s,38000000.0,1,Sector Público,Países Fundadores
+Costa Rica,1990,1990s,28375000.0,1,Sector Público,Países Fundadores
+Costa Rica,1991,1990s,36900000.0,2,Sector Privado,Países Fundadores
+Costa Rica,1992,1990s,55165745.0,2,Sector Privado,Países Fundadores
+Costa Rica,1993,1990s,46750000.0,2,Sector Privado,Países Fundadores
+Costa Rica,1994,1990s,143810244.0,2,Sector Privado,Países Fundadores
+Costa Rica,1995,1990s,100185316.0,2,Sector Privado,Países Fundadores
+Costa Rica,1996,1990s,102776059.0,2,Sector Privado,Países Fundadores
+Costa Rica,1997,1990s,118707500.0,2,Sector Privado,Países Fundadores
+Costa Rica,1998,1990s,141484350.0,2,Sector Privado,Países Fundadores
+Costa Rica,1999,1990s,92142138.0,2,Sector Privado,Países Fundadores
+Costa Rica,2000,2000s,112721406.0,2,Sector Privado,Países Fundadores
+Costa Rica,2001,2000s,161853800.0,2,Sector Privado,Países Fundadores
+Costa Rica,2002,2000s,350164000.0,2,Sector Privado,Países Fundadores
+Costa Rica,2003,2000s,172666255.45999998,2,Sector Privado,Países Fundadores
+Costa Rica,2004,2000s,181790000.0,2,Sector Privado,Países Fundadores
+Costa Rica,2005,2000s,466059808.18,2,Sector Privado,Países Fundadores
+Costa Rica,2006,2000s,748865400.0,2,Sector Privado,Países Fundadores
+Costa Rica,2007,2000s,650200000.0,2,Sector Privado,Países Fundadores
+Costa Rica,2008,2000s,199390000.0,2,Sector Privado,Países Fundadores
+Costa Rica,2009,2000s,376438203.07,2,Sector Privado,Países Fundadores
+Costa Rica,2010,2010s,218453958.0,2,Sector Privado,Países Fundadores
+Costa Rica,2011,2010s,530000000.0,2,Sector Privado,Países Fundadores
+Costa Rica,2012,2010s,353000000.0,2,Sector Privado,Países Fundadores
+Costa Rica,2013,2010s,549775000.0,2,Sector Privado,Países Fundadores
+Costa Rica,2014,2010s,329000000.0,2,Sector Privado,Países Fundadores
+Costa Rica,2015,2010s,275587964.87,2,Sector Privado,Países Fundadores
+Costa Rica,2016,2010s,341842413.0,2,Sector Privado,Países Fundadores
+Costa Rica,2017,2010s,215760000.0,2,Sector Privado,Países Fundadores
+Costa Rica,2018,2010s,530284067.0,1,Sector Público,Países Fundadores
+Costa Rica,2019,2010s,640055000.0,1,Sector Público,Países Fundadores
+Costa Rica,2020,2020s,705160000.0,2,Sector Privado,Países Fundadores
+Costa Rica,2021,2020s,580000000.0,1,Sector Público,Países Fundadores
+Costa Rica,2022,2020s,1190000000.0,1,Sector Público,Países Fundadores
+Costa Rica,2023,2020s,1000000000.0,1,Sector Público,Países Fundadores
+Costa Rica,2024,2020s,770000000.0,1,Sector Público,Países Fundadores
+Costa Rica,2025,2020s,815000000.0,1,Sector Público,Países Fundadores
+Cuba,2022,2020s,50000000.0,1,Sector Público,Extrarregionales
+El Salvador,1962,1960s,1546000.0,1,Sector Privado,Países Fundadores
+El Salvador,1963,1960s,2446600.0,2,Sector Privado,Países Fundadores
+El Salvador,1964,1960s,1722500.0,2,Sector Privado,Países Fundadores
+El Salvador,1965,1960s,6162700.0,2,Sector Privado,Países Fundadores
+El Salvador,1966,1960s,6658400.0,2,Sector Privado,Países Fundadores
+El Salvador,1967,1960s,986000.0,1,Sector Privado,Países Fundadores
+El Salvador,1968,1960s,9425700.0,2,Sector Privado,Países Fundadores
+El Salvador,1969,1960s,10860130.0,2,Sector Privado,Países Fundadores
+El Salvador,1970,1970s,7875600.0,2,Sector Privado,Países Fundadores
+El Salvador,1971,1970s,4857157.140000001,2,Sector Privado,Países Fundadores
+El Salvador,1972,1970s,7031360.0,2,Sector Privado,Países Fundadores
+El Salvador,1973,1970s,15990000.0,2,Sector Privado,Países Fundadores
+El Salvador,1974,1970s,12820000.0,2,Sector Privado,Países Fundadores
+El Salvador,1975,1970s,21440000.0,2,Sector Privado,Países Fundadores
+El Salvador,1976,1970s,17825000.0,2,Sector Privado,Países Fundadores
+El Salvador,1977,1970s,14100000.0,1,Sector Público,Países Fundadores
+El Salvador,1978,1970s,35520000.0,2,Sector Privado,Países Fundadores
+El Salvador,1979,1970s,44266000.0,2,Sector Privado,Países Fundadores
+El Salvador,1980,1980s,63717000.0,2,Sector Privado,Países Fundadores
+El Salvador,1981,1980s,9681100.0,2,Sector Privado,Países Fundadores
+El Salvador,1982,1980s,19800000.0,2,Sector Privado,Países Fundadores
+El Salvador,1984,1980s,7600000.0,1,Sector Público,Países Fundadores
+El Salvador,1985,1980s,1980000.0,1,Sector Público,Países Fundadores
+El Salvador,1986,1980s,13400000.0,2,Sector Privado,Países Fundadores
+El Salvador,1987,1980s,49800000.0,1,Sector Público,Países Fundadores
+El Salvador,1988,1980s,16740000.0,1,Sector Público,Países Fundadores
+El Salvador,1989,1980s,12000000.0,1,Sector Público,Países Fundadores
+El Salvador,1990,1990s,37670000.0,1,Sector Público,Países Fundadores
+El Salvador,1991,1990s,1000000.0,1,Sector Público,Países Fundadores
+El Salvador,1992,1990s,50800000.0,2,Sector Privado,Países Fundadores
+El Salvador,1993,1990s,80109000.0,2,Sector Privado,Países Fundadores
+El Salvador,1994,1990s,168551000.0,2,Sector Privado,Países Fundadores
+El Salvador,1995,1990s,92663548.0,2,Sector Privado,Países Fundadores
+El Salvador,1996,1990s,186417530.0,2,Sector Privado,Países Fundadores
+El Salvador,1997,1990s,162055400.0,2,Sector Privado,Países Fundadores
+El Salvador,1998,1990s,206671000.0,2,Sector Privado,Países Fundadores
+El Salvador,1999,1990s,61619477.0,1,Sector Privado,Países Fundadores
+El Salvador,2000,2000s,87830000.0,2,Sector Privado,Países Fundadores
+El Salvador,2001,2000s,230200000.0,2,Sector Privado,Países Fundadores
+El Salvador,2002,2000s,111580000.0,2,Sector Privado,Países Fundadores
+El Salvador,2003,2000s,173476300.0,2,Sector Privado,Países Fundadores
+El Salvador,2004,2000s,223125000.0,2,Sector Privado,Países Fundadores
+El Salvador,2005,2000s,276378347.75,2,Sector Privado,Países Fundadores
+El Salvador,2006,2000s,433210440.0,2,Sector Privado,Países Fundadores
+El Salvador,2007,2000s,471715000.0,2,Sector Privado,Países Fundadores
+El Salvador,2008,2000s,299866000.0,2,Sector Privado,Países Fundadores
+El Salvador,2009,2000s,294433870.0,2,Sector Privado,Países Fundadores
+El Salvador,2010,2010s,132865000.0,2,Sector Privado,Países Fundadores
+El Salvador,2011,2010s,285837173.8,2,Sector Privado,Países Fundadores
+El Salvador,2012,2010s,211161825.0,2,Sector Privado,Países Fundadores
+El Salvador,2013,2010s,199208600.0,1,Sector Público,Países Fundadores
+El Salvador,2014,2010s,311137500.0,2,Sector Privado,Países Fundadores
+El Salvador,2015,2010s,340521814.0,2,Sector Privado,Países Fundadores
+El Salvador,2016,2010s,385772251.84,2,Sector Privado,Países Fundadores
+El Salvador,2017,2010s,307306842.25,2,Sector Privado,Países Fundadores
+El Salvador,2018,2010s,283500000.0,1,Sector Público,Países Fundadores
+El Salvador,2019,2010s,576162715.48,2,Sector Privado,Países Fundadores
+El Salvador,2020,2020s,615200000.0,1,Sector Público,Países Fundadores
+El Salvador,2021,2020s,884700000.0,2,Sector Privado,Países Fundadores
+El Salvador,2022,2020s,896000000.0,2,Sector Privado,Países Fundadores
+El Salvador,2024,2020s,263900000.0,1,Sector Público,Países Fundadores
+El Salvador,2025,2020s,350000000.0,1,Sector Público,Países Fundadores
+Guatemala,1961,1960s,275000.0,1,Sector Privado,Países Fundadores
+Guatemala,1962,1960s,190000.0,1,Sector Privado,Países Fundadores
+Guatemala,1963,1960s,3434500.0,2,Sector Privado,Países Fundadores
+Guatemala,1964,1960s,410000.0,2,Sector Privado,Países Fundadores
+Guatemala,1965,1960s,2188090.0,2,Sector Privado,Países Fundadores
+Guatemala,1966,1960s,8563080.0,2,Sector Privado,Países Fundadores
+Guatemala,1967,1960s,6725000.0,2,Sector Privado,Países Fundadores
+Guatemala,1968,1960s,7424000.0,2,Sector Privado,Países Fundadores
+Guatemala,1969,1960s,7365000.0,2,Sector Privado,Países Fundadores
+Guatemala,1970,1970s,2657184.0,2,Sector Privado,Países Fundadores
+Guatemala,1971,1970s,12691000.0,2,Sector Privado,Países Fundadores
+Guatemala,1972,1970s,15080370.0,2,Sector Privado,Países Fundadores
+Guatemala,1973,1970s,18752620.0,2,Sector Privado,Países Fundadores
+Guatemala,1974,1970s,15615000.0,2,Sector Privado,Países Fundadores
+Guatemala,1975,1970s,27250000.0,2,Sector Privado,Países Fundadores
+Guatemala,1976,1970s,33170000.0,2,Sector Privado,Países Fundadores
+Guatemala,1977,1970s,14800000.0,2,Sector Privado,Países Fundadores
+Guatemala,1978,1970s,50490000.0,2,Sector Privado,Países Fundadores
+Guatemala,1979,1970s,10350000.0,2,Sector Privado,Países Fundadores
+Guatemala,1980,1980s,41840000.0,2,Sector Privado,Países Fundadores
+Guatemala,1981,1980s,25489000.0,2,Sector Privado,Países Fundadores
+Guatemala,1982,1980s,36600000.0,2,Sector Privado,Países Fundadores
+Guatemala,1983,1980s,6900000.0,1,Sector Público,Países Fundadores
+Guatemala,1984,1980s,1200000.0,1,Sector Público,Países Fundadores
+Guatemala,1985,1980s,8000000.0,1,Sector Público,Países Fundadores
+Guatemala,1987,1980s,27820000.0,2,Sector Privado,Países Fundadores
+Guatemala,1989,1980s,7099000.0,2,Sector Privado,Países Fundadores
+Guatemala,1990,1990s,43820600.0,2,Sector Privado,Países Fundadores
+Guatemala,1991,1990s,11700000.0,2,Sector Privado,Países Fundadores
+Guatemala,1992,1990s,11660000.0,1,Sector Privado,Países Fundadores
+Guatemala,1993,1990s,109356600.0,2,Sector Privado,Países Fundadores
+Guatemala,1994,1990s,84142635.0,2,Sector Privado,Países Fundadores
+Guatemala,1995,1990s,110925000.0,2,Sector Privado,Países Fundadores
+Guatemala,1996,1990s,206636700.0,2,Sector Privado,Países Fundadores
+Guatemala,1997,1990s,218496773.0,2,Sector Privado,Países Fundadores
+Guatemala,1998,1990s,377987300.0,2,Sector Privado,Países Fundadores
+Guatemala,1999,1990s,143367200.0,2,Sector Privado,Países Fundadores
+Guatemala,2000,2000s,76000000.0,2,Sector Privado,Países Fundadores
+Guatemala,2001,2000s,126951252.0,2,Sector Privado,Países Fundadores
+Guatemala,2002,2000s,144522014.0,2,Sector Privado,Países Fundadores
+Guatemala,2003,2000s,99650000.0,2,Sector Privado,Países Fundadores
+Guatemala,2004,2000s,88760000.0,2,Sector Privado,Países Fundadores
+Guatemala,2005,2000s,663365000.0,2,Sector Privado,Países Fundadores
+Guatemala,2006,2000s,377049000.0,1,Sector Privado,Países Fundadores
+Guatemala,2007,2000s,567905000.0,1,Sector Privado,Países Fundadores
+Guatemala,2008,2000s,375894000.0,2,Sector Privado,Países Fundadores
+Guatemala,2009,2000s,145715600.0,2,Sector Privado,Países Fundadores
+Guatemala,2010,2010s,336415000.0,2,Sector Privado,Países Fundadores
+Guatemala,2011,2010s,184050000.0,2,Sector Privado,Países Fundadores
+Guatemala,2012,2010s,366288817.45,2,Sector Privado,Países Fundadores
+Guatemala,2013,2010s,18750000.0,1,Sector Privado,Países Fundadores
+Guatemala,2014,2010s,306607000.0,2,Sector Privado,Países Fundadores
+Guatemala,2015,2010s,380000000.0,2,Sector Privado,Países Fundadores
+Guatemala,2016,2010s,300000000.0,1,Sector Público,Países Fundadores
+Guatemala,2017,2010s,137000000.0,2,Sector Privado,Países Fundadores
+Guatemala,2018,2010s,193200000.0,1,Sector Público,Países Fundadores
+Guatemala,2019,2010s,345700000.0,2,Sector Privado,Países Fundadores
+Guatemala,2020,2020s,1500000.0,1,Sector Privado,Países Fundadores
+Guatemala,2021,2020s,7000000.0,1,Sector Privado,Países Fundadores
+Guatemala,2022,2020s,270000000.0,2,Sector Privado,Países Fundadores
+Guatemala,2023,2020s,15000000.0,1,Sector Privado,Países Fundadores
+Guatemala,2024,2020s,19000000.0,1,Sector Privado,Países Fundadores
+Guatemala,2025,2020s,175000000.0,2,Sector Privado,Países Fundadores
+Honduras,1962,1960s,565000.0,2,Sector Privado,Países Fundadores
+Honduras,1963,1960s,4116900.0,2,Sector Privado,Países Fundadores
+Honduras,1964,1960s,1307000.0,2,Sector Privado,Países Fundadores
+Honduras,1965,1960s,3061557.0,2,Sector Privado,Países Fundadores
+Honduras,1966,1960s,13994500.0,2,Sector Privado,Países Fundadores
+Honduras,1967,1960s,1896980.0,2,Sector Privado,Países Fundadores
+Honduras,1968,1960s,11556800.0,2,Sector Privado,Países Fundadores
+Honduras,1969,1960s,13952900.0,2,Sector Privado,Países Fundadores
+Honduras,1970,1970s,19522000.0,2,Sector Privado,Países Fundadores
+Honduras,1971,1970s,9698272.0,2,Sector Privado,Países Fundadores
+Honduras,1972,1970s,6642300.0,2,Sector Privado,Países Fundadores
+Honduras,1973,1970s,19280800.0,2,Sector Privado,Países Fundadores
+Honduras,1974,1970s,23212000.0,2,Sector Privado,Países Fundadores
+Honduras,1975,1970s,45409089.0,2,Sector Privado,Países Fundadores
+Honduras,1976,1970s,24656200.0,2,Sector Privado,Países Fundadores
+Honduras,1977,1970s,20118000.0,2,Sector Privado,Países Fundadores
+Honduras,1978,1970s,31330000.0,2,Sector Privado,Países Fundadores
+Honduras,1979,1970s,50130600.0,2,Sector Privado,Países Fundadores
+Honduras,1980,1980s,44642500.0,2,Sector Privado,Países Fundadores
+Honduras,1981,1980s,35921550.0,2,Sector Privado,Países Fundadores
+Honduras,1982,1980s,40794000.0,2,Sector Privado,Países Fundadores
+Honduras,1983,1980s,7560000.0,1,Sector Público,Países Fundadores
+Honduras,1984,1980s,14100000.0,1,Sector Público,Países Fundadores
+Honduras,1985,1980s,9150000.0,1,Sector Público,Países Fundadores
+Honduras,1986,1980s,16675000.0,1,Sector Público,Países Fundadores
+Honduras,1987,1980s,30478300.0,1,Sector Público,Países Fundadores
+Honduras,1988,1980s,37600000.0,1,Sector Público,Países Fundadores
+Honduras,1989,1980s,48000000.0,1,Sector Público,Países Fundadores
+Honduras,1990,1990s,58900000.0,1,Sector Público,Países Fundadores
+Honduras,1991,1990s,54100000.0,1,Sector Público,Países Fundadores
+Honduras,1992,1990s,89777167.0,2,Sector Privado,Países Fundadores
+Honduras,1993,1990s,98428100.0,2,Sector Privado,Países Fundadores
+Honduras,1994,1990s,75716800.0,2,Sector Privado,Países Fundadores
+Honduras,1995,1990s,65755000.0,2,Sector Privado,Países Fundadores
+Honduras,1996,1990s,74310000.0,2,Sector Privado,Países Fundadores
+Honduras,1997,1990s,42847000.0,2,Sector Privado,Países Fundadores
+Honduras,1998,1990s,192949550.0,2,Sector Privado,Países Fundadores
+Honduras,1999,1990s,18848000.0,1,Sector Privado,Países Fundadores
+Honduras,2000,2000s,35931050.0,2,Sector Privado,Países Fundadores
+Honduras,2001,2000s,46220064.0,2,Sector Privado,Países Fundadores
+Honduras,2002,2000s,41712285.0,2,Sector Privado,Países Fundadores
+Honduras,2003,2000s,192823903.47,2,Sector Privado,Países Fundadores
+Honduras,2004,2000s,197676537.0,2,Sector Privado,Países Fundadores
+Honduras,2005,2000s,204978263.49,2,Sector Privado,Países Fundadores
+Honduras,2006,2000s,238627000.05,2,Sector Privado,Países Fundadores
+Honduras,2007,2000s,162352100.0,2,Sector Privado,Países Fundadores
+Honduras,2008,2000s,273906000.0,2,Sector Privado,Países Fundadores
+Honduras,2009,2000s,95500000.0,2,Sector Privado,Países Fundadores
+Honduras,2010,2010s,474371179.0,2,Sector Privado,Países Fundadores
+Honduras,2011,2010s,392236000.0,1,Sector Público,Países Fundadores
+Honduras,2012,2010s,380737976.09,2,Sector Privado,Países Fundadores
+Honduras,2013,2010s,159802700.0,2,Sector Privado,Países Fundadores
+Honduras,2014,2010s,210744117.73,2,Sector Privado,Países Fundadores
+Honduras,2015,2010s,258300000.0,2,Sector Privado,Países Fundadores
+Honduras,2016,2010s,102182437.78,2,Sector Privado,Países Fundadores
+Honduras,2017,2010s,267306740.0,2,Sector Privado,Países Fundadores
+Honduras,2018,2010s,84262590.7,2,Sector Privado,Países Fundadores
+Honduras,2019,2010s,168586952.0,2,Sector Privado,Países Fundadores
+Honduras,2020,2020s,958498052.95,2,Sector Privado,Países Fundadores
+Honduras,2021,2020s,720266365.18,2,Sector Privado,Países Fundadores
+Honduras,2022,2020s,485000000.0,2,Sector Privado,Países Fundadores
+Honduras,2023,2020s,786988111.14,2,Sector Privado,Países Fundadores
+Honduras,2024,2020s,476300000.0,1,Sector Público,Países Fundadores
+Honduras,2025,2020s,465000000.0,1,Sector Público,Países Fundadores
+México,2016,2010s,150000000.0,1,Sector Público,Extrarregionales
+Nicaragua,1962,1960s,937200.0,1,Sector Privado,Países Fundadores
+Nicaragua,1963,1960s,1044848.57,1,Sector Privado,Países Fundadores
+Nicaragua,1964,1960s,11370158.0,2,Sector Privado,Países Fundadores
+Nicaragua,1965,1960s,5942000.0,2,Sector Privado,Países Fundadores
+Nicaragua,1966,1960s,9447240.0,2,Sector Privado,Países Fundadores
+Nicaragua,1967,1960s,9838300.0,2,Sector Privado,Países Fundadores
+Nicaragua,1968,1960s,4534714.0,2,Sector Privado,Países Fundadores
+Nicaragua,1969,1960s,6735893.0,2,Sector Privado,Países Fundadores
+Nicaragua,1970,1970s,10376236.0,2,Sector Privado,Países Fundadores
+Nicaragua,1971,1970s,13902486.0,2,Sector Privado,Países Fundadores
+Nicaragua,1972,1970s,11009214.0,2,Sector Privado,Países Fundadores
+Nicaragua,1973,1970s,15826528.0,2,Sector Privado,Países Fundadores
+Nicaragua,1974,1970s,25087000.0,2,Sector Privado,Países Fundadores
+Nicaragua,1975,1970s,39074000.0,2,Sector Privado,Países Fundadores
+Nicaragua,1976,1970s,22340000.0,2,Sector Privado,Países Fundadores
+Nicaragua,1977,1970s,28010000.0,2,Sector Privado,Países Fundadores
+Nicaragua,1978,1970s,29871000.0,2,Sector Privado,Países Fundadores
+Nicaragua,1979,1970s,13800000.0,2,Sector Privado,Países Fundadores
+Nicaragua,1980,1980s,65285000.0,1,Sector Público,Países Fundadores
+Nicaragua,1981,1980s,47650000.0,2,Sector Privado,Países Fundadores
+Nicaragua,1982,1980s,19700000.0,1,Sector Público,Países Fundadores
+Nicaragua,1983,1980s,13280000.0,1,Sector Público,Países Fundadores
+Nicaragua,1989,1980s,4650000.0,1,Sector Público,Países Fundadores
+Nicaragua,1990,1990s,30000000.0,1,Sector Público,Países Fundadores
+Nicaragua,1991,1990s,67200000.0,1,Sector Público,Países Fundadores
+Nicaragua,1992,1990s,64877012.0,2,Sector Privado,Países Fundadores
+Nicaragua,1993,1990s,67765800.0,2,Sector Privado,Países Fundadores
+Nicaragua,1994,1990s,94133772.0,2,Sector Privado,Países Fundadores
+Nicaragua,1995,1990s,23475000.0,2,Sector Privado,Países Fundadores
+Nicaragua,1996,1990s,11737565.0,1,Sector Privado,Países Fundadores
+Nicaragua,1997,1990s,7500000.0,1,Sector Privado,Países Fundadores
+Nicaragua,1998,1990s,32711300.0,1,Sector Privado,Países Fundadores
+Nicaragua,1999,1990s,20500000.0,1,Sector Privado,Países Fundadores
+Nicaragua,2000,2000s,15100000.0,1,Sector Privado,Países Fundadores
+Nicaragua,2001,2000s,19350000.0,1,Sector Privado,Países Fundadores
+Nicaragua,2002,2000s,79181947.69,2,Sector Privado,Países Fundadores
+Nicaragua,2003,2000s,64695100.0,2,Sector Privado,Países Fundadores
+Nicaragua,2004,2000s,35507000.0,2,Sector Privado,Países Fundadores
+Nicaragua,2005,2000s,110407872.66,2,Sector Privado,Países Fundadores
+Nicaragua,2006,2000s,299548434.0,2,Sector Privado,Países Fundadores
+Nicaragua,2007,2000s,283895047.0,2,Sector Privado,Países Fundadores
+Nicaragua,2008,2000s,269043879.0,2,Sector Privado,Países Fundadores
+Nicaragua,2009,2000s,321287137.88,2,Sector Privado,Países Fundadores
+Nicaragua,2010,2010s,148226951.0,2,Sector Privado,Países Fundadores
+Nicaragua,2011,2010s,162434985.0,2,Sector Privado,Países Fundadores
+Nicaragua,2012,2010s,253044054.79,1,Sector Público,Países Fundadores
+Nicaragua,2013,2010s,366545473.0,2,Sector Privado,Países Fundadores
+Nicaragua,2014,2010s,333883194.0,1,Sector Público,Países Fundadores
+Nicaragua,2015,2010s,196016547.1,2,Sector Privado,Países Fundadores
+Nicaragua,2016,2010s,379786817.2,1,Sector Público,Países Fundadores
+Nicaragua,2017,2010s,478774000.0,2,Sector Privado,Países Fundadores
+Nicaragua,2018,2010s,365114696.0,1,Sector Público,Países Fundadores
+Nicaragua,2019,2010s,656144540.0,2,Sector Privado,Países Fundadores
+Nicaragua,2020,2020s,698696935.0,1,Sector Público,Países Fundadores
+Nicaragua,2021,2020s,812903013.99,2,Sector Privado,Países Fundadores
+Nicaragua,2022,2020s,200000000.0,1,Sector Público,Países Fundadores
+Nicaragua,2024,2020s,130000000.0,1,Sector Público,Países Fundadores
+Nicaragua,2025,2020s,235000000.0,1,Sector Público,Países Fundadores
+Panamá,2005,2000s,20000000.0,1,Sector Público,Regionales No-Fundadores
+Panamá,2007,2000s,116033333.33,2,Sector Privado,Regionales No-Fundadores
+Panamá,2008,2000s,30100000.0,1,Sector Privado,Regionales No-Fundadores
+Panamá,2009,2000s,20000000.0,1,Sector Privado,Regionales No-Fundadores
+Panamá,2010,2010s,12790915.0,1,Sector Privado,Regionales No-Fundadores
+Panamá,2011,2010s,25000000.0,1,Sector Privado,Regionales No-Fundadores
+Panamá,2013,2010s,10000000.0,1,Sector Privado,Regionales No-Fundadores
+Panamá,2014,2010s,30000000.0,1,Sector Privado,Regionales No-Fundadores
+Panamá,2015,2010s,220000000.0,2,Sector Privado,Regionales No-Fundadores
+Panamá,2016,2010s,256000000.0,2,Sector Privado,Regionales No-Fundadores
+Panamá,2017,2010s,190000000.0,2,Sector Privado,Regionales No-Fundadores
+Panamá,2018,2010s,801000000.0,2,Sector Privado,Regionales No-Fundadores
+Panamá,2019,2010s,184000000.0,2,Sector Privado,Regionales No-Fundadores
+Panamá,2020,2020s,400000000.0,1,Sector Público,Regionales No-Fundadores
+Panamá,2021,2020s,125000000.0,1,Sector Privado,Regionales No-Fundadores
+Panamá,2022,2020s,230000000.0,2,Sector Privado,Regionales No-Fundadores
+Panamá,2024,2020s,240000000.0,1,Sector Público,Regionales No-Fundadores
+Panamá,2025,2020s,108200000.0,2,Sector Privado,Regionales No-Fundadores
+Regional,2025,2020s,37187480.0,1,Sector Público,Regional
+República Dominicana,2007,2000s,50000000.0,1,Sector Público,Regionales No-Fundadores
+República Dominicana,2010,2010s,150000000.0,1,Sector Público,Regionales No-Fundadores
+República Dominicana,2013,2010s,80200000.0,1,Sector Público,Regionales No-Fundadores
+República Dominicana,2016,2010s,100000000.0,1,Sector Público,Regionales No-Fundadores
+República Dominicana,2017,2010s,249600000.0,1,Sector Público,Regionales No-Fundadores
+República Dominicana,2018,2010s,154000000.0,1,Sector Privado,Regionales No-Fundadores
+República Dominicana,2020,2020s,30000000.0,1,Sector Público,Regionales No-Fundadores
+República Dominicana,2021,2020s,410000000.0,1,Sector Público,Regionales No-Fundadores
+República Dominicana,2022,2020s,580000000.0,1,Sector Público,Regionales No-Fundadores
+República Dominicana,2023,2020s,908226411.0,1,Sector Público,Regionales No-Fundadores
+República Dominicana,2024,2020s,100000000.0,1,Sector Público,Regionales No-Fundadores
+República Dominicana,2025,2020s,180900000.0,2,Sector Privado,Regionales No-Fundadores

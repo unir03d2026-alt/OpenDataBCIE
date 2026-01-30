@@ -1,0 +1,1885 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>EDA 2026 | BCIE Data Lab</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* ===================== VARIABLES GLOBALES (HDBSCAN) ===================== */
+        :root { 
+            --font-main: 'Inter', sans-serif;
+            --primary: #105682; 
+            --text-dark: #1e293b; 
+            --text-light: #64748b; 
+            --bg-body: #f8fafc; 
+            --bg-card: #ffffff; 
+            --border: #e2e8f0; 
+            --hover: #f1f5f9; 
+            --success: #10b981; 
+            --danger: #ef4444; 
+            --tooltip-bg: #1e293b; 
+            --tooltip-text: #ffffff;
+        }
+        [data-theme="dark"] { 
+            --primary: #38bdf8; 
+            --text-dark: #f1f5f9; 
+            --text-light: #94a3b8; 
+            --bg-body: #0f172a; 
+            --bg-card: #1e293b; 
+            --border: #334155; 
+            --hover: #334155; 
+            --tooltip-bg: #ffffff; 
+            --tooltip-text: #0f172a; 
+        }
+
+        /* ===================== RESET Y BASE ===================== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { 
+            font-family: var(--font-main); 
+            background: var(--bg-body); 
+            color: var(--text-dark); 
+            line-height: 1.5; 
+            min-height: 100vh;
+        }
+        body { padding-top: 0; overflow: hidden; }
+
+        /* ===================== NAV (80px + 5px border) ===================== */
+        .top-nav { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            right: 0; 
+            height: 80px; 
+            background: var(--bg-card); 
+            border-bottom: 5px solid var(--primary); 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; 
+            padding: 0 30px; 
+            z-index: 50; 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05); 
+        }
+        .header-title h1 { 
+            margin: 0; 
+            font-size: 24px; 
+            font-weight: 800; 
+            color: var(--primary); 
+        }
+        .header-title .subtitle { 
+            font-size: 14px; 
+            color: var(--text-light); 
+            margin-top: 4px; 
+        }
+        
+        .nav-controls { display: flex; align-items: center; gap: 15px; }
+        .update-badge { 
+            font-size: 11px; 
+            background: var(--hover); 
+            color: var(--text-light); 
+            padding: 5px 10px; 
+            border-radius: 4px; 
+        }
+
+        /* ===================== TOGGLES (HDBSCAN) ===================== */
+        .toggle-wrapper { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+        .toggle-switch { 
+            position: relative; 
+            width: 80px; 
+            height: 30px; 
+            background: var(--bg-body); 
+            border: 1px solid var(--border); 
+            border-radius: 15px; 
+            cursor: pointer; 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; 
+            padding: 2px; 
+            transition: background 0.3s; 
+        }
+        .toggle-switch.active { background: #94a3b8; border-color: #94a3b8; }
+        .toggle-knob { 
+            width: 24px; 
+            height: 24px; 
+            background: white; 
+            border-radius: 50%; 
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2); 
+            transition: transform 0.3s; 
+            position: absolute; 
+            left: 3px; 
+            z-index: 2; 
+        }
+        .toggle-switch.active .toggle-knob { transform: translateX(50px); }
+        .toggle-icon { font-size: 14px; z-index: 1; margin: 0 8px; user-select: none; }
+        .toggle-labels { 
+            display: flex; 
+            justify-content: space-between; 
+            width: 100%; 
+            font-size: 9px; 
+            font-weight: 700; 
+            color: var(--text-light); 
+            padding: 0 6px; 
+        }
+        .toggle-labels span { flex: 1; text-align: center; }
+
+        /* ===================== BUTTONS (HDBSCAN) ===================== */
+        .btn-action { 
+            font-family: var(--font-main); 
+            padding: 6px 16px; 
+            border-radius: 6px; 
+            font-size: 13px; 
+            font-weight: 700; 
+            cursor: pointer; 
+            border: 1px solid transparent; 
+            transition: 0.2s; 
+            min-width: 100px; 
+            text-align: center; 
+        }
+        .btn-ghost-primary { 
+            background: transparent; 
+            border: 1px solid var(--primary); 
+            color: var(--primary); 
+        }
+        .btn-ghost-primary:hover { background: var(--hover); }
+        .btn-solid-primary { 
+            background: var(--primary); 
+            border: 1px solid var(--primary); 
+            color: white; 
+        }
+        .btn-solid-primary:hover { opacity: 0.9; }
+        
+        [data-theme="dark"] .btn-ghost-primary { border-color: var(--primary); color: var(--primary); }
+        [data-theme="dark"] .btn-solid-primary { color: #0f172a; }
+        
+        /* SCROLLBAR CUSTOMIZATION */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        [data-theme="dark"] ::-webkit-scrollbar-thumb { background: #334155; }
+        [data-theme="dark"] ::-webkit-scrollbar-thumb:hover { background: #475569; }
+
+        /* FOOTER LEGAL */
+        .footer-legal { font-size: 11px; color: var(--text-light); margin-bottom: 4px; text-align: center; }
+        .footer-disclaimer { font-size: 11px; color: var(--text-light); opacity: 0.8; text-align: center; }
+        footer { margin-top: 15px; border-top: 1px solid var(--border); padding: 10px; display: flex; flex-direction: column; align-items: center; }
+
+        /* TABLE ALIGNMENT FIX */
+        #temporal-comparison-table th { text-align: center !important; }
+        #temporal-comparison-table td { text-align: right !important; }
+
+    /* NAVIGATOR (Vertical Sidebar Style) */
+    .dashboard-wrapper { display: flex; height: calc(100vh - 80px); flex-direction: row; margin-top: 80px; overflow: hidden; }
+    .sidebar { width: 240px; background: var(--bg-card); border-right: 1px solid var(--border); padding: 20px; flex-shrink: 0; display: flex; flex-direction: column; height: 100%; overflow-y: auto; z-index: 10; transition: background 0.3s; }
+    
+    .sidebar-title { font-size: 13px; font-weight: 800; color: var(--primary); margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid var(--primary); }
+    
+    .btn-vertical { font-family: var(--font-main); display: flex; align-items: center; gap: 10px; width: 100%; text-align: left; padding: 12px 12px; margin-bottom: 8px; border: 1px solid transparent; background: transparent; border-radius: 8px; cursor: pointer; font-size: 13px; color: var(--text-light); font-weight: 500; transition: all 0.2s; }
+    .btn-vertical svg { width: 18px; height: 18px; stroke: currentColor; stroke-width: 2; fill: none; flex-shrink: 0; }
+    .btn-vertical:hover { background: var(--hover); color: var(--text-dark); }
+    .btn-vertical.active { background: var(--primary); color: white; font-weight: 600; box-shadow: 0 4px 6px -1px rgba(16, 86, 130, 0.2); }
+    .btn-vertical.active svg { stroke: white; }
+
+        /* ===================== MAIN CONTENT ===================== */
+        .main-content { 
+            flex-grow: 1; 
+            padding: 30px; 
+            overflow-y: auto; 
+            height: 100%; 
+            background: var(--bg-body);
+        }
+
+        /* ===================== CARDS ===================== */
+        .card { 
+            background: var(--bg-card); 
+            border-radius: 12px; 
+            padding: 20px; 
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08); 
+            border: 1px solid var(--border); 
+        }
+        .card-title { 
+            font-size: 16px; 
+            font-weight: 700; 
+            color: var(--text-dark); 
+            margin-bottom: 15px; 
+            display: flex; 
+            align-items: center; 
+            gap: 8px; 
+        }
+
+        /* ===================== GRID LAYOUT ===================== */
+        .grid-container { 
+            display: grid; 
+            gap: 20px; 
+            margin-bottom: 20px; 
+        }
+        .grid-2 { grid-template-columns: repeat(2, 1fr); }
+        .grid-3 { grid-template-columns: repeat(3, 1fr); }
+        .grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+        @media (max-width: 1200px) {
+            .grid-3, .grid-4 { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+        }
+
+        /* ===================== KPI CARDS ===================== */
+        .kpi-card { 
+            background: var(--bg-card); 
+            border-radius: 12px; 
+            padding: 15px; 
+            border: 1px solid var(--border); 
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+        }
+        .kpi-value { 
+            font-size: 20px; 
+            font-weight: 800; 
+            color: var(--primary); 
+        }
+        .kpi-label { 
+            font-size: 12px; 
+            color: var(--text-light); 
+            margin-top: 5px; 
+        }
+
+        /* ===================== CHART CONTAINERS ===================== */
+        .chart-container { 
+            height: 320px; 
+            width: 100%; 
+            position: relative;
+        }
+
+        /* ===================== MODAL (HDBSCAN) ===================== */
+        .modal-overlay { 
+            position: fixed; 
+            inset: 0; 
+            background: rgba(0,0,0,0.5); 
+            z-index: 100; 
+            display: none; 
+            align-items: center; 
+            justify-content: center; 
+            backdrop-filter: blur(4px);
+        }
+        .modal-overlay.active { display: flex; }
+        .modal-content { 
+            background: var(--bg-card); 
+            border-radius: 16px; 
+            width: 90%; 
+            max-width: 900px; 
+            max-height: 85vh; 
+            overflow-y: auto; 
+            box-shadow: 0 25px 50px rgba(0,0,0,0.25); 
+        }
+        .modal-header { 
+            padding: 20px 24px; 
+            border-bottom: 1px solid var(--border); 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            position: sticky; 
+            top: 0; 
+            background: var(--bg-card); 
+            z-index: 10;
+        }
+        .modal-header h2 { 
+            font-size: 18px; 
+            font-weight: 700; 
+            color: var(--text-dark); 
+        }
+        .modal-close { 
+            width: 32px; 
+            height: 32px; 
+            border-radius: 8px; 
+            border: none; 
+            background: var(--hover); 
+            color: var(--text-light); 
+            cursor: pointer; 
+            font-size: 18px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+        }
+        .modal-close:hover { background: var(--border); }
+        .modal-body { padding: 24px; }
+
+        /* ===================== TABLES ===================== */
+        .data-table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            font-size: 13px; 
+        }
+        .data-table th, .data-table td { 
+            padding: 12px 16px; 
+            text-align: left; 
+            border-bottom: 1px solid var(--border); 
+        }
+        .data-table th { 
+            background: var(--hover); 
+            font-weight: 600; 
+            color: var(--text-dark); 
+        }
+        .data-table tr:hover { background: var(--hover); }
+
+        /* ===================== FOOTER ===================== */
+        .footer { 
+            text-align: center; 
+            padding: 30px; 
+            color: var(--text-light); 
+            font-size: 12px; 
+            border-top: 1px solid var(--border); 
+            margin-top: 40px;
+        }
+        .footer a { color: var(--primary); text-decoration: none; }
+
+        /* ===================== PLACEHOLDER ===================== */
+        .placeholder-msg { 
+            text-align: center; 
+            padding: 60px 20px; 
+            color: var(--text-light); 
+        }
+        .placeholder-msg h3 { 
+            font-size: 24px; 
+            margin-bottom: 10px; 
+            color: var(--text-dark);
+        }
+        /* ===================== COUNTRY CARDS ===================== */
+        .country-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        .country-card {
+            background: var(--bg-card);
+            border-radius: 10px;
+            padding: 12px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            transition: transform 0.2s;
+            box-sizing: border-box; /* Ensure padding doesnt break calc */
+            /* Flex basis strictly follows cols calculation with safety buffer */
+            flex: 0 0 calc((100% - (12px * (var(--cols) - 1))) / var(--cols) - 0.5px);
+            /* max-width REMOVED to enforce strict layout (7 items MUST take 1/7th width) */
+            min-width: 0; /* CRITICAL: Prevent forcing wraps */
+        }
+        .country-card:hover { transform: translateY(-3px); }
+        .c-flag { 
+            width: 48px; 
+            height: 36px; 
+            object-fit: fill; /* Standardize shape (stretch slightly if needed) to match DR look */
+            border-radius: 4px; 
+            margin: 0 auto 12px auto; 
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
+            display: block; 
+        }
+        .c-name { font-weight: 600; color: var(--text-dark); margin-bottom: 8px; font-size: 14px; }
+        .c-meta { font-size: 12px; color: var(--text-light); }
+        .c-amount { font-weight: 700; color: var(--primary); font-size: 13px; margin-top: 4px; }
+    </style>
+</head>
+<body id="dashboard-body">
+    <nav class="top-nav">
+        <div class="header-title">
+            <h1 data-key="title" id="lbl-main">EDA 2026</h1>
+            <div class="subtitle">
+                <span data-key="subtitle" id="lbl-sub">Análisis Exploratorio</span>
+                <span style="margin: 0 10px; opacity: 0.3;">|</span>
+                <span data-key="purpose_text" style="font-weight: 400; font-size: 13px; opacity: 0.8;">BCIE Data Lab</span>
+            </div>
+        </div>
+
+        <div class="nav-placeholder" style="flex:1;"></div>
+        <div class="nav-controls">
+            <div style="display:flex; gap:10px; align-items: center; margin-right:15px">
+                 <button class="btn-action btn-ghost-primary" onclick="takeScreenshot()">
+                    <span id="btn-snap-txt" data-key="btn_capture">Captura</span>
+                </button>
+                <button class="btn-action btn-solid-primary" onclick="generatePDF()">
+                    <span id="btn-pdf-txt" data-key="btn_pdf">PDF</span>
+                </button>
+            </div>
+            
+            <div class="update-badge" id="lbl-update">Actualizado: --</div>
+            
+            <div class="toggle-wrapper">
+                <div class="toggle-switch" id="btn-theme" onclick="toggleTheme()" title="Tema">
+                    <div class="toggle-knob"></div>
+                    <span class="toggle-icon">☀️</span>
+                    <span class="toggle-icon">🌙</span>
+                </div>
+                <div class="toggle-labels">
+                    <span id="lbl-theme-light" data-key="toggle_light">Claro</span>
+                    <span id="lbl-theme-dark" data-key="toggle_dark">Oscuro</span>
+                </div>
+            </div>
+
+            <div class="toggle-wrapper">
+                <div class="toggle-switch" id="btn-lang" onclick="toggleLanguage()" title="Idioma">
+                    <div class="toggle-knob"></div>
+                </div>
+                <div class="toggle-labels">
+                    <span id="lbl-lang-es" data-key="toggle_es">Es</span>
+                    <span id="lbl-lang-en" data-key="toggle_en">En</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===================== DASHBOARD WRAPPER ===================== -->
+    <div class="dashboard-wrapper">
+        
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="sidebar-title" data-key="nav_panel">Panel de Control</div>
+            <button class="btn-vertical active" onclick="switchTab('overview')">
+                <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                <span data-key="nav_overview">Overview</span>
+            </button>
+            
+            <button class="btn-vertical" onclick="switchTab('temporal')">
+                <svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+                <span data-key="nav_temporal">Evolución Temporal</span>
+            </button>
+            
+            <button class="btn-vertical" onclick="switchTab('sector')">
+                <svg viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V7l8-4 8 4v14"/><path d="M17 21v-8.5a1.5 1.5 0 0 0-1.5-1.5h-5a1.5 1.5 0 0 0-1.5 1.5V21"/><path d="M9 10a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2.5a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1V10z"/></svg>
+                <span data-key="nav_sector">Análisis Sectorial</span>
+            </button>
+            
+            <button class="btn-vertical" onclick="switchTab('risk')">
+                <svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                <span data-key="nav_risk">Factores de Riesgo</span>
+            </button>
+            
+            <button class="btn-vertical" onclick="switchTab('quality')">
+               <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+               <span data-key="nav_quality">Calidad de Datos</span>
+            </button>
+            
+            <div style="margin-top: auto; padding-top: 20px; border-top: 1px solid var(--border); font-size: 11px; color: var(--text-light); text-align: center;">
+                v2.0.1 - Beta
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT AREA -->
+        <main class="main-content">
+    
+        <!-- === TAB VIEW: OVERVIEW === -->
+        <div id="tab-overview" class="tab-view">
+            <!-- TOP SPLIT SECTION: KPIs (2x2) AND COUNTRY GRID -->
+            <div class="grid-container" style="display: grid; grid-template-columns: 2fr 7fr; gap: 20px; align-items: stretch; margin-bottom: 20px;">
+                
+                <!-- LEFT: KPI 2x2 MATRIX -->
+                <div style="display: flex; flex-direction: column; gap: 10px; min-width: 0;">
+                     <h3 style="margin-bottom:10px; color:var(--text-dark); font-size:16px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:8px; vertical-align:text-bottom;"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                        Métricas Clave
+                     </h3>
+                     <div class="grid-container grid-2" style="margin-top:0; flex: 1; align-content: stretch;">
+                        <div class="kpi-card">
+                            <div class="kpi-value" id="kpi-1" style="font-size: 18px;">--</div>
+                            <div class="kpi-label">Total Registros</div>
+                        </div>
+                        <div class="kpi-card">
+                            <div class="kpi-value" id="kpi-2" style="font-size: 18px;">--</div>
+                            <div class="kpi-label">Variables</div>
+                        </div>
+                        <div class="kpi-card">
+                            <div class="kpi-value" id="kpi-3" style="font-size: 18px;">--</div>
+                            <div class="kpi-label">Período</div>
+                        </div>
+                        <div class="kpi-card">
+                            <div class="kpi-value" id="kpi-4" style="font-size: 18px;">--</div>
+                            <div class="kpi-label">Países</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RIGHT: COUNTRY GRID CONTAINER -->
+                <div id="country-section" style="display:none; flex: 1;">
+                    <h3 style="margin-bottom:15px; color:var(--text-dark); font-size:16px;">🌐 Detalle por País</h3>
+                    <div id="country-grid" class="country-grid"></div>
+                </div>
+            </div>
+
+            <!-- CHART ROW 1 -->
+            <div class="grid-container grid-2">
+                <div class="card">
+                    <div class="card-title">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:8px; vertical-align:text-bottom;"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+                        Evolución Temporal
+                    </div>
+                    <div class="chart-container" id="chart-overview-1"></div>
+                </div>
+                <div class="card">
+                    <div class="card-title">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:8px; vertical-align:text-bottom;"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>
+                        Funnel de Socios
+                    </div>
+                    <div class="chart-container" id="chart-overview-2"></div>
+                </div>
+            </div>
+
+            <!-- DATA TABLE -->
+            <div class="card">
+                <div class="card-title">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:8px; vertical-align:text-bottom;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    Top 5 Registros Históricos
+                </div>
+                <div style="overflow-x: auto;">
+                    <table class="data-table" id="main-table">
+                        <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>Año</th>
+                                <th>País</th>
+                                <th>Sector</th>
+                                <th>Monto</th>
+                                <th>Aprobaciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="6" style="text-align:center; color: var(--text-light); padding: 40px;">
+                                    Cargando datos...
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- === TAB VIEW: TEMPORAL === -->
+        <div id="tab-temporal" class="tab-view" style="display:none;">
+
+            
+            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px; height: calc(100vh - 180px); overflow: hidden;">
+                <!-- LEFT COLUMN: CHARTS -->
+                <div style="display: flex; flex-direction: column; gap: 20px; overflow-y: auto; padding-right: 5px;">
+                    <!-- ROW 1: AMOUNTS -->
+                    <div class="grid-container grid-2" style="margin-bottom:0;">
+                         <div class="card">
+                              <div class="card-title" data-key="chart_heatmap_intensity">Mapa de Calor (Intensidad)</div>
+                              <div class="chart-container" id="chart-temporal-1"></div>
+                         </div>
+                         <div class="card">
+                              <div class="card-title" data-key="chart_cycles_amount">Ciclos de Inversión (Crecimiento YoY)</div>
+                              <div class="chart-container" id="chart-temporal-2"></div>
+                         </div>
+                    </div>
+
+                    <!-- ROW 2: COUNTS -->
+                    <div class="grid-container grid-2" style="margin-bottom:0;">
+                        <div class="card">
+                             <div class="card-title" data-key="chart_heatmap_freq">Mapa de Calor (Frecuencia)</div>
+                             <div class="chart-container" id="chart-temporal-3"></div>
+                        </div>
+                        <div class="card">
+                             <div class="card-title" data-key="chart_cycles_ops">Ciclos de Operaciones (Crecimiento YoY)</div>
+                             <div class="chart-container" id="chart-temporal-4"></div>
+                        </div>
+                    </div>
+
+                    <!-- ROW 3: AVERAGE (PROMEDIO) -->
+                    <div class="grid-container grid-2" style="margin-bottom:0;">
+                        <div class="card">
+                             <div class="card-title" data-key="chart_heatmap_avg">Mapa de Calor (Promedio)</div>
+                             <div class="chart-container" id="chart-temporal-5"></div>
+                        </div>
+                        <div class="card">
+                             <div class="card-title" data-key="chart_cycles_avg">Ciclos de Promedio (Crecimiento YoY)</div>
+                             <div class="chart-container" id="chart-temporal-6"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RIGHT COLUMN: TABLE -->
+                <div class="card" style="height: 100%; display:flex; flex-direction:column; overflow:hidden;">
+                     <div class="card-title" data-key="table_title">Comparativo Anual</div>
+                     <div style="overflow-y: auto; flex:1; padding-right:5px;">
+                        <table class="data-table" id="temporal-comparison-table" style="font-size: 0.7rem;">
+                            <thead>
+                                <tr>
+                                    <th style="padding: 6px; text-align: center !important;">Año</th>
+                                    <th style="padding: 6px; text-align: center !important;">Monto Actual</th>
+                                    <th style="padding: 6px; text-align: center !important;">Monto Anterior</th>
+                                    <th style="padding: 6px; text-align: center !important;">Variación Monto</th>
+                                    <th style="padding: 6px; text-align: center !important;">Operaciones Actuales</th>
+                                    <th style="padding: 6px; text-align: center !important;">Operaciones Anteriores</th>
+                                    <th style="padding: 6px; text-align: center !important;">Variación Aprobaciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- JS Injection -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- === TAB VIEW: SECTOR === -->
+        <div id="tab-sector" class="tab-view" style="display:none;">
+             <div class="subtitle" style="margin-bottom: 1rem;">Distribución Sectorial</div>
+             <div class="grid-container grid-3">
+                <!-- Evolución por Monto -->
+                <div class="card">
+                     <div class="card-title">Evolución Sectorial por Monto</div>
+                     <div class="chart-container" id="chart-sector-evo-monto"></div>
+                </div>
+                <!-- Evolución por Cantidad -->
+                <div class="card">
+                     <div class="card-title">Evolución Sectorial por Cantidad</div>
+                     <div class="chart-container" id="chart-sector-evo-cant"></div>
+                </div>
+                <!-- Gráfico de Donas: Sector Institucional (Público vs Privado) -->
+                <div class="card" style="display:flex;flex-direction:row;align-items:center;padding:20px">
+                    <div style="display:flex;flex-direction:column;flex:2;height:100%">
+                        <div class="card-title" data-key="chart_sector_inst">Distribución por Sector Institucional</div>
+                        <div style="display:flex;flex:1;min-height:0;gap:0px">
+                            <div id="chart-sector-monto" style="flex:1;height:280px"></div>
+                            <div id="chart-sector-cant" style="flex:1;height:280px"></div>
+                        </div>
+                    </div>
+                    <div id="leg-sector" style="flex:0 0 220px;height:100%;overflow-y:auto;padding-left:10px;margin-left:5px;display:flex;align-items:center"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- === TAB VIEW: RISK === -->
+        <div id="tab-risk" class="tab-view" style="display:none;">
+             <div class="subtitle" style="margin-bottom: 1rem;">Análisis de Riesgo y Concentración</div>
+             <div class="grid-container grid-2">
+                <div class="card">
+                     <div class="card-title">Distribución por Montos (Boxplot)</div>
+                     <div class="chart-container" id="chart-risk-1"></div>
+                </div>
+                <div class="card">
+                     <div class="card-title">Pareto de Concentración - 80/20</div>
+                     <div class="chart-container" id="chart-risk-2"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- === TAB VIEW: QUALITY === -->
+        <div id="tab-quality" class="tab-view" style="display:none;">
+             <div class="subtitle" style="margin-bottom: 1rem;">Calidad de Datos</div>
+             <div id="quality-content"></div>
+        </div>
+
+        <footer>
+            <div data-key="footer_legal" class="footer-legal">© 2026 | UNIR–BCIE | Trabajo de Colaboración Académica | Equipo 03-D | Todos los derechos reservados.</div>
+            <div data-key="footer_disclaimer" class="footer-disclaimer">Los resultados son para fines académicos y no constituyen compromiso financiero vinculante por parte del BCIE.</div>
+        </footer>
+    </main>
+
+    <!-- ===================== MODALS ===================== -->
+    
+    <!-- INSIGHTS MODAL -->
+    <div class="modal-overlay" id="modal-insights">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 data-key="insights_title">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:8px; vertical-align:text-bottom; color:#f59e0b;"><path d="M9 18h6"></path><path d="M10 22h4"></path><path d="M15.09 14c.18-.7.18-1.48 0-2.2-.45-1.78-1.89-3.2-3.7-3.66C9.28 7.6 7.15 8.5 6.07 10.4c-1.38 2.39.29 5.86 3.03 6.6"></path><path d="M12 2a5 5 0 0 1 5 5c0 1.25-.45 2.5-1.21 3.46"></path></svg>
+                    Insights Clave
+                </h2>
+                <button class="modal-close" onclick="toggleInsights(false)">×</button>
+            </div>
+            <div class="modal-body" id="insights-content">
+                <div class="placeholder-msg">
+                    <p>Los insights se generarán automáticamente basados en el análisis de datos</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PARAMS MODAL -->
+    <div class="modal-overlay" id="modal-params">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:8px; vertical-align:text-bottom;"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                    Parámetros del Análisis
+                </h2>
+                <button class="modal-close" onclick="toggleParams(false)">×</button>
+            </div>
+            <div class="modal-body" id="params-content">
+                <div class="placeholder-msg">
+                    <p>Los parámetros del análisis se mostrarán aquí</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- METRICS MODAL -->
+    <div class="modal-overlay" id="modal-metrics">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 data-key="metrics_title">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:8px; vertical-align:text-bottom;"><polyline points="4 7 4 4 20 4 20 7"></polyline><line x1="9" y1="20" x2="15" y2="20"></line><line x1="12" y1="4" x2="12" y2="20"></line></svg>
+                    Métricas Estadísticas
+                </h2>
+                <button class="modal-close" onclick="toggleMetrics(false)">×</button>
+            </div>
+            <div class="modal-body" id="metrics-content">
+                <div class="placeholder-msg">
+                    <p>Las métricas estadísticas se mostrarán aquí</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- METHODOLOGY MODAL -->
+    <div class="modal-overlay" id="modal-method">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 data-key="method_title">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:8px; vertical-align:text-bottom;"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                    Metodología
+                </h2>
+                <button class="modal-close" onclick="toggleModal(false)">×</button>
+            </div>
+            <div class="modal-body" id="method-content">
+                <div class="placeholder-msg">
+                    <p>La metodología del análisis exploratorio se documentará aquí</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================== FOOTER ===================== -->
+    </main>
+    <!-- End of Dashboard Wrapper -->
+    </div>
+
+    <!-- ===================== JAVASCRIPT ===================== -->
+    <script>
+        // ===================== DATA INJECTION =====================
+        const DATA_MASTER = null; // {{DATA_MASTER}}
+
+        // ===================== STATE MANAGEMENT =====================
+        const STATE = {
+            filterCountry: null,
+            filterPartner: null,
+            originalCountries: null // Store original countries for card display
+        };
+
+        // ===================== CORE LOGIC =====================
+        // 1. Filter Data
+        function applyFilters() {
+            if(!DATA_MASTER || !DATA_MASTER.raw) return [];
+            return DATA_MASTER.raw.filter(row => {
+                const matchCountry = !STATE.filterCountry || row.Pais === STATE.filterCountry;
+                const matchPartner = !STATE.filterPartner || row.Tipo_Socio === STATE.filterPartner;
+                return matchCountry && matchPartner;
+            });
+        }
+
+        // 2. Calculate Metrics on the Fly
+        function calculateMetrics(rows) {
+            const total_vol = rows.reduce((sum, r) => sum + (r.Monto_Aprobado || 0), 0);
+            const total_count = rows.reduce((sum, r) => sum + (r.CANTIDAD_APROBACIONES || 1), 0); // Assuming 1 row = 1 record if col missing
+            const avg_ticket = total_count ? total_vol / total_count : 0;
+            const records_count = rows.length;
+
+            // Trend
+            const trendMap = {};
+            rows.forEach(r => {
+                if(!trendMap[r.Anio]) trendMap[r.Anio] = { Anio: r.Anio, Monto_Aprobado: 0, Count: 0 };
+                trendMap[r.Anio].Monto_Aprobado += r.Monto_Aprobado;
+                trendMap[r.Anio].Count += (r.CANTIDAD_APROBACIONES || 1);
+            });
+            const trend = Object.values(trendMap).sort((a,b) => a.Anio - b.Anio);
+
+            // Top Sector (Simple Mode if filtered)
+             const sectorMap = {};
+            rows.forEach(r => {
+                sectorMap[r.Sector_Economico] = (sectorMap[r.Sector_Economico] || 0) + r.Monto_Aprobado;
+            });
+            const top_sector = Object.keys(sectorMap).reduce((a, b) => sectorMap[a] > sectorMap[b] ? a : b, "N/A");
+            const top_sector_count = rows.filter(r => r.Sector_Economico === top_sector).length; // Approx
+
+            // Top 5 Table
+            const top_table = [...rows].sort((a,b) => b.Monto_Aprobado - a.Monto_Aprobado).slice(0, 5);
+
+            // Country Cards (Aggregate by Pais)
+            const countryMap = {};
+            rows.forEach(r => {
+                if(!countryMap[r.Pais]) {
+                    countryMap[r.Pais] = { Pais: r.Pais, Monto_Aprobado: 0, Count: 0, iso: r.Iso || 'xb' };
+                }
+                countryMap[r.Pais].Monto_Aprobado += r.Monto_Aprobado;
+                countryMap[r.Pais].Count += (r.CANTIDAD_APROBACIONES || 1);
+            });
+            const countries = Object.values(countryMap).sort((a,b) => b.Monto_Aprobado - a.Monto_Aprobado);
+
+            return {
+                kpis: {
+                    total_volume: total_vol,
+                    total_count: total_count,
+                    avg_ticket: avg_ticket,
+                    total_records: records_count,
+                    top_sector_count: top_sector_count,
+                    top_sector_name: top_sector
+                },
+                trend: trend,
+                top_table: top_table,
+                countries: countries
+            };
+        }
+
+        // 3. Update UI
+        function updateDashboard() {
+            const filteredRows = applyFilters();
+            const metrics = calculateMetrics(filteredRows);
+            
+            // Store original countries on first load (before any filter)
+            if (!STATE.originalCountries && DATA_MASTER.overview.countries) {
+                STATE.originalCountries = DATA_MASTER.overview.countries;
+            }
+            
+            // Update Global Data Context
+             DATA_MASTER.overview.kpis = metrics.kpis;
+             DATA_MASTER.overview.trend = metrics.trend;
+             DATA_MASTER.overview.top_table = metrics.top_table;
+             // Keep original countries for cards - don't overwrite with filtered data
+             // DATA_MASTER.overview.countries = metrics.countries; // REMOVED: Keep original countries
+
+             // Re-render
+             renderTabContent(currentTab);
+             updateFilterUI();
+        }
+
+        function toggleFilterCountry(country) {
+            STATE.filterCountry = STATE.filterCountry === country ? null : country;
+            updateDashboard();
+        }
+
+        function toggleFilterPartner(partnerType) {
+            STATE.filterPartner = STATE.filterPartner === partnerType ? null : partnerType;
+            updateDashboard();
+        }
+
+        function updateFilterUI() {
+             // Add visual cues for active filters
+             const cards = document.querySelectorAll('.country-card');
+             cards.forEach(c => {
+                 const cName = c.getAttribute('data-country');
+                 if(STATE.filterCountry && cName !== STATE.filterCountry) {
+                     c.style.opacity = '0.3';
+                 } else {
+                     c.style.opacity = '1';
+                     if(STATE.filterCountry && cName === STATE.filterCountry) {
+                         c.style.border = '2px solid var(--primary)';
+                     } else {
+                         c.style.border = '1px solid var(--border)';
+                     }
+                 }
+             });
+
+             // Show/Hide Reset Button
+             let resetBtn = document.getElementById('btn-reset-filters');
+             if(!resetBtn) {
+                 // Create if not exists (in subtitle area)
+                 const sub = document.querySelector('.subtitle');
+                 if(sub) {
+                     const btn = document.createElement('button');
+                     btn.id = 'btn-reset-filters';
+                     btn.className = 'btn-action btn-ghost-primary';
+                     btn.style.marginLeft = '15px';
+                     btn.style.fontSize = '12px';
+                     btn.innerHTML = '↺ Restablecer Filtros';
+                     btn.onclick = () => { STATE.filterCountry=null; STATE.filterPartner=null; updateDashboard(); };
+                     sub.appendChild(btn);
+                     resetBtn = btn;
+                 }
+             }
+
+             if(resetBtn) {
+                 const hasFilter = STATE.filterCountry || STATE.filterPartner;
+                 resetBtn.style.display = hasFilter ? 'inline-block' : 'none';
+                 if(hasFilter) {
+                     resetBtn.innerText = `↺ Filtro: ${STATE.filterCountry || ''} ${STATE.filterPartner || ''} (X)`;
+                 }
+             }
+        }
+
+
+        // ===================== CONFIG =====================
+        const CONFIG = {
+            colors: {
+                primary: getComputedStyle(document.documentElement).getPropertyValue('--primary').trim(),
+                success: '#10b981',
+                warning: '#f59e0b',
+                danger: '#ef4444',
+                grey: '#94a3b8'
+            },
+            // Country name translations
+            country_names: {
+                en: {
+                    'Argentina': 'Argentina',
+                    'Belice': 'Belize',
+                    'Bolivia': 'Bolivia',
+                    'Colombia': 'Colombia',
+                    'Costa Rica': 'Costa Rica',
+                    'Cuba': 'Cuba',
+                    'El Salvador': 'El Salvador',
+                    'Guatemala': 'Guatemala',
+                    'Honduras': 'Honduras',
+                    'México': 'Mexico',
+                    'Nicaragua': 'Nicaragua',
+                    'Panamá': 'Panama',
+                    'Regional': 'Regional',
+                    'República Dominicana': 'Dominican Republic'
+                },
+                es: {} // ES uses original names from data
+            },
+            tr: {
+                es: {
+                    overview: "Vista General",
+                    evolution: "Evolución Temporal",
+                    sectors: "Estrategia Sectorial",
+                    risk: "Riesgos y Concentración",
+                    quality: "Calidad de Datos",
+                    kpi_vol: "Volumen Total",
+                    kpi_count: "Operaciones",
+                    kpi_ticket: "Ticket Promedio",
+                    kpi_age: "Antigüedad Cartera",
+                    chart_trend: "Evolución de Aprobaciones (Monto USD)",
+                    chart_partner: "Funnel por Tipo de Socio",
+                    chart_heatmap: "Mapa de Calor: Intensidad por País y Década",
+                    chart_cycles: "Ciclos de Inversión (Crecimiento YoY)",
+                    chart_sector_vol: "Mix Sectorial: Público vs Privado",
+                    chart_top_sector: "Top 10 Sectores Económicos",
+                    chart_risk_dist: "Distribución de Montos por País (Boxplot)",
+                    chart_pareto: "Curva de Pareto (Concentración)",
+                    tab_trend: "Tendencia",
+                    tab_dist: "Distribución",
+                    msg_no_data: "Sin datos disponibles",
+                    loading: "Cargando...",
+                    axis_amount: "Monto (USD)",
+                    axis_count: "Cantidad",
+                    // Extra Keys
+                    kpi_records: "Total Registros",
+                    kpi_top_sector: "Sector Principal",
+                    kpi_records_sector: "Registros: ",
+                    kpi_vol_long: "Monto Total Aprobado",
+                    kpi_count_long: "Cantidad de Operaciones",
+                    kpi_ticket_long: "Promedio por Aprobación",
+                    lbl_updated: "Actualizado: ",
+                    // Table Translations
+                    table_title: "Comparativo Anual",
+                    col_year: "Año",
+                    col_amount_curr: "Monto Actual",
+                    col_amount_prev: "Monto Anterior",
+                    col_var_amount: "Variación Monto",
+                    col_ops_curr: "Operaciones Actuales",
+                    col_ops_prev: "Operaciones Anteriores",
+                    col_var_ops: "Variación Aprobaciones",
+                    // Chart Titles - Temporal
+                    chart_heatmap_intensity: "Mapa de Calor (Intensidad)",
+                    chart_cycles_amount: "Ciclos de Inversión (Crecimiento YoY)",
+                    chart_heatmap_freq: "Mapa de Calor (Frecuencia)",
+                    chart_cycles_ops: "Ciclos de Operaciones (Crecimiento YoY)",
+                    chart_heatmap_avg: "Mapa de Calor (Promedio)",
+                    chart_cycles_avg: "Ciclos de Promedio (Crecimiento YoY)",
+                    // Buttons
+                    btn_capture: "Captura",
+                    btn_pdf: "PDF",
+                    // Navigation
+                    nav_panel: "Panel de Control",
+                    nav_overview: "Vista General",
+                    nav_temporal: "Evolución Temporal",
+                    nav_sector: "Análisis Sectorial",
+                    nav_risk: "Factores de Riesgo",
+                    nav_quality: "Calidad de Datos",
+                    // Footer
+                    footer_legal: "© 2026 | UNIR–BCIE | Trabajo de Colaboración Académica | Equipo 03-D | Todos los derechos reservados.",
+                    footer_disclaimer: "Los resultados son para fines académicos y no constituyen compromiso financiero vinculante por parte del BCIE.",
+                    // Toggles
+                    toggle_dark: "Oscuro",
+                    toggle_light: "Claro",
+                    toggle_es: "Es",
+                    toggle_en: "En",
+                    // Sector Chart
+                    chart_sector_inst: "Distribución por Sector Institucional",
+                    lbl_sector_public: "Sector Público",
+                    lbl_sector_private: "Sector Privado",
+                    lbl_amount: "Monto",
+                    lbl_quantity: "Cantidad"
+                },
+                en: {
+                    overview: "Overview",
+                    evolution: "Temporal Evolution",
+                    sectors: "Sector Strategy",
+                    risk: "Risk & Concentration",
+                    quality: "Data Quality",
+                    kpi_vol: "Total Volume",
+                    kpi_count: "Operations",
+                    kpi_ticket: "Avg Ticket",
+                    kpi_age: "Portfolio Age",
+                    chart_trend: "Approvals Evolution (USD Amount)",
+                    chart_partner: "Funnel by Partner Type",
+                    chart_heatmap: "Heatmap: Intensity by Country & Decade",
+                    chart_cycles: "Investment Cycles (YoY Growth)",
+                    chart_sector_vol: "Sector Mix: Public vs Private",
+                    chart_top_sector: "Top 10 Economic Sectors",
+                    chart_risk_dist: "Amount Distribution by Country (Boxplot)",
+                    chart_pareto: "Pareto Curve (Concentration)",
+                    tab_trend: "Trend",
+                    tab_dist: "Distribution",
+                    msg_no_data: "No data available",
+                    loading: "Loading...",
+                    axis_amount: "Amount (USD)",
+                    axis_count: "Count",
+                     // Extra Keys
+                    kpi_records: "Total Records",
+                    kpi_top_sector: "Leading Sector",
+                    kpi_records_sector: "Records: ",
+                    kpi_vol_long: "Total Approved Amount",
+                    kpi_count_long: "Quantity of Operations",
+                    kpi_ticket_long: "Average per Approval",
+                    lbl_updated: "Updated: ",
+                    // Table Translations
+                    table_title: "Yearly Comparison",
+                    col_year: "Year",
+                    col_amount_curr: "Curr Amount",
+                    col_amount_prev: "Prev Amount",
+                    col_var_amount: "Var Amount",
+                    col_ops_curr: "Curr Ops",
+                    col_ops_prev: "Prev Ops",
+                    col_var_ops: "Var Ops",
+                    // Chart Titles - Temporal
+                    chart_heatmap_intensity: "Heatmap (Intensity)",
+                    chart_cycles_amount: "Investment Cycles (YoY Growth)",
+                    chart_heatmap_freq: "Heatmap (Frequency)",
+                    chart_cycles_ops: "Operations Cycles (YoY Growth)",
+                    chart_heatmap_avg: "Heatmap (Average)",
+                    chart_cycles_avg: "Average Cycles (YoY Growth)",
+                    // Buttons
+                    btn_capture: "Capture",
+                    btn_pdf: "PDF",
+                    // Navigation
+                    nav_panel: "Control Panel",
+                    nav_overview: "Overview",
+                    nav_temporal: "Temporal Evolution",
+                    nav_sector: "Sector Analysis",
+                    nav_risk: "Risk Factors",
+                    nav_quality: "Data Quality",
+                    // Footer
+                    footer_legal: "© 2026 | UNIR–BCIE | Academic Collaboration Work | Team 03-D | All rights reserved.",
+                    footer_disclaimer: "Results are for academic purposes and do not constitute binding financial commitment by BCIE.",
+                    // Toggles
+                    toggle_dark: "Dark",
+                    toggle_light: "Light",
+                    toggle_es: "Es",
+                    toggle_en: "En",
+                    // Sector Chart
+                    chart_sector_inst: "Institutional Sector Distribution",
+                    lbl_sector_public: "Public Sector",
+                    lbl_sector_private: "Private Sector",
+                    lbl_amount: "Amount",
+                    lbl_quantity: "Quantity"
+                }
+            }
+        };
+
+        let currentLang = 'es';
+        let currentTab = 'overview';
+
+        // ===================== CORE FUNCTIONS =====================
+        
+        function initDashboard() {
+            if (!DATA_MASTER) {
+                console.warn("DATA_MASTER is null. Waiting for injection...");
+                // Just in case, try to update UI after a delay if injection happens late (unlikely but safe)
+                setTimeout(() => { if(DATA_MASTER) initDashboard(); }, 1000);
+                return;
+            }
+            
+            // Check Theme
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.getElementById('btn-theme').classList.add('active');
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+
+            // Update Last Updated Badge
+            const lblUpdate = document.getElementById('lbl-update');
+            if(lblUpdate && DATA_MASTER.last_updated) {
+                 lblUpdate.innerText = (CONFIG.tr[currentLang].lbl_updated || 'Actualizado: ') + DATA_MASTER.last_updated;
+            }
+
+            // Render Overview by default
+            // switchTab('overview'); // OLD
+            
+            // NEW: Start the dynamic loop
+            updateDashboard();
+            
+            // Apply translations to static elements
+            applyTranslations();
+        }
+
+        // Function to apply translations to all data-key elements
+        function applyTranslations() {
+            const t = CONFIG.tr[currentLang];
+            document.querySelectorAll('[data-key]').forEach(el => {
+                const key = el.getAttribute('data-key');
+                if (t[key]) {
+                    el.textContent = t[key];
+                }
+            });
+            
+            // Update dynamic labels
+            const lblUpdate = document.getElementById('lbl-update');
+            if(lblUpdate && DATA_MASTER?.last_updated) {
+                lblUpdate.innerText = (t.lbl_updated || 'Actualizado: ') + DATA_MASTER.last_updated;
+            }
+        }
+
+        // Toggle language function
+        function toggleLanguage() {
+            const btn = document.getElementById('btn-lang');
+            btn.classList.toggle('active');
+            currentLang = btn.classList.contains('active') ? 'en' : 'es';
+            applyTranslations();
+            renderTabContent(currentTab);
+        }
+
+        // Translate a single country name
+        function translateCountry(name) {
+            if (currentLang === 'es') return name; // Original data is in Spanish
+            const dict = CONFIG.country_names.en;
+            return dict[name] || name;
+        }
+
+        // Translate an array of country names
+        function translateCountries(names) {
+            return names.map(n => translateCountry(n));
+        }
+
+        // Helper to Wrap Label text if too long (e.g. "Republica Dominicana" -> "Republica<br>Dominicana")
+        function wrapLabel(label) {
+            if(!label) return '';
+            const words = label.split(' ');
+            if(words.length > 1 && label.length > 10) {
+                 // Simple split: if more than 1 word and long enough, break after first word (or split evenly)
+                 // For countries like "El Salvador", "Costa Rica", keep "El" with "Salvador"?
+                 // Let's break at the middle space closest to center
+                 const mid = Math.floor(words.length / 2);
+                 return words.slice(0, mid + (words.length%2)).join(' ') + '<br>' + words.slice(mid + (words.length%2)).join(' ');
+            }
+            return label;
+        }
+
+        function switchTab(tabId) {
+            currentTab = tabId;
+            
+            // Update Active State in Sidebar
+            document.querySelectorAll('.btn-vertical').forEach(btn => btn.classList.remove('active'));
+            const activeBtn = Array.from(document.querySelectorAll('.btn-vertical')).find(b => b.getAttribute('onclick')?.includes(tabId));
+            if(activeBtn) activeBtn.classList.add('active');
+
+            // Hide all Tab Views
+            document.querySelectorAll('.tab-view').forEach(v => v.style.display = 'none');
+            
+            // Show Target Tab View
+            const target = document.getElementById(`tab-${tabId}`);
+            if(target) target.style.display = 'block';
+
+            // Render specific tab content
+            renderTabContent(tabId);
+        }
+
+
+        // Removed resetLayout as it's no longer needed with separate views
+
+        function renderTabContent(tabId) {
+            const data = DATA_MASTER;
+            const t = CONFIG.tr[currentLang];
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            
+            const layoutCommon = {
+                paper_bgcolor: 'transparent',
+                plot_bgcolor: 'transparent',
+                font: { color: isDark ? '#f1f5f9' : '#1e293b', family: 'Inter', size: 12 },
+                autosize: true,
+                margin: { t: 30, r: 20, l: 50, b: 20 }
+            };
+
+            // --- TAB 1: OVERVIEW ---
+            if (tabId === 'overview') {
+                // KPIs
+                updateKPI('kpi-1', formatCurrency(data.overview.kpis.total_volume), t.kpi_vol_long || 'Monto Total Aprobado');
+                updateKPI('kpi-2', data.overview.kpis.total_count, t.kpi_count_long || 'Cantidad de Operaciones');
+                updateKPI('kpi-3', formatCurrency(data.overview.kpis.avg_ticket), t.kpi_ticket_long || 'Promedio por Aprobación');
+                
+                // KPI 4: Total Records
+                const kpi4 = document.getElementById('kpi-4');
+                if(kpi4) {
+                    kpi4.innerText = data.overview.kpis.total_records || 0;
+                    kpi4.style.fontSize = '20px'; 
+                    kpi4.style.lineHeight = '1.2';
+                }
+                const lbl4 = kpi4?.nextElementSibling;
+                if(lbl4) lbl4.innerText = t.kpi_records || 'Total Registros';
+
+                // Chart 1: Evolution Trend (Overview ID)
+                const trendData = data.overview.trend;
+                const traceMonto = {
+                    x: trendData.map(d => d.Anio),
+                    y: trendData.map(d => d.Monto_Aprobado),
+                    name: t.kpi_vol || 'Monto',
+                    type: 'scatter', 
+                    mode: 'lines+markers',
+                    line: {color: '#34d399', width: 2, shape: 'spline'},
+                    marker: {symbol: 'circle', size: 6, color: isDark ? '#1e293b' : '#ffffff', line: {color: '#34d399', width: 2}}
+                };
+                
+                const traceCount = {
+                    x: trendData.map(d => d.Anio),
+                    y: trendData.map(d => d.Count), 
+                    name: t.kpi_count || 'Aprobaciones',
+                    yaxis: 'y2',
+                    type: 'scatter', 
+                    mode: 'lines+markers',
+                    line: {color: CONFIG.colors.primary, width: 2, shape: 'spline'}, 
+                    marker: {symbol: 'circle', size: 6, color: isDark ? '#1e293b' : '#ffffff', line: {color: CONFIG.colors.primary, width: 2}}
+                };
+
+                const layoutDual = {
+                    ...layoutCommon,
+                    title: '', // HTML Title used
+                    margin: {t: 30, b: 30, l: 50, r: 50},
+                    xaxis: {gridcolor: isDark ? '#334155' : '#e2e8f0', zeroline: false},
+                    yaxis: {title: t.axis_amount, showgrid: true, gridcolor: isDark ? '#334155' : '#e2e8f0', rangemode: 'tozero'},
+                    yaxis2: {
+                        title: t.axis_count,
+                        overlaying: 'y',
+                        side: 'right',
+                        showgrid: false,
+                        gridcolor: 'transparent',
+                        rangemode: 'tozero'
+                    },
+                    legend: { orientation: 'h', x: 0.5, xanchor: 'center', y: -0.2 }
+                };
+
+                Plotly.newPlot('chart-overview-1', [traceMonto, traceCount], layoutDual);
+
+                // Chart 2: Partner Funnel (Overview ID)
+                const c2 = document.getElementById('chart-overview-2');
+                if(c2 && c2.innerHTML.includes('Cargando')) c2.innerHTML = ''; 
+
+                const funnel = data.overview.funnel || [];
+                
+                // Always show total funnel (static, unaffected by filter)
+                // Use data.overview.funnel but ensure it comes from GLOBAL context if needed
+                // Actually, 'data' passed here is usually filteredData. 
+                // We need the GLOBAL funnel data to stay static.
+                
+                let funnelDataToRender = [];
+                if(DATA_MASTER && DATA_MASTER.overview && DATA_MASTER.overview.funnel) {
+                     // Get funnel from INITIAL load if possible, or recalculate from raw
+                     // To be safe and truly static, let's recalc from DATA_MASTER.raw locally 
+                     // or assume DATA_MASTER.overview.funnel is good enough if we don't want to recalc.
+                     // BUT 'data' is the result of updateDashboard() -> calculateMetrics(filteredRows)
+                     // So 'data.overview.funnel' IS filtered.
+                     
+                     // We need to calculate GLOBAL Funnel
+                     const originalRows = DATA_MASTER.raw;
+                     const globalFunnelMap = {};
+                     originalRows.forEach(r => {
+                        const socio = r.Tipo_Socio || 'Desconocido';
+                        if (!globalFunnelMap[socio]) globalFunnelMap[socio] = 0;
+                        globalFunnelMap[socio] += r.Monto_Aprobado || 0;
+                     });
+                     funnelDataToRender = Object.entries(globalFunnelMap)
+                        .map(([s, m]) => ({ Tipo_Socio: s, Monto_Aprobado: m }))
+                        .sort((a,b) => b.Monto_Aprobado - a.Monto_Aprobado);
+                }
+
+                Plotly.newPlot('chart-overview-2', [{
+                    y: funnelDataToRender.map(d => d.Tipo_Socio),
+                    x: funnelDataToRender.map(d => d.Monto_Aprobado),
+                    type: 'funnel',
+                    marker: { color: CONFIG.colors.warning },
+                    textinfo: "value+percent initial",
+                    texttemplate: "%{value:$,.0f}<br>(%{percentInitial:.1%})",
+                    textfont: { size: 13, color: isDark ? 'white' : 'black' },
+                    opacity: 0.9
+                }], { 
+                    ...layoutCommon, 
+                    margin: {l: 220, t: 10, b: 20, r: 10}, 
+                    yaxis: { tickfont: { size: 13 } } 
+                });
+
+                // ENABLE CLICK FILTERING
+                const chart2 = document.getElementById('chart-overview-2');
+                if(chart2) {
+                    chart2.on('plotly_click', function(data){
+                        if(data.points && data.points.length > 0) {
+                            const socio = data.points[0].y; 
+                            toggleFilterPartner(socio);
+                        }
+                    });
+                }
+                
+                // TOP 5 TABLE
+                const table = document.getElementById('main-table');
+                if(table && data.overview.top_table) {
+                    const tBody = table.querySelector('tbody');
+                    if(tBody) {
+                        tBody.innerHTML = data.overview.top_table.map((row, index) => `
+                        <tr>
+                            <td><span style="font-weight:600; color:${index < 3 ? CONFIG.colors.primary : '#64748b'}">#${index+1}</span></td>
+                            <td>${row.Anio}</td>
+                            <td>${translateCountry(row.Pais)}</td>
+                            <td><span class="badge badge-sector">${row.Sector_Economico}</span></td>
+                            <td style="text-align:right; font-weight:600;">${formatCurrency(row.Monto_Aprobado)}</td>
+                            <td style="text-align:right;">${row.CANTIDAD_APROBACIONES || 1}</td>
+                        </tr>
+                        `).join('');
+                    }
+                }
+
+                // Render Country Cards - ALWAYS use original countries, not filtered
+                const countriesToRender = STATE.originalCountries || data.overview.countries;
+                if(countriesToRender) {
+                    renderCountryCards(countriesToRender);
+                }
+            }
+
+            // --- TAB 2: TEMPORAL ---
+            else if (tabId === 'temporal') {
+                const layoutNoTitle = { ...layoutCommon, title: '' }; 
+
+                // Dark Mode Heatmap Colors
+                // Light: White -> Blue. Dark: DarkSlate -> Blue.
+                const hmColorScale = isDark 
+                    ? [[0, '#1e293b'], [1, '#105682']] 
+                    : [[0, '#f1f5f9'], [1, '#105682']];
+
+                // ROW 1: AMOUNT
+                // Chart 1: Heatmap (Amount)
+                const hmA = data.temporal.heatmap;
+                Plotly.newPlot('chart-temporal-1', [{
+                    z: hmA.z,
+                    x: hmA.x,
+                    y: translateCountries(hmA.y),
+                    type: 'heatmap',
+                    colorscale: hmColorScale,
+                    xgap: 3, 
+                    ygap: 3
+                }], { 
+                    ...layoutNoTitle,
+                    margin: { l: 160, r: 20, t: 10, b: 50 }, 
+                    xaxis: { side: 'bottom', showgrid: false },
+                    yaxis: { showgrid: false, automargin: true, tickfont: { size: 12 } }
+                });
+
+                // Chart 2: Cycles (YoY Amount)
+                const cyclesA = data.temporal.cycles;
+                Plotly.newPlot('chart-temporal-2', [{
+                    x: cyclesA.map(d => d.Anio),
+                    y: cyclesA.map(d => d.YoY_Growth),
+                    type: 'bar',
+                    marker: { color: cyclesA.map(d => d.YoY_Growth > 0 ? CONFIG.colors.success : CONFIG.colors.danger) }
+                }], { ...layoutNoTitle, margin: {l: 50, r:20, t:10, b:40} });
+
+                // ROW 2: COUNT (New)
+                // Chart 3: Heatmap (Count)
+                if(data.temporal.heatmap_count) {
+                    const hmC = data.temporal.heatmap_count;
+                    Plotly.newPlot('chart-temporal-3', [{
+                        z: hmC.z,
+                        x: hmC.x,
+                        y: translateCountries(hmC.y),
+                        type: 'heatmap',
+                        colorscale: hmColorScale,
+                        xgap: 3, 
+                        ygap: 3
+                    }], { 
+                        ...layoutNoTitle,
+                        margin: { l: 160, r: 20, t: 10, b: 50 },
+                        xaxis: { side: 'bottom', showgrid: false },
+                        yaxis: { showgrid: false, automargin: true, tickfont: { size: 12 } }
+                    });
+                }
+
+                // Chart 4: Cycles (YoY Count)
+                if(data.temporal.cycles_count) {
+                     const cyclesC = data.temporal.cycles_count;
+                     Plotly.newPlot('chart-temporal-4', [{
+                        x: cyclesC.map(d => d.Anio),
+                        y: cyclesC.map(d => d.YoY_Count_Growth),
+                        type: 'bar',
+                        marker: { color: cyclesC.map(d => d.YoY_Count_Growth > 0 ? CONFIG.colors.success : CONFIG.colors.danger) }
+                    }], { ...layoutNoTitle, margin: {l: 50, r:20, t:10, b:40} });
+                }
+
+                // ROW 3: AVERAGE (PROMEDIO = Monto / Operaciones)
+                // Chart 5: Heatmap (Average)
+                if(data.temporal.heatmap_avg) {
+                    const hmAvg = data.temporal.heatmap_avg;
+                    Plotly.newPlot('chart-temporal-5', [{
+                        z: hmAvg.z,
+                        x: hmAvg.x,
+                        y: translateCountries(hmAvg.y),
+                        type: 'heatmap',
+                        colorscale: hmColorScale,
+                        xgap: 3, 
+                        ygap: 3
+                    }], { 
+                        ...layoutNoTitle,
+                        margin: { l: 160, r: 20, t: 10, b: 50 },
+                        xaxis: { side: 'bottom', showgrid: false },
+                        yaxis: { showgrid: false, automargin: true, tickfont: { size: 12 } }
+                    });
+                }
+
+                // Chart 6: Cycles (YoY Average)
+                if(data.temporal.cycles_avg) {
+                     const cyclesAvg = data.temporal.cycles_avg;
+                     Plotly.newPlot('chart-temporal-6', [{
+                        x: cyclesAvg.map(d => d.Anio),
+                        y: cyclesAvg.map(d => d.YoY_Avg_Growth),
+                        type: 'bar',
+                        marker: { color: cyclesAvg.map(d => d.YoY_Avg_Growth > 0 ? CONFIG.colors.success : CONFIG.colors.danger) }
+                    }], { ...layoutNoTitle, margin: {l: 50, r:20, t:10, b:40} });
+                }
+
+                // Table: Comparison
+                const tTable = document.getElementById('temporal-comparison-table');
+                if(tTable && data.temporal.table) {
+                    // Update Headers with Translation (thead)
+                    const thead = tTable.querySelector('thead');
+                    if(thead) {
+                        thead.innerHTML = `
+                            <tr>
+                                <th style="padding: 6px; text-align: center !important;">${t.col_year || 'Año'}</th>
+                                <th style="padding: 6px; text-align: center !important;">${t.col_amount_curr || 'Monto Actual'}</th>
+                                <th style="padding: 6px; text-align: center !important;">${t.col_amount_prev || 'Monto Ant.'}</th>
+                                <th style="padding: 6px; text-align: center !important;">${t.col_var_amount || 'Var. $'}</th>
+                                <th style="padding: 6px; text-align: center !important;">${t.col_ops_curr || 'Ops Act.'}</th>
+                                <th style="padding: 6px; text-align: center !important;">${t.col_ops_prev || 'Ops Ant.'}</th>
+                                <th style="padding: 6px; text-align: center !important;">${t.col_var_ops || 'Var. #'}</th>
+                            </tr>
+                        `;
+                    }
+
+                    // Update Body
+                    const tbody = tTable.querySelector('tbody');
+                    if(tbody) {
+                         const stylePillGreen = 'display:inline-block; padding:2px 8px; border-radius:999px; background-color:#dcfce7; color:#166534; font-weight:600; white-space:nowrap;';
+                         const stylePillRed = 'display:inline-block; padding:2px 8px; border-radius:999px; background-color:#fee2e2; color:#991b1b; font-weight:600; white-space:nowrap;';
+                         const stylePillNeutral = 'display:inline-block; padding:2px 6px; border-radius:999px; background-color:#f1f5f9; color:#64748b; white-space:nowrap;';
+
+                        tbody.innerHTML = data.temporal.table.map(r => {
+                            const diffM = r.Diff_Monto;
+                            const badgeM = diffM > 0 
+                                ? `<span style="${stylePillGreen}">▲ ${formatCurrency(diffM)}</span>`
+                                : diffM < 0 
+                                    ? `<span style="${stylePillRed}">▼ ${formatCurrency(Math.abs(diffM))}</span>`
+                                    : `<span style="${stylePillNeutral}">0</span>`;
+                            
+                            const diffC = r.Diff_Count;
+                            const badgeC = diffC > 0 
+                                ? `<span style="${stylePillGreen}">▲ +${diffC}</span>`
+                                : diffC < 0 
+                                    ? `<span style="${stylePillRed}">▼ ${diffC}</span>`
+                                    : `<span style="${stylePillNeutral}">0</span>`;
+
+                            return `
+                                <tr>
+                                    <td style="font-weight:600; padding:6px; text-align: right !important;">${r.Anio}</td>
+                                    <td style="padding:6px; text-align: right !important;">${formatCurrency(r.Monto_Aprobado)}</td>
+                                    <td style="color:var(--text-light); padding:6px; text-align: right !important;">${formatCurrency(r.Monto_Anterior)}</td>
+                                    <td style="padding:6px; text-align: right !important;">${badgeM}</td>
+                                    <td style="padding:6px; text-align: right !important;">${r.Count}</td>
+                                    <td style="color:var(--text-light); padding:6px; text-align: right !important;">${r.Count_Anterior}</td>
+                                    <td style="padding:6px; text-align: right !important;">${badgeC}</td>
+                                </tr>
+                            `;
+                        }).join('');
+                    }
+                }
+            }
+
+            // --- TAB 3: SECTORS ---
+            else if (tabId === 'sector') {
+                // Sector colors (consistent across all charts)
+                const secColors = {'Sector Público': '#7c3aed', 'Sector Privado': '#ef4444', 'Público': '#7c3aed', 'Privado': '#ef4444'};
+                
+                const evo = data.sector.evolution;
+                if(evo && evo.length > 0) {
+                    // Evolution by Monto (Percentage)
+                    const tracesMonto = [];
+                    const keysMonto = Object.keys(evo[0]).filter(k => k.endsWith('_Pct'));
+                    keysMonto.forEach(k => {
+                        const sectorName = k.replace('_Pct', '');
+                        tracesMonto.push({
+                            x: evo.map(d => d.Anio),
+                            y: evo.map(d => d[k]),
+                            name: sectorName,
+                            stackgroup: 'one',
+                            fillcolor: secColors[sectorName] || secColors['Sector ' + sectorName] || '#cbd5e1',
+                            line: {color: secColors[sectorName] || secColors['Sector ' + sectorName] || '#cbd5e1'}
+                        });
+                    });
+                    Plotly.newPlot('chart-sector-evo-monto', tracesMonto, { 
+                        ...layoutCommon, 
+                        showlegend: true,
+                        legend: {orientation: 'h', x: 0.5, xanchor: 'center', y: 1.1}
+                    });
+                    
+                    // Evolution by Cantidad (if data available)
+                    const keysCant = Object.keys(evo[0]).filter(k => k.endsWith('_Cant_Pct'));
+                    if(keysCant.length > 0) {
+                        const tracesCant = [];
+                        keysCant.forEach(k => {
+                            const sectorName = k.replace('_Cant_Pct', '');
+                            tracesCant.push({
+                                x: evo.map(d => d.Anio),
+                                y: evo.map(d => d[k]),
+                                name: sectorName,
+                                stackgroup: 'one',
+                                fillcolor: secColors[sectorName] || secColors['Sector ' + sectorName] || '#cbd5e1',
+                                line: {color: secColors[sectorName] || secColors['Sector ' + sectorName] || '#cbd5e1'}
+                            });
+                        });
+                        Plotly.newPlot('chart-sector-evo-cant', tracesCant, { 
+                            ...layoutCommon,
+                            showlegend: true,
+                            legend: {orientation: 'h', x: 0.5, xanchor: 'center', y: 1.1}
+                        });
+                    } else {
+                        // If no _Cant_Pct data, use raw counts if available
+                        const keysCantRaw = Object.keys(evo[0]).filter(k => k.endsWith('_Cant') && !k.endsWith('_Cant_Pct'));
+                        if(keysCantRaw.length > 0) {
+                            const tracesCant = [];
+                            keysCantRaw.forEach(k => {
+                                const sectorName = k.replace('_Cant', '');
+                                tracesCant.push({
+                                    x: evo.map(d => d.Anio),
+                                    y: evo.map(d => d[k]),
+                                    name: sectorName,
+                                    stackgroup: 'one',
+                                    fillcolor: secColors[sectorName] || secColors['Sector ' + sectorName] || '#cbd5e1',
+                                    line: {color: secColors[sectorName] || secColors['Sector ' + sectorName] || '#cbd5e1'}
+                                });
+                            });
+                            Plotly.newPlot('chart-sector-evo-cant', tracesCant, { 
+                                ...layoutCommon,
+                                showlegend: true,
+                                legend: {orientation: 'h', x: 0.5, xanchor: 'center', y: 1.1}
+                            });
+                        }
+                    }
+                }
+
+                // Dual Donut: Distribución por Sector Institucional (Público vs Privado)
+                const inst = data.sector.institutional || [];
+                if(inst.length > 0) {
+                    const secColors = {'Sector Público': '#7c3aed', 'Sector Privado': '#ef4444', 'Público': '#7c3aed', 'Privado': '#ef4444'};
+                    const secLabels = {
+                        'Sector Público': t.lbl_sector_public || 'Sector Público', 
+                        'Sector Privado': t.lbl_sector_private || 'Sector Privado',
+                        'Público': t.lbl_sector_public || 'Público',
+                        'Privado': t.lbl_sector_private || 'Privado'
+                    };
+                    
+                    // Donut 1: Monto
+                    const traceM = {
+                        labels: inst.map(d => d.Sector),
+                        values: inst.map(d => d.Monto),
+                        type: 'pie',
+                        hole: 0.7,
+                        textinfo: 'percent',
+                        textposition: 'outside',
+                        hoverinfo: 'label+value+percent',
+                        marker: {colors: inst.map(d => secColors[d.Sector] || '#cbd5e1')},
+                        showlegend: false
+                    };
+                    
+                    // Donut 2: Cantidad
+                    const traceC = {
+                        labels: inst.map(d => d.Sector),
+                        values: inst.map(d => d.Cantidad),
+                        type: 'pie',
+                        hole: 0.7,
+                        textinfo: 'percent',
+                        textposition: 'outside',
+                        hoverinfo: 'label+value+percent',
+                        marker: {colors: inst.map(d => secColors[d.Sector] || '#cbd5e1')},
+                        showlegend: false
+                    };
+                    
+                    const layDonut = {
+                        paper_bgcolor: 'transparent',
+                        plot_bgcolor: 'transparent',
+                        font: { color: isDark ? '#f1f5f9' : '#1e293b', family: 'Inter', size: 11 },
+                        margin: {t:40, b:40, l:40, r:40},
+                        showlegend: false,
+                        annotations: [{
+                            text: t.lbl_amount || 'Monto',
+                            font: {size: 12, color: isDark ? '#f1f5f9' : '#1e293b'},
+                            showarrow: false,
+                            x: 0.5,
+                            y: 0.5
+                        }]
+                    };
+                    
+                    const layDonutC = {
+                        ...layDonut,
+                        annotations: [{
+                            text: t.lbl_quantity || 'Cantidad',
+                            font: {size: 12, color: isDark ? '#f1f5f9' : '#1e293b'},
+                            showarrow: false,
+                            x: 0.5,
+                            y: 0.5
+                        }]
+                    };
+                    
+                    Plotly.newPlot('chart-sector-monto', [traceM], layDonut, {responsive: true});
+                    Plotly.newPlot('chart-sector-cant', [traceC], layDonutC, {responsive: true});
+                    
+                    // Generate Legend
+                    let legH = '<div style="display:flex;flex-direction:column;gap:5px;align-items:center;width:100%;margin-top:5px">';
+                    inst.forEach(d => {
+                        const c = secColors[d.Sector] || '#cbd5e1';
+                        const montoS = d.Monto ? d.Monto.toLocaleString('en-US', {maximumFractionDigits: 0}) : '0';
+                        const cantS = d.Cantidad ? d.Cantidad.toLocaleString('en-US') : '0';
+                        const avgVal = d.Cantidad > 0 ? d.Monto / d.Cantidad : 0;
+                        const avgS = avgVal.toLocaleString('en-US', {maximumFractionDigits: 0});
+                        const label = secLabels[d.Sector] || d.Sector;
+                        
+                        const lblM = currentLang === 'es' ? 'Monto' : 'Amount';
+                        const lblA = currentLang === 'es' ? 'Promedio' : 'Avg';
+                        const lblQ = currentLang === 'es' ? 'Cantidad' : 'Quantity';
+
+                        legH += `
+                        <div style="display:flex;flex-direction:column;gap:1px;border-left:4px solid ${c};padding-left:10px;margin-bottom:12px;width:100%;align-items:flex-start">
+                            <div style="font-weight:700;font-size:12px;color:var(--text-dark);margin-bottom:2px">${label}</div>
+                            <div style="font-size:11px;color:var(--text-light);display:flex;gap:4px">
+                                <span style="font-weight:600;min-width:55px">${lblM}:</span> 
+                                <span style="font-weight:700;color:var(--primary)">USD ${montoS}</span>
+                            </div>
+                            <div style="font-size:11px;color:var(--text-light);display:flex;gap:4px">
+                                <span style="font-weight:600;min-width:55px">${lblQ}:</span> 
+                                <span>${cantS}</span>
+                            </div>
+                            <div style="font-size:11px;color:var(--text-light);display:flex;gap:4px">
+                                <span style="font-weight:600;min-width:55px">${lblA}:</span> 
+                                <span>USD ${avgS}</span>
+                            </div>
+                        </div>`;
+                    });
+                    legH += '</div>';
+                    const legEl = document.getElementById('leg-sector');
+                    if(legEl) legEl.innerHTML = legH;
+                }
+            }
+
+            // --- TAB 4: RISK ---
+            else if (tabId === 'risk') {
+                const risk = data.risk.raw;
+                Plotly.newPlot('chart-risk-1', [{
+                    y: risk.map(d => d.Monto_Aprobado),
+                    x: risk.map(d => wrapLabel(translateCountry(d.Pais))), // Wrap + Translate
+                    type: 'box',
+                    marker: { color: CONFIG.colors.danger }
+                }], { 
+                    ...layoutCommon, 
+                    title: t.chart_risk_dist,
+                    xaxis: { tickangle: 0, automargin: true } // Force horizontal
+                });
+
+                const pareto = data.risk.pareto;
+                 const traceBar = {
+                    x: pareto.map(d => wrapLabel(translateCountry(d.Pais))), // Wrap + Translate
+                    y: pareto.map(d => d.Monto_Aprobado),
+                    type: 'bar',
+                    name: 'Volumen',
+                    marker: { color: CONFIG.colors.primary }
+                };
+                const traceLine = {
+                    x: pareto.map(d => wrapLabel(translateCountry(d.Pais))), // Wrap + Translate
+                    y: pareto.map(d => d.Cumulative_Pct),
+                    type: 'scatter',
+                    mode: 'lines',
+                    name: '% Acum',
+                    yaxis: 'y2',
+                    line: { color: CONFIG.colors.warning }
+                };
+                
+                Plotly.newPlot('chart-risk-2', [traceBar, traceLine], {
+                    ...layoutCommon,
+                    title: t.chart_pareto,
+                    margin: {l: 50, r: 50, t: 80, b: 80},
+                    xaxis: { tickangle: 0, automargin: true }, // Force horizontal
+                    yaxis: { title: 'Volumen', showgrid: true, gridcolor: isDark ? '#334155' : '#e2e8f0' },
+                    yaxis2: {
+                        overlaying: 'y',
+                        side: 'right',
+                        range: [0, 105],
+                        showgrid: false
+                    },
+                    legend: { orientation: 'h', x: 0.5, xanchor: 'center', y: 1.1 }
+                });
+            }
+            
+            // --- TAB 5: QUALITY ---
+            else if (tabId === 'quality') {
+                 const anomalies = data.quality.anomalies;
+                 // Inject Table directly into quality container
+                 let html = `<div class="card" style="margin-bottom:20px;">
+                    <div class="card-title">Anomalías Detectadas</div>
+                    <div style="overflow-x:auto;">
+                        <table class="data-table">
+                            <thead><tr><th>País</th><th>Año</th><th>Monto</th><th>Sector</th></tr></thead>
+                            <tbody>`;
+                 
+                 anomalies.forEach(r => {
+                     html += `<tr><td>${r.Pais}</td><td>${r.Anio}</td><td>${formatCurrency(r.Monto_Aprobado)}</td><td>${r.Sector_Economico}</td></tr>`;
+                 });
+                 html += `</tbody></table></div></div>`;
+                 
+                 const qContainer = document.getElementById('quality-content');
+                 if(qContainer) qContainer.innerHTML = html;
+                 
+                 // Update KPIs
+                 const s = data.quality.scores;
+                 updateKPI('kpi-1', s.completeness_sector + '%', 'Completitud Sector');
+                 updateKPI('kpi-2', s.completeness_amount + '%', 'Completitud Monto');
+                 updateKPI('kpi-3', s.outlier_pct + '%', '% Outliers');
+                 updateKPI('kpi-4', '-', 'N/A');
+            }
+        }
+
+        // ===================== HELPERS =====================
+        function renderCountryCards(countries) {
+            const container = document.getElementById('country-grid');
+            const section = document.getElementById('country-section');
+            if(!container || !section) return;
+            
+            if(!countries || countries.length === 0) {
+                section.style.display = 'none';
+                return;
+            }
+
+            section.style.display = 'block';
+            
+            // STRICT User-defined layout logic
+            // 16 -> 8,8 | 15 -> 8,7 | 14 -> 7,7 | 13 -> 7,6 | 12 -> 6,6 
+            // 11 -> 6,5 | 10 -> 5,5 | 9 -> 5,4 | 8 -> 4,4 | <=7 -> All in 1 row
+            const count = countries.length;
+            let cols = count; 
+            
+            if (count >= 15) cols = 8;
+            else if (count >= 13) cols = 7;
+            else if (count >= 11) cols = 6;
+            else if (count >= 9) cols = 5;
+            else if (count === 8) cols = 4;
+            else cols = count; // 7 or less -> all in one row
+
+            container.style.setProperty('--cols', cols);
+
+            // Replace Title with SVG if not already done (handling static HTML replacement)
+            const titleEl = section.querySelector('h3');
+            if(titleEl && titleEl.innerHTML.includes('🌐')) {
+                titleEl.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:8px; vertical-align:text-bottom;"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                Detalle por País`;
+            }
+
+            let html = '';
+            countries.forEach(c => {
+                let imgHtml = '';
+                // Simple validation for 2-char ISO
+                const flagCode = c.iso || 'un'; // Fallback
+                html += `
+                <div class="country-card" onclick="toggleFilterCountry('${c.Pais}')" data-country="${c.Pais}" style="cursor: pointer;">
+                    <img src="https://flagcdn.com/w80/${flagCode.toLowerCase()}.png" class="c-flag" alt="${c.Pais}" loading="lazy">
+                    <div class="c-name">${translateCountry(c.Pais)}</div>
+                    <div class="c-amount">${formatCurrency(c.Monto_Aprobado)}</div>
+                     <div class="c-meta">${c.Count} ${CONFIG.tr[currentLang].kpi_count || 'aprobaciones'}</div>
+                </div>`;
+            });
+            container.innerHTML = html;
+        }
+
+        // Helper to hide the second row of charts if not used
+        function hideRow(rowNum) {
+            const rowId = rowNum === 2 ? 'chart-3' : 'chart-1'; 
+            if (rowNum === 2) {
+                const c3 = document.getElementById('chart-3');
+                if(c3) {
+                    const card = c3.parentElement; 
+                    const grid = card.parentElement;
+                    if(grid && grid.classList.contains('grid-container')) {
+                        grid.style.display = 'none';
+                    }
+                }
+            }
+        }
+
+        function updateKPI(id, value, label) {
+            const el = document.getElementById(id);
+            if(el) el.textContent = value;
+            const lbl = el?.nextElementSibling;
+            if(lbl) lbl.textContent = label;
+        }
+
+        function formatCurrency(val) {
+            // User requested full amount even if not best practice
+            return '$' + val.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+        }
+
+        // ===================== TOGGLES =====================
+        window.toggleTheme = function() {
+            const btn = document.getElementById('btn-theme');
+            btn.classList.toggle('active');
+            const isDark = btn.classList.contains('active');
+            document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            
+            renderTabContent(currentTab);
+        };
+
+        window.toggleLang = function() {
+            const btn = document.getElementById('btn-lang');
+            btn.classList.toggle('active');
+            const isEng = btn.classList.contains('active');
+            currentLang = isEng ? 'en' : 'es';
+            applyLang(currentLang);
+            renderTabContent(currentTab);
+        };
+
+        function applyLang(lang) {
+            const t = CONFIG.tr[lang];
+            document.getElementById('lbl-main').textContent = lang === 'es' ? 'EDA 2026' : 'EDA 2026';
+            document.getElementById('lbl-sub').textContent = lang === 'es' ? 'Análisis Exploratorio' : 'Exploratory Analysis';
+        }
+
+        // ===================== INIT =====================
+        document.addEventListener('DOMContentLoaded', initDashboard);
+
+    </script>
+</body>
+</html>
