@@ -240,6 +240,35 @@ def generate_dashboard():
         inst_sector.columns = ['Sector', 'Monto', 'Cantidad']
         inst_sector_data = inst_sector.to_dict(orient='records')
 
+        # 3.4 Detailed Annual Sector Stats (For Scatter & Avg Ticket)
+        if 'CANTIDAD_APROBACIONES' in df.columns:
+            sec_annual = df.groupby(['Anio', 'Sector_Economico']).agg(
+                Monto_Aprobado=('Monto_Aprobado', 'sum'),
+                Cantidad=('CANTIDAD_APROBACIONES', 'sum')
+            ).reset_index()
+        else:
+             sec_annual = df.groupby(['Anio', 'Sector_Economico']).agg(
+                Monto_Aprobado=('Monto_Aprobado', 'sum'),
+                Cantidad=('Monto_Aprobado', 'count')
+            ).reset_index()
+        
+        sec_annual['Avg_Ticket'] = sec_annual['Monto_Aprobado'] / sec_annual['Cantidad'].replace(0, 1)
+        sector_annual_data = sec_annual.to_dict(orient='records')
+
+        # 3.5 Trendlines for Scatter (Monto vs Cantidad)
+        sector_trends = {}
+        for sector in sec_annual['Sector_Economico'].unique():
+            s_data = sec_annual[sec_annual['Sector_Economico'] == sector]
+            if len(s_data) > 1:
+                x = s_data['Cantidad'].values
+                y = s_data['Monto_Aprobado'].values
+                # Linear Regression (y = mx + b)
+                slope, intercept = np.polyfit(x, y, 1)
+                sector_trends[sector] = {'m': slope, 'b': intercept}
+            else:
+                sector_trends[sector] = {'m': 0, 'b': 0}
+
+
         # TAB 4: RISK ANALYSIS
         # 4.1 Global Distribution (Boxplot data preparation)
         risk_data = df[['Pais', 'Monto_Aprobado']].to_dict(orient='records')
@@ -296,7 +325,9 @@ def generate_dashboard():
             'sector': {
                 'evolution': sector_trend_data,
                 'top': top_sector_data,
-                'institutional': inst_sector_data
+                'institutional': inst_sector_data,
+                'annual_stats': sector_annual_data,
+                'trends': sector_trends
             },
             'risk': {
                 'raw': risk_data,

@@ -170,7 +170,22 @@
         /* FOOTER LEGAL */
         .footer-legal { font-size: 11px; color: var(--text-light); margin-bottom: 4px; text-align: center; }
         .footer-disclaimer { font-size: 11px; color: var(--text-light); opacity: 0.8; text-align: center; }
-        footer { margin-top: 15px; border-top: 1px solid var(--border); padding: 10px; display: flex; flex-direction: column; align-items: center; }
+        footer { 
+            margin-top: 2rem;
+            border-top: 1px solid var(--border); 
+            padding: 10px; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            background: var(--bg-card); /* Clustering visual style */
+            
+            /* FORCED VISIBILITY: Sticky at bottom */
+            position: sticky;
+            bottom: 0px;
+            width: 100%;
+            z-index: 1000;
+            flex-shrink: 0;
+        }
 
         /* TABLE ALIGNMENT FIX */
         #temporal-comparison-table th { text-align: center !important; }
@@ -193,8 +208,11 @@
             flex-grow: 1; 
             padding: 30px; 
             overflow-y: auto; 
+            padding-bottom: 4rem;
             height: 100%; 
             background: var(--bg-body);
+            display: flex; /* Added to support sticky footer if needed, but column flex is better */
+            flex-direction: column;
         }
 
         /* ===================== CARDS ===================== */
@@ -636,16 +654,16 @@
 
         <!-- === TAB VIEW: SECTOR === -->
         <div id="tab-sector" class="tab-view" style="display:none;">
-             <div class="subtitle" style="margin-bottom: 1rem;">Distribución Sectorial</div>
+             <!-- Title removed by user request -->
              <div class="grid-container grid-3">
                 <!-- Evolución por Monto -->
                 <div class="card">
-                     <div class="card-title">Evolución Sectorial por Monto</div>
+                     <div class="card-title" data-key="chart_evo_monto_title">Evolución Sectorial por Monto</div>
                      <div class="chart-container" id="chart-sector-evo-monto"></div>
                 </div>
                 <!-- Evolución por Cantidad -->
                 <div class="card">
-                     <div class="card-title">Evolución Sectorial por Cantidad</div>
+                     <div class="card-title" data-key="chart_evo_cant_title">Evolución Sectorial por Cantidad</div>
                      <div class="chart-container" id="chart-sector-evo-cant"></div>
                 </div>
                 <!-- Gráfico de Donas: Sector Institucional (Público vs Privado) -->
@@ -660,6 +678,45 @@
                     <div id="leg-sector" style="flex:0 0 220px;height:100%;overflow-y:auto;padding-left:10px;margin-left:5px;display:flex;align-items:center"></div>
                 </div>
             </div>
+
+             <!-- NEW SECTOR CHARTS (User Requested) -->
+             <!-- NEW SECTOR CHARTS (User Requested) -->
+             <!-- Removed 'Análisis Detallado' Title -->
+             
+             <!-- Single Row: Line, Scatter, BeeMonto, BeeCant -->
+             <div class="grid-container grid-4">
+                <div class="card">
+                    <div class="card-title" data-key="chart_sec_avg">Promedio por Aprobación por Sector</div>
+                    <div class="chart-container" id="chart-sector-avg"></div>
+                </div>
+                <div class="card">
+                    <div class="card-title" data-key="chart_sec_corr">Correlación: Monto vs Cantidad</div>
+                    <div class="chart-container" id="chart-sector-scatter"></div>
+                </div>
+                <div class="card">
+                    <div class="card-title" data-key="chart_sec_dist_monto">Distribución Anual de Montos</div>
+                    <div class="chart-container" id="chart-sector-bee-monto"></div>
+                </div>
+                <div class="card">
+                    <div class="card-title" data-key="chart_sec_dist_cant">Distribución Anual de Cantidades</div>
+                    <div class="chart-container" id="chart-sector-bee-cant"></div>
+                </div>
+            </div>
+            </div>
+
+             <!-- Findings Section -->
+             <div class="card" style="margin-top: 1.5rem;">
+                 <div class="card-title" style="margin-bottom:0.5rem" data-key="findings_title">Hallazgos Clave del Análisis Sectorial</div>
+                 <div data-key="findings_content">
+                 <ul style="font-size: 0.95rem; color: var(--text-light); line-height: 1.6; padding-left: 1.2rem;">
+                     <li><strong>Promedio por Aprobación:</strong> Se observa una divergencia clara. El <strong>Sector Público</strong> (violeta) maneja montos significativamente más altos por operación, mientras que el <strong>Sector Privado</strong> (rojo) mantiene montos más bajos y constantes, indicando una capilaridad mayor.</li>
+                     <li><strong>Volumen vs. Frecuencia:</strong> Aunque el Sector Público domina en volumen monetario total, el Sector Privado ha mostrado picos de alta actividad en <em>cantidad</em> de operaciones (como se ve en los Beeswarm plots), sugiriendo múltiples intervenciones de menor escala.</li>
+                     <li><strong>Cíclicidad:</strong> La serie temporal muestra que la inversión pública tiende a ser más cíclica y ligada a grandes proyectos de infraestructura, mientras que el flujo privado parece responder más ágilmente a coyunturas de mercado.</li>
+                     <li><strong>Dispersión:</strong> El Boxplot confirma que el Sector Público tiene una dispersión mucho mayor (rangos intercuartiles amplios), es decir, gestiona desde proyectos medianos hasta megaproyectos. El Privado es más homogéneo.</li>
+                 </ul>
+                 <div style="margin-top:0.5rem; font-size:0.8rem; font-style:italic; opacity:0.7">* Nota: Este análisis se basa en datos históricos de aprobaciones y no constituye una auditoría financiera. Los patrones reflejan estrategias de inversión a largo plazo.</div>
+                 </div>
+             </div>
         </div>
 
         <!-- === TAB VIEW: RISK === -->
@@ -764,6 +821,10 @@
     </div>
 
     <!-- ===================== FOOTER ===================== -->
+    <footer id="main-footer">
+        <div class="footer-legal" data-key="footer_legal">© 2026 | UNIR–BCIE | Trabajo de Colaboración Académica | Equipo 03-D | Todos los derechos reservados.</div>
+        <div class="footer-disclaimer" data-key="footer_disclaimer">Los resultados son para fines académicos y no constituyen compromiso financiero vinculante por parte del BCIE.</div>
+    </footer>
     </main>
     <!-- End of Dashboard Wrapper -->
     </div>
@@ -952,6 +1013,8 @@
             },
             tr: {
                 es: {
+                    title: "EDA 2026",
+                    subtitle: "Análisis Exploratorio",
                     overview: "Vista General",
                     evolution: "Evolución Temporal",
                     sectors: "Estrategia Sectorial",
@@ -1022,9 +1085,34 @@
                     lbl_sector_public: "Sector Público",
                     lbl_sector_private: "Sector Privado",
                     lbl_amount: "Monto",
-                    lbl_quantity: "Cantidad"
+                    lbl_quantity: "Cantidad",
+                    // New Sector Keys
+                    chart_sec_avg: "Promedio por Aprobación por Sector",
+                    chart_sec_corr: "Correlación: Monto vs Cantidad",
+                    chart_sec_dist_monto: "Distribución Anual de Montos",
+                    chart_sec_dist_cant: "Distribución Anual de Cantidades",
+                    findings_title: "Hallazgos Clave del Análisis Sectorial",
+                    // Axis & Labels
+                    axis_usd_avg: "USD Promedio",
+                    axis_usd: "Monto USD",
+                    axis_count_simple: "Cantidad",
+                    axis_log_monto: "Monto (Log)",
+                    axis_count_ops: "Cantidad Ops",
+                    chart_evo_monto_title: "Evolución Sectorial por Monto",
+                    chart_evo_cant_title: "Evolución Sectorial por Cantidad",
+                    findings_content: `
+                      <ul style="padding-left: 1.2rem;">
+                        <li><strong>Promedio por Aprobación:</strong> Se observa una divergencia clara. El <strong>Sector Público</strong> (violeta) maneja montos significativamente más altos por operación, mientras que el <strong>Sector Privado</strong> (rojo) mantiene montos más bajos y constantes, indicando una capilaridad mayor.</li>
+                        <li><strong>Volumen vs. Frecuencia:</strong> Aunque el Sector Público domina en volumen monetario total, el Sector Privado ha mostrado picos de alta actividad en <em>cantidad</em> de operaciones, sugiriendo múltiples intervenciones de menor escala.</li>
+                        <li><strong>Cíclicidad:</strong> La serie temporal muestra que la inversión pública tiende a ser más cíclica, mientras que el flujo privado parece responder más ágilmente a coyunturas de mercado.</li>
+                        <li><strong>Dispersión:</strong> El Sector Público tiene una dispersión mucho mayor (proyectos medianos a megaproyectos). El Privado es más homogéneo.</li>
+                      </ul>
+                      <div style="margin-top:0.5rem; font-size:0.8rem; font-style:italic; opacity:0.7">* Nota: Este análisis se basa en datos históricos de aprobaciones y no constituye una auditoría financiera.</div>
+                    `
                 },
                 en: {
+                    title: "EDA 2026",
+                    subtitle: "Exploratory Analysis",
                     overview: "Overview",
                     evolution: "Temporal Evolution",
                     sectors: "Sector Strategy",
@@ -1062,6 +1150,30 @@
                     col_amount_curr: "Curr Amount",
                     col_amount_prev: "Prev Amount",
                     col_var_amount: "Var Amount",
+                    // New Sector Keys (EN)
+                    chart_sec_avg: "Average per Approval by Sector",
+                    chart_sec_corr: "Correlation: Amount vs Quantity",
+                    chart_sec_dist_monto: "Annual Amount Distribution",
+                    chart_sec_dist_cant: "Annual Quantity Distribution",
+                    findings_title: "Key Sector Analysis Findings",
+                    // Axis & Labels
+                    axis_usd_avg: "Avg USD",
+                    axis_usd: "Amount USD",
+                    axis_count_simple: "Quantity",
+                    axis_log_monto: "Amount (Log)",
+                    axis_count_ops: "Ops Count",
+                    chart_evo_monto_title: "Sector Evolution by Amount",
+                    chart_evo_cant_title: "Sector Evolution by Quantity",
+                    findings_content: `
+                      <ul style="padding-left: 1.2rem;">
+                          <li style="margin-bottom: 0.5rem;"><strong>Average per Approval:</strong> A clear divergence is observed. The <strong>Public Sector</strong> (violet) handles significantly higher amounts per operation, while the <strong>Private Sector</strong> (red) maintains lower and more constant amounts, indicating greater capillarity.</li>
+                          <li style="margin-bottom: 0.5rem;"><strong>Volume vs. Frequency:</strong> Although the Public Sector dominates in total monetary volume, the Private Sector has shown peaks of high activity in quantity of operations, suggesting multiple smaller-scale interventions.</li>
+                          <li style="margin-bottom: 0.5rem;"><strong>Cyclicality:</strong> The time series shows that public investment tends to be more cyclical, while private flow seems to respond more agilely to market conditions.</li>
+                          <li style="margin-bottom: 0.5rem;"><strong>Dispersion:</strong> The Public Sector has much greater dispersion (medium to mega-projects). The Private sector is more homogeneous.</li>
+                      </ul>
+                      <div style="margin-top: 1rem; font-style: italic; opacity: 0.8; font-size: 0.85rem;">* Note: This analysis is based on historical approval data and does not constitute a financial audit.</div>
+                    ` ,
+
                     col_ops_curr: "Curr Ops",
                     col_ops_prev: "Prev Ops",
                     col_var_ops: "Var Ops",
@@ -1137,12 +1249,20 @@
         }
 
         // Function to apply translations to all data-key elements
+        // Function to apply translations to all data-key elements
         function applyTranslations() {
             const t = CONFIG.tr[currentLang];
+            
+            // 1. Generic Key Replacement
             document.querySelectorAll('[data-key]').forEach(el => {
                 const key = el.getAttribute('data-key');
-                if (t[key]) {
-                    el.textContent = t[key];
+                if(t[key]) {
+                    if(el.tagName === 'INPUT' && el.getAttribute('placeholder')) {
+                        el.placeholder = t[key];
+                    } else {
+                        // Use innerHTML to allow HTML content in translations (e.g. bold tags)
+                        el.innerHTML = t[key];
+                    }
                 }
             });
             
@@ -1524,73 +1644,80 @@
             // --- TAB 3: SECTORS ---
             else if (tabId === 'sector') {
                 // Sector colors (consistent across all charts)
+                // Sector colors (consistent across all charts)
                 const secColors = {'Sector Público': '#7c3aed', 'Sector Privado': '#ef4444', 'Público': '#7c3aed', 'Privado': '#ef4444'};
+                const secFillColors = {'Sector Público': 'rgba(124, 58, 237, 0.4)', 'Sector Privado': 'rgba(239, 68, 68, 0.4)', 'Público': 'rgba(124, 58, 237, 0.4)', 'Privado': 'rgba(239, 68, 68, 0.4)'};
                 
+                // Translation Map for Sectors
+                const secTrans = {
+                    'Sector Público': t.lbl_sector_public || 'Sector Público',
+                    'Sector Privado': t.lbl_sector_private || 'Sector Privado',
+                    'Público': t.lbl_sector_public || 'Público',
+                    'Privado': t.lbl_sector_private || 'Privado'
+                };
+
                 const evo = data.sector.evolution;
                 if(evo && evo.length > 0) {
-                    // Evolution by Monto (Percentage)
+                    
+                    // --- 1. Evolution by Monto (100% Stacked Area) ---
+                    // Select RAW Monto columns: Exclude Anio, Total, and anything with _Pct or _Cant
+                    const excludedKeys = ['Anio', 'Total', 'Total_Cant'];
+                    const keysMonto = Object.keys(evo[0]).filter(k => 
+                        !excludedKeys.includes(k) && 
+                        !k.endsWith('_Pct') && 
+                        !k.endsWith('_Cant')
+                    );
+
                     const tracesMonto = [];
-                    const keysMonto = Object.keys(evo[0]).filter(k => k.endsWith('_Pct'));
                     keysMonto.forEach(k => {
-                        const sectorName = k.replace('_Pct', '');
+                        const sectorName = k; // e.g. "Sector Público"
                         tracesMonto.push({
                             x: evo.map(d => d.Anio),
                             y: evo.map(d => d[k]),
-                            name: sectorName,
+                            name: secTrans[sectorName] || sectorName, // TRANSLATED NAME
                             stackgroup: 'one',
-                            fillcolor: secColors[sectorName] || secColors['Sector ' + sectorName] || '#cbd5e1',
-                            line: {color: secColors[sectorName] || secColors['Sector ' + sectorName] || '#cbd5e1'}
+                            groupnorm: 'percent', // FORCE 100% STACKING
+                            fillcolor: secFillColors[sectorName] || secColors[sectorName] || '#cbd5e1', // Transparent Fill
+                            line: {color: secColors[sectorName] || secColors['Sector ' + sectorName] || '#cbd5e1', width: 2} // Solid Line
                         });
                     });
+                    
                     Plotly.newPlot('chart-sector-evo-monto', tracesMonto, { 
                         ...layoutCommon, 
                         showlegend: true,
-                        legend: {orientation: 'h', x: 0.5, xanchor: 'center', y: 1.1}
+                        legend: {orientation: 'h', x: 0.5, xanchor: 'center', y: 1.1},
+                        yaxis: { ticksuffix: '%', rangemode: 'tozero' } // Show % on axis
                     });
                     
-                    // Evolution by Cantidad (if data available)
-                    const keysCant = Object.keys(evo[0]).filter(k => k.endsWith('_Cant_Pct'));
-                    if(keysCant.length > 0) {
-                        const tracesCant = [];
-                        keysCant.forEach(k => {
-                            const sectorName = k.replace('_Cant_Pct', '');
+                    // --- 2. Evolution by Cantidad (100% Stacked Area) ---
+                    // Select RAW Count columns: Ends with _Cant but NOT _Pct
+                    const keysCantRaw = Object.keys(evo[0]).filter(k => k.endsWith('_Cant') && !k.endsWith('_Pct'));
+                    
+                    // In the Py script, we created columns like "Sector Público_Cant". 
+                    // We want to map these to "Sector Público" for the legend/color lookup.
+                    const tracesCant = [];
+                    if(keysCantRaw.length > 0) {
+                        keysCantRaw.forEach(k => {
+                            // Name comes as "Sector Público_Cant" -> remove suffix for display
+                            const sectorName = k.replace('_Cant', ''); 
                             tracesCant.push({
                                 x: evo.map(d => d.Anio),
                                 y: evo.map(d => d[k]),
-                                name: sectorName,
+                                name: secTrans[sectorName] || sectorName, // TRANSLATED NAME
                                 stackgroup: 'one',
-                                fillcolor: secColors[sectorName] || secColors['Sector ' + sectorName] || '#cbd5e1',
-                                line: {color: secColors[sectorName] || secColors['Sector ' + sectorName] || '#cbd5e1'}
+                                groupnorm: 'percent', // FORCE 100% STACKING
+                                fillcolor: secFillColors[sectorName] || secColors[sectorName] || '#cbd5e1', // Transparent Fill
+                                line: {color: secColors[sectorName] || secColors['Sector ' + sectorName] || '#cbd5e1', width: 2} // Solid Line
                             });
                         });
-                        Plotly.newPlot('chart-sector-evo-cant', tracesCant, { 
-                            ...layoutCommon,
-                            showlegend: true,
-                            legend: {orientation: 'h', x: 0.5, xanchor: 'center', y: 1.1}
-                        });
-                    } else {
-                        // If no _Cant_Pct data, use raw counts if available
-                        const keysCantRaw = Object.keys(evo[0]).filter(k => k.endsWith('_Cant') && !k.endsWith('_Cant_Pct'));
-                        if(keysCantRaw.length > 0) {
-                            const tracesCant = [];
-                            keysCantRaw.forEach(k => {
-                                const sectorName = k.replace('_Cant', '');
-                                tracesCant.push({
-                                    x: evo.map(d => d.Anio),
-                                    y: evo.map(d => d[k]),
-                                    name: sectorName,
-                                    stackgroup: 'one',
-                                    fillcolor: secColors[sectorName] || secColors['Sector ' + sectorName] || '#cbd5e1',
-                                    line: {color: secColors[sectorName] || secColors['Sector ' + sectorName] || '#cbd5e1'}
-                                });
-                            });
-                            Plotly.newPlot('chart-sector-evo-cant', tracesCant, { 
-                                ...layoutCommon,
-                                showlegend: true,
-                                legend: {orientation: 'h', x: 0.5, xanchor: 'center', y: 1.1}
-                            });
-                        }
                     }
+                    
+                    Plotly.newPlot('chart-sector-evo-cant', tracesCant, { 
+                        ...layoutCommon, 
+                        showlegend: true, 
+                        legend: {orientation: 'h', x: 0.5, xanchor: 'center', y: 1.1},
+                        yaxis: { ticksuffix: '%', rangemode: 'tozero' }
+                    });
                 }
 
                 // Dual Donut: Distribución por Sector Institucional (Público vs Privado)
@@ -1606,7 +1733,7 @@
                     
                     // Donut 1: Monto
                     const traceM = {
-                        labels: inst.map(d => d.Sector),
+                        labels: inst.map(d => secLabels[d.Sector] || d.Sector), // TRANSLATED LABELS
                         values: inst.map(d => d.Monto),
                         type: 'pie',
                         hole: 0.7,
@@ -1619,7 +1746,7 @@
                     
                     // Donut 2: Cantidad
                     const traceC = {
-                        labels: inst.map(d => d.Sector),
+                        labels: inst.map(d => secLabels[d.Sector] || d.Sector), // TRANSLATED LABELS
                         values: inst.map(d => d.Cantidad),
                         type: 'pie',
                         hole: 0.7,
@@ -1693,6 +1820,101 @@
                     legH += '</div>';
                     const legEl = document.getElementById('leg-sector');
                     if(legEl) legEl.innerHTML = legH;
+                }
+
+                // --- NEW CHARTS (Refined) ---
+                const annStats = data.sector.annual_stats || [];
+                const trends = data.sector.trends || {};
+
+                if(annStats.length > 0) {
+                    const sectors = [...new Set(annStats.map(d => d.Sector_Economico))];
+                    const secTrans = {
+                        'Sector Público': t.lbl_sector_public || 'Sector Público',
+                        'Sector Privado': t.lbl_sector_private || 'Sector Privado'
+                    };
+                    
+                    // 1. Avg Ticket (Smoothed, White Markers)
+                    const tracesAvg = sectors.map(sec => {
+                        const secData = annStats.filter(d => d.Sector_Economico === sec).sort((a,b) => a.Anio - b.Anio);
+                        const c = secColors[sec] || '#cbd5e1';
+                        return { 
+                            x: secData.map(d => d.Anio), 
+                            y: secData.map(d => d.Avg_Ticket), 
+                            name: secTrans[sec] || sec, 
+                            type: 'scatter', 
+                            mode: 'lines+markers', 
+                            line: {color: c, width: 3, shape: 'spline'}, // Smoothed
+                            marker: {color: '#ffffff', size: 6, line: {color: c, width: 2}} // White with border
+                        };
+                    });
+                    Plotly.newPlot('chart-sector-avg', tracesAvg, { ...layoutCommon, showlegend: true, legend: {orientation: 'h', x: 0.5, xanchor: 'center', y: 1.1}, yaxis: { title: t.axis_usd_avg || 'USD Promedio' } });
+
+                    // 2. Scatter w/ Trendlines
+                    const tracesScatter = [];
+                    sectors.forEach(sec => {
+                        const secData = annStats.filter(d => d.Sector_Economico === sec);
+                        const c = secColors[sec] || '#cbd5e1';
+                        
+                        // Points
+                        tracesScatter.push({
+                            x: secData.map(d => d.Cantidad),
+                            y: secData.map(d => d.Monto_Aprobado),
+                            text: secData.map(d => d.Anio), // For Hover
+                            mode: 'markers', // No text labels on chart
+                            name: secTrans[sec] || sec,
+                            marker: { color: c, size: 8, opacity: 0.7 },
+                            hovertemplate: '<b>%{text}</b><br>Cant: %{x}<br>Monto: %{y:$.2s}<extra></extra>' 
+                        });
+
+                        // Trendline
+                        if(trends[sec]) {
+                             const m = trends[sec].m;
+                             const b = trends[sec].b;
+                             const xMin = Math.min(...secData.map(d => d.Cantidad));
+                             const xMax = Math.max(...secData.map(d => d.Cantidad));
+                             tracesScatter.push({
+                                 x: [xMin, xMax],
+                                 y: [m*xMin + b, m*xMax + b],
+                                 mode: 'lines',
+                                 line: {color: c, width: 1, dash: 'dash'},
+                                 showlegend: false,
+                                 hoverinfo: 'skip'
+                             });
+                        }
+                    });
+                    Plotly.newPlot('chart-sector-scatter', tracesScatter, { ...layoutCommon, showlegend: true, legend: {orientation: 'h', x: 0.5, xanchor: 'center', y: 1.1}, xaxis: { title: t.axis_count_simple || 'Cantidad' }, yaxis: { title: t.axis_usd || 'Monto USD' } });
+
+                    // 3. Beeswarm: Monto Anual
+                    const tracesBeeM = sectors.map(sec => {
+                        const secData = annStats.filter(d => d.Sector_Economico === sec);
+                        return {
+                            y: secData.map(d => d.Monto_Aprobado),
+                            type: 'box', 
+                            name: secTrans[sec] || sec, 
+                            boxpoints: 'all', 
+                            jitter: 0.5, 
+                            pointpos: 0, // Center points over box
+                            marker: {color: secColors[sec] || '#cbd5e1', size: 4},
+                            fillcolor: 'rgba(255,255,255,0.1)', line: {width: 1} // Visible box (light fill)
+                        };
+                    });
+                     Plotly.newPlot('chart-sector-bee-monto', tracesBeeM, { ...layoutCommon, showlegend: false, yaxis: { type: 'log', title: t.axis_log_monto || 'Monto (Log)' } });
+
+                    // 4. Beeswarm: Cantidad Anual
+                    const tracesBeeC = sectors.map(sec => {
+                        const secData = annStats.filter(d => d.Sector_Economico === sec);
+                        return {
+                            y: secData.map(d => d.Cantidad),
+                            type: 'box', 
+                            name: secTrans[sec] || sec, 
+                            boxpoints: 'all', 
+                            jitter: 0.5, 
+                            pointpos: 0, // Center points over box
+                            marker: {color: secColors[sec] || '#cbd5e1', size: 4},
+                             fillcolor: 'rgba(255,255,255,0.1)', line: {width: 1} // Visible box
+                        };
+                    });
+                     Plotly.newPlot('chart-sector-bee-cant', tracesBeeC, { ...layoutCommon, showlegend: false, yaxis: { title: t.axis_count_ops || 'Cantidad Ops' } });
                 }
             }
 
@@ -1867,15 +2089,11 @@
             btn.classList.toggle('active');
             const isEng = btn.classList.contains('active');
             currentLang = isEng ? 'en' : 'es';
-            applyLang(currentLang);
+            applyTranslations(); // Use standard function
             renderTabContent(currentTab);
         };
-
-        function applyLang(lang) {
-            const t = CONFIG.tr[lang];
-            document.getElementById('lbl-main').textContent = lang === 'es' ? 'EDA 2026' : 'EDA 2026';
-            document.getElementById('lbl-sub').textContent = lang === 'es' ? 'Análisis Exploratorio' : 'Exploratory Analysis';
-        }
+        
+        /* applyLang removed in favor of unified applyTranslations */
 
         // ===================== INIT =====================
         document.addEventListener('DOMContentLoaded', initDashboard);
