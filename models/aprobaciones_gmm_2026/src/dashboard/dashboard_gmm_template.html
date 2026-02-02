@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard GMM (Probabilistic) - BCIE</title>
+    <!-- Use standard Plotly -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* CORE VARIABLES (Premium Theme) */
+        :root {
+            --font-main: 'Inter', sans-serif;
+            --primary: #8b5cf6;
+            /* Violet for GMM (differentiator) */
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+            --bg-body: #f8fafc;
+            --bg-card: #ffffff;
+            --border: #e2e8f0;
+            --hover: #f1f5f9;
+            --success: #10b981;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+            --tooltip-bg: #1e293b;
+            --tooltip-text: #ffffff;
+        }
+
+        [data-theme="dark"] {
+            --primary: #a78bfa;
+            --text-dark: #f1f5f9;
+            --text-light: #94a3b8;
+            --bg-body: #0f172a;
+            --bg-card: #1e293b;
+            --border: #334155;
+            --hover: #334155;
+            --tooltip-bg: #ffffff;
+            --tooltip-text: #0f172a;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background: var(--bg-body);
+            margin: 0;
+            padding: 0;
+            color: var(--text-dark);
+            transition: background 0.3s;
+        }
+
+        /* --- NAV & HEADER --- */
+        .top-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: var(--bg-card);
+            border-bottom: 5px solid var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 30px;
+            z-index: 50;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .header-title h1 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .header-title .subtitle {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-top: 4px;
+        }
+
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        /* BUTTONS */
+        .btn-action {
+            font-family: var(--font-main);
+            padding: 6px 16px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            border: 1px solid transparent;
+            transition: 0.2s;
+            min-width: 100px;
+            text-align: center;
+        }
+
+        .btn-ghost {
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-ghost:hover {
+            background: var(--hover);
+        }
+
+        .btn-solid {
+            background: var(--primary);
+            color: white;
+            border: 1px solid var(--primary);
+        }
+
+        .btn-solid:hover {
+            opacity: 0.9;
+        }
+
+        /* TOGGLES */
+        .toggle-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .toggle-switch {
+            position: relative;
+            width: 80px;
+            height: 30px;
+            background: var(--bg-body);
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 2px;
+        }
+
+        .toggle-knob {
+            width: 24px;
+            height: 24px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            position: absolute;
+            left: 3px;
+            transition: transform 0.3s;
+        }
+
+        .toggle-switch.active .toggle-knob {
+            transform: translateX(50px);
+        }
+
+        .toggle-labels {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            font-size: 9px;
+            font-weight: 700;
+            color: var(--text-light);
+            padding: 0 6px;
+        }
+
+        /* --- LAYOUT --- */
+        .dashboard-container {
+            margin-top: 85px;
+            padding: 10px 25px;
+            max-width: 98%;
+            margin-left: auto;
+            margin-right: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .insight-cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .insight-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--primary);
+            border-radius: 8px;
+            padding: 10px 12px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            min-height: 90px;
+        }
+
+        .insight-card-val {
+            font-size: 20px;
+            font-weight: 800;
+        }
+
+        /* GRID LAYOUT FOR CHARTS */
+        .dashboard-grid-main {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            /* Custom for GMM: Scatter big, Metrics mid, Risk right */
+            gap: 15px;
+            height: calc(100vh - 250px);
+            /* Adjust height */
+            min-height: 500px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            height: 100%;
+        }
+
+        .card-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 0 0 8px 0;
+            border-bottom: 2px solid var(--hover);
+            padding-bottom: 6px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        /* --- MODALS --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            backdrop-filter: blur(4px);
+            visibility: hidden;
+            opacity: 0;
+            transition: 0.3s;
+        }
+
+        .modal-overlay.open {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background: var(--bg-card);
+            width: 1000px;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 40px;
+            border-radius: 20px;
+            border: 2px solid var(--primary);
+            position: relative;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--text-light);
+        }
+    </style>
+</head>
+
+<body id="dashboard-body">
+    <!-- NAVBAR -->
+    <nav class="top-nav">
+        <div class="header-title">
+            <h1 data-key="title">Dashboard GMM (Probabilistic Analytics)</h1>
+            <div class="subtitle">
+                <span data-key="subtitle">Segmentación Probabilística de Créditos</span>
+                <span style="margin: 0 10px; opacity: 0.3;">|</span>
+                <span style="font-weight: 400; font-size: 13px; opacity: 0.8;">Modelo Gaussian Mixture (Soft
+                    Clustering)</span>
+            </div>
+        </div>
+        <div class="nav-controls">
+            <button class="btn-action btn-ghost" onclick="toggleModal('modal-insights')">Insights</button>
+            <button class="btn-action btn-ghost" onclick="toggleModal('modal-params')">Parámetros</button>
+            <button class="btn-action btn-ghost" onclick="toggleModal('modal-method')">Metodología</button>
+
+            <!-- THEME TOGGLE -->
+            <div class="toggle-wrapper" title="Cambiar Tema">
+                <div class="toggle-switch" id="btn-theme" onclick="toggleTheme()">
+                    <div class="toggle-knob"></div>
+                    <span style="margin-left: 8px;">☀️</span><span style="margin-right: 8px;">🌙</span>
+                </div>
+                <div class="toggle-labels"><span>Claro</span><span>Oscuro</span></div>
+            </div>
+
+            <!-- LANG TOGGLE -->
+            <div class="toggle-wrapper" title="Idioma / Language">
+                <div class="toggle-switch" id="btn-lang" onclick="toggleLang()">
+                    <div class="toggle-knob"></div>
+                </div>
+                <div class="toggle-labels"><span>ES</span><span>EN</span></div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        <!-- STRATEGIC CARDS -->
+        <div id="segment-cards" class="insight-cards-container">
+            <!-- Injected by JS -->
+        </div>
+
+        <!-- MAIN LAYOUT -->
+        <div class="dashboard-grid-main">
+
+            <!-- COL 1: PROBABILISTIC MAP -->
+            <div class="card">
+                <h3 class="card-title">
+                    <span data-key="map_title">Mapa de Probabilidad (Soft Clustering)</span>
+                    <small style="color:var(--text-light); font-weight:400;">Tamaño=Probabilidad |
+                        Opacidad=Certeza</small>
+                </h3>
+                <div id="scatter-chart" style="flex:1; width:100%;"></div>
+            </div>
+
+            <!-- COL 2: OPTIMIZATION & ENTROPY -->
+            <div style="display:flex; flex-direction:column; gap:15px;">
+                <div class="card" style="flex:1;">
+                    <h3 class="card-title">Selección de Modelo (AIC/BIC)</h3>
+                    <div id="aic-chart" style="flex:1;"></div>
+                </div>
+                <div class="card" style="flex:1;">
+                    <h3 class="card-title">Incertidumbre (Entropía)</h3>
+                    <div id="entropy-chart" style="flex:1;"></div>
+                </div>
+            </div>
+
+            <!-- COL 3: KEY METRICS & RISK -->
+            <div class="card" style="overflow-y:auto;">
+                <h3 class="card-title">Métricas de Riesgo</h3>
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:15px;">
+                    <div style="background:var(--hover); padding:10px; border-radius:8px; text-align:center;">
+                        <div style="font-size:10px; text-transform:uppercase; color:var(--text-light);">Log-Likelihood
+                        </div>
+                        <div id="kpi-loglik" style="font-size:16px; font-weight:800; color:var(--primary);">0</div>
+                    </div>
+                    <div style="background:var(--hover); padding:10px; border-radius:8px; text-align:center;">
+                        <div style="font-size:10px; text-transform:uppercase; color:var(--text-light);">BIC Score</div>
+                        <div id="kpi-bic" style="font-size:16px; font-weight:800; color:var(--success);">0</div>
+                    </div>
+                    <div style="background:var(--hover); padding:10px; border-radius:8px; text-align:center;">
+                        <div style="font-size:10px; text-transform:uppercase; color:var(--text-light);">Confianza Prom.
+                        </div>
+                        <div id="kpi-conf" style="font-size:16px; font-weight:800; color:var(--warning);">0%</div>
+                    </div>
+                </div>
+
+                <h4
+                    style="font-size:12px; font-weight:700; color:var(--text-light); margin-bottom:10px; border-bottom:1px solid var(--border);">
+                    Top Riesgo (Incertidumbre)</h4>
+                <div id="risk-list" style="font-size:11px;">
+                    <!-- List of high entropy items -->
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- MODALS -->
+    <div id="modal-insights" class="modal-overlay"
+        onclick="if(event.target===this) toggleModal('modal-insights', false)">
+        <div class="modal-content">
+            <span class="close-btn" onclick="toggleModal('modal-insights', false)">&times;</span>
+            <h2>Resultados Estratégicos (Insights)</h2>
+            <div id="insights-body">
+                <p>El modelo GMM ha identificado patrones complejos en la asignación de créditos...</p>
+                <!-- Dynamic content -->
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-params" class="modal-overlay" onclick="if(event.target===this) toggleModal('modal-params', false)">
+        <div class="modal-content">
+            <span class="close-btn" onclick="toggleModal('modal-params', false)">&times;</span>
+            <h2>Historial de Optimización</h2>
+            <div id="params-table-container"></div>
+        </div>
+    </div>
+
+    <div id="modal-method" class="modal-overlay" onclick="if(event.target===this) toggleModal('modal-method', false)">
+        <div class="modal-content">
+            <span class="close-btn" onclick="toggleModal('modal-method', false)">&times;</span>
+            <h2>Metodología: Gaussian Mixture Models</h2>
+            <p>A diferencia de K-Means (Clustering "Duro"), GMM asume que los datos provienen de una mezcla de
+                distribuciones Gaussianas...</p>
+            <ul>
+                <li><b>Soft Clustering:</b> Cada país tiene una probabilidad de pertenecer a cada cluster.</li>
+                <li><b>AIC/BIC:</b> Criterios de información usados para penalizar la complejidad y evitar overfitting.
+                </li>
+                <li><b>Entropía:</b> Medida de desorden o incertidumbre en la asignación.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- DATA INJECTION -->
+    <script>
+        const DATA_CLUSTERS = {{ DATA_CLUSTERS }};
+        const DATA_METRICS = {{ DATA_METRICS }};
+        const DATA_OPTIMIZATION = {{ DATA_OPTIMIZATION }};
+        const DATA_CENTROIDS = {{ DATA_CENTROIDS }};
+        // Covariances if needed for ellipses
+    </script>
+
+    <!-- DASHBOARD LOGIC -->
+    <script>
+        // --- TRANSLATION DATA ---
+        const langData = {
+            es: { title: "Dashboard GMM", subtitle: "Segmentación Probabilística", map_title: "Mapa de Probabilidad" },
+            en: { title: "GMM Dashboard", subtitle: "Probabilistic Segmentation", map_title: "Probability Map" }
+        };
+        let currentLang = 'es';
+
+        // --- LANG ---
+        function toggleLang() {
+            currentLang = currentLang === 'es' ? 'en' : 'es';
+            const btn = document.querySelector('#btn-lang');
+            btn.classList.toggle('active', currentLang === 'en');
+
+            // Translate
+            document.querySelectorAll('[data-key]').forEach(el => {
+                const key = el.getAttribute('data-key');
+                if (langData[currentLang] && langData[currentLang][key]) {
+                    el.innerText = langData[currentLang][key];
+                }
+            });
+        }
+
+        // --- THEME ---
+        function toggleTheme() {
+            const body = document.body;
+            const isDark = body.getAttribute('data-theme') === 'dark';
+            body.setAttribute('data-theme', isDark ? 'light' : 'dark');
+            document.querySelector('#btn-theme').classList.toggle('active', !isDark);
+            renderCharts(); // Re-render for color update
+        }
+
+        // --- MODALS ---
+        function toggleModal(id, forceState) {
+            const el = document.getElementById(id);
+            if (forceState !== undefined) {
+                forceState ? el.classList.add('open') : el.classList.remove('open');
+            } else {
+                el.classList.toggle('open');
+            }
+        }
+
+        // --- INIT ---
+        window.onload = function () {
+            renderCards();
+            renderCharts();
+            renderKPIs();
+            renderRiskList();
+            renderOptimizationTable();
+
+            // Set default theme state visual
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                toggleTheme(); // Set to dark if system preference
+            }
+        };
+
+        // --- RENDERING ---
+        function renderCards() {
+            const container = document.getElementById('segment-cards');
+            container.innerHTML = '';
+            DATA_CENTROIDS.forEach(c => {
+                const div = document.createElement('div');
+                div.className = 'insight-card';
+                div.style.borderLeftColor = getClusterColor(c.cluster);
+                div.innerHTML = `
+                    <div style="font-size:10px; font-weight:700; color:var(--text-light); text-transform:uppercase;">Cluster ${c.cluster}</div>
+                    <div class="insight-card-val">$${(c.monto / 1000000).toFixed(1)}M</div>
+                    <div style="font-size:11px; color:var(--text-light);">Promedio Monto</div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        function renderKPIs() {
+            document.getElementById('kpi-loglik').innerText = 'N/A'; // Need to pass log_lik if avail
+            document.getElementById('kpi-bic').innerText = Math.round(DATA_METRICS.bic).toLocaleString();
+            document.getElementById('kpi-conf').innerText = (DATA_METRICS.avg_probability * 100).toFixed(1) + '%';
+        }
+
+        function renderRiskList() {
+            const list = document.getElementById('risk-list');
+            if (!DATA_CLUSTERS || DATA_CLUSTERS.length === 0) {
+                list.innerHTML = "<div>No Data</div>";
+                return;
+            }
+            // Sort by Entropy Descending
+            const risky = [...DATA_CLUSTERS].sort((a, b) => (b.Entropia || 0) - (a.Entropia || 0)).slice(0, 5);
+
+            let html = '<table style="width:100%; border-collapse:collapse;">';
+            risky.forEach(r => {
+                html += `
+                    <tr style="border-bottom:1px solid var(--border);">
+                        <td style="padding:4px;">${r.Pais}</td>
+                        <td style="text-align:right; color:var(--danger); font-weight:bold;">${(r.Entropia || 0).toFixed(2)}</td>
+                    </tr>
+                `;
+            });
+            html += '</table>';
+            list.innerHTML = html;
+        }
+
+        function renderOptimizationTable() {
+            const container = document.getElementById('params-table-container');
+            let html = '<table style="width:100%; text-align:left; font-size:12px;"><thead><tr><th>K</th><th>AIC</th><th>BIC</th></tr></thead><tbody>';
+            DATA_OPTIMIZATION.forEach(row => {
+                html += `<tr><td>${row.k}</td><td>${Math.round(row.aic)}</td><td>${Math.round(row.bic)}</td></tr>`;
+            });
+            html += '</tbody></table>';
+            container.innerHTML = html;
+        }
+
+        function renderCharts() {
+            const isDark = document.body.getAttribute('data-theme') === 'dark';
+            const bg = 'rgba(0,0,0,0)';
+            const fontColor = isDark ? '#94a3b8' : '#64748b';
+            const gridColor = isDark ? '#334155' : '#e2e8f0';
+
+            // 1. SCATTER
+            const clusters = [...new Set(DATA_CLUSTERS.map(d => d.Cluster))].sort();
+            const traces = clusters.map(cId => {
+                const subset = DATA_CLUSTERS.filter(d => d.Cluster === cId);
+                return {
+                    x: subset.map(d => Math.log1p(d.Monto_Aprobado)),
+                    y: subset.map(d => d.CANTIDAD_APROBACIONES),
+                    mode: 'markers',
+                    name: 'C' + cId,
+                    text: subset.map(d => `${d.Pais}<br>Prob: ${(d.Probabilidad_Asignacion * 100).toFixed(0)}%`),
+                    marker: {
+                        color: getClusterColor(cId),
+                        size: subset.map(d => 8 + (d.Probabilidad_Asignacion * 10)),
+                        opacity: subset.map(d => 0.3 + (1 - (d.Entropia || 0)) * 0.7) // Valid check
+                    },
+                    type: 'scatter'
+                };
+            });
+
+            const scatterLayout = {
+                paper_bgcolor: bg, plot_bgcolor: bg, font: { color: fontColor },
+                xaxis: { title: 'Log(Monto)', gridcolor: gridColor },
+                yaxis: { title: 'Aprobaciones', gridcolor: gridColor },
+                margin: { t: 20, l: 40, r: 20, b: 40 },
+                showlegend: false
+            };
+            Plotly.newPlot('scatter-chart', traces, scatterLayout);
+
+            // 2. AIC/BIC
+            const traceBIC = { x: DATA_OPTIMIZATION.map(d => d.k), y: DATA_OPTIMIZATION.map(d => d.bic), name: 'BIC', line: { color: '#10b981' } };
+            const traceAIC = { x: DATA_OPTIMIZATION.map(d => d.k), y: DATA_OPTIMIZATION.map(d => d.aic), name: 'AIC', line: { color: '#3b82f6', dash: 'dot' } };
+            Plotly.newPlot('aic-chart', [traceBIC, traceAIC], {
+                paper_bgcolor: bg, plot_bgcolor: bg, font: { color: fontColor },
+                margin: { t: 20, l: 40, r: 20, b: 30 },
+                xaxis: { title: 'K', gridcolor: gridColor },
+                yaxis: { gridcolor: gridColor },
+                showlegend: true, legend: { x: 0.5, y: 1.1, orientation: 'h' }
+            });
+
+            // 3. ENTROPY HIST
+            const entTrace = {
+                x: DATA_CLUSTERS.map(d => d.Entropia || 0),
+                type: 'histogram',
+                marker: { color: '#f59e0b' }
+            };
+            Plotly.newPlot('entropy-chart', [entTrace], {
+                paper_bgcolor: bg, plot_bgcolor: bg, font: { color: fontColor },
+                margin: { t: 20, l: 30, r: 10, b: 30 },
+                xaxis: { title: 'Entropía' },
+                yaxis: { gridcolor: gridColor }
+            });
+        }
+
+        function getClusterColor(id) {
+            const colors = ['#3b82f6', '#10b981', '#f59e0b', '#8b5cf6', '#ef4444', '#ec4899'];
+            return colors[id % colors.length];
+        }
+
+    </script>
+</body>
+
+</html>
