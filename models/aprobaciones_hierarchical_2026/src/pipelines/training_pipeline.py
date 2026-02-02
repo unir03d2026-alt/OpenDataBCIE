@@ -83,6 +83,12 @@ def train_hierarchical(config_path):
             
     logger.info(f"Best K found: {best_k} (Silhouette: {best_score:.4f})")
     
+    # Save Optimization History
+    opt_history_path = predictions_dir / "optimization_history.json"
+    with open(opt_history_path, "w") as f:
+        json.dump(metrics_data, f)
+    logger.info(f"Optimization history saved to: {opt_history_path}")
+    
     # Override K if specified in config validation
     if 'n_clusters' in config['model'] and config['model']['n_clusters'] > 0:
         best_k = config['model']['n_clusters']

@@ -91,11 +91,27 @@ def generate_dashboard():
             "Outlier_Score": 1.0 # Mock score
         })
 
-    # 4. OPTIMIZATION HISTORY (Mock to prevent table error)
-    optimization_data = [
-        {"iteration": 1, "min_cluster_size": 3, "min_samples": 2, "noise_pct": 0, "dbcv_score": 0.35},
-        {"iteration": 2, "min_cluster_size": 4, "min_samples": 2, "noise_pct": 0, "dbcv_score": 0.39}
-    ]
+    # 4. OPTIMIZATION HISTORY
+    optimization_path = base_dir / "data/04-predictions/optimization_history.json"
+    optimization_data = []
+    
+    if optimization_path.exists():
+        with open(optimization_path, 'r') as f:
+            opt_raw = json.load(f)
+            # Map [ {k, silhouette} ] -> [ {iteration, min_cluster_size, min_samples, dbcv_score} ]
+            for i, item in enumerate(opt_raw):
+                optimization_data.append({
+                    "iteration": i + 1,
+                    "min_cluster_size": item.get('k'),  # Helper for mapping K
+                    "min_samples": "Ward",              # Static for Hierarchical
+                    "noise_pct": 0,                     # Hierarchical usually 0 noise
+                    "dbcv_score": item.get('silhouette', 0)
+                })
+    else:
+        # Fallback Mock if file missing
+        optimization_data = [
+            {"iteration": 1, "min_cluster_size": 3, "min_samples": "Ward", "noise_pct": 0, "dbcv_score": 0.35}
+        ]
 
     # --- INJECTION ---
     if not template_path.exists():
