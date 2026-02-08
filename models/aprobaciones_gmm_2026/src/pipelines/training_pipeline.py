@@ -230,6 +230,31 @@ def train_gmm(config_path):
     with open(predictions_dir / "centroids.json", "w") as f:
         json.dump(centroids_data, f)
         
+    # --- CALCULATE PROFILE SCORES (0-100) ---
+    max_monto = np.max(centers_real[:, 0])
+    max_aprob = np.max(centers_real[:, 1])
+    
+    profile_data = []
+    for i, center in enumerate(centers_real):
+        score_monto = (center[0] / max_monto) * 100 if max_monto > 0 else 0
+        score_aprob = (center[1] / max_aprob) * 100 if max_aprob > 0 else 0
+        
+        # Calculate Risk Score (inverse of Probability confidence, heuristic)
+        # We need the avg probability for this cluster
+        subset_probs = df_export[df_export['Cluster'] == i]['Probabilidad_Asignacion']
+        avg_conf = subset_probs.mean() if not subset_probs.empty else 0
+        score_risk = (1 - avg_conf) * 100 # Higher Risk if lower confidence
+        
+        profile_data.append({
+            "cluster": i,
+            "score_monto": round(score_monto, 1),
+            "score_aprob": round(score_aprob, 1),
+            "score_risk": round(score_risk, 1)
+        })
+        
+    with open(predictions_dir / "profile_scores.json", "w") as f:
+        json.dump(profile_data, f)
+        
     # Save Covariances for Confidence Ellipses
     # GMM 'full' covariances are (n_components, n_features, n_features)
     # We need to export them to be usable in JS

@@ -34,7 +34,8 @@ def generate_dashboard():
         "metrics": data_dir / "advanced_metrics.json",
         "optimization": data_dir / "optimization_history.json",
         "covariances": data_dir / "covariances.json",
-        "centroids": data_dir / "centroids.json"
+        "centroids": data_dir / "centroids.json",
+        "profile": data_dir / "profile_scores.json"
     }
     
     # Template & Output
@@ -73,6 +74,7 @@ def generate_dashboard():
     html = inject('DATA_OPTIMIZATION', data['optimization'])
     html = inject('DATA_COVARIANCES', data['covariances'])
     html = inject('DATA_CENTROIDS', data['centroids'])
+    html = inject('DATA_PROFILE', data['profile'])
     
     # Save
     with open(output_path, 'w', encoding='utf-8') as f:
