@@ -1,4 +1,4 @@
-# METRICS REQUIREMENT: GMM (Gaussian Mixture Model)
+# METRICS REQUIREMENT: AGGLOMERATIVE HIERARCHICAL (WARD)
 
 ## A) CORE METRICS (Comparison Standard)
 
@@ -6,14 +6,13 @@
 - [ ] **Davies–Bouldin Index (DBI)** (↓)
 - [ ] **Calinski–Harabasz (CH)** (↑)
 - [ ] Cluster Sizes: % per cluster + CV Sizes (↓)
-- [ ] **Stability**: Avg ARI (20 seeds) (↑)
+- [ ] **Stability**: Avg ARI (20 seeds/subsamples) (↑)
 - [ ] Training Time (↓)
 
 ## B) MODEL SPECIFIC EXTRAS
 
-- [ ] **AIC (Akaike Information Criterion)** (↓)
-- [ ] **BIC (Bayesian Information Criterion)** (↓)
-- [ ] **Average Max Probability** (Confidence) (↑)
+- [ ] **Dendrogram** (Visual)
+- [ ] **Cophenetic Correlation Coefficient** (↑) (Optional)
 
 ## C) DASHBOARD INTEGRATION
 

@@ -1,0 +1,234 @@
+[
+  {
+    "cluster": 0,
+    "count": 13,
+    "monto": 96896068.15384616,
+    "aprobaciones": 21.076923076923077,
+    "monto_median": 86852100.0,
+    "aprob_median": 21.0
+  },
+  {
+    "cluster": 1,
+    "count": 13,
+    "monto": 44551088.307692304,
+    "aprobaciones": 13.076923076923077,
+    "monto_median": 42905100.0,
+    "aprob_median": 13.0
+  },
+  {
+    "cluster": 2,
+    "count": 17,
+    "monto": 39099569.23529412,
+    "aprobaciones": 6.588235294117647,
+    "monto_median": 39000000.0,
+    "aprob_median": 7.0
+  },
+  {
+    "cluster": 3,
+    "count": 17,
+    "monto": 5058148.302352942,
+    "aprobaciones": 7.0,
+    "monto_median": 3365950.0,
+    "aprob_median": 7.0
+  },
+  {
+    "cluster": 4,
+    "count": 22,
+    "monto": 57989403.47681818,
+    "aprobaciones": 9.272727272727273,
+    "monto_median": 51571500.0,
+    "aprob_median": 9.0
+  },
+  {
+    "cluster": 5,
+    "count": 15,
+    "monto": 34038284.0,
+    "aprobaciones": 8.0,
+    "monto_median": 28900000.0,
+    "aprob_median": 8.0
+  },
+  {
+    "cluster": 6,
+    "count": 11,
+    "monto": 1786636.3636363635,
+    "aprobaciones": 4.0,
+    "monto_median": 1700000.0,
+    "aprob_median": 4.0
+  },
+  {
+    "cluster": 7,
+    "count": 10,
+    "monto": 297892690.502,
+    "aprobaciones": 5.0,
+    "monto_median": 268824527.395,
+    "aprob_median": 5.0
+  },
+  {
+    "cluster": 8,
+    "count": 17,
+    "monto": 9678599.294117646,
+    "aprobaciones": 6.0,
+    "monto_median": 9534000.0,
+    "aprob_median": 6.0
+  },
+  {
+    "cluster": 9,
+    "count": 20,
+    "monto": 10726046.25,
+    "aprobaciones": 2.0,
+    "monto_median": 9325000.0,
+    "aprob_median": 2.0
+  },
+  {
+    "cluster": 10,
+    "count": 56,
+    "monto": 137206400.3494643,
+    "aprobaciones": 4.0,
+    "monto_median": 54909500.0,
+    "aprob_median": 4.0
+  },
+  {
+    "cluster": 11,
+    "count": 20,
+    "monto": 5548738.2,
+    "aprobaciones": 5.0,
+    "monto_median": 4700000.0,
+    "aprob_median": 5.0
+  },
+  {
+    "cluster": 12,
+    "count": 12,
+    "monto": 27102923.916666668,
+    "aprobaciones": 5.0,
+    "monto_median": 26870000.0,
+    "aprob_median": 5.0
+  },
+  {
+    "cluster": 13,
+    "count": 24,
+    "monto": 1881212.5,
+    "aprobaciones": 1.0,
+    "monto_median": 1852900.0,
+    "aprob_median": 1.0
+  },
+  {
+    "cluster": 14,
+    "count": 19,
+    "monto": 6927894.736842105,
+    "aprobaciones": 1.0,
+    "monto_median": 7000000.0,
+    "aprob_median": 1.0
+  },
+  {
+    "cluster": 15,
+    "count": 10,
+    "monto": 543455954.0,
+    "aprobaciones": 2.0,
+    "monto_median": 525000000.0,
+    "aprob_median": 2.0
+  },
+  {
+    "cluster": 16,
+    "count": 17,
+    "monto": 19974117.647058822,
+    "aprobaciones": 1.0,
+    "monto_median": 20000000.0,
+    "aprob_median": 1.0
+  },
+  {
+    "cluster": 17,
+    "count": 16,
+    "monto": 81837927.640625,
+    "aprobaciones": 1.0,
+    "monto_median": 80550000.0,
+    "aprob_median": 1.0
+  },
+  {
+    "cluster": 18,
+    "count": 12,
+    "monto": 138354835.065,
+    "aprobaciones": 2.0,
+    "monto_median": 138793476.0,
+    "aprob_median": 2.0
+  },
+  {
+    "cluster": 19,
+    "count": 19,
+    "monto": 60949542.426842116,
+    "aprobaciones": 2.0,
+    "monto_median": 57635000.0,
+    "aprob_median": 2.0
+  },
+  {
+    "cluster": 20,
+    "count": 11,
+    "monto": 41400078.81818182,
+    "aprobaciones": 3.0,
+    "monto_median": 36100000.0,
+    "aprob_median": 3.0
+  },
+  {
+    "cluster": 21,
+    "count": 10,
+    "monto": 50000000.0,
+    "aprobaciones": 1.0,
+    "monto_median": 50000000.0,
+    "aprob_median": 1.0
+  },
+  {
+    "cluster": 22,
+    "count": 13,
+    "monto": 34949466.97692308,
+    "aprobaciones": 1.0,
+    "monto_median": 32000000.0,
+    "aprob_median": 1.0
+  },
+  {
+    "cluster": 23,
+    "count": 11,
+    "monto": 257754545.45454547,
+    "aprobaciones": 1.0,
+    "monto_median": 250000000.0,
+    "aprob_median": 1.0
+  },
+  {
+    "cluster": 24,
+    "count": 11,
+    "monto": 155049818.1818182,
+    "aprobaciones": 1.0,
+    "monto_median": 145000000.0,
+    "aprob_median": 1.0
+  },
+  {
+    "cluster": 25,
+    "count": 10,
+    "monto": 741876858.914,
+    "aprobaciones": 3.0,
+    "monto_median": 695994055.5699999,
+    "aprob_median": 3.0
+  },
+  {
+    "cluster": 26,
+    "count": 24,
+    "monto": 201709056.56083333,
+    "aprobaciones": 3.0,
+    "monto_median": 180232479.0,
+    "aprob_median": 3.0
+  },
+  {
+    "cluster": 27,
+    "count": 10,
+    "monto": 7120000.0,
+    "aprobaciones": 3.0,
+    "monto_median": 7365000.0,
+    "aprob_median": 3.0
+  },
+  {
+    "cluster": 28,
+    "count": 13,
+    "monto": 14479896.76923077,
+    "aprobaciones": 3.0,
+    "monto_median": 14250000.0,
+    "aprob_median": 3.0
+  }
+]

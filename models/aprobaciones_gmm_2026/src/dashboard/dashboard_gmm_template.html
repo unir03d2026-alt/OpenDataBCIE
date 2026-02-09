@@ -1,0 +1,1206 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard GMM (Probabilistic) - BCIE</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8"
+        src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --font-main: 'Inter', sans-serif;
+            --primary: #8b5cf6;
+            /* Keep Violet for GMM distinction */
+            --primary-dark: #7c3aed;
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+            --bg-body: #f8fafc;
+            --bg-card: #ffffff;
+            --border: #e2e8f0;
+            --hover: #f1f5f9;
+        }
+
+        [data-theme="dark"] {
+            --primary: #a78bfa;
+            --primary-dark: #8b5cf6;
+            --text-dark: #f1f5f9;
+            --text-light: #94a3b8;
+            --bg-body: #0f172a;
+            --bg-card: #1e293b;
+            --border: #334155;
+            --hover: #334155;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background: var(--bg-body);
+            margin: 0;
+            color: var(--text-dark);
+            transition: background 0.3s;
+        }
+
+        /* NAV */
+        .top-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 85px;
+            background: var(--bg-card);
+            border-bottom: 5px solid var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 30px;
+            z-index: 50;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .header-title h1 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .subtitle {
+            font-size: 13px;
+            color: var(--text-light);
+            margin-top: 2px;
+        }
+
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        /* BUTTONS (HDBSCAN STYLE) */
+        .btn-action {
+            font-family: var(--font-main);
+            padding: 6px 16px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            border: 1px solid transparent;
+            min-width: 100px;
+            text-align: center;
+            transition: 0.2s;
+        }
+
+        .btn-ghost {
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-ghost:hover {
+            background: var(--hover);
+        }
+
+        .btn-solid {
+            background: var(--primary);
+            border: 1px solid var(--primary);
+            color: white;
+        }
+
+        .btn-solid:hover {
+            opacity: 0.9;
+        }
+
+        .divider {
+            width: 1px;
+            height: 24px;
+            background: var(--border);
+            margin: 0 5px;
+        }
+
+        /* DATE BADGE */
+        .update-badge {
+            font-size: 11px;
+            background: var(--hover);
+            color: var(--text-light);
+            padding: 5px 12px;
+            border-radius: 4px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        /* TOGGLES (HDBSCAN STYLE) */
+        .toggle-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            cursor: pointer;
+        }
+
+        .toggle-switch {
+            position: relative;
+            width: 70px;
+            height: 28px;
+            background: var(--bg-body);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 2px;
+            transition: 0.3s;
+        }
+
+        .toggle-knob {
+            width: 22px;
+            height: 22px;
+            background: white;
+            border-radius: 50%;
+            position: absolute;
+            left: 3px;
+            z-index: 2;
+            transition: transform 0.3s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .toggle-switch.active .toggle-knob {
+            transform: translateX(40px);
+        }
+
+        .toggle-icon {
+            font-size: 12px;
+            margin: 0 6px;
+            user-select: none;
+            z-index: 1;
+        }
+
+        .toggle-labels {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            font-size: 9px;
+            font-weight: 700;
+            color: var(--text-light);
+            padding: 0 4px;
+        }
+
+        /* LAYOUT */
+        .dashboard-container {
+            margin-top: 95px;
+            padding: 10px 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            height: calc(100vh - 105px);
+            /* Full viewport height minus header */
+            overflow: hidden;
+            /* Prevent body scroll if possible */
+        }
+
+        /* ROW 1: CARDS (HDBSCAN STYLE) */
+        .cards-row {
+            flex: 0 0 auto;
+            /* Don't grow, just fit content */
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 12px;
+            padding-bottom: 5px;
+        }
+
+        /* If we want horizontal scroll like HDBSCAN 8-col grid but responsive */
+        /* The following block was removed as it was an alternative layout and the primary grid layout was chosen and enhanced with flex properties. */
+        /*
+        .cards-row {
+            display: flex;
+            overflow-x: auto;
+            gap: 12px;
+            padding-bottom: 10px;
+        }
+        */
+
+        .insight-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--primary);
+            border-radius: 8px;
+            padding: 10px 14px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            min-width: 220px;
+            /* Wider like HDBSCAN */
+            min-height: 90px;
+            transition: 0.2s;
+            flex-shrink: 0;
+        }
+
+        .insight-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .insight-card-title {
+            font-size: 11px;
+            font-weight: 800;
+            color: var(--text-light);
+            text-transform: uppercase;
+            margin-bottom: 6px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .insight-card-main {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 4px;
+        }
+
+        .insight-card-val {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--text-dark);
+        }
+
+        .insight-card-pct {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--text-light);
+        }
+
+        .insight-card-footer {
+            font-size: 11px;
+            margin-top: auto;
+            color: var(--text-light);
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid var(--hover);
+            padding-top: 8px;
+        }
+
+        /* ROW 2: Pareto | Summary/Table | Profile */
+        .grid-mid {
+            flex: 4;
+            /* Takes ~44% of remaining space */
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            gap: 10px;
+            min-height: 0;
+            /* Important for grid within flex */
+        }
+
+        /* ROW 3: Scatter | Matrix */
+        .grid-bottom {
+            flex: 5;
+            /* Takes ~55% of remaining space */
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 10px;
+            min-height: 0;
+            /* Important for grid within flex */
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: center;
+            /* CENTER TITLES */
+            align-items: center;
+            border-bottom: 1px solid var(--hover);
+            padding-bottom: 5px;
+            margin-bottom: 5px;
+            position: relative;
+            /* For absolute positioning of controls if needed */
+        }
+
+        .card-title {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 0;
+            text-transform: uppercase;
+            text-align: center;
+            /* CENTER TEXT */
+            width: 100%;
+        }
+
+        /* KPIS */
+        .kpi-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .kpi-box {
+            flex: 1;
+            background: var(--hover);
+            border-radius: 6px;
+            padding: 5px;
+            text-align: center;
+        }
+
+        .kpi-num {
+            font-size: 14px;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .kpi-txt {
+            font-size: 9px;
+            color: var(--text-light);
+        }
+
+        /* TABLE */
+        .table-wrap {
+            flex: 1;
+            overflow: auto;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 10px;
+        }
+
+        th {
+            position: sticky;
+            top: 0;
+            background: var(--bg-card);
+            padding: 5px;
+            text-align: left;
+            border-bottom: 2px solid var(--primary);
+            z-index: 5;
+        }
+
+        td {
+            padding: 4px 5px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        tr:hover {
+            background: var(--hover);
+        }
+
+        /* MODALS */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.2s;
+        }
+
+        .modal-overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-box {
+            background: var(--bg-card);
+            width: 800px;
+            max-height: 85vh;
+            padding: 25px;
+            border-radius: 8px;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .close-icon {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        ul {
+            padding-left: 20px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        li {
+            margin-bottom: 4px;
+        }
+
+        h3 {
+            font-size: 14px;
+            color: var(--primary);
+            margin-top: 15px;
+        }
+
+        p {
+            font-size: 13px;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+
+<body data-theme="light">
+    <!-- NAV -->
+    <nav class="top-nav">
+        <div class="header-title">
+            <h1>Dashboard de Clustering (GMM)</h1>
+            <div class="subtitle">Segmentación Inteligente de Países BCIE | Modelo Probabilístico para identificar
+                patrones de inversión y frecuencia operativa</div>
+        </div>
+
+        <div class="nav-controls">
+            <!-- Action Buttons -->
+            <button class="btn-action btn-ghost" onclick="toggleModal('modal-insights')"
+                data-key="btn_insights">Análisis Estratégico</button>
+            <div class="divider"></div>
+            <button class="btn-action btn-ghost" onclick="toggleModal('modal-params')"
+                data-key="btn_params">Parámetros</button>
+            <div class="divider"></div>
+            <button class="btn-action btn-ghost" onclick="toggleModal('modal-metrics')" data-key="btn_metrics">Métricas
+                Modelo</button>
+            <div class="divider"></div>
+            <button class="btn-action btn-ghost" onclick="toggleModal('modal-method')"
+                data-key="btn_method">Metodología</button>
+            <div class="divider"></div>
+
+            <!-- Export -->
+            <button class="btn-action btn-ghost" onclick="takeScreenshot()">Captura</button>
+            <button class="btn-action btn-solid" onclick="generatePDF()">PDF</button>
+
+            <!-- Date Badge -->
+            <div class="update-badge" style="margin-left:10px;">Datos Actualizados: 01/02/2026</div>
+
+            <!-- Theme Toggle -->
+            <div class="toggle-wrapper">
+                <div class="toggle-switch" id="btn-theme" onclick="toggleTheme()" title="Tema">
+                    <div class="toggle-knob"></div>
+                    <span class="toggle-icon">☀️</span>
+                    <span class="toggle-icon">🌙</span>
+                </div>
+                <div class="toggle-labels">
+                    <span>Claro</span><span>Oscuro</span>
+                </div>
+            </div>
+
+            <!-- Lang Toggle -->
+            <div class="toggle-wrapper">
+                <div class="toggle-switch" id="btn-lang" onclick="toggleLang()" title="Idioma">
+                    <div class="toggle-knob"></div>
+                </div>
+                <div class="toggle-labels">
+                    <span>Esp</span><span>Ing</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+
+        <!-- ROW 1: CARDS -->
+        <div id="cards-container" class="cards-row"></div>
+
+        <!-- ROW 2: Pareto | Summary | Profile -->
+        <div class="grid-mid">
+            <!-- PARETO -->
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title" data-key="pareto_title">Cartera: Top 5 Clusters</h4>
+                </div>
+                <div id="pareto-chart" style="flex:1;"></div>
+            </div>
+
+            <!-- SUMMARY + TABLE -->
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title" data-key="summary_title">Resumen General</h4>
+                </div>
+                <div class="kpi-row">
+                    <div class="kpi-box">
+                        <div class="kpi-lbl" data-key="kpi_records">Registros</div>
+                        <div class="kpi-num" id="kpi-n">0</div>
+                    </div>
+                    <div class="kpi-box">
+                        <div class="kpi-lbl" data-key="kpi_clusters">Clusters</div>
+                        <div class="kpi-num" id="kpi-k">0</div>
+                    </div>
+                    <div class="kpi-box">
+                        <div class="kpi-lbl" data-key="kpi_conf">Calidad (Conf)</div>
+                        <div class="kpi-num" id="kpi-conf">0%</div>
+                    </div>
+                    <div class="kpi-box">
+                        <div class="kpi-lbl" data-key="kpi_monto">Monto Total</div>
+                        <div class="kpi-num" id="kpi-total">0</div>
+                    </div>
+                </div>
+                <div class="card-header" style="margin-top:5px;">
+                    <h4 class="card-title" data-key="table_title">Detalle de Segmentos</h4>
+                </div>
+                <div class="table-wrap">
+                    <table id="main-table">
+                        <thead>
+                            <tr>
+                                <th>Pais</th>
+                                <th>Anio</th>
+                                <th>Monto</th>
+                                <th>Cluster</th>
+                                <th>Prob%</th>
+                                <th>Entrop.</th>
+                                <th>Sector</th>
+                            </tr>
+                        </thead>
+                        <tbody id="main-tbody"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- PROFILE -->
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title" data-key="profile_title">Perfil por Segmento (0-100)</h4>
+                </div>
+                <div id="radar-chart" style="flex:1;"></div>
+            </div>
+        </div>
+
+        <!-- ROW 3: Scatter | Matrix -->
+        <div class="grid-bottom">
+            <!-- SCATTER -->
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title" data-key="scatter_title">Mapa de Segmentación</h4>
+                    <div style="font-size:10px; color:var(--text-light);">Monto vs Aprobaciones</div>
+                </div>
+                <div id="scatter-chart" style="flex:1;"></div>
+            </div>
+
+            <!-- MATRIX -->
+            <div class="card" style="padding:0; display:flex; flex-direction:column; overflow:hidden;">
+                <div class="card-header" style="margin:0; padding:10px;">
+                    <h4 class="card-title" data-key="matrix_title">Matriz de Segmentos</h4>
+                </div>
+                <div style="flex:1; overflow:auto; position:relative;">
+                    <table id="matrix-table" style="width:100%; height:100%; border-collapse: collapse;">
+                        <thead style="position:sticky; top:0; z-index:10;">
+                            <tr id="matrix-head"></tr>
+                        </thead>
+                        <tbody id="matrix-body"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <div
+            style="text-align: center; margin-top: 5px; color: var(--text-light); font-size: 8px; padding-bottom: 5px; border-top: 1px solid var(--border); padding-top: 5px;">
+            <p style="margin: 0;">&copy; 2026 | UNIR&ndash;BCIE | Trabajo de Colaboración Académica | Equipo 03-D |
+                Todos los derechos reservados.</p>
+            <p style="margin: 2px 0 0;">Los resultados son para fines académicos y no constituyen compromiso financiero
+                vinculante por parte del BCIE.</p>
+        </div>
+
+    </div>
+
+    <!-- MODALS -->
+    <!-- METRICS -->
+    <div id="modal-metrics" class="modal-overlay" onclick="if(event.target===this) toggleModal('modal-metrics', false)">
+        <div class="modal-box">
+            <span class="close-icon" onclick="toggleModal('modal-metrics', false)">&times;</span>
+            <h2>Métricas de Ajuste y Validación</h2>
+            <div style="display:flex; gap:20px; height:300px;">
+                <div style="flex:1;">
+                    <h3>Curvas AIC/BIC</h3>
+                    <div id="aic-chart" style="height:250px;"></div>
+                </div>
+                <div style="flex:1;">
+                    <h3>Distribución de Entropía</h3>
+                    <div id="entropy-chart" style="height:250px;"></div>
+                </div>
+            </div>
+            <div>
+                <h3>Interpretación</h3>
+                <ul>
+                    <li><b>BIC (Bayesian Information Criterion):</b> Utilizado para seleccionar K. Un valor más bajo
+                        indica mejor balance entre precisión y parsimonia.</li>
+                    <li><b>Entropía:</b> Indica la incertidumbre de la asignación. Valores cercanos a 0 son asignaciones
+                        seguras.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- PARAMS -->
+    <div id="modal-params" class="modal-overlay" onclick="if(event.target===this) toggleModal('modal-params', false)">
+        <div class="modal-box">
+            <span class="close-icon" onclick="toggleModal('modal-params', false)">&times;</span>
+            <h2>Parámetros del Modelo GMM</h2>
+            <ul>
+                <li><b>Algoritmo:</b> GaussianMixture (Scikit-Learn).</li>
+                <li><b>Componentes (K):</b> Optimizado dinámicamente.</li>
+                <li><b>Covariance Type:</b> 'full' (Cada cluster tiene su propia matriz de covarianza general).</li>
+                <li><b>Inicialización:</b> K-Means.</li>
+                <li><b>Regularización:</b> 1e-6 (para estabilidad numérica).</li>
+                <li><b>Features:</b> Log1p(Monto), Cantidad de Aprobaciones.</li>
+                <li><b>Escalado:</b> StandardScaler (Media 0, Varianza 1).</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- METHODOLOGY -->
+    <div id="modal-method" class="modal-overlay" onclick="if(event.target===this) toggleModal('modal-method', false)">
+        <div class="modal-box">
+            <span class="close-icon" onclick="toggleModal('modal-method', false)">&times;</span>
+            <h2>Metodología de Segmentación</h2>
+            <p>El modelo utiliza un enfoque de <b>Soft Clustering</b> probabilístico (GMM), optimizado para capturar la
+                estructura latente de la cartera de inversiones.</p>
+
+            <h3
+                style="color:var(--primary); border-bottom:1px solid var(--border); padding-bottom:5px; margin-top:20px;">
+                1. Procesamiento y Limpieza</h3>
+            <ul style="font-size:12px; line-height:1.6; color:var(--text-light);">
+                <li><b>Agregación:</b> Datos consolidados a nivel País por <i>Monto Aprobado</i> y <i>Frecuencia de
+                        Operaciones</i>.</li>
+                <li><b>Transformación:</b> Aplicación de <code>Log1p</code> (logaritmo natural) a los montos para
+                    normalizar la distribución financiera asimétrica ("long-tail").</li>
+                <li><b>Estandarización:</b> Uso de <code>StandardScaler</code> (Z-Score) para centrar las variables
+                    (Media=0, Std=1) y asegurar equiparidad de escalas.</li>
+            </ul>
+
+            <h3
+                style="color:var(--primary); border-bottom:1px solid var(--border); padding-bottom:5px; margin-top:20px;">
+                2. Modelado (GMM)</h3>
+            <p style="font-size:12px; margin-bottom:8px;">Algoritmo <b>Gaussian Mixture Model</b> mediante
+                Expectation-Maximization (EM):</p>
+            <ul style="font-size:12px; line-height:1.6; color:var(--text-light);">
+                <li><b>Covarianza 'Full':</b> Permite clusters con formas elípticas y rotadas, adaptándose a la
+                    correlación real entre Monto y Frecuencia.</li>
+                <li><b>Probabilidad Posterior:</b> Calcula <i>P(C<sub>k</sub>|x)</i> para cada país, permitiendo
+                    asignaciones parciales
+                    (ej. 80% Cluster A, 20% Cluster B).</li>
+            </ul>
+
+            <h3
+                style="color:var(--primary); border-bottom:1px solid var(--border); padding-bottom:5px; margin-top:20px;">
+                3. Validación y Selección</h3>
+            <ul style="font-size:12px; line-height:1.6; color:var(--text-light);">
+                <li><b>Criterio BIC:</b> Selección automática de <i>K</i> componentes que minimiza el <i>Bayesian
+                        Information
+                        Criterion</i>, penalizando la complejidad para evitar overfitting.</li>
+                <li><b>Análisis de Entropía:</b> Medición de la incertidumbre en la asignación (&sum; -p &middot;
+                    log(p))
+                    para detectar países en zonas de transición.</li>
+                <li><b>Estabilidad:</b> Inicialización mediante K-Means++ y regularización (1e-6) para garantizar
+                    convergencia robusta.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- INSIGHTS -->
+    <div id="modal-insights" class="modal-overlay"
+        onclick="if(event.target===this) toggleModal('modal-insights', false)">
+        <div class="modal-box" style="width:650px; max-width:90%; padding: 30px;">
+            <span class="close-icon" onclick="toggleModal('modal-insights', false)">&times;</span>
+
+            <h2
+                style="color:var(--text-dark); margin-top:0; border-bottom: 2px solid var(--primary); padding-bottom:10px;">
+                Key Insights: Estrategia & Precisión
+            </h2>
+
+            <div style="margin-top:20px;">
+                <h4 style="margin:15px 0 8px; color:var(--text-dark); font-size:14px; font-weight:800;">
+                    🎯 1. SEGMENTACIÓN PROBABILÍSTICA (SOFT CLUSTERING)
+                </h4>
+                <p style="text-align:justify; color:var(--text-light); font-size:13px; line-height:1.6;">
+                    A diferencia de modelos rígidos, GMM calcula la <b>probabilidad de pertenencia</b> de cada país a
+                    múltiples segmentos. Esto permite identificar economías "híbridas" o en transición (ej.
+                    operativamente similares al Cluster A pero con montos del Cluster B), ofreciendo una visión más
+                    matizada para diseñar estrategias de evolución de cartera.
+                </p>
+
+                <h4 style="margin:20px 0 8px; color:var(--text-dark); font-size:14px; font-weight:800;">
+                    📐 2. VALIDACIÓN ESTADÍSTICA ROBUSTA (BIC)
+                </h4>
+                <p style="text-align:justify; color:var(--text-light); font-size:13px; line-height:1.6;">
+                    El modelo ha sido optimizado seleccionando el número de clusters que minimiza el <b>Criterio de
+                        Información Bayesiano (BIC)</b>. Esto garantiza un equilibrio matemático perfecto: suficiente
+                    complejidad para capturar patrones reales en la inversión del BCIE, pero evitando el ruido aleatorio
+                    para asegurar conclusiones accionables.
+                </p>
+
+                <h4 style="margin:20px 0 8px; color:var(--text-dark); font-size:14px; font-weight:800;">
+                    📊 3. GESTIÓN DE INCERTIDUMBRE (ENTROPÍA)
+                </h4>
+                <p style="text-align:justify; color:var(--text-light); font-size:13px; line-height:1.6;">
+                    El dashboard integra la <b>Entropía</b> como métrica de riesgo de asignación. Los puntos con alta
+                    entropía (asignación difusa) se destacan visualmente, señalando operaciones que requieren revisión
+                    manual o estratégica, transformando la incertidumbre matemática en un indicador de atención
+                    prioritaria.
+                </p>
+            </div>
+
+            <div style="margin-top:25px;">
+                <button class="btn-action btn-ghost" onclick="toggleModal('modal-insights', false)"
+                    style="padding:8px 20px;">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- INJECTION -->
+    <script>
+        const DATA_CLUSTERS = {{ DATA_CLUSTERS }};
+        const DATA_METRICS = {{ DATA_METRICS }};
+        const DATA_OPTIMIZATION = {{ DATA_OPTIMIZATION }};
+        const DATA_CENTROIDS = {{ DATA_CENTROIDS }};
+        const DATA_PROFILE = {{ DATA_PROFILE }};
+    </script>
+
+    <script>
+        // --- TRANSLATION DATA ---
+        const langData = {
+            es: {
+                title: "Dashboard GMM",
+                subtitle: "Modelo de Segmentación Probabilística",
+                btn_insights: "Análisis Estratégico",
+                btn_params: "Parámetros",
+                btn_metrics: "Métricas Modelo",
+                btn_method: "Metodología",
+                pareto_title: "Cartera: Top 5 Clusters",
+                summary_title: "Resumen General",
+                kpi_records: "Registros",
+                kpi_clusters: "Clusters",
+                kpi_conf: "Calidad (Conf)",
+                kpi_monto: "Monto Total",
+                table_title: "Detalle de Segmentos",
+                profile_title: "Perfil por Segmento (0-100)",
+                scatter_title: "Mapa de Segmentación",
+                matrix_title: "Matriz de Segmentos"
+            },
+            en: {
+                title: "GMM Dashboard",
+                subtitle: "Probabilistic Segmentation Model",
+                btn_insights: "Strategic Analysis",
+                btn_params: "Parameters",
+                btn_metrics: "Model Metrics",
+                btn_method: "Methodology",
+                pareto_title: "Portfolio: Top 5 Clusters",
+                summary_title: "General Summary",
+                kpi_records: "Records",
+                kpi_clusters: "Clusters",
+                kpi_conf: "Quality (Conf)",
+                kpi_monto: "Total Amount",
+                table_title: "Segment Details",
+                profile_title: "Segment Profile (0-100)",
+                scatter_title: "Segmentation Map",
+                matrix_title: "Segment Matrix"
+            }
+        };
+        let currentLang = 'es';
+
+        function toggleLang() {
+            currentLang = currentLang === 'es' ? 'en' : 'es';
+            document.getElementById('btn-lang').classList.toggle('active', currentLang === 'en');
+            document.querySelectorAll('[data-key]').forEach(el => {
+                const k = el.getAttribute('data-key');
+                if (langData[currentLang][k]) el.innerHTML = langData[currentLang][k];
+            });
+            renderCharts();
+        }
+
+        function toggleTheme() {
+            const body = document.body;
+            const isDark = body.getAttribute('data-theme') === 'dark';
+            body.setAttribute('data-theme', isDark ? 'light' : 'dark');
+            document.getElementById('btn-theme').classList.toggle('active', !isDark);
+            renderCharts();
+        }
+
+        function toggleModal(id, force) {
+            const el = document.getElementById(id);
+            if (force !== undefined) force ? el.classList.add('open') : el.classList.remove('open');
+            else el.classList.toggle('open');
+        }
+
+        // --- RENDER ---
+        $(document).ready(function () {
+            renderKPIs();
+            renderCards();
+            renderTable();
+            renderMatrix();
+            renderCharts();
+        });
+
+        function renderKPIs() {
+            $('#kpi-n').text(DATA_CLUSTERS.length);
+            $('#kpi-k').text(DATA_METRICS.k);
+            const total = DATA_CLUSTERS.reduce((s, d) => s + d.Monto_Aprobado, 0);
+            $('#kpi-total').text('$' + (total / 1000000000).toFixed(1) + 'B');
+            $('#kpi-conf').text((DATA_METRICS.avg_probability * 100).toFixed(1) + '%');
+        }
+
+        function renderCards() {
+            const container = document.getElementById('cards-container');
+            container.innerHTML = '';
+
+            // Calculate totals for percentages
+            const totalVol = DATA_CLUSTERS.reduce((s, d) => s + d.Monto_Aprobado, 0);
+            const totalOps = DATA_CLUSTERS.length;
+
+            // Sort centroids by Total Volume (descending) instead of just iterating
+            // First we need to map centroids to their actual total volume from raw data
+            const clusterStats = DATA_CENTROIDS.map(d => {
+                const sub = DATA_CLUSTERS.filter(row => row.Cluster === d.cluster);
+                const vol = sub.reduce((s, row) => s + row.Monto_Aprobado, 0);
+                const count = sub.length;
+                return {
+                    cluster: d.cluster,
+                    vol: vol,
+                    count: count,
+                    volPct: totalVol > 0 ? (vol / totalVol) * 100 : 0,
+                    opsPct: totalOps > 0 ? (count / totalOps) * 100 : 0
+                };
+            }).sort((a, b) => b.vol - a.vol); // Sort by volume
+
+            clusterStats.forEach(stat => {
+                const div = document.createElement('div');
+                div.className = 'insight-card';
+                div.style.borderLeftColor = getClusterColor(stat.cluster);
+
+                // Format Amount
+                let valStr = '';
+                if (stat.vol >= 1000000000) valStr = '$' + (stat.vol / 1000000000).toFixed(1) + 'B';
+                else valStr = '$' + (stat.vol / 1000000).toFixed(1) + 'M';
+
+                div.innerHTML = `
+                    <div class="insight-card-title" style="color:${getClusterColor(stat.cluster)}">
+                        CLUSTER ${stat.cluster}
+                        <span style="opacity:0.6; font-size:9px;">Tier ${getTier(stat.volPct)}</span>
+                    </div>
+                    <div class="insight-card-main">
+                        <div class="insight-card-val">${valStr}</div>
+                        <div class="insight-card-pct">${stat.volPct.toFixed(0)}% Volumen</div>
+                    </div>
+                    <div class="insight-card-footer">
+                        <div>${stat.count} Operaciones</div>
+                        <div>${stat.opsPct.toFixed(0)}% Operatividad</div>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        function getTier(pct) {
+            if (pct > 20) return 'A'; // High importance
+            if (pct > 5) return 'B';  // Medium
+            return 'C';              // Low
+        }
+
+        function renderTable() {
+            const tbody = document.getElementById('main-tbody');
+            let html = '';
+            // Show top 20 or use DataTables? Let's show top 50 by Amount
+            const top = [...DATA_CLUSTERS].sort((a, b) => b.Monto_Aprobado - a.Monto_Aprobado).slice(0, 50);
+            top.forEach(row => {
+                html += `<tr>
+                <td><b>${row.Pais}</b></td>
+                <td>${row.Anio}</td>
+                <td>$${(row.Monto_Aprobado / 1000000).toFixed(1)}M</td>
+                <td><span style="color:${getClusterColor(row.Cluster)}; font-weight:bold;">C${row.Cluster}</span></td>
+                <td>${(row.Probabilidad_Asignacion * 100).toFixed(1)}%</td>
+                <td>${(row.Entropia || 0).toFixed(3)}</td>
+                <td>${row.Sector_Economico || '-'}</td>
+            </tr>`;
+            });
+            tbody.innerHTML = html;
+        }
+
+        function renderMatrix() {
+            const container = document.getElementById('matrix-body');
+            const head = document.getElementById('matrix-head');
+
+            // 1. Prepare Data
+            const clusters = [...new Set(DATA_CLUSTERS.map(d => d.Cluster))].sort();
+            const totalVol = DATA_CLUSTERS.reduce((s, d) => s + d.Monto_Aprobado, 0);
+
+            // Calculate Cluster Tiers
+            const clusterTiers = {};
+            clusters.forEach(c => {
+                const sub = DATA_CLUSTERS.filter(d => d.Cluster === c);
+                const vol = sub.reduce((s, d) => s + d.Monto_Aprobado, 0);
+                const pct = (vol / totalVol) * 100;
+                clusterTiers[c] = getTier(pct);
+            });
+
+            // Calculate Country Totals for sorting
+            const countryMap = {};
+            DATA_CLUSTERS.forEach(d => {
+                if (!countryMap[d.Pais]) countryMap[d.Pais] = { name: d.Pais, total: 0, counts: {} };
+                countryMap[d.Pais].total++;
+                if (!countryMap[d.Pais].counts[d.Cluster]) countryMap[d.Pais].counts[d.Cluster] = 0;
+                countryMap[d.Pais].counts[d.Cluster]++;
+            });
+            const sortedCountries = Object.values(countryMap).sort((a, b) => b.total - a.total);
+
+            // Calculate Cluster Totals
+            const clusterTotals = {};
+            clusters.forEach(c => clusterTotals[c] = 0);
+            DATA_CLUSTERS.forEach(d => clusterTotals[d.Cluster]++);
+            const GRAND_TOTAL = DATA_CLUSTERS.length;
+
+            // 2. Render Header
+            let hHtml = '<th>País</th>';
+            clusters.forEach(c => {
+                hHtml += `<th>Cluster ${c} <br><span style="font-size:9px; opacity:0.8;">(Tier ${clusterTiers[c]})</span></th>`;
+            });
+            head.innerHTML = hHtml;
+
+            // 3. Render Body
+            let bHtml = '';
+            sortedCountries.forEach(ct => {
+                bHtml += `<tr><td style="font-weight:bold; color:var(--text-dark);">${ct.name}</td>`;
+                clusters.forEach(c => {
+                    const n = ct.counts[c] || 0;
+                    // Keep user's requested color styling for cells
+                    const style = n > 0 ? `background:${getClusterColor(c)}20; font-weight:bold; color:${getClusterColor(c)};` : 'opacity:0.2; color:var(--border);';
+                    bHtml += `<td style="text-align:center; ${style}">${n > 0 ? n : '0'}</td>`;
+                });
+                bHtml += '</tr>';
+            });
+
+            // 4. Render Total Row
+            bHtml += `<tr style="border-top: 2px solid var(--primary); background: var(--hover);">
+                <td style="font-weight:800; color:var(--primary);">TOTAL GENERAL</td>`;
+            clusters.forEach(c => {
+                bHtml += `<td style="text-align:center; font-weight:800; color:${getClusterColor(c)};">${clusterTotals[c]}</td>`;
+            });
+            bHtml += `</tr>`;
+
+            container.innerHTML = bHtml;
+        }
+
+        function renderCharts() {
+            const isDark = document.body.getAttribute('data-theme') === 'dark';
+            const bg = 'rgba(0,0,0,0)';
+            const txt = isDark ? '#f1f5f9' : '#1e293b';
+            const grid = isDark ? '#334155' : '#e2e8f0';
+            const font = { family: 'Inter', color: txt, size: 10 };
+
+            // 1. PARETO (Horizontal Bar?) Or Vertical to fit? Vertical better for 5.
+            const sorted = [...DATA_CENTROIDS].sort((a, b) => b.monto - a.monto).slice(0, 5);
+            Plotly.newPlot('pareto-chart', [{
+                x: sorted.map(d => 'C' + d.cluster),
+                y: sorted.map(d => d.monto),
+                type: 'bar', marker: { color: sorted.map(d => getClusterColor(d.cluster)) }
+            }], {
+                paper_bgcolor: bg, plot_bgcolor: bg, font: font,
+                margin: { t: 10, l: 30, r: 10, b: 20 }, yaxis: { gridcolor: grid }, xaxis: { tickfont: { size: 9 } }
+            }, { responsive: true });
+
+            // 2. PROFILE: Strategy Map (Cartesian 0-100)
+            // X: Score Monto, Y: Score Aprob, Size: Volume
+            const scatterTraces = DATA_PROFILE.map(p => ({
+                x: [p.score_monto],
+                y: [p.score_aprob],
+                mode: 'markers+text',
+                text: ['C' + p.cluster],
+                textposition: 'top center',
+                name: 'C' + p.cluster,
+                marker: {
+                    size: 15 + (p.score_risk / 5), // Base size + Risk factor? Or just Volume? Let's use Volume for size
+                    color: getClusterColor(p.cluster),
+                    line: { color: 'white', width: 1 },
+                    opacity: 0.8
+                },
+                // Add Risk/Certeza to hover
+                hovertemplate:
+                    '<b>Cluster %{text}</b><br>' +
+                    'Monto Score: %{x:.1f}<br>' +
+                    'Freq Score: %{y:.1f}<br>' +
+                    'Riesgo: ' + p.score_risk.toFixed(1) + '<br>' +
+                    '<extra></extra>'
+            }));
+
+            // Add Layout for Cartesian Map
+            const layoutProfile = {
+                paper_bgcolor: bg, plot_bgcolor: bg, font: font,
+                margin: { t: 20, l: 30, r: 20, b: 30 },
+                xaxis: {
+                    title: 'Intensidad Monto (0-100)',
+                    range: [-5, 105],
+                    gridcolor: grid,
+                    showgrid: true,
+                    zeroline: false
+                },
+                yaxis: {
+                    title: 'Intensidad Operativa (0-100)',
+                    range: [-5, 105],
+                    gridcolor: grid,
+                    showgrid: true,
+                    zeroline: false
+                },
+                showlegend: false,
+                hovermode: 'closest'
+            };
+
+            // Add Quadrant Lines (50, 50)
+            layoutProfile.shapes = [
+                { type: 'line', x0: 50, x1: 50, y0: 0, y1: 100, line: { color: grid, width: 2, dash: 'dot' } },
+                { type: 'line', x0: 0, x1: 100, y0: 50, y1: 50, line: { color: grid, width: 2, dash: 'dot' } }
+            ];
+
+            Plotly.newPlot('radar-chart', scatterTraces, layoutProfile, { responsive: true });
+
+            // 3. SCATTER (SMALL MARKERS as requested)
+            // 3. SCATTER: Segmentation Map with Zones
+            const clusters = [...new Set(DATA_CLUSTERS.map(d => d.Cluster))].sort();
+            const scTraces = clusters.map(cId => {
+                const sub = DATA_CLUSTERS.filter(d => d.Cluster === cId);
+                return {
+                    x: sub.map(d => Math.log1p(d.Monto_Aprobado)),
+                    y: sub.map(d => d.CANTIDAD_APROBACIONES || 1), // Fallback to 1 if missing
+                    mode: 'markers',
+                    name: 'C' + cId,
+                    marker: {
+                        size: 14, // LARGER MARKERS (Requested)
+                        color: getClusterColor(cId),
+                        opacity: 0.8,
+                        line: { color: 'white', width: 1 }
+                    },
+                    text: sub.map(d => `${d.Pais}<br>${d.Anio}`),
+                    type: 'scatter'
+                };
+            });
+
+            // Calculate "Zones" (Ellipses based on Mean/StdDev)
+            const shapes = [];
+            clusters.forEach(cId => {
+                const sub = DATA_CLUSTERS.filter(d => d.Cluster === cId);
+                if (sub.length === 0) return;
+
+                const xvals = sub.map(d => Math.log1p(d.Monto_Aprobado));
+                const yvals = sub.map(d => d.CANTIDAD_APROBACIONES || 1);
+
+                const meanX = xvals.reduce((a, b) => a + b, 0) / xvals.length;
+                const meanY = yvals.reduce((a, b) => a + b, 0) / yvals.length;
+
+                let sdX = 0, sdY = 0;
+                if (sub.length > 1) {
+                    // Sample StdDev
+                    sdX = Math.sqrt(xvals.reduce((a, b) => a + Math.pow(b - meanX, 2), 0) / (sub.length - 1));
+                    sdY = Math.sqrt(yvals.reduce((a, b) => a + Math.pow(b - meanY, 2), 0) / (sub.length - 1));
+                }
+
+                // Fallback for single points or zero variance (to ensure ALL clusters have a zone)
+                // We use a small fixed radius relative to the scale
+                if (sdX < 0.2) sdX = 0.2;
+                if (sdY < 0.5) sdY = 0.5;
+
+                // Add Ellipse (2 Sigma for coverage)
+                shapes.push({
+                    type: 'circle',
+                    xref: 'x', yref: 'y',
+                    x0: meanX - 2.5 * sdX, x1: meanX + 2.5 * sdX,
+                    y0: meanY - 2.5 * sdY, y1: meanY + 2.5 * sdY,
+                    opacity: 0.15,
+                    fillcolor: getClusterColor(cId),
+                    line: { color: getClusterColor(cId), dash: 'dot', width: 1 }
+                });
+                // Add Centroid Marker
+                /*
+               shapes.push({
+                   type: 'circle',
+                   xref: 'x', yref: 'y',
+                   x0: meanX - 0.1, x1: meanX + 0.1,
+                   y0: meanY - 0.1, y1: meanY + 0.1,
+                   fillcolor: getClusterColor(cId),
+                   line: {width:0}
+               }); */
+            });
+
+            Plotly.newPlot('scatter-chart', scTraces, {
+                paper_bgcolor: bg, plot_bgcolor: bg, font: font,
+                margin: { t: 10, l: 40, r: 10, b: 30 },
+                xaxis: { title: 'Log(Monto)', gridcolor: grid },
+                yaxis: { title: 'Freq (Operaciones)', gridcolor: grid },
+                showlegend: false,
+                hovermode: 'closest',
+                shapes: shapes // Add the calculated zones
+            }, { responsive: true });
+
+            // 4. METRICS CHART (AIC/BIC) -> Inside Modal now
+            const aic = { x: DATA_OPTIMIZATION.map(d => d.k), y: DATA_OPTIMIZATION.map(d => d.aic), name: 'AIC', line: { color: '#3b82f6' } };
+            const bic = { x: DATA_OPTIMIZATION.map(d => d.k), y: DATA_OPTIMIZATION.map(d => d.bic), name: 'BIC', line: { color: '#10b981' } };
+            Plotly.newPlot('aic-chart', [aic, bic], {
+                paper_bgcolor: bg, plot_bgcolor: bg, font: font,
+                margin: { t: 10, l: 40, r: 10, b: 30 }, legend: { orientation: 'h' },
+                xaxis: { gridcolor: grid }, yaxis: { gridcolor: grid }
+            }, { responsive: true });
+
+            // 5. ENTROPY CHART -> Inside Modal now
+            const ents = DATA_CLUSTERS.map(d => d.Entropia || 0);
+            Plotly.newPlot('entropy-chart', [{ x: ents, type: 'histogram', marker: { color: '#f59e0b' } }], {
+                paper_bgcolor: bg, plot_bgcolor: bg, font: font,
+                margin: { t: 10, l: 30, r: 10, b: 30 }, xaxis: { title: 'Entropia' }, yaxis: { gridcolor: grid }
+            }, { responsive: true });
+        }
+
+        function getClusterColor(id) {
+            const colors = ['#3b82f6', '#10b981', '#f59e0b', '#8b5cf6', '#ef4444', '#ec4899', '#6366f1', '#14b8a6', '#f97316', '#06b6d4'];
+            return colors[id % colors.length];
+        }
+
+        // EXPORT
+        window.takeScreenshot = function () {
+            html2canvas(document.body).then(canvas => {
+                const link = document.createElement('a');
+                link.download = 'dashboard_gmm.png';
+                link.href = canvas.toDataURL();
+                link.click();
+            });
+        };
+
+        window.generatePDF = function () {
+            const { jsPDF } = window.jspdf;
+            html2canvas(document.body).then(canvas => {
+                const imgData = canvas.toDataURL('image/png');
+                const pdf = new jsPDF('l', 'mm', 'a4');
+                const w = pdf.internal.pageSize.getWidth();
+                const h = (canvas.height * w) / canvas.width;
+                pdf.addImage(imgData, 'PNG', 0, 0, w, h);
+                pdf.save("dashboard_gmm.pdf");
+            });
+        };
+    </script>
+</body>
+
+</html>

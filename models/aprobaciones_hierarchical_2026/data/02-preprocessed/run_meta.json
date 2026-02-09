@@ -1,0 +1,47 @@
+{
+  "timestamp": "2026-01-25T22:07:01.063927",
+  "run_id": null,
+  "resource_id": "ce88a753-57f5-4266-a57e-394600c8435d",
+  "total_records": 610,
+  "valid_records": 610,
+  "config_snapshot": {
+    "api": {
+      "base_url": "https://datosabiertos.bcie.org/api/3/action/datastore_search",
+      "resource_id": "ce88a753-57f5-4266-a57e-394600c8435d",
+      "limit": 32000
+    },
+    "data": {
+      "raw_path": "data/01-raw/aprobaciones_bcie.csv",
+      "processed_path": "data/02-preprocessed/aprobaciones_limpias.csv",
+      "column_renames": {
+        "ANIO_APROBACION": "Anio_Origen",
+        "MONTO_BRUTO_USD": "Monto_Aprobado",
+        "PAIS": "Pais",
+        "SECTOR_INSTITUCIONAL": "Sector_Economico"
+      },
+      "date_col": "Fecha_Aprobacion",
+      "value_col": "Monto_Aprobado",
+      "group_col": "Pais"
+    },
+    "runs": {
+      "output_root": "data/04-predictions/runs"
+    },
+    "model": {
+      "output_path": "data/04-predictions/aprobaciones_clusters.csv",
+      "algorithm": "agglomerative",
+      "features": [
+        "Monto_Aprobado",
+        "CANTIDAD_APROBACIONES"
+      ],
+      "linkage": "ward",
+      "max_k": 10,
+      "n_clusters": 4,
+      "log_transform_feature": "Monto_Aprobado",
+      "scaler": "standard",
+      "metric": "euclidean",
+      "cluster_selection_epsilon": 0.0,
+      "bootstrap_n": 20,
+      "plots_path": "data/05-plots/"
+    }
+  }
+}
