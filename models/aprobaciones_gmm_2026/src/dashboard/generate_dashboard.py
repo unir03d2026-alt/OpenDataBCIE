@@ -3,6 +3,7 @@ import logging
 from pathlib import Path
 import pandas as pd
 import numpy as np
+import os
 
 # Configure Logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -10,20 +11,11 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 def generate_dashboard():
     logging.info("Generando Dashboard GMM (Probabilistic Design)...")
     
-    # Rutas Base
-    base_dir = Path.cwd()
-    # Adjust path if running from root or src
-    if base_dir.name == 'src':
-        base_dir = base_dir.parent.parent
-    elif base_dir.name == 'dashboard':
-        base_dir = base_dir.parent.parent.parent
-        
-    # Project specific path
-    project_dir = base_dir / "models" / "aprobaciones_gmm_2026"
-    if not project_dir.exists():
-         # Maybe we are already inside the project dir?
-         if (base_dir / "src").exists():
-             project_dir = base_dir
+    # Robust Path Detection
+    current_file = Path(__file__).resolve()
+    project_dir = current_file.parent.parent.parent
+    
+    logging.info(f"Project Directory: {project_dir}")
 
     data_dir = project_dir / "data" / "04-predictions"
     src_dir = project_dir / "src" / "dashboard"
@@ -43,10 +35,14 @@ def generate_dashboard():
     output_path = src_dir / "dashboard_gmm.html"
     
     # Check existence
+    missing = False
     for name, path in files.items():
         if not path.exists():
             logging.error(f"Missing file: {path}")
-            return
+            missing = True
+    
+    if missing:
+        return
 
     # Load Data
     data = {}
@@ -64,9 +60,8 @@ def generate_dashboard():
     # Helper to safe inject JSON
     def inject(key, py_data):
         json_str = json.dumps(py_data)
-        # Try both formats
+        # Unique placeholder replacement
         res = html.replace(f'{{{{{key}}}}}', json_str)
-        res = res.replace(f'{{{{ {key} }}}}', json_str)
         return res
         
     html = inject('DATA_CLUSTERS', data['clusters'])

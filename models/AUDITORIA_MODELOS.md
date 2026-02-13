@@ -23,20 +23,20 @@ Esta auditoría evalúa el estado técnico de los 12 modelos listados en el inve
 
 ## 2. Detalle de Estado por Modelo
 
-| Modelo                              | Pipeline | Gen Script | Dashboard HTML |           Estado            |
-| :---------------------------------- | :------: | :--------: | :------------: | :-------------------------: |
-| **aprobaciones_kmeans_2026**        |    ✅    |     ✅     |       ✅       |        🟢 **ÓPTIMO**        |
-| **aprobaciones_kmedoids_2026**      |    ✅    |     ✅     |       ✅       |        🟢 **ÓPTIMO**        |
-| **aprobaciones_hdbscan_2026**       |    ✅    |     ✅     |       ✅       |        🟢 **ÓPTIMO**        |
-| **aprobaciones_hierarchical_2026**  |    ✅    |     ✅     |       ✅       |        🟢 **ÓPTIMO**        |
-| **aprobaciones_mixed_2026**         |    ✅    |     ✅     |       ✅       |        🟢 **ÓPTIMO**        |
-| **aprobaciones_TimesFM_2026**       |    ✅    |     ✅     |       ✅       |        🟢 **ÓPTIMO**        |
-| **aprobaciones_gmm_2026**           |    ✅    |     ✅     |       ✅       | 🟡 **VALIDACIÓN REQUERIDA** |
-| **aprobaciones_StatsForecast_2026** |    ✅    |     ❌     |       ⚠️       |       🟡 **PARCIAL**        |
-| **aprobaciones_prophet_2026**       |    ✅    |     ❌     |       ⚠️       |       🟡 **PARCIAL**        |
-| **aprobaciones_neu_prophet_2026**   |    ✅    |     ❌     |       ⚠️       |       🟡 **PARCIAL**        |
-| **aprobaciones_dbscan_2026**        |    ❌    |     ❌     |       ❌       |       🔴 **CRÍTICO**        |
-| **aprobaciones_eda_2026**           |   N/A    |     ❌     |       ✅       |         🔵 **EDA**          |
+| Modelo                              | Pipeline | Gen Script | Dashboard HTML |     Estado     |
+| :---------------------------------- | :------: | :--------: | :------------: | :------------: |
+| **aprobaciones_kmeans_2026**        |    ✅    |     ✅     |       ✅       | 🟢 **ÓPTIMO**  |
+| **aprobaciones_kmedoids_2026**      |    ✅    |     ✅     |       ✅       | 🟢 **ÓPTIMO**  |
+| **aprobaciones_hdbscan_2026**       |    ✅    |     ✅     |       ✅       | 🟢 **ÓPTIMO**  |
+| **aprobaciones_hierarchical_2026**  |    ✅    |     ✅     |       ✅       | 🟢 **ÓPTIMO**  |
+| **aprobaciones_mixed_2026**         |    ✅    |     ✅     |       ✅       | 🟢 **ÓPTIMO**  |
+| **aprobaciones_TimesFM_2026**       |    ✅    |     ✅     |       ✅       | 🟢 **ÓPTIMO**  |
+| **aprobaciones_gmm_2026**           |    ✅    |     ✅     |       ✅       |  � **ÓPTIMO**  |
+| **aprobaciones_StatsForecast_2026** |    ✅    |     ❌     |       ⚠️       | 🟡 **PARCIAL** |
+| **aprobaciones_prophet_2026**       |    ✅    |     ❌     |       ⚠️       | 🟡 **PARCIAL** |
+| **aprobaciones_neu_prophet_2026**   |    ✅    |     ❌     |       ⚠️       | 🟡 **PARCIAL** |
+| **aprobaciones_dbscan_2026**        |    ❌    |     ❌     |       ❌       | 🔴 **CRÍTICO** |
+| **aprobaciones_eda_2026**           |   N/A    |     ❌     |       ✅       |   🔵 **EDA**   |
 
 ---
 
@@ -45,14 +45,6 @@ Esta auditoría evalúa el estado técnico de los 12 modelos listados en el inve
 A continuación se detallan las acciones necesarias para llevar cada modelo no óptimo al estado **Finalizado (Óptimo)**.
 
 ### A. Modelos de Clustering (Prioridad Alta)
-
-#### 1. `aprobaciones_gmm_2026` (Gaussian Mixture Models)
-
-- **Estado Actual:** Tiene archivos y dashboard. Falta validación final para cierre.
-- **Ajustes Necesarios:**
-  1.  **Prueba Funcional:** Ejecutar `training_pipeline.py`.
-  2.  **Validación Dashboard:** Ejecutar `generate_dashboard.py`.
-  3.  **Cierre:** Actualizar `checklist_modelos.csv`.
 
 #### 2. `aprobaciones_dbscan_2026` (Density-Based Spatial Clustering)
 
