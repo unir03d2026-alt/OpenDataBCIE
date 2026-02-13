@@ -167,25 +167,7 @@
         [data-theme="dark"] ::-webkit-scrollbar-thumb { background: #334155; }
         [data-theme="dark"] ::-webkit-scrollbar-thumb:hover { background: #475569; }
 
-        /* FOOTER LEGAL */
-        .footer-legal { font-size: 11px; color: var(--text-light); margin-bottom: 4px; text-align: center; }
-        .footer-disclaimer { font-size: 11px; color: var(--text-light); opacity: 0.8; text-align: center; }
-        footer { 
-            margin-top: 2rem;
-            border-top: 1px solid var(--border); 
-            padding: 10px; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            background: var(--bg-card); /* Clustering visual style */
-            
-            /* FORCED VISIBILITY: Sticky at bottom */
-            position: sticky;
-            bottom: 0px;
-            width: 100%;
-            z-index: 1000;
-            flex-shrink: 0;
-        }
+        /* FOOTER REMOVED BY USER REQUEST */
 
         /* TABLE ALIGNMENT FIX */
         #temporal-comparison-table th { text-align: center !important; }
@@ -213,6 +195,7 @@
             background: var(--bg-body);
             display: flex; /* Added to support sticky footer if needed, but column flex is better */
             flex-direction: column;
+            gap: 40px;
         }
 
         /* ===================== CARDS ===================== */
@@ -702,7 +685,7 @@
                     <div class="chart-container" id="chart-sector-bee-cant"></div>
                 </div>
             </div>
-            </div>
+
 
              <!-- Findings Section -->
              <div class="card" style="margin-top: 1.5rem;">
@@ -732,6 +715,30 @@
                      <div class="chart-container" id="chart-risk-2"></div>
                 </div>
             </div>
+
+            <!-- Fila 2: Concentración por Tipo + Riesgo Sectorial -->
+            <div class="grid-container grid-2" style="margin-bottom: 20px;">
+                <div class="card">
+                     <div class="card-title" data-key="chart_risk_tipo">Concentración por Tipo de País</div>
+                     <div class="chart-container" id="chart-risk-3"></div>
+                </div>
+                <div class="card">
+                     <div class="card-title" data-key="chart_risk_sector">Riesgo por Sector Económico</div>
+                     <div class="chart-container" id="chart-risk-4"></div>
+                </div>
+            </div>
+
+            <!-- Fila 3: Heatmap + Volatilidad -->
+            <div class="grid-container grid-2" style="margin-bottom: 20px;">
+                <div class="card">
+                     <div class="card-title" data-key="chart_risk_heatmap">Concentración País × Década</div>
+                     <div class="chart-container" id="chart-risk-5" style="height: 400px;"></div>
+                </div>
+                <div class="card">
+                     <div class="card-title" data-key="chart_risk_volatility">Volatilidad por País (Coef. Variación)</div>
+                     <div class="chart-container" id="chart-risk-6"></div>
+                </div>
+            </div>
         </div>
 
         <!-- === TAB VIEW: QUALITY === -->
@@ -740,10 +747,7 @@
              <div id="quality-content"></div>
         </div>
 
-        <footer>
-            <div data-key="footer_legal" class="footer-legal">© 2026 | UNIR–BCIE | Trabajo de Colaboración Académica | Equipo 03-D | Todos los derechos reservados.</div>
-            <div data-key="footer_disclaimer" class="footer-disclaimer">Los resultados son para fines académicos y no constituyen compromiso financiero vinculante por parte del BCIE.</div>
-        </footer>
+        <!-- Footer removed -->
     </main>
 
     <!-- ===================== MODALS ===================== -->
@@ -821,10 +825,7 @@
     </div>
 
     <!-- ===================== FOOTER ===================== -->
-    <footer id="main-footer">
-        <div class="footer-legal" data-key="footer_legal">© 2026 | UNIR–BCIE | Trabajo de Colaboración Académica | Equipo 03-D | Todos los derechos reservados.</div>
-        <div class="footer-disclaimer" data-key="footer_disclaimer">Los resultados son para fines académicos y no constituyen compromiso financiero vinculante por parte del BCIE.</div>
-    </footer>
+    <!-- Footer completely removed -->
     </main>
     <!-- End of Dashboard Wrapper -->
     </div>
@@ -1342,6 +1343,7 @@
                 autosize: true,
                 margin: { t: 30, r: 20, l: 50, b: 20 }
             };
+            const layoutNoTitle = { ...layoutCommon, margin: { t: 10, r: 20, l: 50, b: 20 } };
 
             // --- TAB 1: OVERVIEW ---
             if (tabId === 'overview') {
@@ -1964,6 +1966,69 @@
                     },
                     legend: { orientation: 'h', x: 0.5, xanchor: 'center', y: 1.1 }
                 });
+
+                // Chart 3: Concentration by Type (Donut)
+                const rType = data.risk.by_type || [];
+                if(rType.length > 0) {
+                    Plotly.newPlot('chart-risk-3', [{
+                        labels: rType.map(d => d.Tipo_Pais),
+                        values: rType.map(d => d.Monto_Aprobado),
+                        type: 'pie',
+                        hole: 0.4,
+                        textinfo: 'percent+label',
+                        hoverinfo: 'label+value+percent'
+                    }], { ...layoutCommon, showlegend: false }); 
+                }
+
+                // Chart 4: Risk by Sector (Horizontal Bar)
+                const rSec = data.risk.by_sector || [];
+                if(rSec.length > 0) {
+                    Plotly.newPlot('chart-risk-4', [{
+                        y: rSec.map(d => d.Sector_Economico),
+                        x: rSec.map(d => d.Monto_Aprobado),
+                        type: 'bar',
+                        orientation: 'h',
+                        marker: { color: CONFIG.colors.primary }
+                    }], { 
+                        ...layoutCommon, 
+                        margin: {l: 150, r: 20, t: 40, b: 40},
+                        yaxis: { automargin: true }
+                    });
+                }
+
+                // Chart 5: Heatmap (Risk Context) - Reusing Temporal Data
+                const hmA = data.risk.heatmap; 
+                if(hmA) {
+                    Plotly.newPlot('chart-risk-5', [{
+                        z: hmA.z,
+                        x: hmA.x,
+                        y: translateCountries(hmA.y),
+                        type: 'heatmap',
+                        colorscale: 'Reds', // Red scale for Risk feeling
+                        xgap: 3, 
+                        ygap: 3
+                    }], { 
+                        ...layoutNoTitle,
+                        margin: { l: 160, r: 20, t: 10, b: 50 }, 
+                        xaxis: { side: 'bottom', showgrid: false },
+                        yaxis: { showgrid: false, automargin: true, tickfont: { size: 12 } }
+                    });
+                }
+
+                // Chart 6: Volatility (Bar)
+                const rVol = data.risk.volatility || [];
+                if(rVol.length > 0) {
+                    Plotly.newPlot('chart-risk-6', [{
+                        x: rVol.map(d => d.Pais),
+                        y: rVol.map(d => d.CV),
+                        type: 'bar',
+                        marker: { color: rVol.map(d => d.CV > 1.0 ? CONFIG.colors.danger : CONFIG.colors.success) }
+                    }], { 
+                        ...layoutCommon, 
+                        xaxis: { tickangle: 45, automargin: true },
+                        yaxis: { title: 'Coef. Variación (CV)' }
+                    });
+                }
             }
             
             // --- TAB 5: QUALITY ---

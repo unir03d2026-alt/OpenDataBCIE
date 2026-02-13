@@ -278,6 +278,33 @@ def generate_dashboard():
         pareto_df['Cumulative_Pct'] = (pareto_df['Monto_Aprobado'].cumsum() / pareto_df['Monto_Aprobado'].sum()) * 100
         pareto_data = pareto_df.to_dict(orient='records')
 
+        # 4.3 Concentration by Type (Pie/Donut)
+        risk_type_df = df.groupby('Tipo_Pais')['Monto_Aprobado'].sum().reset_index()
+        risk_type_data = risk_type_df.to_dict(orient='records')
+
+        # 4.4 Risk by Sector (Bar)
+        risk_sector_df = df.groupby('Sector_Economico')['Monto_Aprobado'].sum().reset_index().sort_values('Monto_Aprobado', ascending=True)
+        risk_sector_data = risk_sector_df.to_dict(orient='records')
+
+        # 4.5 Volatility (Coefficient of Variation per Country)
+        # CV = StdDev / Mean
+        volatility_data = []
+        for country in df['Pais'].unique():
+            c_data = df[df['Pais'] == country]
+            # We strictly need annual data to calculate volatility of *annual* flows
+            c_annual = c_data.groupby('Anio')['Monto_Aprobado'].sum()
+            
+            if len(c_annual) > 1:
+                std_dev = c_annual.std()
+                mean_val = c_annual.mean()
+                cv = (std_dev / mean_val) if mean_val > 0 else 0
+                volatility_data.append({'Pais': country, 'CV': cv, 'StdDev': std_dev, 'Mean': mean_val})
+            else:
+                # Single year = 0 volatility or undefined. Let's say 0 for plot
+                volatility_data.append({'Pais': country, 'CV': 0, 'StdDev': 0, 'Mean': c_annual.mean()})
+        
+        volatility_data.sort(key=lambda x: x['CV'], reverse=True) # Highest volatility first
+
         # TAB 5: DATA QUALITY
         # 5.1 Anomalies (Simple high value detection > 95th percentile)
         threshold = df['Monto_Aprobado'].quantile(0.95)
@@ -331,7 +358,11 @@ def generate_dashboard():
             },
             'risk': {
                 'raw': risk_data,
-                'pareto': pareto_data
+                'pareto': pareto_data,
+                'by_type': risk_type_data,
+                'by_sector': risk_sector_data,
+                'volatility': volatility_data,
+                'heatmap': heatmap_data # Reuse from Temporal
             },
             'quality': {
                 'scores': quality_scores,
