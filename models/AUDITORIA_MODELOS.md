@@ -14,10 +14,9 @@ Esta auditoría evalúa el estado técnico de los 12 modelos listados en el inve
 
 ### Estadísticas Globales
 
-- **🟢 ÓPTIMO (Completos):** 8 modelos (67%)
-- **🟡 PARCIAL (Pipeline OK, Dashboard Estático):** 2 modelos (17%)
-- **🔴 CRÍTICO (Vacíos/No Iniciados):** 1 modelo (8%)
-- **🔵 EDA (Reporte):** 1 modelo (8%)
+- **🟢 ÓPTIMO (Completos):** 9 modelos (82%)
+- **🟡 PARCIAL (Pipeline OK, Dashboard Estático):** 1 modelo (9%)
+- **🔴 CRÍTICO (Vacíos/No Iniciados):** 1 modelo (9%)
 
 ---
 
@@ -34,7 +33,7 @@ Esta auditoría evalúa el estado técnico de los 12 modelos listados en el inve
 | **aprobaciones_gmm_2026**           |    ✅    |     ✅     |       ✅       | 🟢 **ÓPTIMO**  |
 | **aprobaciones_prophet_2026**       |    ✅    |     ✅     |       ✅       | 🟢 **ÓPTIMO**  |
 | **aprobaciones_StatsForecast_2026** |    ✅    |     ❌     |       ⚠️       | 🟡 **PARCIAL** |
-| **aprobaciones_neu_prophet_2026**   |    ✅    |     ❌     |       ⚠️       | 🟡 **PARCIAL** |
+| **aprobaciones_neu_prophet_2026**   |    ✅    |     ✅     |       ✅       |  � **ÓPTIMO**  |
 | **aprobaciones_dbscan_2026**        |    ❌    |     ❌     |       ❌       | 🔴 **CRÍTICO** |
 | **aprobaciones_eda_2026**           |   N/A    |     ❌     |       ✅       |   🔵 **EDA**   |
 
@@ -64,12 +63,6 @@ Estos modelos tienen pipelines funcionales pero dashboards _estáticos_. No se a
 - **Ajustes Necesarios:**
   1.  **Script Generador:** Crear `generate_dashboard.py`.
   2.  **Template:** Migrar el HTML actual a un template jinja2.
-
-#### 3. `aprobaciones_neu_prophet_2026` (Neural Prophet)
-
-- **Estado Actual:** Igual que StatsForecast.
-- **Ajustes Necesarios:**
-  1.  **Estandarización:** Aplicar la misma solución de dashboard dinámico.
 
 ---
 
