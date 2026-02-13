@@ -1,0 +1,17 @@
+[
+  {
+    "cluster": 0,
+    "count": 601,
+    "monto": 92736779.78881864,
+    "aprobaciones": 4.906821963394343,
+    "monto_median": 30000000.0,
+    "aprob_median": 4.0,
+    "monto_p25": 6857000.0,
+    "monto_p75": 97033333.33,
+    "aprob_p25": 2.0,
+    "aprob_p75": 7.0,
+    "tier": "Tier A",
+    "description": "Avg Value & Avg Freq",
+    "label": "Cluster 0 (Tier A)"
+  }
+]

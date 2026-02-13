@@ -1,0 +1,32 @@
+[
+  {
+    "cluster": 0,
+    "count": 574,
+    "monto": 92777926.41522647,
+    "aprobaciones": 4.310104529616725,
+    "monto_median": 29019155.975,
+    "aprob_median": 3.0,
+    "monto_p25": 6631250.0,
+    "monto_p75": 91864371.25,
+    "aprob_p25": 2.0,
+    "aprob_p75": 6.0,
+    "tier": "Tier B",
+    "description": "Avg Value & Avg Freq",
+    "label": "Cluster 0 (Tier B)"
+  },
+  {
+    "cluster": 1,
+    "count": 5,
+    "monto": 114301644.8,
+    "aprobaciones": 22.2,
+    "monto_median": 103330434.0,
+    "aprob_median": 22.0,
+    "monto_p25": 86852100.0,
+    "monto_p75": 147449550.0,
+    "aprob_p25": 22.0,
+    "aprob_p75": 23.0,
+    "tier": "Tier A",
+    "description": "High Value & High Freq",
+    "label": "Cluster 1 (Tier A)"
+  }
+]

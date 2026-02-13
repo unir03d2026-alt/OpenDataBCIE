@@ -14,60 +14,42 @@ Esta auditoría evalúa el estado técnico de los 12 modelos listados en el inve
 
 ### Estadísticas Globales
 
-- **🟢 ÓPTIMO (Completos):** 9 modelos (82%)
-- **🟡 PARCIAL (Pipeline OK, Dashboard Estático):** 1 modelo (9%)
-- **🔴 CRÍTICO (Vacíos/No Iniciados):** 1 modelo (9%)
+- **🟢 ÓPTIMO (Completos):** 11 modelos (100%)
 
 ---
 
 ## 2. Detalle de Estado por Modelo
 
-| Modelo                              | Pipeline | Gen Script | Dashboard HTML |     Estado     |
-| :---------------------------------- | :------: | :--------: | :------------: | :------------: |
-| **aprobaciones_kmeans_2026**        |    ✅    |     ✅     |       ✅       | 🟢 **ÓPTIMO**  |
-| **aprobaciones_kmedoids_2026**      |    ✅    |     ✅     |       ✅       | 🟢 **ÓPTIMO**  |
-| **aprobaciones_hdbscan_2026**       |    ✅    |     ✅     |       ✅       | 🟢 **ÓPTIMO**  |
-| **aprobaciones_hierarchical_2026**  |    ✅    |     ✅     |       ✅       | 🟢 **ÓPTIMO**  |
-| **aprobaciones_mixed_2026**         |    ✅    |     ✅     |       ✅       | 🟢 **ÓPTIMO**  |
-| **aprobaciones_TimesFM_2026**       |    ✅    |     ✅     |       ✅       | 🟢 **ÓPTIMO**  |
-| **aprobaciones_gmm_2026**           |    ✅    |     ✅     |       ✅       | 🟢 **ÓPTIMO**  |
-| **aprobaciones_prophet_2026**       |    ✅    |     ✅     |       ✅       | 🟢 **ÓPTIMO**  |
-| **aprobaciones_StatsForecast_2026** |    ✅    |     ❌     |       ⚠️       | 🟡 **PARCIAL** |
-| **aprobaciones_neu_prophet_2026**   |    ✅    |     ✅     |       ✅       |  � **ÓPTIMO**  |
-| **aprobaciones_dbscan_2026**        |    ❌    |     ❌     |       ❌       | 🔴 **CRÍTICO** |
-| **aprobaciones_eda_2026**           |   N/A    |     ❌     |       ✅       |   🔵 **EDA**   |
+| Modelo                              | Pipeline | Gen Script | Dashboard HTML |    Estado     |
+| :---------------------------------- | :------: | :--------: | :------------: | :-----------: |
+| **aprobaciones_kmeans_2026**        |    ✅    |     ✅     |       ✅       | 🟢 **ÓPTIMO** |
+| **aprobaciones_kmedoids_2026**      |    ✅    |     ✅     |       ✅       | 🟢 **ÓPTIMO** |
+| **aprobaciones_hdbscan_2026**       |    ✅    |     ✅     |       ✅       | 🟢 **ÓPTIMO** |
+| **aprobaciones_hierarchical_2026**  |    ✅    |     ✅     |       ✅       | 🟢 **ÓPTIMO** |
+| **aprobaciones_mixed_2026**         |    ✅    |     ✅     |       ✅       | 🟢 **ÓPTIMO** |
+| **aprobaciones_TimesFM_2026**       |    ✅    |     ✅     |       ✅       | 🟢 **ÓPTIMO** |
+| **aprobaciones_gmm_2026**           |    ✅    |     ✅     |       ✅       | 🟢 **ÓPTIMO** |
+| **aprobaciones_prophet_2026**       |    ✅    |     ✅     |       ✅       | 🟢 **ÓPTIMO** |
+| **aprobaciones_StatsForecast_2026** |    ✅    |     ✅     |       ✅       | 🟢 **ÓPTIMO** |
+| **aprobaciones_neu_prophet_2026**   |    ✅    |     ✅     |       ✅       | 🟢 **ÓPTIMO** |
+| **aprobaciones_dbscan_2026**        |    ✅    |     ✅     |       ✅       | � **ÓPTIMO**  |
+| **aprobaciones_eda_2026**           |   N/A    |     ❌     |       ✅       |  🔵 **EDA**   |
 
 ---
 
-## 3. Plan de Ajustes y Acciones Requeridas
+## 3. Notas Técnicas
 
-A continuación se detallan las acciones necesarias para llevar cada modelo no óptimo al estado **Finalizado (Óptimo)**.
+### DBSCAN (`aprobaciones_dbscan_2026`)
 
-### A. Modelos de Clustering (Prioridad Alta)
-
-#### 1. `aprobaciones_dbscan_2026` (Density-Based Spatial Clustering)
-
-- **Estado Actual:** Carpeta vacía.
-- **Ajustes Necesarios:**
-  1.  **Estructura:** Clonar la estructura de `aprobaciones_kmedoids_2026`.
-  2.  **Pipeline:** Implementar `sklearn.cluster.DBSCAN`.
-  3.  **Dashboard:** Adaptar `dashboard_template.html`.
-
-### B. Series de Tiempo (Prioridad Media)
-
-Estos modelos tienen pipelines funcionales pero dashboards _estáticos_. No se actualizan automáticamente al re-entrenar.
-
-#### 2. `aprobaciones_StatsForecast_2026`
-
-- **Estado Actual:** Dashboard HTML "hardcodeado" o generado externamente.
-- **Ajustes Necesarios:**
-  1.  **Script Generador:** Crear `generate_dashboard.py`.
-  2.  **Template:** Migrar el HTML actual a un template jinja2.
+- **Algoritmo:** `sklearn.cluster.DBSCAN` (Density-Based Spatial Clustering of Applications with Noise)
+- **Parámetros:** eps=0.3, min_samples=5, metric=euclidean
+- **Resultados:** 2 clusters, Silhouette=0.59, Davies-Bouldin=0.34, Ruido=5.1%
+- **Estructura:** Clonada de `aprobaciones_hdbscan_2026`, adaptada a DBSCAN.
+- **Pipeline:** ETL → Training → Dashboard (orquestado por `entrypoint/main.py`).
 
 ---
 
 ## 4. Hoja de Ruta Sugerida
 
-1.  **Fase 1 (Inmediata):** Crear DBSCAN (Único pendiente de Clustering).
-2.  **Fase 2 (Estandarización):** Modernizar dashboards de Series de Tiempo (StatsForecast y Neural Prophet).
-3.  **Fase 3 (Innovación):** Validar inferencia real de TimesFM y profundizar en EDA.
+1.  **Fase 1 (Completada):** ✅ Todos los modelos de Clustering y Forecasting operativos.
+2.  **Fase 2 (Innovación):** Validar inferencia real de TimesFM y profundizar en EDA.
