@@ -1,0 +1,9 @@
+{
+  "run_id": "run_20260213_171431",
+  "n_clusters": 2,
+  "noise_pct": 5.081967213114754,
+  "largest_cluster_pct": 94.09836065573771,
+  "silhouette_valid": 0.5907856478923194,
+  "davies_bouldin_valid": 0.34017608557187196,
+  "calinski_harabasz_valid": 48.0827677857402
+}
