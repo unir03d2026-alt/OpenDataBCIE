@@ -1,18 +1,19 @@
-# METRICS REQUIREMENT: K-MEDOIDS (PAM)
+# METRICS REQUIREMENT: K-MEANS
 
 ## A) CORE METRICS (Comparison Standard)
 
-- [ ] **Silhouette Score** (↑)
-- [ ] **Davies–Bouldin Index (DBI)** (↓)
-- [ ] **Calinski–Harabasz (CH)** (↑)
+- [x] **Silhouette Score** (↑)
+- [x] **Davies–Bouldin Index (DBI)** (↓)
+- [x] **Calinski–Harabasz (CH)** (↑)
 - [ ] Cluster Sizes: % per cluster + CV Sizes (↓)
-- [ ] **Stability**: Avg ARI (20 seeds) (↑)
+- [x] **Stability**: Avg ARI (20 seeds) (↑)
 - [ ] Training Time (↓)
 
 ## B) MODEL SPECIFIC EXTRAS
 
-- [ ] **Total Cost** (Sum of dissimilarities) (↓)
+- [x] **Inertia / SSE** (↓)
+- [x] **Iterations** (↓)
 
 ## C) DASHBOARD INTEGRATION
 
-- [ ] Display in "Metrics" Modal
+- [x] Display in "Metrics" Modal

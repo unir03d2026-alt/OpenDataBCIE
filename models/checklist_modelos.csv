@@ -1,6 +1,6 @@
 Modelo,No Iniciado,En Proceso,Finalizado
-aprobaciones_gmm_2026,X,,
-aprobaciones_kmedoids_2026,X,,
+aprobaciones_gmm_2026,,X,
+aprobaciones_kmedoids_2026,,,X
 aprobaciones_dbscan_2026,,X,
 aprobaciones_StatsForecast_2026,,,X
 aprobaciones_TimesFM_2026,,,X
