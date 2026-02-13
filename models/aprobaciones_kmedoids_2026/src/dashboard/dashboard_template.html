@@ -1440,7 +1440,7 @@
         try {
             const canvas = await html2canvas(document.body, {useCORS: true});
             const link = document.createElement('a');
-            link.download = `Snapshot_KMeans_${new Date().toISOString().slice(0,19)}.png`;
+            link.download = `Snapshot_KMedoids_${new Date().toISOString().slice(0,19)}.png`;
             link.href = canvas.toDataURL('image/png');
             link.click();
         } catch(e) { console.error(e); alert('Error'); }
@@ -1464,7 +1464,7 @@
             const ratio = Math.min(pdfWidth / imgWidth, pdfHeight / imgHeight);
             
             pdf.addImage(imgData, 'PNG', 0, 0, imgWidth * ratio, imgHeight * ratio);
-            pdf.save('Report_KMeans.pdf');
+            pdf.save('Report_KMedoids.pdf');
         } catch(e) { console.error(e); alert('Error PDF'); }
         btn.innerText = orig;
     }
