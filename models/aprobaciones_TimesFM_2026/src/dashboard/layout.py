@@ -45,7 +45,7 @@ def get_dashboard_html(df_unico):
         <nav class="top-nav">
             <div class="header-title">
                 <h1 id="lbl-title">Análisis de Proyección de Aprobaciones de Datos Abiertos del BCIE</h1>
-                <div class="subtitle" id="lbl-subtitle">Modelo de Inteligencia Artificial (Prophet) • Escenarios 2026-2030</div>
+                <div class="subtitle" id="lbl-subtitle">Modelo de Inteligencia Artificial (TimesFM) • Escenarios 2026-2030</div>
             </div>
             <div class="nav-controls">
                 <div class="update-badge" id="lbl-update">Datos Actualizados: {fecha_actualizacion}</div>
