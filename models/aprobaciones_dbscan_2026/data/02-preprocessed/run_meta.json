@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-02-13T17:22:45.851769",
-  "run_id": "run_20260213_172243",
+  "timestamp": "2026-02-13T19:11:59.098235",
+  "run_id": "run_20260213_191156",
   "resource_id": "ce88a753-57f5-4266-a57e-394600c8435d",
   "total_records": 610,
   "valid_records": 610,
@@ -35,8 +35,8 @@
       ],
       "log_transform_feature": "Monto_Aprobado",
       "scaler": "standard",
-      "eps": 0.3,
-      "min_samples": 5,
+      "eps": 0.25,
+      "min_samples": 10,
       "metric": "euclidean",
       "bootstrap_n": 20,
       "plots_path": "data/05-plots/"

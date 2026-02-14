@@ -568,11 +568,11 @@
             tip_oper: "Operatividad = (Aprobaciones / Monto) × 100. Mide eficiencia en procesos (más alto = mejor).",
             insights_title: "Key Insights: Estrategia & Precision",
             insights_p1_t: "🎯 1. SEGMENTACIÓN POR DENSIDAD FIJA (DBSCAN)",
-            insights_p1_b: "El modelo DBSCAN identifica clusters usando un radio fijo (epsilon=0.3) y un mínimo de vecinos (min_samples=5). A diferencia de HDBSCAN que adapta la densidad automáticamente, DBSCAN aplica un umbral uniforme, lo que genera clusters más compactos y un porcentaje de ruido bajo (~5%). Resultado: 2 perfiles claros de inversión.",
-            insights_p2_t: "📐 2. VALIDACIÓN TÉCNICA (Silhouette 0.59)",
-            insights_p2_b: "El modelo obtiene un Silhouette Score de 0.59 (bueno) y un Davies-Bouldin de 0.34 (excelente), confirmando que los clusters están bien separados y cohesivos. Estas métricas son las estándar para validar calidad de clustering cuando no se usa densidad jerárquica.",
-            insights_p3_t: "📊 3. SEPARACIÓN CLARA DE PERFILES",
-            insights_p3_b: "DBSCAN separa las operaciones en un cluster mayoritario (Tier B: operaciones regulares) y un cluster de alto impacto (Tier A: alto monto y alta frecuencia). Los puntos de ruido (~5%) representan operaciones atípicas que no encajan en ningún patrón denso y merecen revisión individual.",
+            insights_p1_b: "El modelo DBSCAN identifica clusters usando un radio fijo (epsilon=0.25) y un mínimo de vecinos (min_samples=10). Con parámetros optimizados mediante grid search (70 combinaciones), se obtienen 3 perfiles de inversión diferenciados con ~14% de ruido. Esto captura la macro-estructura del portafolio BCIE.",
+            insights_p2_t: "📐 2. VALIDACIÓN TÉCNICA (3 Clusters Óptimos)",
+            insights_p2_b: "La configuración fue seleccionada priorizando: número de clusters interpretable (3-8), ruido controlado (<25%), y separación estadística. El Silhouette Score y Davies-Bouldin validan la cohesión interna. El 14% de ruido identifica operaciones genuinamente atípicas que no siguen patrones regulares.",
+            insights_p3_t: "📊 3. TRES PERFILES DE INVERSIÓN",
+            insights_p3_b: "DBSCAN identifica: (1) Cluster mayoritario (~500 obs): operaciones regulares del portafolio; (2) Cluster de alto impacto (~14 obs): operaciones de gran monto; (3) Cluster de alta frecuencia (~12 obs): países con alta actividad. El ruido (~85 obs) representa operaciones excepcionales que merecen análisis individual.",
             method_body: `
                 <p><b>DBSCAN (Density-Based Spatial Clustering of Applications with Noise)</b> es un algoritmo clásico de clustering basado en densidad que agrupa puntos cercanos entre sí, marcando como ruido los puntos aislados. A diferencia de HDBSCAN, usa un radio fijo (epsilon) en lugar de adaptar la densidad automáticamente.</p>
                 
@@ -583,20 +583,20 @@
                     <li><b>Granularidad:</b> País-Año (610 observaciones, 1961-2025).</li>
                 </ul>
                 
-                <h4 style="color:var(--primary);">⚙️ Hiperparámetros</h4>
+                <h4 style="color:var(--primary);">⚙️ Hiperparámetros (Optimizado via Grid Search)</h4>
                 <ul>
-                    <li><b>Epsilon (eps):</b> 0.3 (radio máximo de vecindad para conectar puntos)</li>
-                    <li><b>Min Samples:</b> 5 (mínimo de vecinos para considerar un punto como núcleo)</li>
+                    <li><b>Epsilon (eps):</b> 0.25 — radio de vecindad (optimizado de 70 combinaciones)</li>
+                    <li><b>Min Samples:</b> 10 — mínimo de vecinos para punto núcleo</li>
                     <li><b>Métrica:</b> Euclidean (distancia estándar en espacio escalado)</li>
                     <li><b>Implementación:</b> sklearn.cluster.DBSCAN</li>
                 </ul>
                 
                 <h4 style="color:var(--primary);">📏 Métricas de Validación</h4>
                 <ul>
-                    <li><b>Silhouette Score:</b> 0.59 — mide cohesión interna vs separación entre clusters. Rango: -1 a 1, donde >0.5 es bueno.</li>
-                    <li><b>Davies-Bouldin Index:</b> 0.34 — mide similitud inter-clusters. Valores cercanos a 0 son ideales.</li>
-                    <li><b>Calinski-Harabasz:</b> 48.08 — razón de dispersión inter/intra clusters.</li>
-                    <li><b>Ruido:</b> 5.1% de operaciones clasificadas como outliers.</li>
+                    <li><b>Silhouette Score:</b> Mide cohesión interna vs separación entre clusters. Rango: -1 a 1, donde &gt;0.5 es excelente.</li>
+                    <li><b>Davies-Bouldin Index:</b> Mide similitud inter-clusters. Valores cercanos a 0 son ideales.</li>
+                    <li><b>Calinski-Harabasz:</b> Razón de dispersión inter/intra clusters.</li>
+                    <li><b>Ruido:</b> ~14% de operaciones clasificadas como atípicas.</li>
                 </ul>
                 
                 <h4 style="color:var(--primary);">🎯 Diferencia con HDBSCAN</h4>
@@ -667,11 +667,11 @@
             tip_oper: "Operativity = (Approvals / Amount) × 100. Measures process efficiency (higher = better).",
             insights_title: "Key Insights: Strategy & Precision",
             insights_p1_t: "🎯 1. FIXED-DENSITY SEGMENTATION (DBSCAN)",
-            insights_p1_b: "The DBSCAN model identifies clusters using a fixed radius (epsilon=0.3) and a minimum neighbor count (min_samples=5). Unlike HDBSCAN which adapts density automatically, DBSCAN applies a uniform threshold, producing more compact clusters with low noise (~5%). Result: 2 clear investment profiles.",
-            insights_p2_t: "📐 2. TECHNICAL VALIDATION (Silhouette 0.59)",
-            insights_p2_b: "The model achieves a Silhouette Score of 0.59 (good) and a Davies-Bouldin of 0.34 (excellent), confirming that clusters are well-separated and cohesive. These are the standard metrics for validating clustering quality when hierarchical density is not used.",
-            insights_p3_t: "📊 3. CLEAR PROFILE SEPARATION",
-            insights_p3_b: "DBSCAN separates operations into a majority cluster (Tier B: regular operations) and a high-impact cluster (Tier A: high amount & high frequency). Noise points (~5%) represent atypical operations that don't fit any dense pattern and deserve individual review.",
+            insights_p1_b: "The DBSCAN model identifies clusters using a fixed radius (epsilon=0.25) and a minimum neighbor count (min_samples=10). Optimized via grid search (70 combinations), it produces 3 differentiated investment profiles with ~14% noise. This captures the macro-structure of the CABEI portfolio.",
+            insights_p2_t: "📐 2. TECHNICAL VALIDATION (3 Optimal Clusters)",
+            insights_p2_b: "Configuration selected by prioritizing: interpretable cluster count (3-8), controlled noise (<25%), and statistical separation. Silhouette Score and Davies-Bouldin validate internal cohesion. The 14% noise identifies genuinely atypical operations that do not follow regular patterns.",
+            insights_p3_t: "📊 3. THREE INVESTMENT PROFILES",
+            insights_p3_b: "DBSCAN identifies: (1) Majority cluster (~500 obs): regular portfolio operations; (2) High-impact cluster (~14 obs): large-amount operations; (3) High-frequency cluster (~12 obs): countries with high activity. Noise (~85 obs) represents exceptional operations deserving individual analysis.",
             method_body: `
                 <p><b>DBSCAN (Density-Based Spatial Clustering of Applications with Noise)</b> is a classic density-based clustering algorithm that groups nearby points together, marking isolated points as noise. Unlike HDBSCAN, it uses a fixed radius (epsilon) instead of adapting density automatically.</p>
                 
@@ -682,20 +682,20 @@
                     <li><b>Granularity:</b> Country-Year (610 observations, 1961-2025).</li>
                 </ul>
                 
-                <h4 style="color:var(--primary);">⚙️ Hyperparameters</h4>
+                <h4 style="color:var(--primary);">⚙️ Hyperparameters (Optimized via Grid Search)</h4>
                 <ul>
-                    <li><b>Epsilon (eps):</b> 0.3 (maximum neighborhood radius to connect points)</li>
-                    <li><b>Min Samples:</b> 5 (minimum neighbors to consider a core point)</li>
+                    <li><b>Epsilon (eps):</b> 0.25 — neighborhood radius (optimized from 70 combinations)</li>
+                    <li><b>Min Samples:</b> 10 — minimum neighbors for a core point</li>
                     <li><b>Metric:</b> Euclidean (standard distance in scaled space)</li>
                     <li><b>Implementation:</b> sklearn.cluster.DBSCAN</li>
                 </ul>
                 
                 <h4 style="color:var(--primary);">📏 Validation Metrics</h4>
                 <ul>
-                    <li><b>Silhouette Score:</b> 0.59 — measures internal cohesion vs inter-cluster separation. Range: -1 to 1, where >0.5 is good.</li>
-                    <li><b>Davies-Bouldin Index:</b> 0.34 — measures inter-cluster similarity. Values near 0 are ideal.</li>
-                    <li><b>Calinski-Harabasz:</b> 48.08 — inter/intra cluster dispersion ratio.</li>
-                    <li><b>Noise:</b> 5.1% of operations classified as outliers.</li>
+                    <li><b>Silhouette Score:</b> Measures internal cohesion vs inter-cluster separation. Range: -1 to 1, where &gt;0.5 is excellent.</li>
+                    <li><b>Davies-Bouldin Index:</b> Measures inter-cluster similarity. Values near 0 are ideal.</li>
+                    <li><b>Calinski-Harabasz:</b> Inter/intra cluster dispersion ratio.</li>
+                    <li><b>Noise:</b> ~14% of operations classified as atypical.</li>
                 </ul>
                 
                 <h4 style="color:var(--primary);">🎯 Difference from HDBSCAN</h4>

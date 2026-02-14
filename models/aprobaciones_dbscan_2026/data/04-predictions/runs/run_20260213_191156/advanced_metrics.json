@@ -1,0 +1,27 @@
+{
+  "run_id": "run_20260213_191156",
+  "n_clusters": 3,
+  "noise_pct": 13.934426229508196,
+  "largest_cluster_pct": 81.8032786885246,
+  "silhouette_valid": 0.2190617377790678,
+  "davies_bouldin_valid": 0.5649947188545719,
+  "calinski_harabasz_valid": 54.40394264687594,
+  "runtime_seconds": 0.041947364807128906,
+  "features": [
+    "Monto_Aprobado",
+    "CANTIDAD_APROBACIONES"
+  ],
+  "log_transform_feature": "Monto_Aprobado",
+  "scaler": "standard",
+  "params": {
+    "eps": 0.25,
+    "min_samples": 10,
+    "metric": "euclidean"
+  },
+  "versions": {
+    "python": "3.13.12",
+    "sklearn": "1.7.1",
+    "pandas": "2.3.1",
+    "numpy": "1.26.4"
+  }
+}
