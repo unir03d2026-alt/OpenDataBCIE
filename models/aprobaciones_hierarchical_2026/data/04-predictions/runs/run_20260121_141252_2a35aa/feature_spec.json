@@ -1,7 +1,0 @@
-{
-  "features": [
-    "Monto_Aprobado",
-    "CANTIDAD_APROBACIONES"
-  ],
-  "log_transform_feature": "Monto_Aprobado"
-}

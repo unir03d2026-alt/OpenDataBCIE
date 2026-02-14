@@ -168,30 +168,30 @@ Esta auditoría evalúa el estado técnico de **14 directorios** de modelos enco
 
 ## 5. Directorios Legacy (No Operativos)
 
-| Directorio             | Contenido                                      | Recomendación                                                    |
-| :--------------------- | :--------------------------------------------- | :--------------------------------------------------------------- |
-| `aprobaciones_prophet` | Notebooks Jupyter originales (.ipynb) + README | Archivar o eliminar (sustituido por `aprobaciones_prophet_2026`) |
-| `aprobaciones_xgboost` | Notebooks Jupyter originales (.ipynb)          | Archivar o eliminar (modelo experimental no operacionalizado)    |
+| Directorio             | Contenido         | Estado                           |
+| :--------------------- | :---------------- | :------------------------------- |
+| `aprobaciones_prophet` | Notebooks Jupyter | 🗑️ **ELIMINADO** (Limpieza repo) |
+| `aprobaciones_xgboost` | Notebooks Jupyter | 🗑️ **ELIMINADO** (Limpieza repo) |
 
 ---
 
-## 6. Notas de Ajuste Pendientes
+## 6. Notas de Ajuste (Completadas)
 
-### 🔶 Prioridad Media
+### ✅ Acciones Realizadas
 
-1. **Hierarchical — Run HDBSCAN residual:**  
-   El directorio `aprobaciones_hierarchical_2026/data/04-predictions/runs/run_20260121_151227_05f783/` contiene archivos clonados de HDBSCAN (metrics con 14 clusters, min_cluster_size). Esto no afecta la funcionalidad (las métricas reales están en la raíz de `04-predictions/`), pero genera confusión. **Acción:** Eliminar la carpeta `runs/` residual.
+1. **Hierarchical — Limpieza de residuos:**  
+   Se eliminó la carpeta residual `aprobaciones_hierarchical_2026/data/04-predictions/runs/` que contenía artefactos clonados de HDBSCAN. El modelo ahora referencía únicamente sus métricas correctas en la raíz.
 
-2. **Forecasting — Gen Script diferente:**  
-   Los 4 modelos de forecasting no usan `generate_dashboard.py` sino un módulo Plotly Dash (`assets.py`, `config.py`, `layout.py`, `logic.py`). Esto es correcto por diseño (dashboards interactivos vs estáticos), pero la auditoría anterior los marcaba con ❌ en "Gen Script". **Acción:** Ya corregido en esta auditoría.
+2. **Legacy — Eliminación de código muerto:**  
+   Se eliminaron los directorios `aprobaciones_prophet` y `aprobaciones_xgboost` (notebooks experimentales sin pipeline) para mantener la higiene del repositorio.
 
-### 🔵 Prioridad Baja
+3. **Forecasting — Validación de estructura:**  
+   Confirmado que el uso de módulos `dashboard/` en lugar de scripts únicos es el diseño correcto para Plotly Dash.
 
-3. **Legacy — Notebooks sin operacionalizar:**  
-   `aprobaciones_prophet` y `aprobaciones_xgboost` son notebooks originales pre-refactor. No tienen pipeline, config, ni dashboard generado. **Acción:** Mover a carpeta `legacy/` o eliminar para mantener el repositorio limpio.
+### 🔵 Observaciones
 
 4. **EDA — Sin métricas JSON:**  
-   `aprobaciones_eda_2026` no produce `metrics.json` porque es un modelo exploratorio. Esto es correcto por naturaleza. **Acción:** Ninguna requerida.
+   `aprobaciones_eda_2026` no produce `metrics.json` por diseño. **Acción:** Ninguna requerida.
 
 ---
 
