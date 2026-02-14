@@ -1,7 +1,6 @@
 # Auditoría Técnica de Modelos - Laboratorio de Machine Learning BCIE
 
 **Fecha:** 13 de Febrero, 2026 — 19:20 CST  
-**Responsable:** Agente Antigravity  
 **Estado:** ✅ Revisión Exhaustiva Verificada (Todos los componentes auditados)
 
 ---
