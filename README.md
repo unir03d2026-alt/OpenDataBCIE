@@ -89,3 +89,38 @@ Para un desglose técnico profundo, metodologías de optimización detalladas y 
 ---
 
 _Proyecto desarrollado como parte del Laboratorio de Inteligencia Artificial Aplicada._
+
+---
+
+## 👥 Autores y Contacto
+
+Este proyecto es desarrollado y mantenido por:
+
+### **1. Norman Reynaldo Sabillon Castro**
+
+_Scientist Data & Power BI Developer | Tegucigalpa, Honduras_
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/norman-reynaldo-sabillon-castro)
+[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:sabillonrey2004@gmail.com)
+[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/NORSAB)
+[![Portfolio](https://img.shields.io/badge/Portfolio-NovyPro-5C2D91?style=for-the-badge&logo=powerbi&logoColor=white)](https://www.novypro.com/profile_projects/normansabillon)
+
+---
+
+### **2. [Nombre del Autor 2]**
+
+_[Rol / Título]_  
+_(Por definir)_
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/usuario-autor-2)
+[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:correo-autor-2@ejemplo.com)
+
+---
+
+### **3. [Nombre del Autor 3]**
+
+_[Rol / Título]_  
+_(Por definir)_
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/usuario-autor-3)
+[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:correo-autor-3@ejemplo.com)
