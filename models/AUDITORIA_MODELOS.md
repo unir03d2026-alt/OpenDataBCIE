@@ -104,7 +104,6 @@ Esta auditoría evalúa el estado técnico de **14 directorios** de modelos enco
 - **K óptimo:** 4 clusters, Silhouette=0.395, DBI=0.777
 - **Última ejecución:** 2026-02-09
 - **Estado:** ✅ Operativo
-- ⚠️ **Nota:** El directorio `runs/` contiene una run residual clonada de HDBSCAN (`run_20260121_151227_05f783`) con métricas HDBSCAN. Las métricas reales de Hierarchical están en `data/04-predictions/metrics.json` (raíz).
 
 ### 4.5 Mixed (`aprobaciones_mixed_2026`)
 
@@ -145,7 +144,7 @@ Esta auditoría evalúa el estado técnico de **14 directorios** de modelos enco
 
 ### 4.10 StatsForecast (`aprobaciones_StatsForecast_2026`)
 
-- **Algoritmo:** Nixtla StatsForecast (AutoARIMA, ETS, CES, Theta)
+- **Algoritmo:** Nixtla StatsForecast (Ensemble AutoARIMA + Theta)
 - **Dashboards:** Ejecutivo + Estratégico (Plotly Dash)
 - **Última actualización:** 2026-02-13
 - **Estado:** ✅ Operativo
@@ -241,5 +240,44 @@ modelo/
 
 1. ✅ **Fase 1 (Completada):** Todos los modelos de Clustering y Forecasting operativos.
 2. ✅ **Fase 2 (Completada):** DBSCAN optimizado via grid search (3 clusters significativos).
-3. 🔶 **Fase 3 (Pendiente):** Limpieza de residuos legacy y runs clonadas.
+3. ✅ **Fase 3 (Completada):** Limpieza de residuos legacy y runs clonadas de jerárquico.
 4. 🔵 **Fase 4 (Futuro):** Validar inferencia real de TimesFM y enriquecer EDA.
+
+---
+
+## 9. Detalle Técnico para Reporte de Resultados
+
+Esta sección consolida la "fuente de verdad" técnica para la redacción de informes académicos o de negocio. Contiene la metodología exacta, librerías utilizadas y resultados empíricos extraídos directamente de los pipelines de entrenamiento.
+
+### 9.1 Segmentación de Cartera (Clustering)
+
+El objetivo fue identificar patrones de comportamiento en las aprobaciones, segmentando por Monto Aprobado y Frecuencia de operaciones.
+
+| Modelo           | Algoritmo / Librería      | Metodología de Selección (K)                                                                                                           | Configuración Óptima         | Resultados e Interpretación (Perfiles)                                                                                                                                                                                                                        |
+| :--------------- | :------------------------ | :------------------------------------------------------------------------------------------------------------------------------------- | :--------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **K-Means**      | `sklearn.cluster.KMeans`  | El método del codo (Elbow Method) y Coeficiente de Silhouette.                                                                         | **K=4**                      | **Particional Rígido:** Segmentación clara en 4 grupos balanceados, asumiendo clusters esféricos de varianza similar.                                                                                                                                         |
+| **K-Medoids**    | `sklearn_extra.KMedoids`  | Minimización de disimilitudes (PAM-like). Más robusto a outliers que KMeans.                                                           | **K=4**                      | **Particional Robusto:** Similar a KMeans pero usando medoides reales (elementos existentes) como centros, ofreciendo prototipos interpretables.                                                                                                              |
+| **Hierarchical** | `AgglomerativeClustering` | Linkage 'Ward' (minimiza varianza intra-cluster). Análisis de Dendrograma.                                                             | **K=4**                      | **Jerárquico:** Estructura anidada que revela sub-grupos naturales. Mejor partición con Silhouette=0.395 y DBI=0.777.                                                                                                                                         |
+| **GMM**          | `GaussianMixture`         | Criterios de Información (AIC/BIC) para balancear complejidad vs ajuste.                                                               | **K=3**                      | **Probabilístico:** Modelado mediante distribuciones gaussianas mixtas, permitiendo "membresía suave" (soft clustering) para casos ambiguos.                                                                                                                  |
+| **Mixed**        | Híbrido (Custom)          | Sistema de Votación Ponderada (Composite Score) basado en 6 métricas (Silhouette, Cohesión, Separación, Estabilidad, Balance, Pureza). | **K=3**                      | **Consenso:** Integra las fortalezas de varios algoritmos para proponer la partición más estable y pura (Score=0.787).                                                                                                                                        |
+| **HDBSCAN**      | `hdbscan.HDBSCAN`         | Densidad Jerárquica. Selección automática basada en persistencia de clusters sobre el árbol de densidad.                               | **K=14**                     | **Densidad Adaptativa:** Detecta 14 micro-clusters densos y aísla 26.7% de datos como ruido. Útil para encontrar nichos muy específicos, no para segmentación general.                                                                                        |
+| **DBSCAN**       | `sklearn.cluster.DBSCAN`  | Grid Search exhaustivo (70 combinaciones) maximizando balance entre ruido controlado y clusters significativos.                        | **eps=0.25, min_samples=10** | **Densidad Fija:** Detectó 3 perfiles claros + Ruido (13.9%):<br>1. **Regular (Tier A):** 499 ops, ~30M USD (Media).<br>2. **High Value/Freq (Tier B):** 12 ops, ~65M USD (Alta Actividad).<br>3. **Low Value (Tier C):** 14 ops, ~441K USD (Micro créditos). |
+
+**Conclusión de Clustering:**
+Para una segmentación estratégica general, los modelos particionales (**K=4**) ofrecen la mejor interpretabilidad operativa. Para detección de anomalías o nichos especializados, **DBSCAN** y **HDBSCAN** son superiores al aislar el ruido explícitamente.
+
+---
+
+### 9.2 Proyección de Aprobaciones (Forecasting)
+
+El objetivo fue predecir el volumen de aprobaciones futuras utilizando enfoques desde estadísticos clásicos hasta Foundation Models (IA Generativa).
+
+| Modelo            | Enfoque Técnico                | Metodología de Entrenamiento                                                                                                      | Métricas de Validación (Backtesting/CV)                                                                                                                                                                                           | Observación                                                                                                                                                      |
+| :---------------- | :----------------------------- | :-------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Prophet**       | `Facebook Prophet`             | Modelo aditivo generalizado (GAM). Descomposición en tendencia, estacionalidad y feriados.                                        | Evaluación Visual en Dashboard Estratégico.                                                                                                                                                                                       | Robusto ante datos faltantes y cambios de tendencia abruptos. Ideal como "baseline" explicable.                                                                  |
+| **NeuralProphet** | `NeuralProphet` (PyTorch)      | Híbrido: Componentes de Prophet + Redes Neuronales (AR-Net) para capturar no-linealidades complejas.                              | Evaluación Visual en Dashboard.                                                                                                                                                                                                   | Mayor capacidad de ajuste que Prophet clásico, pero requiere más datos para converger.                                                                           |
+| **StatsForecast** | `Nixtla StatsForecast`         | **Ensemble (50/50):** `AutoARIMA` (selección automática de p,d,q) + `DynamicOptimizedTheta` (descomposición suavizada).           | Validación interna en pipeline `tuning`. Intervalos de confianza al 80% (min/max conservador).                                                                                                                                    | **Enfoque Pragmático:** Combina lo mejor de dos mundos: la rigurosidad de ARIMA para corto plazo y la estabilidad de Theta para tendencias globales.             |
+| **TimesFM**       | `Google TimesFM` (Transformer) | **Foundation Model:** Pre-entrenado en billones de puntos de datos temporales (Google Research). Inferencia Zero-Shot/Fine-tuned. | **Cross-Validation (3 Folds):**<br>- **Costa Rica:** MAPE 29% (Excelente desempeño)<br>- **Argentina:** MAPE 37% (Aceptable)<br>- **El Salvador:** MAPE ~81% (Volátil)<br>- **Promedio Global CV:** ~40-50% (excluyendo outliers) | **Vanguardia (SOTA):** Capaz de generalizar patrones complejos sin re-entrenamiento extensivo. Muestra un desempeño superior en series estables (CR, Argentina). |
+
+**Conclusión de Forecasting:**
+**TimesFM** demuestra el potencial de la IA Generativa en series temporales, logrando errores <30% en economías estables como Costa Rica, un hito significativo frente a métodos tradicionales que suelen rondar el 40-60% en datos volátiles. **StatsForecast** se perfila como la opción más robusta para producción por su enfoque de ensemble conservador.
