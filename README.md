@@ -107,13 +107,12 @@ _Scientist Data & Power BI Developer | Tegucigalpa, Honduras_
 
 ---
 
-### **2. [Nombre del Autor 2]**
+### **2. Willson Rodolfo Aguilar Revolorio**
 
-_[Rol / Título]_  
-_(Por definir)_
+_Data Scientist & Analyst / Ciudad Guatemala, Guatemala_  
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/usuario-autor-2)
-[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:correo-autor-2@ejemplo.com)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/willson-rodolfo-aguilar-revolorio-ba265b22b)
+[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:willsonaguilarevoloriosr2@gmail.com)
 
 ---
 
