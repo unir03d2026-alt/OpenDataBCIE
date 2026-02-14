@@ -51,7 +51,7 @@
     /* LAYOUT */
     .dashboard-container { margin-top: 85px; padding: 10px 25px; max-width: 98%; margin-left: auto; margin-right: auto; display: flex; flex-direction: column; gap: 12px; }
     
-    .insight-cards-container { display: grid; grid-template-columns: repeat(8, 1fr); gap: 10px; margin-bottom: 10px; }
+    .insight-cards-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin-bottom: 10px; }
     .insight-card { background: var(--bg-card); border: 1px solid var(--border); border-left: 4px solid var(--primary); border-radius: 8px; padding: 10px 12px; display: flex; flex-direction: column; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); min-height: 90px; transition: 0.2s; }
     .insight-card:hover { transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
     .insight-card-title { font-size: 11px; font-weight: 800; color: var(--text-light); text-transform: uppercase; margin-bottom: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
