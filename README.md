@@ -1,140 +1,91 @@
 # Laboratorio de Machine Learning: Datos Abiertos del BCIE
 
 [![Portal de Datos Abiertos del BCIE](https://img.shields.io/badge/Portal%20BCIE-Datos%20Abiertos-105682)](https://datosabiertos.bcie.org/)
+[![Estado](https://img.shields.io/badge/Auditor%C3%ADa-Completada-success)](models/AUDITORIA_MODELOS.md)
+[![Modelos](https://img.shields.io/badge/Modelos%20Activos-12-blue)](models/)
 
-Repositorio dedicado a experimentos, notebooks y pipelines de Machine Learning
-basados en datos abiertos del Banco Centroamericano de Integración Económica (BCIE).
-
-El objetivo es mostrar, de forma reproducible, cómo transformar los conjuntos de datos
-publicados por el BCIE en casos de uso analíticos y modelos predictivos aplicables a
-aprobaciones, impacto, adquisiciones y transparencia.
-
-## 1. Áreas de datos abiertos utilizadas
-
-Los ejemplos y notebooks de este repositorio se apoyan en las áreas de conocimiento
-habilitadas en el portal de datos abiertos del BCIE:
-
-### 1.1 Aprobaciones y desembolsos
-
-Incluye información histórica sobre aprobaciones y desembolsos de operaciones
-financiadas por el BCIE (por ejemplo, préstamos y productos de cooperación),
-segmentados por país, sector, tipo de socio y otros atributos clave.
-
-**Ideas de modelos:**
-
-- Pronóstico multi-paso de aprobaciones y desembolsos.
-- Modelos de regresión para estimar montos esperados por país, sector y tipo de socio.
-- Segmentación de países o proyectos según comportamiento financiero.
-- Detección de anomalías en montos, plazos o patrones de aprobación.
-- Modelos de riesgo agregado: concentración por país, sector o instrumento.
-
-### 1.2 Evaluación y medición de impacto
-
-Contiene resultados de evaluaciones de impacto de proyectos y operaciones,
-incluyendo indicadores de desarrollo, cobertura geográfica y temporal.
-
-**Ideas de modelos:**
-
-- Modelos de clasificación/regresión para explicar factores asociados a mayor impacto.
-- Clustering de proyectos según desempeño social, económico o ambiental.
-- Recomendadores de diseño de proyecto basados en experiencias exitosas.
-- Modelos explicables para identificar palancas clave de impacto.
-
-### 1.3 Adquisiciones en operaciones
-
-Información sobre procesos de adquisición vinculados a proyectos financiados
-(licitaciones, adjudicaciones, proveedores, montos, tiempos, etc.).
-
-**Ideas de modelos:**
-
-- Detección de anomalías en procesos de compra.
-- Predicción de retrasos o riesgos en licitaciones.
-- Análisis de tiempos de ciclo y modelos de duración esperada.
-- Segmentación de proveedores según desempeño y especialización.
-
-### 1.4 Adquisiciones institucionales
-
-Datos sobre adquisiciones corporativas internas del BCIE.
-
-**Ideas de modelos:**
-
-- Análisis y optimización del gasto institucional.
-- Clustering de proveedores institucionales.
-- Detección de inconsistencias o patrones atípicos en compras internas.
-- Pronósticos de demanda por categoría de bienes y servicios.
-
-### 1.5 Cumplimiento de la Política de Acceso a la Información (PAI)
-
-Indicadores sobre la implementación de la Política de Acceso a la Información:
-tiempos de respuesta, volúmenes, niveles de cumplimiento, entre otros.
-
-**Ideas de modelos:**
-
-- Predicción de tiempos de respuesta a solicitudes.
-- Clasificación de solicitudes por prioridad o complejidad.
-- Series temporales para indicadores de transparencia.
-- Alertas tempranas ante deterioro de métricas de acceso a la información.
+Repositorio oficial de experimentos y pipelines de Machine Learning aplicados a los datos abiertos del Banco Centroamericano de Integración Económica (BCIE). Este proyecto demuestra cómo transformar datos públicos en inteligencia predictiva y segmentación estratégica.
 
 ---
 
-## 2. Tipos de modelos de Machine Learning considerados
+## 🚀 Modelos Implementados y Resultados
 
-Según el caso de uso y el conjunto de datos, este laboratorio explora distintas familias de modelos:
+El laboratorio ha operacionalizado **12 modelos avanzados**, divididos en dos grandes áreas de estudio: Segmentación de Cartera (Clustering) y Proyección de Aprobaciones (Forecasting).
 
-- **Series temporales**  
-  Prophet, ARIMA y variantes con regresores externos, modelos LSTM/GRU,
-  arquitecturas tipo Transformer para series de tiempo, N-BEATS.
+### 1. Segmentación de Cartera (Clustering)
 
-- **Regresión y clasificación**  
-  XGBoost, LightGBM, CatBoost, Random Forest, modelos lineales regularizados
-  (Ridge/Lasso/ElasticNet), entre otros.
+_Objetivo: Identificar perfiles de comportamiento financiero en las aprobaciones._
 
-- **Aprendizaje no supervisado**  
-  K-means, HDBSCAN, UMAP, autoencoders para segmentación, reducción de dimensionalidad
-  y descubrimiento de patrones.
+| Modelo           | Metodología            | Resultado Óptimo      | Perfiles Identificados                                                                                       |
+| :--------------- | :--------------------- | :-------------------- | :----------------------------------------------------------------------------------------------------------- |
+| **DBSCAN**       | Densidad (Grid Search) | **3 Tiers + Ruido**   | **Tier A:** Regular (Media ~30M)<br>**Tier B:** Alto Valor/Freq (~65M)<br>**Tier C:** Micro Créditos (~441K) |
+| **K-Means**      | Particional (Elbow)    | **K=4 Clusters**      | Segmentación rígida equilibrada.                                                                             |
+| **Hierarchical** | Aglomerativo (Ward)    | **K=4 Clusters**      | Estructura anidada de sub-grupos.                                                                            |
+| **Mixed**        | Votación (Ensemble)    | **K=3 Clusters**      | Consenso estable entre algoritmos (Score 0.85).                                                              |
+| **HDBSCAN**      | Densidad Adaptativa    | **14 Micro-clusters** | Detección de nichos muy específicos (26% ruido).                                                             |
 
-- **Detección de anomalías**  
-  Isolation Forest, Local Outlier Factor, One-Class SVM, autoencoders de reconstrucción.
+> **Highlight:** La optimización de **DBSCAN** (`eps=0.25`, `min_samples=10`) logró aislar el 14% de operaciones atípicas (ruido), permitiendo una limpieza automática de la data para análisis estratégicos.
 
-- **Explicabilidad**  
-  SHAP, LIME, gráficos de dependencia parcial, análisis de importancia de variables.
+### 2. Proyección de Aprobaciones (Forecasting)
 
-- **Optimización y tuning**  
-  Búsqueda bayesiana (Optuna) y algoritmos evolutivos para ajuste de hiperparámetros
-  y selección de modelos.
+_Objetivo: Predecir volúmenes de aprobación por país y sector._
 
----
-
-## 3. Estructura sugerida del repositorio
-
-- `data/`  
-  Datasets derivados de los datos abiertos del BCIE (limpios, documentados).
-
-- `notebooks/`  
-  Laboratorios por área temática:
-  - `aprobaciones_desembolsos/`
-  - `impacto/`
-  - `adquisiciones_operaciones/`
-  - `adquisiciones_institucionales/`
-  - `transparencia_pai/`
-
-- `models/`  
-  Implementaciones por tipo de modelo (por ejemplo, `prophet/`, `arima/`, `xgboost/`, `anomalies/`).
-
-- `visualizations/`  
-  Gráficos interactivos y dashboards (Plotly, etc.).
-
-- `docs/`  
-  Documentación técnica, descripciones de variables, decisiones metodológicas.
+| Modelo            | Enfoque                    | Metodología                | Desempeño Destacado                       |
+| :---------------- | :------------------------- | :------------------------- | :---------------------------------------- |
+| **TimesFM**       | **IA Generativa (Google)** | Foundation Model Zero-Shot | **MAPE < 30%** en Costa Rica y Argentina. |
+| **StatsForecast** | **Ensemble Estadístico**   | AutoARIMA + Theta (50/50)  | Intervalos de confianza robustos (80%).   |
+| **Prophet**       | Modelo Aditivo             | Tendencia + Estacionalidad | Baseline explicable para negocio.         |
+| **NeuralProphet** | Híbrido (AR-Net)           | Red Neuronal + Componentes | Captura de no-linealidades complejas.     |
 
 ---
 
-## 4. Propósito
+## 🛠️ Arquitectura Técnica
 
-Demostrar, con ejemplos reproducibles, cómo los datos abiertos del BCIE pueden
-aprovecharse para desarrollar modelos de Machine Learning que fortalezcan:
+Cada modelo sigue una arquitectura modular estandarizada para garantizar reproducibilidad y mantenibilidad:
 
-- la comprensión del portafolio de operaciones,
-- la transparencia y rendición de cuentas,
-- la gestión de riesgos,
-- y la toma de decisiones basada en evidencia en instituciones de desarrollo.
+```mermaid
+graph LR
+    A[Datos Abiertos BCIE] --> B(ETL Pipeline)
+    B --> C{Entrenamiento}
+    C -->|Clustering| D[Scikit-Learn / PyCaret]
+    C -->|Forecasting| E[TimesFM / Nixtla / Prophet]
+    D --> F[Métricas JSON]
+    E --> F
+    F --> G[Dashboard HTML]
+    G --> H[Reporte Ejecutivo]
+```
+
+### Estructura del Repositorio
+
+La estructura real del proyecto se organiza por modelo en el directorio `models/`:
+
+- `models/aprobaciones_dbscan_2026/` (Ejemplo de Clustering)
+  - `config/`: Hiperparámetros (`eps`, `min_samples`).
+  - `src/pipelines/`: Lógica de entrenamiento.
+  - `src/dashboard/`: Generación de reportes HTML.
+  - `data/04-predictions/`: Resultados, perfiles y métricas.
+
+- `models/aprobaciones_TimesFM_2026/` (Ejemplo de Forecasting)
+  - `src/pipelines/`: Backtesting y Cross-Validation.
+  - `data/05-evaluation/`: MAPEs y errores por país.
+
+---
+
+## 📊 Visualización y Dashboards
+
+Todos los modelos generan automáticamente **Dashboards Interactivos** (HTML/Plotly) que permiten explorar:
+
+- **Clustering:** Gráficos de dispersión (PCA/t-SNE), perfiles de radar y tablas de centroides.
+- **Forecasting:** Gráficos de series temporales con intervalos de confianza y selectores dinámica por país/sector.
+
+---
+
+## 📚 Documentación Adicional
+
+Para un desglose técnico profundo, metodologías de optimización detalladas y auditoría de estado de cada componente, consulta el documento maestro:
+
+👉 **[AUDITORIA_MODELOS.md](models/AUDITORIA_MODELOS.md)**
+
+---
+
+_Proyecto desarrollado como parte del Laboratorio de Inteligencia Artificial Aplicada._
