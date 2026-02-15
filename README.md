@@ -116,10 +116,10 @@ _Data Scientist & Analyst / Ciudad Guatemala, Guatemala_
 
 ---
 
-### **3. [Nombre del Autor 3]**
+### **3. Edgar Alain García Ramírez**
 
-_[Rol / Título]_  
-_(Por definir)_
+_Business Intelligence Analyst / Ciudad de México, México_  
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/usuario-autor-3)
-[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:correo-autor-3@ejemplo.com)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/edgar-alain-garcia-ramirez/)
+[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:mygadin@gmail.com)
+[![WhatsApp](https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://wa.me/525523233784)
